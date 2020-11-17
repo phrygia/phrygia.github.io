@@ -4,13 +4,13 @@ layout: default
 
 <div class="teaserimage">
     <div class="teaserimage-image" {% if site.cover %}style="background-image: url({{ site.cover | prepend: site.baseurl }})"{% endif %}>
-        Teaser Image2
+        Teaser Image
     </div>
 </div>
 
 <header class="blog-header">
     {% if site.logo %}
-      <a class="blog-logo" href="{{site.url}}{{site.baseurl}}" style="background-image: url('{{ site.logo | prepend: site.baseurl }}')">{{ site.title }}</a>
+      <a class="blog-logo" href="{{site.url}}{{site.baseurl}}" style="background-image: url('/assets/images/middleLogo.jpg')">{{ site.title }}</a>
     {% endif %}
     <h1 class="blog-title">{{ site.title }}</h1>
     <h2 class="blog-description">{{ site.description }}</h2>
@@ -52,10 +52,10 @@ layout: default
       {% endfor %}
     </div>
 
-    <h5 class="index-headline normal"><span>Regular</span></h5>
-    {% endif %}
+    <!--<h5 class="index-headline normal"><span>Regular</span></h5>
+    {% endif %}-->
 
-    <div class="cf frame">
+    <div class="cf frame" style="display:none !important;">
       {% for post in paginator.posts %}
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
           <div class="article-item">
