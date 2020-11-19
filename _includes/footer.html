@@ -1,5 +1,24 @@
 <footer>
-  <span>
-    &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
-  </span>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/blog/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
 </footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/blog/assets/js/common.js" /></script>

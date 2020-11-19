@@ -2,6 +2,16 @@
 layout: default
 ---
 
+<div class="phrygia_info">
+  <dl>
+    <dt><img src="/blog/assets/image/phrygia.jpg" alt="phrygia"></dt>
+    <dd>
+      <strong>Chaeyeon Lee</strong>
+      <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+    </dd>
+  </dl>
+</div>
+
 <div class="catalogue">
   {% for post in paginator.posts %}
     <a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-item">

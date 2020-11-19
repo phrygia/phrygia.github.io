@@ -5,9 +5,13 @@ author: "phrygia"
 comments: true
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt ornare nibh, non elementum augue tempus eget. Pellentesque tempus scelerisque iaculis. Nullam interdum ultricies nibh quis sollicitudin. Donec ornare fermentum facilisis. Ut at sem ac sem imperdiet varius a eget tortor. Nam eu augue eget orci semper maximus in eget augue. Mauris ornare, nisl ut suscipit consectetur, mi quam interdum tellus, at rutrum quam eros ultrices mi.
+어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, 
+javascipt 공부를 게을리 하지 않았다. 
+처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 <div>를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다.
+점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 '프론트엔드'가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.
 
-# Headers
+&nbsp;
+# 프론트엔드 기술 스택
 {% highlight markdown %}
 # H1
 ## H2
