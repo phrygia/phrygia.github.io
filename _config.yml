@@ -1,5 +1,5 @@
 # Site settings
-title:          "Phrygia Devlog"
+title:          "Phrygia Devlog" 
 description:    ""
 baseurl:        "/blog"
 url:            "phrygia.github.io"
