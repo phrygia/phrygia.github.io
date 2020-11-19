@@ -1,63 +1,41 @@
-# Build settings
-gems:
-  - jemoji
-  - jekyll-paginate
-
 # Site settings
-title: "Phrygia Dvlog"
-description: > # this means to ignore newlines until "email:"
-   
+title:          "Phrygia Dvlog"
+description:    ""
+baseurl:        "/blog"
+url:            "phrygia.github.io"
 
-email: dmsgp62@gmail.com
-#blog logo
-logo: "/assets/images/topLogo.png"
-float_logo: true # true, false (default)
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
 
-# blog cover
-cover: "/assets/images/blogTop.jpg"
+# Author
+author:
+  name:         phrygia
+  url:          phrygia.github.io
+  email:        dmsgp62@gmail.com
 
-name: 'phrygia'
-author: 'phrygia'
-author_image: "/assets/images/author.jpg"
+# Build settings
+markdown:       kramdown
+include:
+  - _pages
 
-paginate:	5
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        compressed
 
-url: "phrygia.github.io" # the base hostname & protocol for your site
-baseurl: "/blog"
-#used to display twitter cards
-twitter_handle: ''
+# Gems
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  # - jemoji #Uncomment this to allow emoji in your post
 
-#fill in disqus shortname to use disqus
-#disqus: disqus-shortname
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
 
-#google_analytics: UA-XXXXX-X
+# Excludes
+exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
 
-# social icons and sharing options
-social:
-  - icon:	twitter
-    url:	
-    desc: Follow me on twitter
-    share_url: http://twitter.com/share
-    share_title: ?text=
-    share_link: "&amp;url="
-
-#  - icon:	facebook
-#    url:	https://facebook.com/???
-#    desc: Connect with me facebook
-#    share_url: https://www.facebook.com/sharer.php
-#    share_title: ?t=
-#    share_link: "&amp;u="
-
-  - icon:	github
-    url:	
-    desc:	Fork me on github
-    share_url:
-    share_title:
-    share_link:
-
-#  - icon:	google-plus
-#    url:	https://google.com/???
-#    desc:	Add me on google+
-#    share_url:
-#    share_title:
-#    share_link:
+# Disqus (Set to your disqus id)
+disqus:         jekyll-tale
