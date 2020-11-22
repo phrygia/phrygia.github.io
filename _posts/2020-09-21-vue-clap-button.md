@@ -371,3 +371,14 @@ vue에서 ref 사용을 권장하지 않는 걸로 알고 있는데 부득이하
 
 [react-clap-button]: https://www.npmjs.com/package/react-clap-button
 [vue-clap-button]: https://www.npmjs.com/package/vue-clap-button
+
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/blog/assets/image/phrygia.jpg" alt="phrygia"></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#Vue &nbsp;&nbsp;#ClapButton &nbsp;&nbsp;#박수치기</span>
+        </dd>
+    </dl>
+</div>

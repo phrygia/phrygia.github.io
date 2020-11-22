@@ -1,4 +1,279 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2020-11-22T15:27:41+09:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Phrygia Devlog</title><subtitle></subtitle><author><name>phrygia</name><email>dmsgp62@gmail.com</email></author><entry><title type="html">Vue 박수치기 버튼 만들기 (vue clap button)</title><link href="http://localhost:4000/blog/2020-09-21/vue-clap-button" rel="alternate" type="text/html" title="Vue 박수치기 버튼 만들기 (vue clap button)" /><published>2020-09-21T00:00:00+09:00</published><updated>2020-09-21T00:00:00+09:00</updated><id>http://localhost:4000/blog/2020-09-21/vue-clap-button</id><content type="html" xml:base="http://localhost:4000/blog/2020-09-21/vue-clap-button">&lt;p&gt;새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2020-11-22T17:07:46+09:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Phrygia Devlog</title><subtitle></subtitle><author><name>phrygia</name><email>dmsgp62@gmail.com</email></author><entry><title type="html">Back to Basics</title><link href="http://localhost:4000/blog/2020-10-21/Back-to-Basics" rel="alternate" type="text/html" title="Back to Basics" /><published>2020-10-21T00:00:00+09:00</published><updated>2020-10-21T00:00:00+09:00</updated><id>http://localhost:4000/blog/2020-10-21/Back-to-Basics</id><content type="html" xml:base="http://localhost:4000/blog/2020-10-21/Back-to-Basics">&lt;p&gt;어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, 
+javascipt 공부를 게을리 하지 않았다. 
+처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 &amp;lt;div&amp;gt;를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다.
+점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 ‘프론트엔드’가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h1 id=&quot;프론트엔드-기술-스택&quot;&gt;프론트엔드 기술 스택&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;### H3&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;#### H4&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;##### H5&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;###### H6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
+&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
+&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
+&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
+&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
+&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
+
+&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
+&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
+&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
+&lt;span class=&quot;p&quot;&gt;
+*&lt;/span&gt; Unordered list item 1
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Ordered list item 2&lt;/li&gt;
+  &lt;li&gt;Ordered list item 3&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unordered list item 1&lt;/li&gt;
+  &lt;li&gt;Unordered list item 2&lt;/li&gt;
+  &lt;li&gt;Unordered list item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
+&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
+&lt;p&gt;Use back-ticks for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the highlight tag enables line numbers.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+
+and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;</content><author><name>phrygia</name></author><summary type="html">어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, javascipt 공부를 게을리 하지 않았다. 처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 &amp;lt;div&amp;gt;를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다. 점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 ‘프론트엔드’가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.</summary></entry><entry><title type="html">Html5 Semantic Tag Layout (시맨틱 태그)</title><link href="http://localhost:4000/blog/2020-10-01/html-semantic-tag" rel="alternate" type="text/html" title="Html5 Semantic Tag Layout (시맨틱 태그)" /><published>2020-10-01T00:00:00+09:00</published><updated>2020-10-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/2020-10-01/html-semantic-tag</id><content type="html" xml:base="http://localhost:4000/blog/2020-10-01/html-semantic-tag">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“HTML is the World Wide Web’s core markup language. Originally, HTML was primarily designed as a language for semantically describing scientific documents.” &lt;br /&gt;&lt;br /&gt;
+&lt;i&gt;- “HTML은 World Wide Web의 핵심 markup 언어이다. 원래 HTML은 과학적인 문서를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;의미를 담아 기술하는 언어&lt;/code&gt;로 설계되었다.”&lt;/i&gt;
+&lt;br /&gt;&lt;br /&gt;
+“Elements, attributes, and attribute values in HTML are defined (by this specification) to have certain meanings (semantics)”&lt;br /&gt;&lt;br /&gt;
+&lt;i&gt;- “HTML의 요소와 속성 및 속성 값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;특정한 의미를 가지도록 정의&lt;/code&gt;되었다.”&lt;/i&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;small class=&quot;from&quot;&gt;출처 : &lt;a href=&quot;https://www.w3.org/TR/2016/REC-html51-20161101/introduction.html&quot; target=&quot;_blank&quot;&gt;W3C Recommendation&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;semantic-tag&quot;&gt;Semantic Tag&lt;/h1&gt;
+&lt;h3 id=&quot;시맨틱-태그란&quot;&gt;시맨틱 태그란?&lt;/h3&gt;
+&lt;p&gt;흔히들 HTML5 시대에서 가장 큰 변화는 시맨틱 태그라고 말한다. semantic은 사전적인 의미로 ‘의미의, 의미론적인’라는 의미를 가지고 있다. 
+HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;를 사용하여 코딩하였다. &amp;lt;div&amp;gt;로 작성된 사이트는 문서의 구조와 의미를 알아보기 힘들었고 검색 엔진이 태그의 기능을 분별할 수 없어 자료를 수집하기에 효율적인 사이트가 되지 못했다.
+점점 중요해진 검색엔진에 대응하고&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/post/semantic-tag.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
+&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
+&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
+&lt;span class=&quot;p&quot;&gt;
+*&lt;/span&gt; Unordered list item 1
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Ordered list item 2&lt;/li&gt;
+  &lt;li&gt;Ordered list item 3&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unordered list item 1&lt;/li&gt;
+  &lt;li&gt;Unordered list item 2&lt;/li&gt;
+  &lt;li&gt;Unordered list item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
+&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
+&lt;p&gt;Use back-ticks for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the highlight tag enables line numbers.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+
+and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/blog/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#HTML5 &amp;nbsp;&amp;nbsp;#Semantic &amp;nbsp;&amp;nbsp;#시맨틱&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;</content><author><name>phrygia</name></author><summary type="html">“HTML is the World Wide Web’s core markup language. Originally, HTML was primarily designed as a language for semantically describing scientific documents.” - “HTML은 World Wide Web의 핵심 markup 언어이다. 원래 HTML은 과학적인 문서를 의미를 담아 기술하는 언어로 설계되었다.” “Elements, attributes, and attribute values in HTML are defined (by this specification) to have certain meanings (semantics)” - “HTML의 요소와 속성 및 속성 값은 특정한 의미를 가지도록 정의되었다.”</summary></entry><entry><title type="html">Vue 박수치기 버튼 만들기 (vue clap button)</title><link href="http://localhost:4000/blog/2020-09-21/vue-clap-button" rel="alternate" type="text/html" title="Vue 박수치기 버튼 만들기 (vue clap button)" /><published>2020-09-21T00:00:00+09:00</published><updated>2020-09-21T00:00:00+09:00</updated><id>http://localhost:4000/blog/2020-09-21/vue-clap-button</id><content type="html" xml:base="http://localhost:4000/blog/2020-09-21/vue-clap-button">&lt;p&gt;새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다.
 &lt;img src=&quot;https://raw.githubusercontent.com/kikobeats/react-clap-button/HEAD/demo.gif&quot; /&gt;
 &lt;small class=&quot;from&quot;&gt;출처 : &lt;a href=&quot;https://www.npmjs.com/package/react-clap-button&quot;&gt;react clap button&lt;/a&gt;&lt;/small&gt;
  &lt;/p&gt;
@@ -347,4 +622,15 @@
 사실 처음에는 mounted() 안에 vanila js코드로 입력했다가 다른 페이지에서 에러가 발생해 method로 변경하였는데, 이때, vue의 life cycle이 중요하다는 사실을 알았다.
 기술 블로그는 예전부터 시작하고 싶었고 실제로 만들어놨었지만 어떤 주제를 다뤄야 할지와 시간이 없다는 핑계로 요리조리 피해 다녔는데, 나는 코딩을 할 때 동일한 기능의 코드들도 대충대충 복사해서 쓴다는 사실을 깨닫고, 블로그에 정리하면서 이런 코딩스타일을 고치고 멋진 프론트엔드 개발자가 되고 싶어서 겨우겨우 시작하게 되었다.
 첫 포스팅은 프로젝트에서 제일 깊이 고민했던 버튼 클릭시 count되는 액션이 보이는 clap-button으로 시작했다. 내 코드가 미숙하거나 이상할 수도 있고 부끄럽기도 하지만, 많은 사람들과 공유하고 싶었다.
-앞으로 수많은 코딩을 통해 더 멋진 코드를 작성하고 싶다.&lt;/p&gt;</content><author><name>phrygia</name></author><summary type="html">새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다. 출처 : react clap button  </summary></entry></feed>
+앞으로 수많은 코딩을 통해 더 멋진 코드를 작성하고 싶다.&lt;/p&gt;
+
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/blog/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#Vue &amp;nbsp;&amp;nbsp;#ClapButton &amp;nbsp;&amp;nbsp;#박수치기&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;</content><author><name>phrygia</name></author><summary type="html">새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다. 출처 : react clap button  </summary></entry></feed>
