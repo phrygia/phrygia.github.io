@@ -3,6 +3,7 @@ layout: post
 title:  "Vue 박수치기 버튼 만들기 (vue clap button)"
 author: "phrygia"
 comments: true
+category: "dev"
 ---
 
 새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다.

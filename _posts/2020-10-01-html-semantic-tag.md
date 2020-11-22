@@ -2,7 +2,8 @@
 layout: post
 title: "Html5 Semantic Tag Layout (시맨틱 태그)"
 author: "phrygia"
-comments: true
+comments: true,
+category: "dev"
 ---
 
 <br>
