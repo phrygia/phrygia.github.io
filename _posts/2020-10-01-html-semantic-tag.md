@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Html5 Semantic Tag Layout (시맨틱 태그)"
+title: "[html] Semantic Tag Layout (시맨틱 태그)"
 author: "phrygia"
 comments: true,
 category: "dev"

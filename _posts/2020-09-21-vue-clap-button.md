@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Vue 박수치기 버튼 만들기 (vue clap button)"
+title:  "[vue] 박수치기 버튼 만들기 (vue clap button)"
 author: "phrygia"
 comments: true
 category: "dev"
