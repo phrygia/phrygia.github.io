@@ -1,5 +1,1 @@
-User-agent: *
-Allow: /
-
-Disallow: /private/
-Sitemap: https://phrygia.github.io/blog/sitemap.xml
+Sitemap: http://localhost:4000/blog/sitemap.xml
