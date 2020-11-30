@@ -1,58 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/blog/2020-10-21/Back-to-Basics.html</loc>
-        
-        <lastmod>2020-10-21T00:00:00+09:00</lastmod>
-        
-        
-        <changefreq>weekly</changefreq>
-        
-        
-        <priority>0.5</priority>
-        
+        <loc>http://localhost:4000/blog/2020-10-21/Back-to-Basics</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/blog/2020-10-08/javascript-object.html</loc>
-        
-        <lastmod>2020-10-08T00:00:00+09:00</lastmod>
-        
-        
-        <changefreq>weekly</changefreq>
-        
-        
-        <priority>0.5</priority>
-        
+        <loc>http://localhost:4000/blog/2020-10-08/javascript-object</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/blog/2020-10-01/html-semantic-tag.html</loc>
-        
-        <lastmod>2020-10-01T00:00:00+09:00</lastmod>
-        
-        
-        <changefreq>weekly</changefreq>
-        
-        
-        <priority>0.5</priority>
-        
+        <loc>http://localhost:4000/blog/2020-10-01/html-semantic-tag</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/blog/2020-09-21/vue-clap-button.html</loc>
-        
-        <lastmod>2020-09-21T00:00:00+09:00</lastmod>
-        
-        
-        <changefreq>weekly</changefreq>
-        
-        
-        <priority>0.5</priority>
-        
+        <loc>http://localhost:4000/blog/2020-09-21/vue-clap-button</loc>
     </url>
+    
+
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/category/%20index</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/404.html</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/about/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/category/dev</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/category/diary</loc>
+    </url>
+    
+    
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/</loc>
+    </url>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/blog/tags/</loc>
+    </url>
+    
+    
+    
+    
+    
+    
+    
+    
     
 </urlset>
