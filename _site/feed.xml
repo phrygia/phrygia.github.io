@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Nov 2020 17:36:00 +0900</pubDate>
-    <lastBuildDate>Mon, 30 Nov 2020 17:36:00 +0900</lastBuildDate>
+    <pubDate>Mon, 30 Nov 2020 17:38:34 +0900</pubDate>
+    <lastBuildDate>Mon, 30 Nov 2020 17:38:34 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -19,7 +19,7 @@ javascipt 공부를 게을리 하지 않았다.
 &lt;p&gt; &lt;/p&gt;
 &lt;h1 id=&quot;프론트엔드-기술-스택&quot;&gt;프론트엔드 기술 스택&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
 &lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
@@ -199,7 +199,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;html5에-추가된-시맨틱-태그&quot;&gt;HTML5에 추가된 시맨틱 태그&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/assets/post/semantic-tag.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post/semantic-tag.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;header&amp;gt;&lt;/code&gt; : 머리말을 나타내는 요소이다.&lt;/li&gt;
@@ -218,11 +218,11 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;h4 id=&quot;non-semantic-elements---naver&quot;&gt;&lt;span style=&quot;color:#99f&quot;&gt;Non-Semantic elements&lt;/span&gt; - Naver&lt;/h4&gt;
 &lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;/blog/assets/post/naver-markup.jpg&quot; /&gt;
+&lt;img src=&quot;/assets/post/naver-markup.jpg&quot; /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;semantic-elements---레진-코믹스&quot;&gt;&lt;span style=&quot;color:#99f&quot;&gt;Semantic elements&lt;/span&gt; - 레진 코믹스&lt;br /&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/assets/post/lezhin-markup.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post/lezhin-markup.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위의 두 사이트를 보면,&lt;/p&gt;
 
@@ -255,7 +255,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
     &lt;dl&gt;
-        &lt;dt&gt;&lt;img src=&quot;/blog/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
         &lt;dd&gt;
             &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
             &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
@@ -302,7 +302,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;p&gt;‘역시! react가 있으면 vue도 있었어!’ 흡족한 마음으로 테스트용 프로젝트에 모듈을 설치해보았다.
 그런데 내가 원하던 액션이 아니었다. react clap button은 버튼을 누르면 초록색 동그라미안에 숫자가 카운트 되면서 위로 사라지지만 vue clap button은 버튼에 마우스가 hover된 상태에서만 카운트되는 숫자가 보이는 치명적인 단점이 있었다.
-&lt;img src=&quot;/blog/assets/post/clap-vue.gif&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/post/clap-vue.gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt; &lt;/p&gt;
 
@@ -316,7 +316,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;p&gt; 
 &lt;small class=&quot;from&quot;&gt;-완성된 모습-&lt;/small&gt;
-&lt;img src=&quot;/blog/assets/post/clap-vue2.gif&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/post/clap-vue2.gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;vue 프로젝트젝트를 생성한 후 코드를 작성해 보자.&lt;/p&gt;
 
@@ -378,7 +378,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;p&gt;클릭했을 때 박수횟수를 증가시키는 clapClick함수를 작성하였다. 클릭했을 때, 박수 횟수가 증가한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/post/clap-vue3.gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post/clap-vue3.gif&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;3직접-코드를-작성한다면-클릭할때와-카운트될때의-액션을-제외하고-css로-처리가-가능할까&quot;&gt;3.직접 코드를 작성한다면 클릭할때와 카운트될때의 액션을 제외하고 css로 처리가 가능할까?&lt;/h1&gt;
 
@@ -473,7 +473,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/post/clap-vue4.gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/post/clap-vue4.gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt; 
  &lt;/p&gt;
@@ -628,7 +628,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 
 &lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
     &lt;dl&gt;
-        &lt;dt&gt;&lt;img src=&quot;/blog/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
         &lt;dd&gt;
             &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
             &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;

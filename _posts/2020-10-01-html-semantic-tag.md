@@ -29,7 +29,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 `<div>`를 사용하여 
 <br><br><br>
 
 ### HTML5에 추가된 시맨틱 태그
-<img src="/blog/assets/post/semantic-tag.jpg">
+<img src="/assets/post/semantic-tag.jpg">
 
 - `<header>` : 머리말을 나타내는 요소이다.
 - `<nav>` : 메뉴 영역(네비게이션)을 나타내는 요소이다.
@@ -46,11 +46,11 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 `<div>`를 사용하여 
 
 #### <span style="color:#99f">Non-Semantic elements</span> - Naver
 <br>
-<img src="/blog/assets/post/naver-markup.jpg">
+<img src="/assets/post/naver-markup.jpg">
 <br>
 
 #### <span style="color:#99f">Semantic elements</span> - 레진 코믹스<br>
-<img src="/blog/assets/post/lezhin-markup.jpg">
+<img src="/assets/post/lezhin-markup.jpg">
 
 위의 두 사이트를 보면,
 {% highlight markdown %}
@@ -80,7 +80,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 `<div>`를 사용하여 
 
 <div class="phrygia_info phrygia_info_post">
     <dl>
-        <dt><img src="/blog/assets/image/phrygia.jpg" alt="phrygia"></dt>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia"></dt>
         <dd>
             <strong>Chaeyeon Lee</strong>
             <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
