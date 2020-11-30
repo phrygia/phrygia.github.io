@@ -1,7 +1,7 @@
 # Site settings
 title:          "Phrygia Devlog" 
 description:    ""
-url:            "phrygia.github.io"
+url:            "https://phrygia.github.io"
 
 # Google Analytics
 google_analytics: G-TFDYHEFPQ1
@@ -9,7 +9,7 @@ google_analytics: G-TFDYHEFPQ1
 # Author
 author:
   name:         phrygia
-  url:          phrygia.github.io
+  url:          https://phrygia.github.io
   email:        dmsgp62@gmail.com
 
 # Build settings
