@@ -3,10 +3,10 @@
   <channel>
     <title>Phrygia Devlog</title>
     <description></description>
-    <link>http://localhost:4000/blog/</link>
-    <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Nov 2020 17:41:39 +0900</pubDate>
-    <lastBuildDate>Mon, 30 Nov 2020 17:41:39 +0900</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 30 Nov 2020 17:43:34 +0900</pubDate>
+    <lastBuildDate>Mon, 30 Nov 2020 17:43:34 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -147,8 +147,8 @@ and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line 
 &lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2020-10-21/Back-to-Basics</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2020-10-21/Back-to-Basics</guid>
+        <link>http://localhost:4000/Back-to-Basics</link>
+        <guid isPermaLink="true">http://localhost:4000/Back-to-Basics</guid>
         
         
         <category>diary</category>
@@ -164,8 +164,8 @@ and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line 
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 08 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2020-10-08/javascript-object</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2020-10-08/javascript-object</guid>
+        <link>http://localhost:4000/javascript-object</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript-object</guid>
         
         
         <category>diary</category>
@@ -265,8 +265,8 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 01 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2020-10-01/htmlsemantictag</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2020-10-01/htmlsemantictag</guid>
+        <link>http://localhost:4000/html-semantic-tag</link>
+        <guid isPermaLink="true">http://localhost:4000/html-semantic-tag</guid>
         
         
         <category>dev</category>
@@ -638,8 +638,8 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 21 Sep 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2020-09-21/vueclapbutton</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2020-09-21/vueclapbutton</guid>
+        <link>http://localhost:4000/vue-clap-button</link>
+        <guid isPermaLink="true">http://localhost:4000/vue-clap-button</guid>
         
         
         <category>dev</category>
