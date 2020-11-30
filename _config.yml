@@ -1,8 +1,8 @@
 # Site settings
 title:          "Phrygia Devlog" 
 description:    ""
-# baseurl:        "/blog"
-url:            "phrygia.github.io/blog"
+baseurl:        "/blog/"
+url:            "phrygia.github.io"
 
 # Google Analytics
 google_analytics: G-TFDYHEFPQ1
