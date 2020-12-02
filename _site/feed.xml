@@ -5,167 +5,204 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Nov 2020 17:48:50 +0900</pubDate>
-    <lastBuildDate>Mon, 30 Nov 2020 17:48:50 +0900</lastBuildDate>
+    <pubDate>Wed, 02 Dec 2020 15:54:20 +0900</pubDate>
+    <lastBuildDate>Wed, 02 Dec 2020 15:54:20 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
-        <title>Back to Basics</title>
-        <description>&lt;p&gt;어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, 
-javascipt 공부를 게을리 하지 않았다. 
-처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 &amp;lt;div&amp;gt;를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다.
-점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 ‘프론트엔드’가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.&lt;/p&gt;
+        <title>[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze()</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt; &lt;/p&gt;
-&lt;h1 id=&quot;프론트엔드-기술-스택&quot;&gt;프론트엔드 기술 스택&lt;/h1&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt;는 블록 스코프이며, 변수의 재선언 및 재할당이 모두 불가능하다.&lt;br /&gt;
+흔히 여기서 오는 오해 중 하나가 const로 정의하면 객체 속성값도 수정할 수 없다고 생각하지만, const로 정의해도 객체의 내부 속성값은 수정이 가능하다. (객체를 참조하는 변수를 수정하는 것은 불가능 하다.)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;--js&quot;&gt;- JS&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;### H3&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;#### H4&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;##### H5&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;###### H6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;banana&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;apple&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// { name: 'apple', color: 'red' };&lt;/span&gt;
 
-&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
-&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
-&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
-&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
-&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
-&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
+&lt;span class=&quot;c1&quot;&gt;//배열도 객체의 일종이기 때문에 속성값을 수정할 수 있다.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// [10, 2, 30];&lt;/span&gt;
 
-&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
+&lt;span class=&quot;c1&quot;&gt;// const로 정의된 변수에 재할당은 불가능하다.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;banana&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;apple&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 에러&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;객체에서 이미 존재하는 속성값을 수정하거나 새로운 값을 추가하는 것은 모두 가능하다. 객체의 내부 속성값을 수정하지 못하게 하고 싶다면 유명한 불변성 패키지인 immer.js, immutable.js 등을 사용하면 된다. (immer.js는 리액트에서도 많이이 쓰이기 때문에 알아두면 좋다.) 이러한 패키지들은 기존 객체를 수정하지 않고 새롭게 객체를 생성한다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;p&gt;다음의 JS내장 함수는 불변성 외부 패키지에서 새롭게 객체를 생성하는 편의성은 필요 없고 수정만 할 수 없도록 만들고 싶을 때 사용하면 유용하다.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
-  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
-  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
+  &lt;li&gt;Object.preventExtensions&lt;/li&gt;
+  &lt;li&gt;Object.seal&lt;/li&gt;
+  &lt;li&gt;Object.freeze
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
+&lt;h4 id=&quot;1-objectpreventextensions&quot;&gt;1. Object.preventExtensions&lt;/h4&gt;
+&lt;p&gt;   새로운 속성을 객체에 추가되는 것을 방지한다. (&lt;strong&gt;확장 금지&lt;/strong&gt;) 값의 추가만 금지되고 삭제, 속성 변경, 프로퍼티에 값을 할당하는 작업은 가능하다.&lt;br /&gt;
+   Object.preventExtensions(obj)   // obj : 확장을 방지할 대상 객체.
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
-&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
-&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
-&lt;span class=&quot;p&quot;&gt;
-*&lt;/span&gt; Unordered list item 1
-&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
-&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;prop1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;work?&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//Object { prop1: &quot;work?&quot; }&lt;/span&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Ordered list item 1&lt;/li&gt;
-  &lt;li&gt;Ordered list item 2&lt;/li&gt;
-  &lt;li&gt;Ordered list item 3&lt;/li&gt;
-&lt;/ol&gt;
+&lt;span class=&quot;c1&quot;&gt;// 객체가 확장 가능한지 여부 판별&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isExtensible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Unordered list item 1&lt;/li&gt;
-  &lt;li&gt;Unordered list item 2&lt;/li&gt;
-  &lt;li&gt;Unordered list item 3&lt;/li&gt;
-&lt;/ul&gt;
+&lt;span class=&quot;c1&quot;&gt;// 확장 금지&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventExtensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isExtensible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
 
-&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+&lt;span class=&quot;c1&quot;&gt;// 값을 추가해도 추가되지 않는다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//Object { prop1: &quot;work?&quot; }&lt;/span&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;c1&quot;&gt;// 프로퍼티에 값을 할당하는 작업은 가능하다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;change!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//Object { prop1: &quot;change!&quot; }&lt;/span&gt;
 
-&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
-&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
-&lt;p&gt;Use back-ticks for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the highlight tag enables line numbers.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-
-and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;// 프로퍼티의 값을 삭제하는 것도 가능하다.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop1&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//Object {  }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&quot;2-objectseal&quot;&gt;2. Object.seal&lt;/h4&gt;
+&lt;p&gt;   객체를 &lt;strong&gt;봉인&lt;/strong&gt;해서 새로운 속성을 추가하거나 제거하지 못하게 한다. 기존 프로퍼티를 변경하는 것은 불가능 하지만 쓰기 가능한 속성(writable)의 값은 변경할 수 있다. &lt;br /&gt;
+   Object.seal(obj)   // obj : 봉인할 객체.
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 봉인&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체가 봉인됐는지 여부 판별&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isSealed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 추가 불가능&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addFoo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;addFoo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 기본적으로 프로퍼티의 writable은 true로 설정되어 있기 때문에 수정 불가능하게 만들고 싶다면 false로 수정한다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;change !&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defineProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;writable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;change !!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// writable을 false로 선언하기 전에 바꾼 속성값으로 적용되어 있다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Object { foo: &quot;change !&quot;, bar: function () { return &quot;bar&quot;; } }&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 삭제 불가능&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Object { foo: &quot;change !&quot;, bar: function () { return &quot;bar&quot;; } }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;3-objectfreeze&quot;&gt;3. Object.freeze&lt;/h4&gt;
+&lt;p&gt;   이 메서드는 객체를 &lt;strong&gt;동결&lt;/strong&gt; 시키며, 다음과 같은 작업이 불가능해진다. 동결은 소개하는 3가지 메서드중 가장 높은 단계의 불변성을 적용한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;새로운 속성(메서드, 프로퍼티) 추가 금지&lt;/li&gt;
+  &lt;li&gt;존재하는 속성 제거 금지&lt;/li&gt;
+  &lt;li&gt;존재하는 속성의 불변성, 설정 가능성(configurability), 작성 가능성 변경 금지&lt;/li&gt;
+  &lt;li&gt;존재하는 속성의 값 변경 금지&lt;/li&gt;
+  &lt;li&gt;프로포타입 변경 금지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;   Object.freeze(obj)   // obj : 동결할 객체.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;prop1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;freeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체가 동결됐는지 여부 판별&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isFrozen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 추가 불가능&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Object { prop1: 42 }&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 수정 불가능&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// strict모드 에서는 Error 출력&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 42&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 삭제 불가능&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Object { prop1: 42 }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“use strict” 모드를 사용&lt;/li&gt;
+  &lt;li&gt;위의 메서드가 적용되어진 객체가 참조하는 다른 객체까지 수정 제어하는 것이 아니기 때문에 얕은 불변성만 지원한다. 더욱 엄격하게 객체를 제어하고 싶다면 외부 패키지를 이용하면 더 좋을 것 같다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;- 참고 - &lt;br /&gt; 
+실전리액트 프로그래밍 - 이재승 &lt;br /&gt;
+&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions&quot; target=&quot;_blank&quot;&gt;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions&lt;/a&gt;
+&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/seal&quot; target=&quot;_blank&quot;&gt;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/seal&lt;/a&gt;
+&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze&quot; target=&quot;_blank&quot;&gt;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze&lt;/a&gt;
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#자바스크립트 &amp;nbsp;&amp;nbsp;#javascript &amp;nbsp;&amp;nbsp;#object &amp;nbsp;&amp;nbsp;#객체수정제어&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/Back-to-Basics</link>
-        <guid isPermaLink="true">http://localhost:4000/Back-to-Basics</guid>
+        <pubDate>Wed, 04 Nov 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/javascript-object</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript-object</guid>
         
         
-        <category>diary</category>
+        <category>dev</category>
         
       </item>
     
       <item>
-        <title>[javascript] 객체 수정 제어 </title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;Object.preventExtensions&lt;/li&gt;
-  &lt;li&gt;Object.seal&lt;/li&gt;
-  &lt;li&gt;Object.freeze&lt;/li&gt;
-&lt;/ul&gt;
+        <title>실업급여 신청하기</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://www.work.go.kr/seouldongbu/common/filePathDownload.do?filePathName=/attachment/jobCenter/facil/2015/08/31/20150831164551915_THUMBNAIL_ORG.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.work.go.kr/seouldongbu/common/filePathDownload.do?filePathName=/attachment/jobCenter/facil/2015/08/31/20150831163923780_THUMBNAIL_ORG.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;사진 출처 : &lt;a href=&quot;https://www.work.go.kr&quot;&gt;서울동부 고용복지 센터&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#실업급여 &amp;nbsp;&amp;nbsp;#실업급여신청 &amp;nbsp;&amp;nbsp;#서울동부고용센터&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Thu, 08 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-object</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-object</guid>
+        <pubDate>Fri, 30 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/unemplovment-benefits</link>
+        <guid isPermaLink="true">http://localhost:4000/unemplovment-benefits</guid>
         
         
         <category>diary</category>
@@ -264,7 +301,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
     &lt;/dl&gt;
 &lt;/div&gt;
 </description>
-        <pubDate>Thu, 01 Oct 2020 00:00:00 +0900</pubDate>
+        <pubDate>Wed, 28 Oct 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/html-semantic-tag</link>
         <guid isPermaLink="true">http://localhost:4000/html-semantic-tag</guid>
         
@@ -637,12 +674,158 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
     &lt;/dl&gt;
 &lt;/div&gt;
 </description>
-        <pubDate>Mon, 21 Sep 2020 00:00:00 +0900</pubDate>
+        <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/vue-clap-button</link>
         <guid isPermaLink="true">http://localhost:4000/vue-clap-button</guid>
         
         
         <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>Back to Basics</title>
+        <description>&lt;p&gt;어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, 
+javascipt 공부를 게을리 하지 않았다. 
+처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 &amp;lt;div&amp;gt;를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다.
+점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 ‘프론트엔드’가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h1 id=&quot;프론트엔드-기술-스택&quot;&gt;프론트엔드 기술 스택&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;### H3&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;#### H4&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;##### H5&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;###### H6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
+&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
+&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
+&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
+&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
+&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
+
+&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
+&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
+&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
+&lt;span class=&quot;p&quot;&gt;
+*&lt;/span&gt; Unordered list item 1
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Ordered list item 2&lt;/li&gt;
+  &lt;li&gt;Ordered list item 3&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unordered list item 1&lt;/li&gt;
+  &lt;li&gt;Unordered list item 2&lt;/li&gt;
+  &lt;li&gt;Unordered list item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
+&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
+&lt;p&gt;Use back-ticks for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the highlight tag enables line numbers.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+
+and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/Back-to-Basics</link>
+        <guid isPermaLink="true">http://localhost:4000/Back-to-Basics</guid>
+        
+        
+        <category>diary</category>
         
       </item>
     
