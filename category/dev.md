@@ -1,6 +1,6 @@
 ---
 layout: category
-title: DEV
+title: dev
 category: dev
 permalink: '/category/dev'
 ---

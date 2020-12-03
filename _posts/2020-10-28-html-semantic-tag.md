@@ -4,10 +4,6 @@ title: "[html] Semantic Tag Layout (시맨틱 태그)"
 author: "phrygia"
 comments: true,
 category: "dev"
-lastmod : 2020-10-30 19:10:00
-sitemap :
-  changefreq : dev
-  priority : 1.0
 ---
 
 <br>
