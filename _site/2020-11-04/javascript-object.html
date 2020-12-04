@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze() | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze()" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/2020-11-04/javascript-object" />
+<meta property="og:url" content="http://localhost:4000/2020-11-04/javascript-object" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-04T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze()" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"phrygia"},"@type":"BlogPosting","url":"http://localhost:4000/2020-11-04/javascript-object","headline":"[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze()","dateModified":"2020-11-04T00:00:00+09:00","datePublished":"2020-11-04T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-11-04/javascript-object"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2020-11-04 00:00:00 +0900">November 04, 2020</time>
+    
+  </div>
+
+  <h1 class="post-title">[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze()</h1>
+  <div class="post-line"></div>
+
+  <p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">const</code>는 블록 스코프이며, 변수의 재선언 및 재할당이 모두 불가능하다.<br />
+흔히 여기서 오는 오해 중 하나가 const로 정의하면 객체 속성값도 수정할 수 없다고 생각하지만, const로 정의해도 객체의 내부 속성값은 수정이 가능하다. (객체를 참조하는 변수를 수정하는 것은 불가능 하다.)</p>
+
+<h4 id="--js">- JS</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">fruit</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span> <span class="p">};</span>
+<span class="nx">fruit</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">fruit</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruit</span><span class="p">);</span>  <span class="c1">// { name: 'apple', color: 'red' };</span>
+
+<span class="c1">//배열도 객체의 일종이기 때문에 속성값을 수정할 수 있다.</span>
+<span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>  <span class="c1">// [10, 2, 30];</span>
+
+<span class="c1">// const로 정의된 변수에 재할당은 불가능하다.</span>
+<span class="kd">const</span> <span class="nx">fruit</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span> <span class="p">};</span>
+<span class="nx">fruit</span> <span class="o">=</span> <span class="p">{</span> <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span> <span class="p">};</span>  <span class="c1">// 에러</span></code></pre></figure>
+
+<p>객체에서 이미 존재하는 속성값을 수정하거나 새로운 값을 추가하는 것은 모두 가능하다. 객체의 내부 속성값을 수정하지 못하게 하고 싶다면 유명한 불변성 패키지인 immer.js, immutable.js 등을 사용하면 된다. (immer.js는 리액트에서도 많이이 쓰이기 때문에 알아두면 좋다.) 이러한 패키지들은 기존 객체를 수정하지 않고 새롭게 객체를 생성한다.
+<br /><br /></p>
+
+<p>다음의 JS내장 함수는 불변성 외부 패키지에서 새롭게 객체를 생성하는 편의성은 필요 없고 수정만 할 수 없도록 만들고 싶을 때 사용하면 유용하다.</p>
+<ul>
+  <li>Object.preventExtensions</li>
+  <li>Object.seal</li>
+  <li>Object.freeze
+<br /><br /><br /></li>
+</ul>
+
+<h4 id="1-objectpreventextensions">1. Object.preventExtensions</h4>
+<p>   새로운 속성을 객체에 추가되는 것을 방지한다. (<strong>확장 금지</strong>) 값의 추가만 금지되고 삭제, 속성 변경, 프로퍼티에 값을 할당하는 작업은 가능하다.<br />
+   Object.preventExtensions(obj)   // obj : 확장을 방지할 대상 객체.
+<br /></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span> <span class="na">prop1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">work?</span><span class="dl">"</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>   <span class="c1">//Object { prop1: "work?" }</span>
+
+<span class="c1">// 객체가 확장 가능한지 여부 판별</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">isExtensible</span><span class="p">(</span><span class="nx">object1</span><span class="p">));</span>   <span class="c1">//true</span>
+
+<span class="c1">// 확장 금지</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">preventExtensions</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">isExtensible</span><span class="p">(</span><span class="nx">object1</span><span class="p">));</span>   <span class="c1">//false</span>
+
+<span class="c1">// 값을 추가해도 추가되지 않는다.</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">prop2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">add</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">)</span>   <span class="c1">//Object { prop1: "work?" }</span>
+
+<span class="c1">// 프로퍼티에 값을 할당하는 작업은 가능하다.</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">prop1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">change!</span><span class="dl">"</span><span class="p">;</span>   
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">)</span>   <span class="c1">//Object { prop1: "change!" }</span>
+
+<span class="c1">// 프로퍼티의 값을 삭제하는 것도 가능하다.</span>
+<span class="k">delete</span> <span class="nx">object1</span><span class="p">.</span><span class="nx">prop1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">)</span>   <span class="c1">//Object {  }</span></code></pre></figure>
+
+<p><br /></p>
+
+<h4 id="2-objectseal">2. Object.seal</h4>
+<p>   객체를 <strong>봉인</strong>해서 새로운 속성을 추가하거나 제거하지 못하게 한다. 기존 프로퍼티를 변경하는 것은 불가능 하지만 쓰기 가능한 속성(writable)의 값은 변경할 수 있다. <br />
+   Object.seal(obj)   // obj : 봉인할 객체.
+<br /></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="na">foo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span> 
+    <span class="na">bar</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span> 
+    <span class="p">}</span> 
+<span class="p">};</span>
+
+<span class="c1">// 객체 봉인</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">seal</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>
+
+<span class="c1">// 객체가 봉인됐는지 여부 판별</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">isSealed</span><span class="p">(</span><span class="nx">object1</span><span class="p">));</span>   <span class="c1">//true</span>
+
+<span class="c1">// 객체 추가 불가능</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">addFoo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">addFoo</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// 기본적으로 프로퍼티의 writable은 true로 설정되어 있기 때문에 수정 불가능하게 만들고 싶다면 false로 수정한다.</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">change !</span><span class="dl">"</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">object1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">writable</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">});</span> 
+<span class="nx">object1</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">change !!</span><span class="dl">"</span>
+
+<span class="c1">// writable을 false로 선언하기 전에 바꾼 속성값으로 적용되어 있다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>   <span class="c1">// Object { foo: "change !", bar: function () { return "bar"; } }</span>
+
+<span class="c1">// 객체 삭제 불가능</span>
+<span class="k">delete</span> <span class="nx">object1</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>   <span class="c1">// Object { foo: "change !", bar: function () { return "bar"; } }</span></code></pre></figure>
+
+<p><br /></p>
+
+<h4 id="3-objectfreeze">3. Object.freeze</h4>
+<p>   이 메서드는 객체를 <strong>동결</strong> 시키며, 다음과 같은 작업이 불가능해진다. 동결은 소개하는 3가지 메서드중 가장 높은 단계의 불변성을 적용한다.</p>
+<ul>
+  <li>새로운 속성(메서드, 프로퍼티) 추가 금지</li>
+  <li>존재하는 속성 제거 금지</li>
+  <li>존재하는 속성의 불변성, 설정 가능성(configurability), 작성 가능성 변경 금지</li>
+  <li>존재하는 속성의 값 변경 금지</li>
+  <li>프로포타입 변경 금지</li>
+</ul>
+
+<p>   Object.freeze(obj)   // obj : 동결할 객체.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">prop1</span><span class="p">:</span> <span class="mi">42</span>
+<span class="p">};</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>
+
+<span class="c1">// 객체가 동결됐는지 여부 판별</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">isFrozen</span><span class="p">(</span><span class="nx">object1</span><span class="p">))</span>   <span class="c1">// true</span>
+
+<span class="c1">// 객체 추가 불가능</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">prop2</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">add</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>   <span class="c1">// Object { prop1: 42 }</span>
+
+<span class="c1">// 객체 수정 불가능</span>
+<span class="nx">object1</span><span class="p">.</span><span class="nx">prop1</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>   <span class="c1">// strict모드 에서는 Error 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">.</span><span class="nx">prop1</span><span class="p">);</span>   <span class="c1">// 42</span>
+
+<span class="c1">// 객체 삭제 불가능</span>
+<span class="k">delete</span> <span class="nx">object1</span><span class="p">.</span><span class="nx">prop1</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span><span class="p">);</span>   <span class="c1">// Object { prop1: 42 }</span></code></pre></figure>
+
+<p><br /></p>
+<ul>
+  <li>“use strict” 모드를 사용</li>
+  <li>위의 메서드가 적용되어진 객체가 참조하는 다른 객체까지 수정 제어하는 것이 아니기 때문에 얕은 불변성만 지원한다. 더욱 엄격하게 객체를 제어하고 싶다면 외부 패키지를 이용하면 더 좋을 것 같다.</li>
+</ul>
+
+<p><br /></p>
+<hr />
+
+<p><small class="from">- 참고 - <br /> 
+실전리액트 프로그래밍 - 이재승 <br />
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions</a>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/seal" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/seal</a>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze</a>
+</small></p>
+
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#자바스크립트 &nbsp;&nbsp;#javascript &nbsp;&nbsp;#object &nbsp;&nbsp;#객체수정제어</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+    <a href="/2020-11-10/rwd-awd" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2020-10-28/html-semantic-tag" class="right arrow">&#8594;</a>
+  
+
+</div>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2020-12-04 15:54:51 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>

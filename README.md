@@ -40,7 +40,7 @@ $ bundle
 ```yaml
 theme:      tale
 
-permalink:  /:title
+permalink:  /:year-:month-:day/:title
 paginate:   5
 ```
 
@@ -73,7 +73,7 @@ $ bundle
 ```yaml
 remote_theme: chesterhow/tale
 
-permalink:    /:title
+permalink:    /:year-:month-:day/:title
 paginate:     5
 
 plugins:

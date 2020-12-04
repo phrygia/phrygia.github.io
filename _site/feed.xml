@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Dec 2020 15:01:01 +0900</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2020 15:01:01 +0900</lastBuildDate>
+    <pubDate>Fri, 04 Dec 2020 15:54:51 +0900</pubDate>
+    <lastBuildDate>Fri, 04 Dec 2020 15:54:51 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -117,8 +117,8 @@
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 30 Nov 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/unemplovment-benefits</link>
-        <guid isPermaLink="true">http://localhost:4000/unemplovment-benefits</guid>
+        <link>http://localhost:4000/2020-11-30/unemplovment-benefits</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-30/unemplovment-benefits</guid>
         
         
         <category>diary</category>
@@ -126,14 +126,34 @@
       </item>
     
       <item>
+        <title>[javascript] 명령형 프로그래밍 vs 선언형 프로그래밍</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 16 Nov 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020-11-16/programming</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-16/programming</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
+    
+      <item>
         <title>[web] 반응형(RWD)웹과 적응형(AWD)웹</title>
-        <description>&lt;p&gt;RWD : Responsive Web Design 
-AWD : Adaptive Web Design&lt;/p&gt;
+        <description>&lt;p&gt;&lt;br /&gt;
+퍼블리싱 프리랜서일을 할때면 자주 등장하는 용어가 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;반응형&lt;/code&gt;이란 단어다. 반응형이란 단어와 함께 언급되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;적응형&lt;/code&gt;이란 단어도 있다. 이 두 단어가 나오면 ‘도대체 무슨 차이지?’ 라는 문장도 항상 따라온다. 퍼블리싱을 3년동안 했지만 반응형과 적응형의 차이에 대해 명확하게 설명하지 못했기 때문에 이 두가지는 어떻게 다른지에 대해 알아보고자 조사하게 되었다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;h1 id=&quot;반응형-vs-적응형&quot;&gt;반응형 vs 적응형&lt;/h1&gt;
+&lt;h3 id=&quot;반응형-rwdresponsive-web-design&quot;&gt;반응형: RWD(Responsive Web Design)&lt;/h3&gt;
+&lt;h3 id=&quot;적응형-awdadaptive-web-design&quot;&gt;적응형: AWD(Adaptive Web Design)&lt;/h3&gt;
+
+&lt;p&gt;명령형 프로그래밍
+선언형 프로그래밍&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Nov 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-object</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-object</guid>
+        <link>http://localhost:4000/2020-11-10/rwd-awd</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-10/rwd-awd</guid>
         
         
         <category>dev</category>
@@ -302,8 +322,8 @@ AWD : Adaptive Web Design&lt;/p&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 04 Nov 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-object</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-object</guid>
+        <link>http://localhost:4000/2020-11-04/javascript-object</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-04/javascript-object</guid>
         
         
         <category>dev</category>
@@ -403,8 +423,8 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 28 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/html-semantic-tag</link>
-        <guid isPermaLink="true">http://localhost:4000/html-semantic-tag</guid>
+        <link>http://localhost:4000/2020-10-28/html-semantic-tag</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-10-28/html-semantic-tag</guid>
         
         
         <category>dev</category>
@@ -413,7 +433,8 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
     
       <item>
         <title>[vue] 박수치기 버튼 만들기 (vue clap button)</title>
-        <description>&lt;p&gt;새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다.
+        <description>&lt;p&gt;&lt;br /&gt;
+새로운 vue 프로젝트 사전미팅에서 장바구니에 담기는 액션을 부탁받았다.
 &lt;img src=&quot;https://raw.githubusercontent.com/kikobeats/react-clap-button/HEAD/demo.gif&quot; /&gt;
 &lt;small class=&quot;from&quot;&gt;출처 : &lt;a href=&quot;https://www.npmjs.com/package/react-clap-button&quot;&gt;react clap button&lt;/a&gt;&lt;/small&gt;
  &lt;/p&gt;
@@ -776,8 +797,8 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/vue-clap-button</link>
-        <guid isPermaLink="true">http://localhost:4000/vue-clap-button</guid>
+        <link>http://localhost:4000/2020-10-21/vue-clap-button</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-10-21/vue-clap-button</guid>
         
         
         <category>dev</category>
