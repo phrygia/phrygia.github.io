@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Dec 2020 16:01:50 +0900</pubDate>
-    <lastBuildDate>Sun, 06 Dec 2020 16:01:50 +0900</lastBuildDate>
+    <pubDate>Sun, 06 Dec 2020 17:55:40 +0900</pubDate>
+    <lastBuildDate>Sun, 06 Dec 2020 17:55:40 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -142,16 +142,14 @@
         <title>[web] 반응형(RWD)웹과 적응형(AWD)웹</title>
         <description>&lt;p&gt;&lt;br /&gt;
 퍼블리싱 프리랜서일을 할때면 자주 등장하는 용어가 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;반응형&lt;/code&gt;이란 단어다. 반응형이란 단어와 함께 언급되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;적응형&lt;/code&gt;이란 단어도 있으며, 이 두 단어가 나올때마다 ‘도대체 무슨 차이지?’ 라는 의문도 따라온다. 퍼블리싱을 3년동안 했지만 반응형과 적응형의 차이에 대해 명확하게 설명하지 못하고 명확한 차이를 모른다고 생각됐기 때문에 이 두가지는 어떻게 다른지에 대해 알아보고자 조사하게 되었다.
-&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;반응형-vs-적응형&quot;&gt;반응형 vs 적응형&lt;/h1&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://freshwebdev.com/wp-content/uploads/2017/03/a-vs-R-sites.png&quot; /&gt; 
-&lt;small class=&quot;from&quot;&gt;사진 출처 : &lt;a href=&quot;https://freshwebdev.com/responsive-adaptive-web-design-difference.html&quot; target=&quot;_blank&quot;&gt;https://freshwebdev.com/responsive-adaptive-web-design-difference.html&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;small class=&quot;from&quot;&gt;사진 출처 : &lt;a href=&quot;https://freshwebdev.com/responsive-adaptive-web-design-difference.html&quot; target=&quot;_blank&quot;&gt;https://freshwebdev.com/responsive-adaptive-web-design-difference.html&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;1-반응형-rwdresponsive-web-design&quot;&gt;1. 반응형: RWD(Responsive Web Design)&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;*웹의 해상도, 레이아웃 등이 디바이스에 따라 반응하여 유동적으로 변환되는 웹페이지&lt;/strong&gt; &lt;br /&gt;
-과거의 웹을 사용하는 주요기기는 컴퓨터였으며, 모니터에 맞춰 화면의 크기와 레이아웃이 구성되었다. 2007년 애플사에서 아이폰을 출시하면서 스마트폰의 시대가 열렸고, 어디서든 손쉽게 웹사이트에 접근할 수 있게 되었다. 하지만 아래의 사진처럼 문제가 발생하였다.
+과거에 웹을 사용하는 주요기기는 컴퓨터였으며, 모니터에 맞춰 화면의 크기와 레이아웃이 구성되었다. 2007년 애플사에서 아이폰을 출시하면서 스마트폰의 시대가 열렸고, 어디서든 손쉽게 웹사이트에 접근할 수 있게 되었다. 하지만 아래의 사진처럼 문제가 발생하였다.
 &lt;img src=&quot;/assets/post/steveJobsIPhone.jpg&quot; /&gt; 
 바로 손바닥만한 기기에서 큰 모니터에서만 보던 화면으로 웹사이트를 봐야한다는 문제였다. 웹사이트의 모든 내용을 담기에는 글자가 너무 작아져서 읽을 수조차 없었으며 읽기위해서는 손가락으로 화면을 일일히 확대해서 봐야하는 번거로움이 있었다. &lt;br /&gt;
 이러한 문제점으로 인해 같은 페이지라 할지라도 어떤 장치로 접속하느냐에 따라 다른 종류의 화면을 보여줘야 할 필요성이 대두되기 시작했다. 하지만 같은 페이지를 pc용 스마트폰 용으로 나누어 만드는 건 시간적·비용적으로 매우 비효율적이었다. (한 사이트의 페이지가 100개라면? pc용 스마트폰 용 200개를 만들어야 하며, 아이패드 출시이후 태블릿용 사이즈까지 포함하여 최대 300개를 만들어야 한다.) 이를 해결하기 위한 방법으로 반응형 웹 기술이 주목받게 되었다. &lt;br /&gt;
@@ -195,15 +193,88 @@
 &lt;p&gt;&lt;br /&gt;
 &lt;img src=&quot;/assets/post/rwd.png&quot; /&gt; 
 &lt;small&gt;필자가 코딩한 반응형 사이트 : 데스크탑 + 모바일 2가지로 진행하였다.&lt;/small&gt;
-&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;2-적응형-awdadaptive-web-design&quot;&gt;2. 적응형: AWD(Adaptive Web Design)&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;*서버나 클라이언트에서 웹에 접근한 디바이스를 체크하여 그 디바이스에 최적화된 미리 정해 놓은 각 디바이스의 디스플레이에 맞는 웹을 보여주는 디자인&lt;/strong&gt; &lt;br /&gt;
-데스크탑의 경우 데스크탑용 템플릿을 모바일은 모바일용 템플릿을 제공한다. (ex: 카페24) 기기별로 다른 템플릿을 제작해야하기 때문에 작업시간과 비용이 많이 들며, 유지보수가 어렵고 복잡해진다는 단점이 있다. 반응형웹은 모든 기기의 템플릿과 CSS를 다운로드하기 때문에 데이터 낭비와 로딩속도가 느려질수 있지만, 적응형웹은 사용자 기기에 맞는 템플릿과 CSS만을 다운로드하기 때문에 속도가 더 빠를 수 있다.&lt;/p&gt;
+데스크탑의 경우 데스크탑용 템플릿을 모바일은 모바일용 템플릿을 제공한다. (ex: 모바일에서 네이버에 접속할 경우 m.naver.com로 접속됨) 기기별로 다른 템플릿을 제작해야하기 때문에 작업시간과 비용이 많이 들며, 유지보수가 어렵고 복잡해진다는 단점이 있다.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;*적응형 웹의 특징&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;기획 첫 단계부터 기기에 알맞은 해상도를 고려하므로 콘텐츠 양이 많을 경우 화면에 담길 콘텐츠의 양을 조절하고 기기에 최적화된 디자인을 함으로 가독성을 높이는데 반응형 웹에 비해 자유롭다.&lt;/li&gt;
+  &lt;li&gt;그리드 형태의 데이터 표현이 빈번할 경우 디바이스 화면 사이즈에 맞는 열의 개수를 감안해 디자인함으로 반응형 웹에서 스크롤이 생기거나 해상도에 따라 열의 데이터가 안보이는 경우가 생기는 불편함을 해소할수 있다.&lt;/li&gt;
+  &lt;li&gt;해당하는 기기의 CSS스타일과 소스만 로드하므로 CSS스타일과 소스들을 전부 로딩하는 반응형 웹에 비해 시스템 성능에 끼치는 영향을 줄일수 있다.&lt;/li&gt;
+  &lt;li&gt;디바이스에 상황에 따라 페이지, 시스템 등을 각각 제작해야한다.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;*적응형 웹이 필요할 때&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;오래 전 구축된 시스템&lt;/strong&gt; &lt;br /&gt;
+기업의 오래된 시스템들은 PC 위주의 시스템으로, PC에 최적화된 디자인과 기능들로 구성되어 있으며 이를 모바일 시스템으로 구축하는 것은 어렵다.(웹의 크기가 거대하다면 비용적으로 시간적으로 반응형은 비효율적이다.) 이 때문에 적응형 웹 구현방식으로 모바일 시스템을 새롭게 구축하는 것이 더 효율적이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;특수한 목적성을 띤 시스템&lt;/strong&gt; &lt;br /&gt;
+일반적인 홈페이지나 이벤트성 페이지 등 고객 서비스를 지향하는 웹은 처음부터 반응형 웹을 검토해 적용하는 것이 편할 수 있다. 하지만 예를 들어 택배, A/S 기사처럼 특정 목적을 위해 시스템을 사용하는 사용자들은 본인이 활용하는 디바이스에 최적화된 시스템을 사용하길 원한다. 따라서 이들이 효율적으로 시스템을 활용할 수 있도록 적응형 웹을 활용해 디바이스에 최적화된 시스템을 구현하는 것이 좋다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;유지보수 편의를 우선시하는 시스템&lt;/strong&gt; &lt;br /&gt;
+위 두 가지 경우에 포함되지는 않으나 여러 가지 이유로 반응형 웹을 적용하기 난해한 시스템이 있을 수 있다. 이런 경우 애초에 다른 환경에서 구동되는 시스템을 각각 분리해 기획·개발하는 것이 효율적일 수 있다. 한 번의 개발 또는 하나의 소스로 모든 환경에 알맞은 시스템을 설계하고 구현하는 것이 이상적이긴 하나, 그 실현을 위한 고려사항이 생각보다 많고 원하는 성능을 낼 수 있을지도 장담할 수 없기 때문이다. 그래서 처음부터 각 사용자 환경을 별도로 분리해 처리하는 것이 효율적이다.
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3-반응형-vs-적응형&quot;&gt;3. 반응형 vs 적응형&lt;/h3&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th style=&quot;width: 18%&quot;&gt;&lt;/th&gt;
+            &lt;th style=&quot;width: 41%&quot;&gt;반응형&lt;/th&gt;
+            &lt;th style=&quot;width: 41%&quot;&gt;적응형&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;정의&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;해상도별로 출력될 화면을 정의&lt;/td&gt;
+            &lt;td&gt;데스크탑, 모바일 등 기기에 맞는 사이즈를 별도로 구축&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;디바이스 감지&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;CSS3 미디어 쿼리(Media Query)로 감지&lt;/td&gt;
+            &lt;td&gt;서버또는 브라우저 클라이언트에서 감지&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;최적화&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;다양한 디바이스 사이즈 지원&lt;/td&gt;
+            &lt;td&gt;디자이너가 지정한 사이즈의 디바이스만 지원&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;템플릿 및 콘텐츠&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;템플릿 한개만 제작하고 모든 콘텐츠 다운로드&lt;/td&gt;
+            &lt;td&gt;템플릿을 디바이스별로 제작하고 필요한 콘텐츠만 다운로드&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;속도&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;전부 다운로드 → 로딩 속도 느려짐&lt;/td&gt;
+            &lt;td&gt;필요한 것만 다운로드 → 로딩 속도 빨라짐&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;개발&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;기존 사이트를 전체 리뉴얼하여 개발&lt;/td&gt;
+            &lt;td&gt;기존 사이트의 변경없이 개발 가능&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;개발비용&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;해상도별로 출력될 화면을 정의하고 제작해야하므로 초기 개발비용이 높다.&lt;/td&gt;
+            &lt;td&gt;템플릿을 디바이스별로 제작해야하므로 초기개발비용이 높고 유지보수시 각 템블릿을 수정해야하기 때문에 유지보수 비용도 높다.&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;small class=&quot;from&quot;&gt;참고 : &lt;a href=&quot;https://terms.naver.com/entry.nhn?docId=3609911&amp;amp;cid=58598&amp;amp;categoryId=59316&quot; target=&quot;_blank&quot;&gt;https://terms.naver.com/entry.nhn?docId=3609911&amp;amp;cid=58598&amp;amp;categoryId=59316&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;https://terms.naver.com/entry.nhn?docId=3350028&amp;amp;cid=40942&amp;amp;categoryId=32828&quot; target=&quot;_blank&quot;&gt;https://terms.naver.com/entry.nhn?docId=3350028&amp;amp;cid=40942&amp;amp;categoryId=32828&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%A0%81%EC%9D%91%ED%98%95_%EC%9B%B9_%EB%94%94%EC%9E%90%EC%9D%B8&quot; target=&quot;_blank&quot;&gt;https://ko.wikipedia.org/wiki/%EC%A0%81%EC%9D%91%ED%98%95&lt;em&gt;%EC%9B%B9&lt;/em&gt;%EB%94%94%EC%9E%90%EC%9D%B8&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;참고 : &lt;a href=&quot;https://terms.naver.com/entry.nhn?docId=3609911&amp;amp;cid=58598&amp;amp;categoryId=59316&quot; target=&quot;_blank&quot;&gt;https://terms.naver.com/entry.nhn?docId=3609911&amp;amp;cid=58598&amp;amp;categoryId=59316&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;https://terms.naver.com/entry.nhn?docId=3350028&amp;amp;cid=40942&amp;amp;categoryId=32828&quot; target=&quot;_blank&quot;&gt;https://terms.naver.com/entry.nhn?docId=3350028&amp;amp;cid=40942&amp;amp;categoryId=32828&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%A0%81%EC%9D%91%ED%98%95_%EC%9B%B9_%EB%94%94%EC%9E%90%EC%9D%B8&quot; target=&quot;_blank&quot;&gt;https://ko.wikipedia.org/wiki/%EC%A0%81%EC%9D%91%ED%98%95&lt;em&gt;%EC%9B%B9&lt;/em&gt;%EB%94%94%EC%9E%90%EC%9D%B8&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;http://www.comworld.co.kr/news/articleView.html?idxno=49000&quot; target=&quot;_blank&quot;&gt;컴퓨터월드&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 
 &lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
     &lt;dl&gt;
@@ -868,6 +939,152 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
         
         
         <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>Back to Basics</title>
+        <description>&lt;p&gt;어느덧 퍼블리셔로 일한지 3년차가 되어 간다. 퍼블리셔로 일하고 있지만 언제나 프론트엔드가 되기를 꿈꿨으며, 
+javascipt 공부를 게을리 하지 않았다. 
+처음 퍼블리셔로 일했을때는 jQuery만 사용할 줄 알았으며 간단한 css 및 &amp;lt;div&amp;gt;를 이용한 HTML 작성법을 사용하여 웹페이지를 만들었었다.
+점점 scss및 react, vue 등에 대한 흥미가 생겨 가볍게 공부하던 중 프레임워크나 라이브러리에 의존하지 않는 vanila.js 프로그래밍에대해 막연한 동경의 감정을 품어 어정쩡한 공부를 이어왔었지만, 3년차가 된 지금 ‘프론트엔드’가 되기 위해 프론트엔드 기술 스택에 대해 진지 하게 고민해 보았으며, 그 중 프론트엔드의 기본소양에 대한 생각을 정리해 볼 생각이다.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h1 id=&quot;프론트엔드-기술-스택&quot;&gt;프론트엔드 기술 스택&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/post/skill.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gh&quot;&gt;# H1&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;## H2&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;### H3&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;#### H4&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;##### H5&lt;/span&gt;
+&lt;span class=&quot;gu&quot;&gt;###### H6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
+&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
+&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
+&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
+&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
+&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
+
+&lt;h1 id=&quot;text-formatting&quot;&gt;Text formatting&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Bold**&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; _Italics_
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; ~~Strikethrough~~
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;Underline&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;Superscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;Subscript&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Abbreviation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HyperText Markup Language&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;HTML&lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Citation: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;mdash;&lt;/span&gt; Chester How&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Italics&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Strikethrough&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;ins&gt;Underline&lt;/ins&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sup&gt;Superscript&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;sub&gt;Subscript&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;Citation: &lt;cite&gt;— Chester How&lt;/cite&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;lists&quot;&gt;Lists&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;1.&lt;/span&gt; Ordered list item 1
+&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; Ordered list item 2
+&lt;span class=&quot;p&quot;&gt;3.&lt;/span&gt; Ordered list item 3
+&lt;span class=&quot;p&quot;&gt;
+*&lt;/span&gt; Unordered list item 1
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 2
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Unordered list item 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Ordered list item 2&lt;/li&gt;
+  &lt;li&gt;Ordered list item 3&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unordered list item 1&lt;/li&gt;
+  &lt;li&gt;Unordered list item 2&lt;/li&gt;
+  &lt;li&gt;Unordered list item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Check out tale on &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://github.com/chesterhow/tale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out tale on &lt;a href=&quot;https://github.com/chesterhow/tale&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Placeholder image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Placeholder image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Image with caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/700x400&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;&quot;Image with caption&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;ge&quot;&gt;_This is an image with a caption_&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x400&quot; alt=&quot;Placeholder image&quot; title=&quot;Placeholder image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/700x400&quot; alt=&quot;Image with caption&quot; title=&quot;Image with caption&quot; /&gt;
+&lt;em&gt;This is an image with a caption&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-and-syntax-highlighting&quot;&gt;Code and Syntax Highlighting&lt;/h1&gt;
+&lt;p&gt;Use back-ticks for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;. Multi-line code snippets are supported too through Pygments.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Sample python code
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the highlight tag enables line numbers.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Sample javascript code&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;JavaScript syntax highlighting&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;horizontal-rule--line-break&quot;&gt;Horizontal Rule &amp;amp; Line Break&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Use &lt;span class=&quot;sb&quot;&gt;`&amp;lt;hr&amp;gt;`&lt;/span&gt; for horizontal rules
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+
+and &lt;span class=&quot;sb&quot;&gt;`&amp;lt;br&amp;gt;`&lt;/span&gt; for line breaks.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; for horizontal rules&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; for line breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The end&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 21 Oct 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020-10-21/Back-to-Basics</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-10-21/Back-to-Basics</guid>
+        
+        
+        <category>diary</category>
         
       </item>
     

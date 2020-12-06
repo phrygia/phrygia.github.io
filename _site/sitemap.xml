@@ -6,15 +6,6 @@
       
         <lastmod>2020-11-30T00:00:00+09:00</lastmod>
       
-
-      
-        <changefreq>weekly</changefreq>
-      
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
     <url>
@@ -22,15 +13,6 @@
       
         <lastmod>2020-11-16T00:00:00+09:00</lastmod>
       
-
-      
-        <changefreq>weekly</changefreq>
-      
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
     <url>
@@ -38,15 +20,6 @@
       
         <lastmod>2020-11-10T00:00:00+09:00</lastmod>
       
-
-      
-        <changefreq>weekly</changefreq>
-      
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
     <url>
@@ -54,15 +27,6 @@
       
         <lastmod>2020-11-04T00:00:00+09:00</lastmod>
       
-
-      
-        <changefreq>weekly</changefreq>
-      
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
     <url>
@@ -70,15 +34,6 @@
       
         <lastmod>2020-10-28T00:00:00+09:00</lastmod>
       
-
-      
-        <changefreq>weekly</changefreq>
-      
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
     <url>
@@ -86,15 +41,13 @@
       
         <lastmod>2020-10-21T00:00:00+09:00</lastmod>
       
-
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/2020-10-21/Back-to-Basics.html</loc>
       
-        <changefreq>weekly</changefreq>
+        <lastmod>2020-10-21T00:00:00+09:00</lastmod>
       
-
-      
-          <priority>0.5</priority>
-      
-
     </url>
   
 </urlset>
