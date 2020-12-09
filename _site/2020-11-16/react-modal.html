@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[react] 모달 팝업창 만들기 (react modal) | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[react] 모달 팝업창 만들기 (react modal)" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="프로젝트를 진행할 때마다 모달창을 마주치는 일이 많다. 프론트엔드 프레임워크나 라이브러리를 사용하면 편리성이나 시간상 npm에 등록된 모듈을 사용하곤 했지만, 만들어진 모듈이 아닌 직접 만들어 재사용해 보기로 했다." />
+<meta property="og:description" content="프로젝트를 진행할 때마다 모달창을 마주치는 일이 많다. 프론트엔드 프레임워크나 라이브러리를 사용하면 편리성이나 시간상 npm에 등록된 모듈을 사용하곤 했지만, 만들어진 모듈이 아닌 직접 만들어 재사용해 보기로 했다." />
+<link rel="canonical" href="http://localhost:4000/2020-11-16/react-modal" />
+<meta property="og:url" content="http://localhost:4000/2020-11-16/react-modal" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-16T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[react] 모달 팝업창 만들기 (react modal)" />
+<script type="application/ld+json">
+{"description":"프로젝트를 진행할 때마다 모달창을 마주치는 일이 많다. 프론트엔드 프레임워크나 라이브러리를 사용하면 편리성이나 시간상 npm에 등록된 모듈을 사용하곤 했지만, 만들어진 모듈이 아닌 직접 만들어 재사용해 보기로 했다.","author":{"@type":"Person","name":"phrygia"},"@type":"BlogPosting","url":"http://localhost:4000/2020-11-16/react-modal","headline":"[react] 모달 팝업창 만들기 (react modal)","dateModified":"2020-11-16T00:00:00+09:00","datePublished":"2020-11-16T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-11-16/react-modal"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2020-11-16 00:00:00 +0900">November 16, 2020</time>
+    
+  </div>
+
+  <h1 class="post-title">[react] 모달 팝업창 만들기 (react modal) </h1>
+  <div class="post-line"></div>
+
+  <p><br />
+프로젝트를 진행할 때마다 모달창을 마주치는 일이 많다. 프론트엔드 프레임워크나 라이브러리를 사용하면 편리성이나 시간상 npm에 등록된 모듈을 사용하곤 했지만, 만들어진 모듈이 아닌 직접 만들어 재사용해 보기로 했다.
+<br /><br /></p>
+
+<ul>
+  <li><strong>어떻게 만들까?</strong>
+    <ol>
+      <li> 재사용성 고려하기</li>
+      <li> Redux없이 만들기</li>
+      <li> 함수형/클래스형 컴포넌트로 각각 만들기</li>
+    </ol>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="1-함수형으로-컴포넌트-만들기">1. 함수형으로 컴포넌트 만들기</h1>
+<p><small class="from">-완성된 모습-</small>
+<img src="/assets/post/modal-2.gif" /> <br /></p>
+
+<p><strong>*파일구조</strong>
+<img src="/assets/post/modal-1.jpg" style="margin:0 0 10px;" />
+재사용할 컴포넌트로 Modal.js 파일을 만들고, App.js에서 불러오도록 했다. <br /><br /></p>
+
+<h4 id="--css-함수형클래스형-공통">- CSS (함수형/클래스형 공통)</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.modal</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">99</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.6</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">450px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span><span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">.3rem</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="c">/* 팝업이 열릴때 스르륵 열리는 효과 */</span>
+    <span class="nl">animation</span><span class="p">:</span> <span class="n">modal-show</span> <span class="m">.3s</span><span class="p">;</span>
+    <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">header</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">16px</span> <span class="m">64px</span> <span class="m">16px</span> <span class="m">16px</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f1f1f1</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">header</span> <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">21px</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">main</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#dee2e6</span><span class="p">;</span>
+    <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#dee2e6</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">footer</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">12px</span> <span class="m">16px</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">footer</span> <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">6px</span> <span class="m">12px</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#6c757d</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">13px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.modal.openModal</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="c">/* 팝업이 열릴때 스르륵 열리는 효과 */</span>
+    <span class="nl">animation</span><span class="p">:</span> <span class="n">modal-bg-show</span> <span class="m">.3s</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">modal-show</span> <span class="p">{</span>
+    <span class="nt">from</span> <span class="p">{</span>
+        <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">margin-top</span><span class="p">:</span> <span class="m">-50px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">to</span> <span class="p">{</span>
+        <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+        <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">modal-bg-show</span> <span class="p">{</span>
+    <span class="nt">from</span> <span class="p">{</span>
+        <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">to</span> <span class="p">{</span>
+        <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="--modaljs-재사용-컴포넌트---자식">- Modal.js (재사용 컴포넌트 - 자식)</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">../../../assets/css/modal.css</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Modal</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">props</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">open</span><span class="p">,</span> <span class="nx">close</span><span class="p">,</span> <span class="nx">header</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">props</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="c1">// 모달이 열릴때 openModal 클래스가 생성된다.</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span> <span class="nx">open</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">openModal modal</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">modal</span><span class="dl">'</span> <span class="p">}</span><span class="o">&gt;</span>
+            <span class="p">{</span> <span class="nx">open</span> <span class="p">?</span> <span class="p">(</span>  
+                <span class="o">&lt;</span><span class="nx">section</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+                        <span class="p">{</span><span class="nx">header</span><span class="p">}</span>
+                        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">close</span><span class="p">}</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="nx">times</span><span class="p">;</span> <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="sr">/header</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+                        <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span>
+                    <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="nx">footer</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">close</span><span class="p">}</span><span class="o">&gt;</span> <span class="nx">close</span> <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="sr">/footer</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="sr">/section</span><span class="err">&gt;
+</span>            <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span> <span class="p">}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="--appjs-부모-컴포넌트">- App.js (부모 컴포넌트)</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Modal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./commons/components/Modals/Modal</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)</span>
+    <span class="kd">const</span> <span class="p">[</span> <span class="nx">modalOpen</span><span class="p">,</span> <span class="nx">setModalOpen</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">openModal</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setModalOpen</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">closeModal</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setModalOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span> <span class="nx">openModal</span> <span class="p">}</span><span class="o">&gt;</span><span class="nx">모달팝업</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>            <span class="c1">//header 부분에 텍스트를 입력한다.</span>
+            <span class="o">&lt;</span><span class="nx">Modal</span> <span class="nx">open</span><span class="o">=</span><span class="p">{</span> <span class="nx">modalOpen</span> <span class="p">}</span> <span class="nx">close</span><span class="o">=</span><span class="p">{</span> <span class="nx">closeModal</span> <span class="p">}</span> <span class="nx">header</span><span class="o">=</span><span class="dl">"</span><span class="s2">Modal heading</span><span class="dl">"</span><span class="o">&gt;</span>
+
+                <span class="c1">// Modal.js &lt;main&gt; { props.children } &lt;/main&gt;에 내용이 입력된다. </span>
+                <span class="nx">리액트</span> <span class="nx">함수형</span> <span class="nx">모달</span> <span class="nx">팝업창입니다</span><span class="p">.</span>
+                <span class="nx">쉽게</span> <span class="nx">만들</span> <span class="nx">수</span> <span class="nx">있어요</span><span class="p">.</span> 
+                <span class="nx">같이</span> <span class="nx">만들어봐요</span><span class="o">!</span>
+            <span class="o">&lt;</span><span class="sr">/Modal</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/React.Fragment</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span></code></pre></figure>
+
+<p><br /><br /></p>
+
+<h1 id="2-클래스형으로-컴포넌트-만들기">2. 클래스형으로 컴포넌트 만들기</h1>
+<h4 id="--modaljs-재사용-컴포넌트---자식-1">- Modal.js (재사용 컴포넌트 - 자식)</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Modal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../../commons/components/Modals/Modal</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">Modal</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">open</span><span class="p">,</span> <span class="nx">close</span><span class="p">,</span> <span class="nx">header</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span> <span class="nx">open</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">openModal modal</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">modal</span><span class="dl">'</span> <span class="p">}</span><span class="o">&gt;</span>
+                <span class="p">{</span> <span class="nx">open</span> <span class="p">?</span> <span class="p">(</span>  
+                    <span class="o">&lt;</span><span class="nx">section</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+                            <span class="p">{</span> <span class="nx">header</span> <span class="p">}</span>
+                            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">close</span><span class="p">}</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="nx">times</span><span class="p">;</span> <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="sr">/header</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+                            <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span>
+                        <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">footer</span><span class="o">&gt;</span>
+                            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">close</span><span class="p">}</span><span class="o">&gt;</span> <span class="nx">close</span> <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="sr">/footer</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="sr">/section</span><span class="err">&gt;
+</span>                <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span> <span class="p">}</span>
+            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="--appjs-부모-컴포넌트-1">- App.js (부모 컴포넌트)</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Modal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./commons/components/Modals/Modal</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ChatRooms</span> <span class="kd">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">modalOpen</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="nx">openModal</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">modalOpen</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="nx">closeModal</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">modalOpen</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">openModal</span> <span class="p">}</span><span class="o">&gt;</span> <span class="nx">모달팝업</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">Modal</span> <span class="nx">open</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">modalOpen</span> <span class="p">}</span> <span class="nx">close</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">closeModal</span> <span class="p">}</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Create a chat room</span><span class="dl">"</span><span class="o">&gt;</span>
+                    <span class="c1">// Modal.js &lt;main&gt; { this.props.children } &lt;/main&gt;에 내용이 입력된다. </span>
+                    <span class="nx">리액트</span> <span class="nx">클래스형</span> <span class="nx">모달</span> <span class="nx">팝업창입니다</span><span class="p">.</span>
+                    <span class="nx">쉽게</span> <span class="nx">만들</span> <span class="nx">수</span> <span class="nx">있어요</span><span class="p">.</span> 
+                    <span class="nx">같이</span> <span class="nx">만들어봐요</span><span class="o">!</span>
+                <span class="o">&lt;</span><span class="sr">/Modal</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/React.Fragment</span><span class="err">&gt;
+</span>        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span></code></pre></figure>
+
+<p>이로써 어디서든 Modal 컴포넌트를 가지고 와서 재사용할 수 있게 되었다. 모달은 워낙 기본적이고 중요한 부분은 아니라 만들어진 모듈을 사용할때가 많은데, 못만들어서 모듈을 이용하는 것과 만들줄 알지만 너무 할일이 많아서 모듈을 이용하는 건 매우 다르다고 생각되었다. 나는 어느쪽인가 생각해 보다가 만들어 보기로 했고, 생각보다 어렵지 않게 만들 수 있었다. 처음에는 함수형으로 만들었지만 클래스형 컴포넌트의 사용률이 더 높기 때문에 클래스형도 함께 만들어 봤다. 앞으로 작은 프로젝트이거나 커스텀이 필요해서 원하는 모듈이 없을때는 모달창을 직접 만들어 사용할 수 있을 것 같다.
+<br /></p>
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#리액트 &nbsp;&nbsp;#React &nbsp;&nbsp;#Modal &nbsp;&nbsp;#react modal</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+    <a href="/2020-11-30/unemplovment-benefits" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2020-11-16/programming" class="right arrow">&#8594;</a>
+  
+
+</div>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2020-12-09 19:36:59 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>
