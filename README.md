@@ -41,7 +41,7 @@ $ bundle
 theme:      tale
 
 permalink:  /:year-:month-:day/:title
-paginate:   5
+paginate:   8
 ```
 
 Remove any other `theme:` lines.
@@ -74,7 +74,7 @@ $ bundle
 remote_theme: chesterhow/tale
 
 permalink:    /:year-:month-:day/:title
-paginate:     5
+paginate:     8
 
 plugins:
   - jekyll-paginate
