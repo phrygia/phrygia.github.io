@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[실업급여 신청] - one step"
+title: "[실업급여 신청] - one step (실업급여 신청하기)"
 author: "phrygia"
 comments: true
 category: "diary"
