@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] 함수의 call, apply, bind 메서드 | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[javascript] 함수의 call, apply, bind 메서드" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다." />
+<meta property="og:description" content="자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다." />
+<link rel="canonical" href="http://localhost:4000/2020-12-01/function-prototype" />
+<meta property="og:url" content="http://localhost:4000/2020-12-01/function-prototype" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-01T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[javascript] 함수의 call, apply, bind 메서드" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2020-12-01/function-prototype","headline":"[javascript] 함수의 call, apply, bind 메서드","dateModified":"2020-12-01T00:00:00+09:00","datePublished":"2020-12-01T00:00:00+09:00","author":{"@type":"Person","name":"phrygia"},"description":"자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-12-01/function-prototype"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+      <li><a href="#none" onclick="javascript:alert('준비중입니다 😉')">Portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2020-12-01 00:00:00 +0900">December 01, 2020</time>
+    
+  </div>
+
+  <h1 class="post-title">[javascript] 함수의 call, apply, bind 메서드</h1>
+  <div class="post-line"></div>
+
+  <p><br />
+자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.<br /><br /></p>
+
+<ul>
+  <li><strong>원시타입</strong>
+    <ol>
+      <li> Number</li>
+      <li> String</li>
+      <li> Boolean</li>
+      <li> undefined</li>
+      <li> null</li>
+    </ol>
+  </li>
+</ul>
+
+<p><br />
+원시타입을 제외한 모든값은 객체다.(즉, 참조타입은 객체다) 참조타입에는 원시타입을 제외한 모든타입, 배열, 함수, 정규표현식 등이 있다. 함수도 객체이기 때문에 값을 처리할 수 있으며 프로퍼티와 메서드도 가지고 있다.<br /><br /><br /></p>
+
+<h1 id="함수는-객체">함수는 객체</h1>
+<p>자바스크립트의 함수는 Function 객체이다. 함수가 객체라서 가지는 특징은 다음과 같으며 이러한 작업이 가능한 객체를 <strong>일급객체</strong>라고 한다.</p>
+<ul>
+  <li>함수는 변수나 프로퍼티나 배열 요소에 대입할 수 있다.</li>
+  <li>함수는 함수의 인수로 사용할 수 있다.</li>
+  <li>함수는 함수의 반환값으로 사용할 수 있다.</li>
+  <li>함수는 프로퍼티와 메서드를 가질 수 있다.</li>
+  <li>함수는 이름 없는 리터럴로 표현할 수 있다(익명함수).</li>
+  <li>함수는 동적으로 생성할 수 있다.</li>
+</ul>
+
+<p><br />
+일급 객체인 함수는 <strong>일급함수</strong>라고도 한다.<br /><br /><br /></p>
+
+<h1 id="함수의-프로퍼티메서드">함수의 프로퍼티(메서드)</h1>
+<p>함수는 Function 생성자의 prototype 객체의 프로퍼티를 상속받아서 사용한다.</p>
+<table>
+    <thead>
+        <tr>
+            <th>프로퍼티 이름</th>
+            <th>설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>apply()</th>
+            <td>선택한 this와 인수를 사용하여 함수를 호출한다. </td>
+        </tr>
+        <tr>
+            <th>apply()</th>
+            <td>선택한 this와 인수를 사용하여 함수를 호출한다. </td>
+        </tr>
+        <tr>
+            <th>bind()</th>
+            <td>선택한 this와 인수를 적용한 새로운 함수를 반한한다.</td>
+        </tr>
+    </tbody>
+</table>
+<p><br /></p>
+
+<h4 id="1-call">1. call()</h4>
+<div class="blockquote">
+    func.call([thisArg[, arg1, arg2, ...argN]])
+</div>
+<p>- thisArg: func 호출에 제공되는 this의 값.<br />
+이미 할당되어있는 다른 객체의 함수/메소드를 호출하는 해당 객체에 재할당할때 사용된다. 함수의 call 메서드를 호출할 때 인자로 객체를 전달하면 그 객체를 함수의 this에 할당하고 함수를 호출한다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m </span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Hello </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you </span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+
+<p>위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다.</p>
+
+<p><br /></p>
+
+<h4 id="2-apply">2. apply()</h4>
+<div class="blockquote">
+    func.apply(thisArg, [argsArray])
+</div>
+<p>- thisArg: func를 호출하는데 제공될 this 의 값 <br />
+- argsArray: func가 호출되어야 하는 인수를 지정하는 유사 배열 객체<br />
+*apply와 거의 동일하지만 call은 인수를 쉼표(,)로 구분한 값으로 전달받고 apply는 배열로 받는다는 차이점이 있다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m </span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Hello </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you </span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+
+<p><br /></p>
+
+<h4 id="3-bind">3. bind()</h4>
+<div class="blockquote">
+    func.bind(thisArg[, arg1[, arg2[, ...]]])
+</div>
+<p>- thisArg: 바인딩 함수가 대상 함수(target function)의 this에 전달하는 값<br />
+Function 객체의 bind 메서드는 객체에 함수를 바인드(묶다, 속박하다)한다. bind 메서드가 호출되면 새로운 함수를 생성하며 첫번째 인자의 value로는 this 키워드를 설정하고 뒤의 인자들은 바인드된 함수의 인수에 할당된 함수를 반환한다. 간단하게 말하자면 function에 인자로 넘긴 this가 바인딩 된 새로운 함수를 반환한다고 생각하면 된다.<br />
+*call, apply와의 차이점은 call, apply는 실행결과로 함수가 호출이지만 bind는 새로운 함수를 리턴한다는 점이다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">sayToPhrygia</span> <span class="o">=</span> <span class="nx">say</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">);</span>
+<span class="nx">sayToPhrygia</span><span class="p">(</span><span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span> <span class="p">);</span>  <span class="c1">// Nice to meet you I'm phrygia</span></code></pre></figure>
+
+<p>위 코드에서 sayToPhrygia 함수를 호출하면 항상 this가 객체 phrygia를 가리킨다.
+<br /><br /></p>
+
+<p>위의 3가지 프로퍼티들은 this값과 인수를 사용하여 실행하며 this를 지정하는데 유용한 메소드들이다. 
+this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨텍스트에 따라 this의 값이 다르기 때문에 꼭 알아둬야 할 중요한 개념이다. 다음번엔 this에 대한 정리를 해봐야 겠다.</p>
+
+<hr />
+
+<p><small class="from">참고 : 모던 자바스크립트 입문(이소 히로시), <a href="https://developer.mozilla.org/ko/" target="_blank">MDN</a></small></p>
+
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#javascript &nbsp;&nbsp;#apply &nbsp;&nbsp;#call &nbsp;&nbsp;#bind &nbsp;&nbsp;#javascript function</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+    <a href="/2020-12-14/unemplovment-benefits-one" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2020-11-30/unemplovment-benefits" class="right arrow">&#8594;</a>
+  
+
+</div>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2020-12-20 17:58:56 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>
