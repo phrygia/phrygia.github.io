@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Dec 2020 15:24:37 +0900</pubDate>
-    <lastBuildDate>Sat, 19 Dec 2020 15:24:37 +0900</lastBuildDate>
+    <pubDate>Sun, 20 Dec 2020 16:00:32 +0900</pubDate>
+    <lastBuildDate>Sun, 20 Dec 2020 16:00:32 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -214,33 +214,23 @@
       </item>
     
       <item>
-        <title>[react] css 스타일링 </title>
-        <description>&lt;p&gt;&lt;br /&gt;
-퍼블리셔로 오랫동안 일하면 css에 대해서는 고집스러운 순간들이 있다. 특히 나는 부트스트랩과 같은 프레임워크를 좋아하지 않기 때문에 직접 다 만들고 싶어하는 성향이 강한 편이다. (시간이 없을때는 사용하지만…) react를 vue보다 좋아하지만 vue가 더 좋은 순간은 css 코딩을 할 때 이다.&lt;/p&gt;
+        <title>[javascript] 함수의 apply(), call(), bind() 메서드</title>
+        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;--vue-css&quot;&gt;- vue css&lt;/h4&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;c&quot;&gt;/* vue : 컴포넌트 하단에 style을 선턱하고 scoped을 붙이면 해당 파일에서만 작동한다. */&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;scoped&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;/* css code */&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;vue는 scoped를 붙이면 해당 컴포넌트에서만 작동하는 css스타일링을 할 수 있다. 반면 리액트는 다양한 방법이 있다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Inline Style&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;External Stylesheet&lt;/strong&gt; →&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;CSS Modules&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;styled-components&lt;/strong&gt;와 같은 라이브러리를 사용&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Inline Style&lt;/strong&gt; → html태그에 inline 스타일로 입력하는 방법으로 퍼블리셔 입장에서 inline태그로 스타일링하는 건 매우 짜증나는 일이다. (inline 스타일이 css 스타일보다 우선순위가 높기때문에 css의 태그가 우선순위에 밀리는 경우가 많다.)&lt;/p&gt;
-
-&lt;p&gt;하거나 ‘styled-components’와 같은 라이브러리를 사용하거나 
-https://www.daleseo.com/react-styling/&lt;/p&gt;
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#javascript &amp;nbsp;&amp;nbsp;#apply &amp;nbsp;&amp;nbsp;#call &amp;nbsp;&amp;nbsp;#bind &amp;nbsp;&amp;nbsp;#javascript function&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Mon, 23 Nov 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2020-11-23/react-style</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-11-23/react-style</guid>
+        <link>http://localhost:4000/2020-11-23/function-prototype</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-23/function-prototype</guid>
         
         
         <category>dev</category>
@@ -503,19 +493,6 @@ https://www.daleseo.com/react-styling/&lt;/p&gt;
         <pubDate>Mon, 16 Nov 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020-11-16/react-modal</link>
         <guid isPermaLink="true">http://localhost:4000/2020-11-16/react-modal</guid>
-        
-        
-        <category>dev</category>
-        
-      </item>
-    
-      <item>
-        <title>[javascript] 명령형 프로그래밍 vs 선언형 프로그래밍</title>
-        <description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 16 Nov 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2020-11-16/programming</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-11-16/programming</guid>
         
         
         <category>dev</category>
