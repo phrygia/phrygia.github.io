@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[javascript] 함수의 call, apply, bind 메서드" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/2020-12-01/function-prototype","headline":"[javascript] 함수의 call, apply, bind 메서드","dateModified":"2020-12-01T00:00:00+09:00","datePublished":"2020-12-01T00:00:00+09:00","author":{"@type":"Person","name":"phrygia"},"description":"자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-12-01/function-prototype"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.","author":{"@type":"Person","name":"phrygia"},"@type":"BlogPosting","url":"http://localhost:4000/2020-12-01/function-prototype","headline":"[javascript] 함수의 call, apply, bind 메서드","dateModified":"2020-12-01T00:00:00+09:00","datePublished":"2020-12-01T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-12-01/function-prototype"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -150,12 +150,12 @@
 이미 할당되어있는 다른 객체의 함수/메소드를 호출하는 해당 객체에 재할당할때 사용된다. 함수의 call 메서드를 호출할 때 인자로 객체를 전달하면 그 객체를 함수의 this에 할당하고 함수를 호출한다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m </span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Hello </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you </span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
 
 <p>위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다.</p>
 
@@ -170,12 +170,12 @@
 *apply와 거의 동일하지만 call은 인수를 쉼표(,)로 구분한 값으로 전달받고 apply는 배열로 받는다는 차이점이 있다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m </span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Hello </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you </span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
 
 <p><br /></p>
 
@@ -188,11 +188,11 @@ Function 객체의 bind 메서드는 객체에 함수를 바인드(묶다, 속�
 *call, apply와의 차이점은 call, apply는 실행결과로 함수가 호출이지만 bind는 새로운 함수를 리턴한다는 점이다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">sayToPhrygia</span> <span class="o">=</span> <span class="nx">say</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">);</span>
-<span class="nx">sayToPhrygia</span><span class="p">(</span><span class="dl">'</span><span class="s1">Nice to meet you </span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span> <span class="p">);</span>  <span class="c1">// Nice to meet you I'm phrygia</span></code></pre></figure>
+<span class="nx">sayToPhrygia</span><span class="p">(</span><span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span> <span class="p">);</span>  <span class="c1">// Nice to meet you I'm phrygia</span></code></pre></figure>
 
 <p>위 코드에서 sayToPhrygia 함수를 호출하면 항상 this가 객체 phrygia를 가리킨다.
 <br /><br /></p>
@@ -258,7 +258,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
       </li>
     </ul>
     <p>
-      &copy; <time datetime="2020-12-20 17:58:56 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      &copy; <time datetime="2020-12-23 14:18:53 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
     </p>
   </div>
 </footer>
