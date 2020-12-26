@@ -64,12 +64,12 @@ category: "dev"
 
 {% highlight js %}
 function say(grettings, honorifics) {
-    console.log(grettings + ' ' + honorifics + this.name);
+    console.log(grettings + ' ' + honorifics + ' ' + this.name);
 }
 var phrygia = { name: 'phrygia' };
 var penny = { name: 'penny' };
-say.call(phrygia, 'Nice to meet you ', 'I"m ');  // "Nice to meet you I"m phrygia"
-say.call(penny, 'Hello ', 'Are you ');  // "Hello Are you penny"
+say.call(phrygia, 'Nice to meet you', 'I"m');  // "Nice to meet you I"m phrygia"
+say.call(penny, 'Hello', 'Are you');  // "Hello Are you penny"
 {% endhighlight %}
 
 위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다. 
@@ -86,12 +86,12 @@ say.call(penny, 'Hello ', 'Are you ');  // "Hello Are you penny"
 
 {% highlight js %}
 function say(grettings, honorifics) {
-    console.log(grettings + ' ' + honorifics + this.name);
+    console.log(grettings + ' ' + honorifics + ' ' + this.name);
 }
 var phrygia = { name: 'phrygia' };
 var penny = { name: 'penny' };
-say.apply(phrygia, ['Nice to meet you ', 'I"m ']);  // "Nice to meet you I"m phrygia"
-say.apply(penny, ['Hello ', 'Are you ']);  // "Hello Are you penny"
+say.apply(phrygia, ['Nice to meet you', 'I"m']);  // "Nice to meet you I"m phrygia"
+say.apply(penny, ['Hello', 'Are you']);  // "Hello Are you penny"
 {% endhighlight %}
 <br>
 
@@ -105,11 +105,11 @@ Function 객체의 bind 메서드는 객체에 함수를 바인드(묶다, 속�
 *call, apply와의 차이점은 call, apply는 실행결과로 함수가 호출이지만 bind는 새로운 함수를 리턴한다는 점이다.
 {% highlight js %}
 function say(grettings, honorifics) {
-    console.log(grettings + ' ' + honorifics + this.name);
+    console.log(grettings + ' ' + honorifics + ' ' + this.name);
 }
 var phrygia = { name: 'phrygia' };
 var sayToPhrygia = say.bind(phrygia);
-sayToPhrygia('Nice to meet you ', 'I"m' );  // Nice to meet you I'm phrygia
+sayToPhrygia('Nice to meet you', 'I"m' );  // Nice to meet you I'm phrygia
 {% endhighlight %}
 위 코드에서 sayToPhrygia 함수를 호출하면 항상 this가 객체 phrygia를 가리킨다.
 <br><br>
