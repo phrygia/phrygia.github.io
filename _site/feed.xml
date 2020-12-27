@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 27 Dec 2020 15:31:46 +0900</pubDate>
-    <lastBuildDate>Sun, 27 Dec 2020 15:31:46 +0900</lastBuildDate>
+    <pubDate>Sun, 27 Dec 2020 17:59:27 +0900</pubDate>
+    <lastBuildDate>Sun, 27 Dec 2020 17:59:27 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -98,34 +98,96 @@
       </item>
     
       <item>
-        <title>[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data-target </title>
-        <description>&lt;p&gt;위 옵션들로 css의 top, left, scroll-behavior 속성을 사용하여 화면을 이동시킨다.&lt;/p&gt;
+        <title>[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+마케팅이 활성화 되면서 원페이지 및 랜딩페이지의 수가 급증했다. 옛날의 웹페이지라고 하면 복잡하고 전문적인 느낌이었지만 최근에는 일반사용자도 쉽게 만들 수 있는 플랫폼이 많이 생기면서 그 수는 계속 증가하고 있다. 한페이지에 많은 내용들을 담다보면 스크롤이 길어지면서 집중력이 떨어지고 이탈률이 높아진다. 이탈률을 낮춰주는데 도움이 되는 기능 중 한가지가 바로 특정영역으로 스크롤을 이동시켜 원하는 부분에 집중할 수 있도록 해주는 것이다. 이 기능을 구현하는 대표적인 두 가지 방법은 a태그가 가지고 있는 anchor기능과 html 속성인 data를 활용하는 방법이다.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;top은 세로 위치, left는 가로 위치, scroll-behavior은 스크롤 효과를 지정하는 속성이다.&lt;/p&gt;
+&lt;h1 id=&quot;a--anchor&quot;&gt;a- anchor&lt;/h1&gt;
+&lt;p&gt;anchor란 사전적 의미로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;배의 닻&lt;/code&gt;을 뜻한다. 웹에서는 &lt;strong&gt;사용자가 지정한 부분에 닻을내려 특정 영역의 링크를 만드는 기능&lt;/strong&gt;이라고 생각하면 쉬우며 주로 목차로 많이 사용한다. &lt;br /&gt;
+html태그만으로 쉽게 작성이 가능하다는 점에서 사용성이 좋다.&lt;/p&gt;
+&lt;div class=&quot;blockquote&quot;&gt;
+    &amp;lt;a &lt;b&gt;href&lt;/b&gt;=&quot;#아이디명&quot;&amp;gt;&amp;lt;/a&amp;gt;
+&lt;/div&gt;
 
-&lt;p&gt;behavior: auto, instant, smooth
-auto는 기본값이며, 바로 위치로 이동한다. instant도 같은 동작을 한다.
-smooth는 부드럽게 이동하는 애니메이션 효과를 보여준다.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- a href anchor --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#main&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;main&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
 
-&lt;p&gt;const scrollPosition = this.getAttribute(“data-target”).offsetTop
-const Top = document.getElementById(‘go-to-top’);
-Top.addEventListener(‘click’, function(){
-    window.scrollTo({top: scrollPosition, behavior: ‘smooth’});
-})&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- element id --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;button data-target=&quot;#dd&quot; id=&quot;ddd&quot;&gt;dd&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;a태그의 href 속성에 #id만 입력해주면 쉽게 사용할 수 있지만 단점이 있다. 첫번째는 해당영역으로 바로 이동되어 부드러운 스크롤 효과가 없다는 점이다.
+&lt;img src=&quot;/assets/post/scroll-move.jpg&quot; style=&quot;margin-left:0;&quot; /&gt;
+두번째는 url 주소에 #id명의 해쉬가 생성되는데 자바스크립트 history.back()이나 history.go(-1)를 이용하여 뒤로가기를 구현했다면 해쉬로 인해 2번 클릭해야 한다는 문제가 발생한다. 하지만 해쉬를 이용해 history를 조작할 수 있다는 점에서도 해쉬는 장점이 될 수 있기 때문에 적절한 순간에 사용하면 매우 유용한 기능이다. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;h1 id=&quot;data-&quot;&gt;data-*&lt;/h1&gt;
+&lt;p&gt;HTML5 특정 요소와 연관되어 있지만 확정된 의미는 갖지 않는 데이터에 대한 확장 가능성을 염두에 두고 디자인되었다고 한다. 
+데이터를 표기하는 표준이 없어 표준으로 사용할 수 있도록 개선되었으며 자바스크립트에서 dataset이나 getAttribute 메서드로 쉽게 접근할 수 있기때문에 매우 유용한 기능이다. 어느 엘리멘트에나 data-로 시작하는 속성은 무엇이든 사용할 수 있다. (div, button, a등 모든 태그)&lt;/p&gt;
+&lt;div class=&quot;blockquote&quot;&gt;
+    &amp;lt;button &lt;b&gt;data-target&lt;/b&gt;=&quot;#아이디명&quot;&amp;gt;&amp;lt;/button&amp;gt;
+&lt;/div&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- button에 data-target을 선언하여 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#main&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;main&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- element id --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//button에 click 이벤트 - 모든 버튼에 이벤트를 걸어야 하기 때문에 for loop이용&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buttons&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//선택된 button의 dataset.target명의 offsetTop을 구하는 변수를 선언한다.&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scrollPosition&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;offsetTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//scroll을 offsetTop으로 이동시킨다.&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scrollPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;behavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;smooth&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;한가지 버튼에 이벤트를 건다면 querySelector로 바로 이벤트를 걸면 되지만 button들에 이벤트를 걸기위해 querySelectorAll과 for loop를 이용하여 버튼들에 이벤트를 걸었다. data는 js에서 dataset.target으로 접근 가능하기 때문에 쉽게 구현이 가능하다.&lt;/p&gt;
+
+&lt;div class=&quot;blockquote&quot;&gt;
+    window.scrollTo({top: '', behavior: 'smooth'});
+&lt;/div&gt;
+&lt;p&gt;scrollTo는 화면의 스크롤을 이동시켜주는 js메서드로, 위치는 top/left를 사용할 수 있다.
+behavior은 스크롤 효과를 지정하는 속성으로 auto/instant/smooth를 사용할 수 있다. (defefault: auto)
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;앵커기능은-js코드없이-html만으로-사용성이-쉽지만-url에-해쉬-붙는다는-장단점이-있다-data속성을-활용한-방법은-js코드로-구현해야-하지만-dataset으로-쉽게-접근-가능하다는-장단점이-있다-상황에-따라-다르겠지만-나라면-해쉬를-이용하여-히스토리-조작할때만-빼고-data속성을-사용하여-구현할-것-같다-부드럽게-이동하고-url적으로-깔끔하기-때문에-a도-스크립트를-쓰면-가능은하다&quot;&gt;앵커기능은 js코드없이 html만으로 사용성이 쉽지만 url에 해쉬 붙는다는 장단점이 있다. data속성을 활용한 방법은 js코드로 구현해야 하지만 dataset으로 쉽게 접근 가능하다는 장단점이 있다. 상황에 따라 다르겠지만 나라면 해쉬를 이용하여 히스토리 조작할때만 빼고 data속성을 사용하여 구현할 것 같다. 부드럽게 이동하고 url적으로 깔끔하기 때문에 (a도 스크립트를 쓰면 가능은하다.)&lt;/h4&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;참고 : &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%86%8D%EC%84%B1_%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; target=&quot;_blank&quot;&gt;MDN&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
     &lt;dl&gt;
         &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
         &lt;dd&gt;
             &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
             &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
-            &lt;span&gt;#javascript &amp;nbsp;&amp;nbsp;#filter &amp;nbsp;&amp;nbsp;#findIndex &amp;nbsp;&amp;nbsp;#배열인덱스&lt;/span&gt;
+            &lt;span&gt;#html &amp;nbsp;&amp;nbsp;#anchor &amp;nbsp;&amp;nbsp;#data &amp;nbsp;&amp;nbsp;#data-target&lt;/span&gt;
         &lt;/dd&gt;
     &lt;/dl&gt;
 &lt;/div&gt;
-&lt;div id=&quot;dd&quot;&gt;ddddd&lt;/div&gt;
 </description>
         <pubDate>Wed, 02 Dec 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020-12-02/scroll</link>
@@ -388,6 +450,40 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
         <pubDate>Wed, 25 Nov 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020-11-25/function-prototype</link>
         <guid isPermaLink="true">http://localhost:4000/2020-11-25/function-prototype</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>[react] css 스타일링 </title>
+        <description>&lt;p&gt;&lt;br /&gt;
+퍼블리셔로 오랫동안 일하면 css에 대해서는 고집스러운 순간들이 있다. 특히 나는 부트스트랩과 같은 프레임워크를 좋아하지 않기 때문에 직접 다 만들고 싶어하는 성향이 강한 편이다. (시간이 없을때는 사용하지만…) react를 vue보다 좋아하지만 vue가 더 좋은 순간은 css 코딩을 할 때 이다.&lt;/p&gt;
+
+&lt;h4 id=&quot;--vue-css&quot;&gt;- vue css&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;c&quot;&gt;/* vue : 컴포넌트 하단에 style을 선턱하고 scoped을 붙이면 해당 파일에서만 작동한다. */&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;scoped&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;/* css code */&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;vue는 scoped를 붙이면 해당 컴포넌트에서만 작동하는 css스타일링을 할 수 있다. 반면 리액트는 다양한 방법이 있다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Inline Style&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;External Stylesheet&lt;/strong&gt; →&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CSS Modules&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;styled-components&lt;/strong&gt;와 같은 라이브러리를 사용&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Inline Style&lt;/strong&gt; → html태그에 inline 스타일로 입력하는 방법으로 퍼블리셔 입장에서 inline태그로 스타일링하는 건 매우 짜증나는 일이다. (inline 스타일이 css 스타일보다 우선순위가 높기때문에 css의 태그가 우선순위에 밀리는 경우가 많다.)&lt;/p&gt;
+
+&lt;p&gt;하거나 ‘styled-components’와 같은 라이브러리를 사용하거나 
+https://www.daleseo.com/react-styling/&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Nov 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020-11-23/react-style</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-11-23/react-style</guid>
         
         
         <category>dev</category>
