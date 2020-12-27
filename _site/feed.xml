@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Dec 2020 16:26:26 +0900</pubDate>
-    <lastBuildDate>Sat, 26 Dec 2020 16:26:26 +0900</lastBuildDate>
+    <pubDate>Sun, 27 Dec 2020 15:25:58 +0900</pubDate>
+    <lastBuildDate>Sun, 27 Dec 2020 15:25:58 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -99,9 +99,7 @@
     
       <item>
         <title>[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data-target </title>
-        <description>&lt;div id=&quot;dd&quot;&gt;ddddd&lt;/div&gt;
-
-&lt;p&gt;위 옵션들로 css의 top, left, scroll-behavior 속성을 사용하여 화면을 이동시킨다.&lt;/p&gt;
+        <description>&lt;p&gt;위 옵션들로 css의 top, left, scroll-behavior 속성을 사용하여 화면을 이동시킨다.&lt;/p&gt;
 
 &lt;p&gt;top은 세로 위치, left는 가로 위치, scroll-behavior은 스크롤 효과를 지정하는 속성이다.&lt;/p&gt;
 
@@ -115,7 +113,7 @@ Top.addEventListener(‘click’, function(){
     window.scrollTo({top: scrollPosition, behavior: ‘smooth’});
 })&lt;/p&gt;
 
-&lt;p&gt;&lt;button data-target=&quot;dd&quot; id=&quot;ddd&quot;&gt;dd&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button data-target=&quot;#dd&quot; id=&quot;ddd&quot;&gt;dd&lt;/button&gt;&lt;/p&gt;
 
 &lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
     &lt;dl&gt;
@@ -130,8 +128,8 @@ Top.addEventListener(‘click’, function(){
 &lt;div id=&quot;dd&quot;&gt;ddddd&lt;/div&gt;
 </description>
         <pubDate>Wed, 02 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2020-12-02/scroll-move</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-12-02/scroll-move</guid>
+        <link>http://localhost:4000/2020-12-02/scroll</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-12-02/scroll</guid>
         
         
         <category>dev</category>
