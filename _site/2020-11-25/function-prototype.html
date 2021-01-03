@@ -88,22 +88,24 @@
 자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.<br /><br /></p>
 
 <ul>
-  <li><strong>원시타입</strong>
-    <ol>
-      <li> Number</li>
-      <li> String</li>
-      <li> Boolean</li>
-      <li> undefined</li>
-      <li> null</li>
-    </ol>
-  </li>
+  <li><strong>원시타입</strong></li>
 </ul>
+
+<ol>
+  <li> Number</li>
+  <li> String</li>
+  <li> Boolean</li>
+  <li> undefined</li>
+  <li> null</li>
+</ol>
 
 <p><br />
 원시타입을 제외한 모든값은 객체다.(즉, 참조타입은 객체다) 참조타입에는 원시타입을 제외한 모든타입, 배열, 함수, 정규표현식 등이 있다. 함수도 객체이기 때문에 값을 처리할 수 있으며 프로퍼티와 메서드도 가지고 있다.<br /><br /><br /></p>
 
 <h1 id="함수는-객체">함수는 객체</h1>
+
 <p>자바스크립트의 함수는 Function 객체이다. 함수가 객체라서 가지는 특징은 다음과 같으며 이러한 작업이 가능한 객체를 <strong>일급객체</strong>라고 한다.</p>
+
 <ul>
   <li>함수는 변수나 프로퍼티나 배열 요소에 대입할 수 있다.</li>
   <li>함수는 함수의 인수로 사용할 수 있다.</li>
@@ -117,7 +119,9 @@
 일급 객체인 함수는 <strong>일급함수</strong>라고도 한다.<br /><br /><br /></p>
 
 <h1 id="함수의-프로퍼티메서드">함수의 프로퍼티(메서드)</h1>
+
 <p>함수는 Function 생성자의 prototype 객체의 프로퍼티를 상속받아서 사용한다.</p>
+
 <table>
     <thead>
         <tr>
@@ -127,7 +131,7 @@
     </thead>
     <tbody>
         <tr>
-            <th>apply()</th>
+            <th>call()</th>
             <td>선택한 this와 인수를 사용하여 함수를 호출한다. </td>
         </tr>
         <tr>
@@ -143,6 +147,7 @@
 <p><br /></p>
 
 <h4 id="1-call">1. call()</h4>
+
 <div class="blockquote">
     func.call([thisArg[, arg1, arg2, ...argN]])
 </div>
@@ -150,18 +155,19 @@
 이미 할당되어있는 다른 객체의 함수/메소드를 호출하는 해당 객체에 재할당할때 사용된다. 함수의 call 메서드를 호출할 때 인자로 객체를 전달하면 그 객체를 함수의 this에 할당하고 함수를 호출한다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
 
 <p>위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다.</p>
 
 <p><br /></p>
 
 <h4 id="2-apply">2. apply()</h4>
+
 <div class="blockquote">
     func.apply(thisArg, [argsArray])
 </div>
@@ -170,16 +176,17 @@
 *apply와 거의 동일하지만 call은 인수를 쉼표(,)로 구분한 값으로 전달받고 apply는 배열로 받는다는 차이점이 있다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">say</span><span class="p">(</span><span class="nx">grettings</span><span class="p">,</span> <span class="nx">honorifics</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">grettings</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">honorifics</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nx">phrygia</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">phrygia</span><span class="dl">'</span> <span class="p">};</span>
 <span class="kd">var</span> <span class="nx">penny</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">penny</span><span class="dl">'</span> <span class="p">};</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Nice to meet you I"m phrygia"</span>
-<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">]);</span>  <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">phrygia</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Nice to meet you</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">I"m</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// "Nice to meet you I"m phrygia"</span>
+<span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">penny</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Are you</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// "Hello Are you penny"</span></code></pre></figure>
 
 <p><br /></p>
 
 <h4 id="3-bind">3. bind()</h4>
+
 <div class="blockquote">
     func.bind(thisArg[, arg1[, arg2[, ...]]])
 </div>
@@ -197,7 +204,7 @@ Function 객체의 bind 메서드는 객체에 함수를 바인드(묶다, 속�
 <p>위 코드에서 sayToPhrygia 함수를 호출하면 항상 this가 객체 phrygia를 가리킨다.
 <br /><br /></p>
 
-<p>위의 3가지 프로퍼티들은 this값과 인수를 사용하여 실행하며 this를 지정하는데 유용한 메소드들이다. 
+<p>위의 3가지 프로퍼티들은 this값과 인수를 사용하여 실행하며 this를 지정하는데 유용한 메소드들이다.
 this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨텍스트에 따라 this의 값이 다르기 때문에 꼭 알아둬야 할 중요한 개념이다. 다음번엔 this에 대한 정리를 해봐야 겠다.</p>
 
 <hr />
@@ -238,7 +245,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
     <a href="/2020-11-30/unemplovment-benefits" class="left arrow">&#8592;</a>
   
   
-    <a href="/2020-11-23/react-style" class="right arrow">&#8594;</a>
+    <a href="/2020-11-16/react-modal" class="right arrow">&#8594;</a>
   
 
 </div>
@@ -258,7 +265,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
       </li>
     </ul>
     <p>
-      &copy; <time datetime="2020-12-27 17:59:27 +0900">2020</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      &copy; <time datetime="2021-01-03 16:47:37 +0900">2021</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
     </p>
   </div>
 </footer>

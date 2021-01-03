@@ -5,10 +5,12 @@ author: "phrygia"
 comments: true
 category: "dev"
 ---
+
 <br>
 자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.<br><br>
 
-- **원시타입**
+-   **원시타입**
+
 1. &nbsp;Number
 2. &nbsp;String
 3. &nbsp;Boolean
@@ -19,19 +21,23 @@ category: "dev"
 원시타입을 제외한 모든값은 객체다.(즉, 참조타입은 객체다) 참조타입에는 원시타입을 제외한 모든타입, 배열, 함수, 정규표현식 등이 있다. 함수도 객체이기 때문에 값을 처리할 수 있으며 프로퍼티와 메서드도 가지고 있다.<br><br><br>
 
 # 함수는 객체
-자바스크립트의 함수는 Function 객체이다. 함수가 객체라서 가지는 특징은 다음과 같으며 이러한 작업이 가능한 객체를 **일급객체**라고 한다. 
-- 함수는 변수나 프로퍼티나 배열 요소에 대입할 수 있다.
-- 함수는 함수의 인수로 사용할 수 있다.
-- 함수는 함수의 반환값으로 사용할 수 있다.
-- 함수는 프로퍼티와 메서드를 가질 수 있다.
-- 함수는 이름 없는 리터럴로 표현할 수 있다(익명함수).
-- 함수는 동적으로 생성할 수 있다.
+
+자바스크립트의 함수는 Function 객체이다. 함수가 객체라서 가지는 특징은 다음과 같으며 이러한 작업이 가능한 객체를 **일급객체**라고 한다.
+
+-   함수는 변수나 프로퍼티나 배열 요소에 대입할 수 있다.
+-   함수는 함수의 인수로 사용할 수 있다.
+-   함수는 함수의 반환값으로 사용할 수 있다.
+-   함수는 프로퍼티와 메서드를 가질 수 있다.
+-   함수는 이름 없는 리터럴로 표현할 수 있다(익명함수).
+-   함수는 동적으로 생성할 수 있다.
 
 <br>
 일급 객체인 함수는 **일급함수**라고도 한다.<br><br><br>
 
 # 함수의 프로퍼티(메서드)
+
 함수는 Function 생성자의 prototype 객체의 프로퍼티를 상속받아서 사용한다.
+
 <table>
     <thead>
         <tr>
@@ -41,7 +47,7 @@ category: "dev"
     </thead>
     <tbody>
         <tr>
-            <th>apply()</th>
+            <th>call()</th>
             <td>선택한 this와 인수를 사용하여 함수를 호출한다. </td>
         </tr>
         <tr>
@@ -56,6 +62,7 @@ category: "dev"
 </table><br>
 
 #### 1. call()
+
 <div class="blockquote">
     func.call([thisArg[, arg1, arg2, ...argN]])
 </div>  
@@ -64,19 +71,20 @@ category: "dev"
 
 {% highlight js %}
 function say(grettings, honorifics) {
-    console.log(grettings + ' ' + honorifics + ' ' + this.name);
+console.log(grettings + ' ' + honorifics + ' ' + this.name);
 }
 var phrygia = { name: 'phrygia' };
 var penny = { name: 'penny' };
-say.call(phrygia, 'Nice to meet you', 'I"m');  // "Nice to meet you I"m phrygia"
-say.call(penny, 'Hello', 'Are you');  // "Hello Are you penny"
+say.call(phrygia, 'Nice to meet you', 'I"m'); // "Nice to meet you I"m phrygia"
+say.call(penny, 'Hello', 'Are you'); // "Hello Are you penny"
 {% endhighlight %}
 
-위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다. 
+위의 예제에서 say.call을 사용할때 사용된 인자의 객체가 this로 할당되어 각 객체의 name에 해당하는 value값이 호출되었다.
 
 <br>
 
 #### 2. apply()
+
 <div class="blockquote">
     func.apply(thisArg, [argsArray])
 </div> 
@@ -86,17 +94,17 @@ say.call(penny, 'Hello', 'Are you');  // "Hello Are you penny"
 
 {% highlight js %}
 function say(grettings, honorifics) {
-    console.log(grettings + ' ' + honorifics + ' ' + this.name);
+console.log(grettings + ' ' + honorifics + ' ' + this.name);
 }
 var phrygia = { name: 'phrygia' };
 var penny = { name: 'penny' };
-say.apply(phrygia, ['Nice to meet you', 'I"m']);  // "Nice to meet you I"m phrygia"
-say.apply(penny, ['Hello', 'Are you']);  // "Hello Are you penny"
+say.apply(phrygia, ['Nice to meet you', 'I"m']); // "Nice to meet you I"m phrygia"
+say.apply(penny, ['Hello', 'Are you']); // "Hello Are you penny"
 {% endhighlight %}
 <br>
 
-
 #### 3. bind()
+
 <div class="blockquote">
     func.bind(thisArg[, arg1[, arg2[, ...]]])
 </div> 
@@ -114,7 +122,7 @@ sayToPhrygia('Nice to meet you', 'I"m' );  // Nice to meet you I'm phrygia
 위 코드에서 sayToPhrygia 함수를 호출하면 항상 this가 객체 phrygia를 가리킨다.
 <br><br>
 
-위의 3가지 프로퍼티들은 this값과 인수를 사용하여 실행하며 this를 지정하는데 유용한 메소드들이다. 
+위의 3가지 프로퍼티들은 this값과 인수를 사용하여 실행하며 this를 지정하는데 유용한 메소드들이다.
 this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨텍스트에 따라 this의 값이 다르기 때문에 꼭 알아둬야 할 중요한 개념이다. 다음번엔 this에 대한 정리를 해봐야 겠다.
 
 <hr>

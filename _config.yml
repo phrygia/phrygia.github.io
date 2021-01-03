@@ -1,37 +1,37 @@
 # Site settings
-title:          "Phrygia Devlog" 
-description:    ""
-url:            "https://phrygia.github.io"
+title: "Phrygia Devlog"
+description: ""
+url: "https://phrygia.github.io"
 
 # Google Analytics
 google_analytics: G-TFDYHEFPQ1
 
 # Author
 author:
-  name:         phrygia
-  url:          https://phrygia.github.io
-  email:        dmsgp62@gmail.com
+    name: phrygia
+    url: https://phrygia.github.io
+    email: dmsgp62@gmail.com
 
 # Build settings
-markdown:       kramdown
+markdown: kramdown
 include:
-  - _pages
+    - _pages
 
 # Gems
 plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
-  # - jemoji #Uncomment this to allow emoji in your post
+    - jekyll-feed
+    - jekyll-paginate
+    - jekyll-seo-tag
+    # - jemoji #Uncomment this to allow emoji in your post
 
 # Permalinks
-permalink:      /:year-:month-:day/:title
-paginate:       8
+permalink: /:year-:month-:day/:title
+paginate: 8
 
 # Excludes
-exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
+exclude: [Gemfile, Gemfile.lock, tale.gemspec]
 
 # Disqus (Set to your disqus id)
-disqus:         jekyll-tale
+disqus: jekyll-tale
 
-category_list: [ dev, diary]
+category_list: [dev, diary]

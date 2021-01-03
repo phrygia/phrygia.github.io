@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성 | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="마케팅이 활성화 되면서 원페이지 및 랜딩페이지의 수가 급증했다. 옛날의 웹페이지라고 하면 복잡하고 전문적인 느낌이었지만 최근에는 일반사용자도 쉽게 만들 수 있는 플랫폼이 많이 생기면서 그 수는 계속 증가하고 있다. 한페이지에 많은 내용들을 담다보면 스크롤이 길어지면서 집중력이 떨어지고 이탈률이 높아진다. 이탈률을 낮춰주는데 도움이 되는 기능 중 한가지가 바로 특정영역으로 스크롤을 이동시켜 원하는 부분에 집중할 수 있도록 해주는 것이다. 이 기능을 구현하는 대표적인 두 가지 방법은 a태그가 가지고 있는 anchor기능과 html 속성인 data를 활용하는 방법이다." />
+<meta property="og:description" content="마케팅이 활성화 되면서 원페이지 및 랜딩페이지의 수가 급증했다. 옛날의 웹페이지라고 하면 복잡하고 전문적인 느낌이었지만 최근에는 일반사용자도 쉽게 만들 수 있는 플랫폼이 많이 생기면서 그 수는 계속 증가하고 있다. 한페이지에 많은 내용들을 담다보면 스크롤이 길어지면서 집중력이 떨어지고 이탈률이 높아진다. 이탈률을 낮춰주는데 도움이 되는 기능 중 한가지가 바로 특정영역으로 스크롤을 이동시켜 원하는 부분에 집중할 수 있도록 해주는 것이다. 이 기능을 구현하는 대표적인 두 가지 방법은 a태그가 가지고 있는 anchor기능과 html 속성인 data를 활용하는 방법이다." />
+<link rel="canonical" href="http://localhost:4000/2020-12-02/scroll" />
+<meta property="og:url" content="http://localhost:4000/2020-12-02/scroll" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-02T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성" />
+<script type="application/ld+json">
+{"description":"마케팅이 활성화 되면서 원페이지 및 랜딩페이지의 수가 급증했다. 옛날의 웹페이지라고 하면 복잡하고 전문적인 느낌이었지만 최근에는 일반사용자도 쉽게 만들 수 있는 플랫폼이 많이 생기면서 그 수는 계속 증가하고 있다. 한페이지에 많은 내용들을 담다보면 스크롤이 길어지면서 집중력이 떨어지고 이탈률이 높아진다. 이탈률을 낮춰주는데 도움이 되는 기능 중 한가지가 바로 특정영역으로 스크롤을 이동시켜 원하는 부분에 집중할 수 있도록 해주는 것이다. 이 기능을 구현하는 대표적인 두 가지 방법은 a태그가 가지고 있는 anchor기능과 html 속성인 data를 활용하는 방법이다.","author":{"@type":"Person","name":"phrygia"},"@type":"BlogPosting","url":"http://localhost:4000/2020-12-02/scroll","headline":"[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성","dateModified":"2020-12-02T00:00:00+09:00","datePublished":"2020-12-02T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020-12-02/scroll"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+      <li><a href="#none" onclick="javascript:alert('준비중입니다 😉')">Portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2020-12-02 00:00:00 +0900">December 02, 2020</time>
+    
+  </div>
+
+  <h1 class="post-title">[html] 특정 영역으로 스크롤 이동 - 앵커기능(anchor) vs data 속성</h1>
+  <div class="post-line"></div>
+
+  <p><br />
+마케팅이 활성화 되면서 원페이지 및 랜딩페이지의 수가 급증했다. 옛날의 웹페이지라고 하면 복잡하고 전문적인 느낌이었지만 최근에는 일반사용자도 쉽게 만들 수 있는 플랫폼이 많이 생기면서 그 수는 계속 증가하고 있다. 한페이지에 많은 내용들을 담다보면 스크롤이 길어지면서 집중력이 떨어지고 이탈률이 높아진다. 이탈률을 낮춰주는데 도움이 되는 기능 중 한가지가 바로 특정영역으로 스크롤을 이동시켜 원하는 부분에 집중할 수 있도록 해주는 것이다. 이 기능을 구현하는 대표적인 두 가지 방법은 a태그가 가지고 있는 anchor기능과 html 속성인 data를 활용하는 방법이다.<br /><br /></p>
+
+<h1 id="a--anchor">a- anchor</h1>
+<p>anchor란 사전적 의미로 <code class="language-plaintext highlighter-rouge">배의 닻</code>을 뜻한다. 웹에서는 <strong>사용자가 지정한 부분에 닻을내려 특정 영역의 링크를 만드는 기능</strong>이라고 생각하면 쉬우며 주로 목차로 많이 사용한다. <br />
+html태그만으로 쉽게 작성이 가능하다는 점에서 사용성이 좋다.</p>
+<div class="blockquote">
+    &lt;a <b>href</b>="#아이디명"&gt;&lt;/a&gt;
+</div>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="c">&lt;!-- a href anchor --&gt;</span>
+<span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#header"</span><span class="nt">&gt;</span>header<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#main"</span><span class="nt">&gt;</span>main<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#footer"</span><span class="nt">&gt;</span>footer<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
+<span class="c">&lt;!-- element id --&gt;</span>
+<span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;&lt;/header&gt;</span>
+    <span class="nt">&lt;main</span> <span class="na">id=</span><span class="s">"main"</span><span class="nt">&gt;&lt;/main&gt;</span>
+    <span class="nt">&lt;footer</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/footer&gt;</span>
+<span class="nt">&lt;/section&gt;</span></code></pre></figure>
+
+<p>a태그의 href 속성에 #id만 입력해주면 쉽게 사용할 수 있지만 단점이 있다. 첫번째는 해당영역으로 바로 이동되어 부드러운 스크롤 효과가 없다는 점이다.
+<img src="/assets/post/scroll-move.jpg" style="margin-left:0;" />
+두번째는 url 주소에 #id명의 해쉬가 생성되는데 자바스크립트 history.back()이나 history.go(-1)를 이용하여 뒤로가기를 구현했다면 해쉬로 인해 2번 클릭해야 한다는 문제가 발생한다. 하지만 해쉬를 이용해 history를 조작할 수 있다는 점에서도 해쉬는 장점이 될 수 있기 때문에 적절한 순간에 사용하면 매우 유용한 기능이다. <br /><br /></p>
+
+<h1 id="data-">data-*</h1>
+<p>HTML5 특정 요소와 연관되어 있지만 확정된 의미는 갖지 않는 데이터에 대한 확장 가능성을 염두에 두고 디자인되었다고 한다. 
+데이터를 표기하는 표준이 없어 표준으로 사용할 수 있도록 개선되었으며 자바스크립트에서 dataset이나 getAttribute 메서드로 쉽게 접근할 수 있기때문에 매우 유용한 기능이다. 어느 엘리멘트에나 data-로 시작하는 속성은 무엇이든 사용할 수 있다. (div, button, a등 모든 태그)</p>
+<div class="blockquote">
+    &lt;button <b>data-target</b>="#아이디명"&gt;&lt;/button&gt;
+</div>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="c">&lt;!-- button에 data-target을 선언하여 --&gt;</span>
+<span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;button</span> <span class="na">data-target=</span><span class="s">"#header"</span><span class="nt">&gt;</span>header<span class="nt">&lt;/button&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;button</span> <span class="na">data-target=</span><span class="s">"#main"</span><span class="nt">&gt;</span>main<span class="nt">&lt;/button&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;button</span> <span class="na">data-target=</span><span class="s">"#footer"</span><span class="nt">&gt;</span>footer<span class="nt">&lt;/button&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
+<span class="c">&lt;!-- element id --&gt;</span>
+<span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;&lt;/header&gt;</span>
+    <span class="nt">&lt;main</span> <span class="na">id=</span><span class="s">"main"</span><span class="nt">&gt;&lt;/main&gt;</span>
+    <span class="nt">&lt;footer</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/footer&gt;</span>
+<span class="nt">&lt;/section&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">//button에 click 이벤트 - 모든 버튼에 이벤트를 걸어야 하기 때문에 for loop이용</span>
+<span class="kd">const</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">button</span> <span class="k">of</span> <span class="nx">button</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">//선택된 button의 dataset.target명의 offsetTop을 구하는 변수를 선언한다.</span>
+        <span class="kd">const</span> <span class="nx">scrollPosition</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">offsetTop</span><span class="p">;</span>
+
+        <span class="c1">//scroll을 offsetTop으로 이동시킨다.</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">({</span><span class="na">top</span><span class="p">:</span> <span class="nx">scrollPosition</span><span class="p">,</span> <span class="na">behavior</span><span class="p">:</span> <span class="dl">'</span><span class="s1">smooth</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>한가지 버튼에 이벤트를 건다면 querySelector로 바로 이벤트를 걸면 되지만 button들에 이벤트를 걸기위해 querySelectorAll과 for loop를 이용하여 버튼들에 이벤트를 걸었다. data는 js에서 dataset.target으로 접근 가능하기 때문에 쉽게 구현이 가능하다.</p>
+
+<div class="blockquote">
+    window.scrollTo({top: '', behavior: 'smooth'});
+</div>
+<p>scrollTo는 화면의 스크롤을 이동시켜주는 js메서드로, 위치는 top/left를 사용할 수 있다.
+behavior은 스크롤 효과를 지정하는 속성으로 auto/instant/smooth를 사용할 수 있다. (defefault: auto)
+<br /><br /></p>
+
+<h4 id="앵커기능은-js코드없이-html만으로-사용성이-쉽지만-url에-해쉬-붙는다는-장단점이-있다-data속성을-활용한-방법은-js코드로-구현해야-하지만-dataset으로-쉽게-접근-가능하다는-장단점이-있다-상황에-따라-다르겠지만-나라면-해쉬를-이용하여-히스토리-조작할때만-빼고-data속성을-사용하여-구현할-것-같다-부드럽게-이동하고-url적으로-깔끔하기-때문에-a도-스크립트를-쓰면-가능은하다">앵커기능은 js코드없이 html만으로 사용성이 쉽지만 url에 해쉬 붙는다는 장단점이 있다. data속성을 활용한 방법은 js코드로 구현해야 하지만 dataset으로 쉽게 접근 가능하다는 장단점이 있다. 상황에 따라 다르겠지만 나라면 해쉬를 이용하여 히스토리 조작할때만 빼고 data속성을 사용하여 구현할 것 같다. 부드럽게 이동하고 url적으로 깔끔하기 때문에 (a도 스크립트를 쓰면 가능은하다.)</h4>
+
+<hr />
+
+<p><small class="from">참고 : <a href="https://developer.mozilla.org/ko/docs/Learn/HTML/Howto/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%86%8D%EC%84%B1_%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" target="_blank">MDN</a></small></p>
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#html &nbsp;&nbsp;#anchor &nbsp;&nbsp;#data &nbsp;&nbsp;#data-target</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+    <a href="/2020-12-10/object" class="left arrow">&#8592;</a>
+  
+  
+    <a href="/2020-11-30/unemplovment-benefits" class="right arrow">&#8594;</a>
+  
+
+</div>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2021-01-03 16:47:37 +0900">2021</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>
