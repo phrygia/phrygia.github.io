@@ -5,9 +5,153 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Jan 2021 19:05:49 +0900</pubDate>
-    <lastBuildDate>Wed, 06 Jan 2021 19:05:49 +0900</lastBuildDate>
+    <pubDate>Tue, 19 Jan 2021 11:37:08 +0900</pubDate>
+    <lastBuildDate>Tue, 19 Jan 2021 11:37:08 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>Prototype</title>
+        <description>
+</description>
+        <pubDate>Sun, 10 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-01-10/prototype</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-01-10/prototype</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>[javascript] closure (클로저)</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+dd&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-01-05/closure</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-01-05/closure</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>[javascript] hoisting (호이스팅)</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+호이스팅(hoisting)이란 ‘끌어올리다’라는 의미의 hoist + ing를 붙여 만들어졌으며 의미 그대로 끌어올리는 행위로 작동한다. 주로 var로 선언된 변수의 선언문을 코드의 최상단으로 끌어올인다. (변수 정보를 수집하는 과정을 이해하기 쉬운 방법으로 대체한 가상의 개념으로, 자바스크립트 엔진이 실제로 끌어올리지는 않지만 편의상 끌어올린 것으로 간주된다.)&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;호이스팅&quot;&gt;호이스팅&lt;/h1&gt;
+
+&lt;p&gt;실행컨텍스트에 담기는 LexicalEnvironment의 내부는 environmenRecord와 outer-EnvironmenReference로 구성되는데 environmenRecord는 호이스팅과 관련이 있다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;environmenRecord&lt;/strong&gt;: 현재 컨텍스트와 관련된 코드의 식별자 정보를 &lt;u&gt;순서대로&lt;/u&gt; 저장&lt;br /&gt;
+(식별자: 컨텍스트를 구성하는 함수에 지정된 매개변수, 함수자체, var로 선언된 변수의 식별자 등)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;식별자 정보를 수집하는 과정을 마쳐도 코드가 실행되기 전이기 때문에 실행컨텍스트가 관여한 코드들은 실행되기 전의 상태이다. (실행전이지만 수집과정을 거쳤기 때문에 해당 환경의 변수명을 모두 알고 있다.)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;실행컨텍스트의 LexicalEnvironment의 내부 environmenRecord가 처음부터 끝까지 순서대로 식별자를 수집한다.&lt;/li&gt;
+  &lt;li&gt;코드가 실행되기 전이지만 1의 수집과정을 거쳤기 때문에 자바스크립트 엔진은 해당 환경의 변수명을 모두 알고 있다. &lt;br /&gt;(= 식별자들을 최상단으로 끌어올려놓은 다음 코드를 실행한다고 간주)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;호이스팅-규칙&quot;&gt;호이스팅 규칙&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;*변수명&lt;/strong&gt;과 &lt;strong&gt;함수 전체의 정보&lt;/strong&gt;를 위로 끌어올리고 할당과정은 원래 자리에 남겨둔다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ƒ b() { }&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ← 수집대상 1&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 111&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ← 수집대상 2&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 111&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;a함수를 실행하는 순간 a 함수의 실행 컨텍스트가 생성된다. (변수명과 함수가 위로 끌어올려진다.) &lt;br /&gt;
+위의 코드에서는 수집대상 1과 2를 순서대로 끌어올리고 다음과 같은 형태로 동작한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// 호이스팅 완료 (실제 변환과정이 아닌 쉽게 이해하기 위한 예시 코드)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  ƒ b() { }&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  111&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  111 &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;수집대상 1의 변수명 b와 함수 b를 위로 끌어올려 선언한다.&lt;/li&gt;
+  &lt;li&gt;다시 변수 b를 선언하고 함수 b를 선언된 변수 b에 할당한다.&lt;/li&gt;
+  &lt;li&gt;첫번째 console은 변수 b에 할당된 함수 b를 출력한다. (*나중에 선언된 111이 아닌 함수 b가 처음 출력된다)&lt;/li&gt;
+  &lt;li&gt;b에 숫자 111을 할당한다.&lt;/li&gt;
+  &lt;li&gt;두번째, 세번째 console은 마지막으로 할당된 숫자 111을 출력한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;함수선언문과-함수-표현식-호이스팅&quot;&gt;함수선언문과 함수 표현식 호이스팅&lt;/h1&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;함수 선언문(function declaration)&lt;/code&gt;은 function 정의부만 존재하고 별도의 할당 명령이 없는 것을 의미하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;함수 표현식(function expression)&lt;/code&gt;은 정의한 function을 별도의 변수에 할당하는 것을 말한다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  3&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  Uncaught TypeError: multiply is not a function&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 1. 함수 선언문&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 2. 함수 표현식&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;multiply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;함수가 선언된 후에야 호출 할 수 있기 때문에 예시에서 함수 표현식으로 정의된 multiply(3, 4)를 호출하면 ‘Uncaught TypeError’ 에러가 뜬다. 호이스팅 된 상황을 아래의 코드로 재현해보면,&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// 호이스팅 완료&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* 함수 선언문 전체가 끌어올려진다.*/&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* 함수 표현식의 변수만 끌어올려진다. */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  3&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* 변수 multiply만 선언되었기 때문에 TypeError가 발생한다. */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//  Uncaught TypeError: multiply is not a function&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;multiply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;다수의-개발자들이-협업할-때-각각의-개발자가-함수-선언문을-이용해서-동일한-함수명으로-개발하였다면-호이스팅으로-인한-문제가-발생한다-코드가-덮어씌워지는-문제가-발생한다-따라서-여러명이-협업할-때-함수는-함수-표현식을-이용하여-개발하도록-해야한다&quot;&gt;다수의 개발자들이 협업할 때, 각각의 개발자가 함수 선언문을 이용해서 동일한 함수명으로 개발하였다면 호이스팅으로 인한 문제가 발생한다. (코드가 덮어씌워지는 문제가 발생한다.) 따라서 여러명이 협업할 때 함수는 함수 표현식을 이용하여 개발하도록 해야한다.&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;참고 : 코어 자바스크립트(정재남)&lt;/small&gt;&lt;/p&gt;
+&lt;div class=&quot;phrygia_info phrygia_info_post&quot;&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;img src=&quot;/assets/image/phrygia.jpg&quot; alt=&quot;phrygia&quot; /&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;strong&gt;Chaeyeon Lee&lt;/strong&gt;
+            &lt;p&gt;Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*&lt;/p&gt;
+            &lt;span&gt;#javascript &amp;nbsp;&amp;nbsp;#호이스팅 &amp;nbsp;&amp;nbsp;#hoisting &amp;nbsp;&amp;nbsp;&lt;/span&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 30 Dec 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020-12-30/hoisting</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-12-30/hoisting</guid>
+        
+        
+        <category>dev</category>
+        
+      </item>
     
       <item>
         <title>[javascript] execution context, scope (실행 컨텍스트, 스코프)</title>
@@ -163,6 +307,20 @@ inner함수의 상위 스코프 정보들을 확인할 수 있다. inner함수�
         
         
         <category>dev</category>
+        
+      </item>
+    
+      <item>
+        <title>[review] 개발자의 글쓰기(김철수)</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+&lt;img src=&quot;http://image.kyobobook.co.kr/images/book/xlarge/744/x9791158391744.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 17 Dec 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020-12-17/programmer</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-12-17/programmer</guid>
+        
+        
+        <category>diary</category>
         
       </item>
     
