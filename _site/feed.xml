@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 19 Jan 2021 11:42:33 +0900</pubDate>
-    <lastBuildDate>Tue, 19 Jan 2021 11:42:33 +0900</lastBuildDate>
+    <pubDate>Sat, 23 Jan 2021 11:16:52 +0900</pubDate>
+    <lastBuildDate>Sat, 23 Jan 2021 11:16:52 +0900</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -307,20 +307,6 @@ inner함수의 상위 스코프 정보들을 확인할 수 있다. inner함수�
         
         
         <category>dev</category>
-        
-      </item>
-    
-      <item>
-        <title>[review] 개발자의 글쓰기(김철수)</title>
-        <description>&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;http://image.kyobobook.co.kr/images/book/xlarge/744/x9791158391744.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 17 Dec 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2020-12-17/programmer</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-12-17/programmer</guid>
-        
-        
-        <category>diary</category>
         
       </item>
     
