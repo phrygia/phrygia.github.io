@@ -29,3 +29,14 @@ layout: default
     </a>
   {% endfor %}
 </div>
+
+{% if page.category contains "dev" %} 
+<style>
+  .nav li:nth-child(1) a {font-weight: 700;}
+</style>
+{% endif %}
+{% if page.category contains "diary" %} 
+<style>
+  .nav li:nth-child(2) a {font-weight: 700;}
+</style>
+{% endif %}

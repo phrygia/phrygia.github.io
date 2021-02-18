@@ -2,16 +2,9 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>http://localhost:4000/2021-01-20/prototype.html</loc>
+      <loc>http://localhost:4000/2021-01-20/closure.html</loc>
       
         <lastmod>2021-01-20T00:00:00+09:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>http://localhost:4000/2021-01-10/closure.html</loc>
-      
-        <lastmod>2021-01-10T00:00:00+09:00</lastmod>
       
     </url>
   
@@ -26,13 +19,6 @@
       <loc>http://localhost:4000/2020-12-23/scope.html</loc>
       
         <lastmod>2020-12-23T00:00:00+09:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>http://localhost:4000/2020-12-17/programmer.html</loc>
-      
-        <lastmod>2020-12-17T00:00:00+09:00</lastmod>
       
     </url>
   

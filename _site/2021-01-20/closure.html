@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] closure (클로저) | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[javascript] closure (클로저)" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/" />
+<meta property="og:description" content="사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/" />
+<link rel="canonical" href="http://localhost:4000/2021-01-20/closure" />
+<meta property="og:url" content="http://localhost:4000/2021-01-20/closure" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-20T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[javascript] closure (클로저)" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2021-01-20/closure","headline":"[javascript] closure (클로저)","dateModified":"2021-01-20T00:00:00+09:00","datePublished":"2021-01-20T00:00:00+09:00","author":{"@type":"Person","name":"phrygia"},"description":"사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021-01-20/closure"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+      <li><a href="#none" onclick="javascript:alert('준비중입니다 😉')">Portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2021-01-20 00:00:00 +0900">January 20, 2021</time>
+    
+  </div>
+
+  <h1 class="post-title">[javascript] closure (클로저)</h1>
+  <div class="post-line"></div>
+
+  <p><br /> 
+<img src="https://i.pinimg.com/originals/f5/69/ae/f569aef9a09bec7ca74f0dcd228a5343.jpg" />
+<small class="from" style="text-align:right;">사진 출처 : <a href="https://www.pinterest.co.kr/pin/439734351121493066/" target="_blank">https://www.pinterest.co.kr/pin/439734351121493066/</a></small><br /></p>
+
+<p>클로저(closure)는 자바스크립트 고유의 개념이 아니라 함수형 프로그래밍 언어에서 등장하는 보편적인 특성이다. 개념이 아니기 때문에 ECMAScript 명세서에도 클로저의 정의를 다루지 않고 있어 클로저에 대한 다양한 정의와 설명이 존재한다.<br /><br /></p>
+
+<blockquote>
+  <p><em><code class="language-plaintext highlighter-rouge">자신을 내포하는 함수의 컨텍스트에 접근할 수 있는 함수</code> - 더글라스 크록포드 (자바스크립트 핵심 가이드) <br />
+<code class="language-plaintext highlighter-rouge">함수가 특정 스코프에 접근할 수 있도록 의도적으로 그 스코프에서 정의하는 것</code> - 에딘 브라운 (러닝 자바스크립트)<br />
+<code class="language-plaintext highlighter-rouge">함수를 선언할 때 만들어지는 유효범위가 사라진 후에도 호출할 수 있는 함수</code> - 존 레식 (자바스크립트 닌자 비급)<br />
+<code class="language-plaintext highlighter-rouge">이미 생명 주기상 끝난 외부 함수의 변수를 참조하는 함수</code> - 송형주 고형준 (인사이드 자바스크립트)<br />
+<code class="language-plaintext highlighter-rouge">자유변수가 있는 함수와 자유변수를 알 수 있는 환경의 결합</code> - 에릭 프리먼 (Head First Javascript programming)<br />
+<code class="language-plaintext highlighter-rouge">로컬 변수를 참조하고 있는 함수 내의 함수</code> - 야마다 요시히로 (자바스크립트 마스터북)<br />
+<code class="language-plaintext highlighter-rouge">자신이 생성되 때의 스코프에서 알 수 있었던 변수들 중 언젠가 자신이 실행될 대 사용할 변수들만을 기억하여 유지시키는 함수</code> - 유인동 (함수형 자바스크립트 프로그래밍)<br />
+<code class="language-plaintext highlighter-rouge">클로저는 함수와 함수가 선언된 어휘적 환경의 조합이다</code> - MDN</em></p>
+</blockquote>
+
+<p><br /><br />
+이처럼 많은 설명과 정의가 존재하지만 막상 그 의미를 이해하기는 쉽지않다. MDN에서는</p>
+<div class="blockquote">
+    "A closure is the combination of a function and the lexical enviroment within which that function was declared" <br />
+</div>
+<p>라고 소개한다. 직역하면 “클로저는 함수와 그 함수가 선언될 당시의 lexical enviroment의 상호관계에 따른 현상” 정도가 된다. <br /><br />
+<img src="/assets/post/closure.png" alt="" /> <br />
+그림에서처럼 Outer내부에서 선언된 내부함수 Inner의 실행 컨텍스트가 활성화된 시점에는 Inner의 outerEnvironmentReference가 참조하는 대상인 Outer의 LexicalEnviroment에 접근이 가능하다. Outer함수에서는 Inner함수에 선언한 변수에 접근할 수 없지만 Inner함수에서는 Outer에서 선언한 변수에 접근이 가능하다. (스코프 체인) Inner함수에서 Outer함수의 변수를 참조하는 경우에 한해서 LexicalEnviroment의 상호관계에 의미가 생긴다.<br /><br /></p>
+
+<p><strong>예제 1</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">var</span> <span class="nx">outer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">inner</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">++</span><span class="nx">a</span><span class="p">;)</span>
+        <span class="p">};</span>
+        <span class="nx">inner</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="nx">outer</span><span class="p">();</span>   <span class="c1">//  2</span></code></pre></figure>
+
+<p>위의 예제에서 outer함수에서 변수 a를 선언했고, outer함수의 내부함수인 inner 함수에서 a의 값을 1만큼 증가시킨 다음 출력한다.</p>
+<ol>
+  <li>inner 함수 내부에서는 변수 a를 선언하지 않았기 때문에 environmentRecord에서 값을 찾지 못한다.</li>
+  <li>inner 함수의 outerEnvironmentReference에 지정된 상위 컨텍스트의 outer의 LexicalEnviroment에 접근해서 a를 찾는다.</li>
+  <li>console.log(++a)가 실행되면서 2가 출력된다.</li>
+  <li>outer 함수의 실행컨텍스트가 종료되면 LexicalEnviroment에 저장된 식별자들 (a, inner)에 대한 참조를 지운다.</li>
+  <li>자신을 참조하는 변수가 하나도 없게 되면서 가비지 컬렉터의 수집 대상이 된다. 
+<br /><br /></li>
+</ol>
+
+<p><strong>예제 2</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">var</span> <span class="nx">outer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">inner</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">++</span><span class="nx">a</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="k">return</span> <span class="nx">inner</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">outer2</span> <span class="o">=</span> <span class="nx">outer</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">outer2</span><span class="p">());</span>   <span class="c1">//  2</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">outer2</span><span class="p">());</span>   <span class="c1">//  3</span></code></pre></figure>
+
+<p>예제2는 예제1과 다르게 inner 함수 자체를 반환했다.</p>
+<ol>
+  <li>outer 함수의 실행 컨텍스트가 종료될 때 outer2 변수는 outer의 실행 결과의 inner 함수를 참조한다.</li>
+  <li>console.log(outer2())를 호출하면 반환된 함수인 inner가 실행된다.</li>
+  <li>inner 함수의 실행 컨텍스트의 environmentRecord에는 수집할 정보가 없다. (실행종료 상태이기 때문에)</li>
+  <li>inner 함수는 내부 함수이기 때문에 outer-EnvironmentReference에는 inner 함수가 선언된 위치의 LexicalEnviroment가(outer 함수의 LexicalEnviroment가) 참조복사 된다.</li>
+  <li>스코프 체이닝에 따라 outer에서 선언한 변수 a에 접근해서 1만큼 증가시킨 값인 2를 반환하고, inner 함수의 실행 컨텍스트가 종료된다.</li>
+  <li>다시 console.log(outer2())를 호출하면 a의 값을 증가시킨 값인 3을 반환한다.</li>
+</ol>
+
+<p>*inner 함수의 실행 시점에는 outer 함수는 이미 실행 종료된 상태이지만 outer함수의 LexicalEnviroment에 접근이 가능하다. 그 이유는 가비지 컬렉터가 어떤 값을 참조하는 변수가 있다면 수집 대상에 포함하지 않기 때문이다.</p>
+
+<p>종합해보면 <strong>클로저란 어떤 함수 A에서 선언한 변수 a를 참조하는 내부함수 B를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수 a가 사라지지 않는 현상</strong>을 말한다. (가비지 컬렉팅되지 않기 때문에)
+<br /><br /><br /></p>
+
+<h1 id="클로저와-메모리-관리">클로저와 메모리 관리</h1>
+<p>‘메모리 누수’라는 표현은 어떤 값의 참조 카운트가 0이 되지 않아 가비지 컬렉터의 수거 대상이 되지 않는 경우에 발생한다. 클로저는 어떤 필요에 의해 의도적으로 함수의 지역변수가 메모리를 소모하도록 함으로써 발생한다. 그 필요성이 사라진 시점에 참조 카운트를 0으로 만들어 주면 가비지 컬렉터가 수거하고 메모리 누수를 막을 수 있다. (참조 카운트를 0으로 만드는 방법은 식별자에 기본형 데이터(null, undefined)를 할당하면 된다.)<br /><br />
+<strong>예제 3</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// setInterval에 의한 클로저의 메모리 해제</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">intervalId</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">inner</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="nx">a</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+            <span class="nx">inner</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>   <span class="c1">// inner 식별자의 함수 참조를 끊음</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">inner</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">})();</span></code></pre></figure>
+
+<p><br /><br /></p>
+
+<h1 id="클로저-활용방법">클로저 활용방법</h1>
+<ol>
+  <li>콜백 함수 내부에서 외부 데이터를 사용하고자 할 때</li>
+  <li>접근 권한 제어(정보은닉)</li>
+  <li>부분 적용 함수</li>
+  <li>커링 함수</li>
+</ol>
+
+<p><br /><br /></p>
+<hr />
+
+<p><small class="from">참고 : 코어 자바스크립트(정재남)</small></p>
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#javascript &nbsp;&nbsp;#클로저 &nbsp;&nbsp;#closure &nbsp;&nbsp;</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+  
+    <a href="/2020-12-30/hoisting" class="right arrow">&#8594;</a>
+  
+
+</div>
+<style>
+  .nav li:nth-child(1) a {font-weight: 700;}
+</style>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2021-02-18 12:11:13 +0900">2021</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>
