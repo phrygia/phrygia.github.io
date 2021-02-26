@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw" />
+    <meta name="naver-site-verification" content="ca7d1b61c04abd375298ffe9297ceed8f31c6f7e" />
+    
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[javascript] Array - forEach, map, filter, reduce, every, some (배열 메서드) | Phrygia Devlog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="[javascript] Array - forEach, map, filter, reduce, every, some (배열 메서드)" />
+<meta name="author" content="phrygia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="리액트를 공부하다 보면 map이나 filter를 사용하는 것을 많이 볼 수 있다. 많은 사람들이 forEach는 많이 사용하지만 다른 메서드를 잘 사용하지 않는다고 한다. forEach 외에도 유용한 내장 배열 메서드가 많다. 오늘은 대표적인 메서드 6가지를 공부해 보았다." />
+<meta property="og:description" content="리액트를 공부하다 보면 map이나 filter를 사용하는 것을 많이 볼 수 있다. 많은 사람들이 forEach는 많이 사용하지만 다른 메서드를 잘 사용하지 않는다고 한다. forEach 외에도 유용한 내장 배열 메서드가 많다. 오늘은 대표적인 메서드 6가지를 공부해 보았다." />
+<link rel="canonical" href="http://localhost:4000/2021-01-31/array-methods" />
+<meta property="og:url" content="http://localhost:4000/2021-01-31/array-methods" />
+<meta property="og:site_name" content="Phrygia Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-31T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[javascript] Array - forEach, map, filter, reduce, every, some (배열 메서드)" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2021-01-31/array-methods","headline":"[javascript] Array - forEach, map, filter, reduce, every, some (배열 메서드)","dateModified":"2021-01-31T00:00:00+09:00","datePublished":"2021-01-31T00:00:00+09:00","author":{"@type":"Person","name":"phrygia"},"description":"리액트를 공부하다 보면 map이나 filter를 사용하는 것을 많이 볼 수 있다. 많은 사람들이 forEach는 많이 사용하지만 다른 메서드를 잘 사용하지 않는다고 한다. forEach 외에도 유용한 내장 배열 메서드가 많다. 오늘은 대표적인 메서드 6가지를 공부해 보았다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021-01-31/array-methods"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/common.css">
+    <link rel="stylesheet" href="/assets/magnific.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="/assets/apple-touch-icon.png">
+    
+    <!-- RSS -->
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phrygia Devlog" />
+    
+    <!-- Google Analytics-->
+    
+    
+    </head>      
+  <body>
+
+    <nav class="nav">
+  <div class="nav-container">
+    <a href="/">
+      <h2 class="nav-title">Phrygia Devlog</h2>
+    </a>
+    <ul>
+      <li><a href="/category/dev">Posts</a></li>
+      <li><a href="/category/diary">Diary</a></li>
+      <li><a href="https://www.notion.so/80b52376264e4ad98e08cde0c4b61a40" target="_blank">About</a></li>
+      <li><a href="#none" onclick="javascript:alert('준비중입니다 😉')">Portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        phrygia
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2021-01-31 00:00:00 +0900">January 31, 2021</time>
+    
+  </div>
+
+  <h1 class="post-title">[javascript] Array - forEach, map, filter, reduce, every, some (배열 메서드)</h1>
+  <div class="post-line"></div>
+
+  <p><br /> 
+리액트를 공부하다 보면 map이나 filter를 사용하는 것을 많이 볼 수 있다. 많은 사람들이 forEach는 많이 사용하지만 다른 메서드를 잘 사용하지 않는다고 한다. forEach 외에도 유용한 내장 배열 메서드가 많다. 오늘은 대표적인 메서드 6가지를 공부해 보았다. <br /> <br /> <br /></p>
+
+<h3 id="1-foreach">1. forEach()</h3>
+<p><strong>*for문 처럼 모든 배열을 돌며 반복적인 기능을 수행할 때 유용한 메서드이며 undefined를 리턴한다</strong></p>
+<div class="blockquote">
+    <b>arr.forEach</b>(callback(currentvalue[, index[, array]])[, thisArg])
+</div>
+<p>- <strong>callback</strong>: 각 요소에 대해 실행할 함수 <br />
+     - currentValue: 처리할 현재 요소 <br />
+     - index: 처리할 현재 요소의 인덱스 <br />
+     - array: forEach()를 호출한 배열<br />
+ -<strong>thisArg</strong>: callback을 실행할 때 this로 사용할 값**</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">kiwi</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">peach</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">strawberry</span><span class="dl">'</span><span class="p">];</span>
+    
+    <span class="c1">//변수에 대입</span>
+    <span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">currentvalue</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentvalue</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>  <span class="c1">//undefined</span>
+    
+    <span class="c1">//바로 호출</span>
+    <span class="nx">fruits</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">currentvalue</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentvalue</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+    <span class="p">})</span></code></pre></figure>
+
+<p><img src="/assets/post/forEach.png" style="margin:0" /><br />
+forEach메서드를 특정 변수에 대입하고 그 변수를 호출하면 undefined가 출력된다. forEach는 특정 조건을 처리하여 return하는 과정이 없기 때문에 undefined가 출력되는 것이다. 따라서 모든 배열요소를 바로 출력하고 싶을때 유용한 메서드 이다.
+<br /><br /></p>
+
+<p><strong>- 좀 더 현실적인 예시</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">kiwi</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">peach</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">strawberry</span><span class="dl">'</span><span class="p">];</span>
+    
+    <span class="c1">// ul Element를 생성</span>
+    <span class="kd">const</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">fruits</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">currentvalue</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// li Element를 생성하여 currentvalue값을 대입한다.</span>
+        <span class="kd">const</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">li</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">currentvalue</span><span class="p">;</span>
+
+        <span class="nx">ul</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+    <span class="p">})</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ul</span><span class="p">);</span></code></pre></figure>
+
+<p><img src="/assets/post/forEach2.png" style="margin:0" /></p>
+
+<h3 id="2-map">2. map()</h3>
+<p><strong>*모든 배열내의 요소들을 순회한 후, callback 함수를 호출한 결과들을 새로운 배열로 리턴한다. - 기존배열 수정 x</strong></p>
+<div class="blockquote">
+    <b>arr.map</b>(callback(currentValue[, index[, array]])[, thisArg])
+</div>
+<p>- <strong>callback</strong>: 각 요소를 생성하는 함수 <br />
+     - currentValue: 처리할 현재 요소 <br />
+     - index: 처리할 현재 요소의 인덱스 <br />
+     - array: map()을 호출한 배열.<br />
+ -<strong>thisArg</strong>: callback을 실행할 때 this로 사용되는 값</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">oneToFive</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+    <span class="kd">const</span> <span class="nx">multiply</span> <span class="o">=</span> <span class="nx">oneToFive</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">currentvalue</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">currentvalue</span> <span class="o">*</span> <span class="nx">currentvalue</span>
+    <span class="p">})</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiply</span><span class="p">)</span>  <span class="c1">// 1, 4, 9, 16, 25</span></code></pre></figure>
+
+<p>callback이 적용된 새로운 배열로 반환되었다.
+<br /><br /><br /></p>
+
+<h3 id="3-filter">3. filter()</h3>
+<p><strong>*모든 배열내의 요소들을 순회한 후, callback 함수의 조건을 만족하는 값들을 새로운 배열로 리턴한다. - 기존배열 수정 x</strong></p>
+<div class="blockquote">
+    <b>arr.filter</b>(callback(element[, index[, array]])[, thisArg])
+</div>
+<p>- <strong>callback</strong>: 각 요소를 필터링할 함수 (조건처리) - <strong>true만 새로운 배열로 리턴</strong> <br />
+     - currentValue: 처리할 현재 요소. <br />
+     - index: 처리할 현재 요소의 인덱스. <br />
+     - array: filter()를 호출한 배열.<br />
+ -<strong>thisArg</strong>: callback을 실행할 때 this로 사용되는 값</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="na">like</span><span class="p">:</span> <span class="dl">'</span><span class="s1">like</span><span class="dl">'</span><span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="na">like</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dislike</span><span class="dl">'</span><span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">kiwi</span><span class="dl">'</span><span class="p">,</span> <span class="na">like</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dislike</span><span class="dl">'</span><span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">peach</span><span class="dl">'</span><span class="p">,</span> <span class="na">like</span><span class="p">:</span> <span class="dl">'</span><span class="s1">like</span><span class="dl">'</span><span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">strawberry</span><span class="dl">'</span><span class="p">,</span> <span class="na">like</span><span class="p">:</span> <span class="dl">'</span><span class="s1">like</span><span class="dl">'</span><span class="p">}</span>
+    <span class="p">];</span>
+
+    <span class="kd">const</span> <span class="nx">favoriteFruits</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">filter</span> <span class="p">((</span><span class="nx">currentValue</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">currentValue</span><span class="p">.</span><span class="nx">like</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">like</span><span class="dl">'</span>
+    <span class="p">});</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">favoriteFruits</span><span class="p">);</span></code></pre></figure>
+
+<p><img src="/assets/post/filter.jpg" style="margin:0" />
+callback함수의 조건을 만족하는 요소들이 새로운 배열에 반환되었다.
+<br /><br /><br /></p>
+
+<h3 id="4-reduce">4. reduce()</h3>
+<div class="blockquote">
+    <b>arr.reduce</b>(callback(accumulator, currentValue, currentIndex, array), initialValue)
+</div>
+<p>- <strong>callback</strong>: 배열의 각 요소에 대해 실행할 함수 <br />
+     - accumulator: 반환된 누적값 <br />
+     - currentValue: 처리할 현재 요소 <br />
+     - currentIndex: 처리할 현재 요소의 인덱스 <br />
+     - array: reduce()를 호출한 배열 <br />
+- <strong>initialValue</strong>: 최초 호출에서 첫 번째 인수에 제공하는 값 - 초기값이 없으면 array의 첫번째 요소 사용
+<strong>예제 1</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>
+    
+    <span class="kd">const</span> <span class="nx">add1</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">add2</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> 
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add1</span><span class="p">);</span>  <span class="c1">// 15</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add2</span><span class="p">);</span>  <span class="c1">// 115</span></code></pre></figure>
+
+<p>add1과 add2은 모두 1부터 5까지의 숫자를 더하는 값을 반환한다. 차이점은 add2에는 initialValue의 값을 100으로 지정하였다는 점이다. initialValue의 설정 여부에 따라 결과값이 달라진다. add2는 100부터 숫자를 더한값을 반환됐다.
+<br /><br /></p>
+
+<p><strong>예제 2</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">captainAmerica</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ironMan</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hulk</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">scarletWitch</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">doctorStrange</span><span class="dl">'</span><span class="p">];</span>
+
+    <span class="kd">const</span> <span class="nx">countedNames</span> <span class="o">=</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">currentValue</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">scarletWitch</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">accumulator</span><span class="p">[</span><span class="nx">currentValue</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">female hero !</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">accumulator</span><span class="p">[</span><span class="nx">currentValue</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">male hero</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">accumulator</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">accumulator</span><span class="p">;</span>
+    <span class="p">},</span> <span class="p">{});</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">countedNames</span><span class="p">);</span>   
+    <span class="c1">// {captainAmerica: "male hero", ironMan: "male hero", hulk: "male hero", scarletWitch: "female hero !", doctorStrange: "male hero"}</span></code></pre></figure>
+
+<p><img src="/assets/post/reduce.jpg" style="margin:0" alt="" />
+위의 예제는 scarletWitch element를 만났을때 여성 히어로 문구를 출력하는 예시이다. accumulator의 초기값은 initialValue와 같다. 최초 accumulator는 {}이며 객체안에 값이 누적된다. <br />
+만약 initialValue를 설정하지 않는다면 captainAmerica가만 계속 return될 것이다. <u>초기값을 설정하지 않으면 배열의 첫번째 요소가 accumulator의 첫번째 요소가 되므로</u> callback이 원하는대로 작동되지 않을 것이다.
+<br /><br /><br /></p>
+
+<h3 id="5-every">5. every()</h3>
+<p><strong>*모든 배열을 돌며 element의 반환값이 true인지 확인하고 모두 true일때 true를 리턴 (&amp;&amp;) - 기존배열 수정 x</strong></p>
+<div class="blockquote">
+    <b>arr.every</b>(callback(currentValue, index, array), thisArg)
+</div>
+<p>- <strong>callback</strong>: 각 요소를 평가할 함수 <br />
+     - currentValue: 처리할 현재 요소 <br />
+     - index: 처리할 현재 요소의 인덱스 <br />
+     - array: every()를 호출한 배열 <br />
+- <strong>thisArg</strong>: callback을 실행할 때 this로 사용하는 값</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">];</span>
+
+    <span class="kd">const</span> <span class="nx">biggerThanTen</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">currentValue</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">currentValue</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">biggerThanTen</span><span class="p">);</span> <span class="c1">// false</span></code></pre></figure>
+
+<p>10보다 큰 요소를 리턴하는 메서드를 실행한 결과 1, 4, 7, 8, 10이 false이기 때문에 전체 true 조건을 만족하지 못하여 false로 값이 리턴되었다. 흔히 if문에서 사용되는 &amp;&amp; (and) 연산자와 비슷하다고 생각하면 쉽다.
+<br /><br /><br /></p>
+
+<h3 id="6-some">6. some()</h3>
+<p><strong>*모든 배열을 돌며 element의 반환값이 true인지 확인하고 하나라도 true일때 true를 리턴 (or) - 기존배열 수정 x</strong></p>
+<div class="blockquote">
+    <b>arr.some</b>(callback(currentValue, index, array), thisArg])
+</div>
+<p>- <strong>callback</strong>: 각 요소를 평가할 함수 <br />
+     - currentValue: 처리할 현재 요소 <br />
+     - index: 처리할 현재 요소의 인덱스 <br />
+     - array: some()를 호출한 배열 <br />
+- <strong>thisArg</strong>: callback을 실행할 때 this로 사용하는 값</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">];</span>
+
+    <span class="kd">const</span> <span class="nx">biggerThanTen</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">currentValue</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">currentValue</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">biggerThanTen</span><span class="p">);</span> <span class="c1">// true</span></code></pre></figure>
+
+<p>10보다 큰 요소를 리턴하는 메서드를 실행한 결과 1, 4, 7, 8, 10은 조건을 만족하지 않지만 13, 20, 40이 조건을 만족한다. 배열 요소중 하나라도 조건을 만족하면 true가 리턴된다. (모든 값이 false일때만 false가 리턴) if문에서 사용되는 || (or) 연산자와 비슷하다고 생각하면 쉽다.
+<br /><br /><br /></p>
+
+<hr />
+
+<p><small class="from"><a href="https://developer.mozilla.org/ko/" target="_blank">MDN</a></small></p>
+<div class="phrygia_info phrygia_info_post">
+    <dl>
+        <dt><img src="/assets/image/phrygia.jpg" alt="phrygia" /></dt>
+        <dd>
+            <strong>Chaeyeon Lee</strong>
+            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <span>#javascript &nbsp;&nbsp;#Array &nbsp;&nbsp;#forEach &nbsp;&nbsp;#map &nbsp;&nbsp;#filter &nbsp;&nbsp;#reduce &nbsp;&nbsp;#every &nbsp;&nbsp; #some</span>
+        </dd>
+    </dl>
+</div>
+
+</div>
+
+
+  <!-- Start disqus -->
+<script src="/assets/js/disqusLoader.js" /></script>
+<div id="disqus_thread"><h3 class="together">함께 소통해요-*</h3></div>
+<div class="disqus"></div>
+<script>
+    disqusLoader('.disqus', {
+        scriptUrl: 'https://jekyll-tale.disqus.com/embed.js'
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End disqus -->
+
+
+
+
+<div class="pagination">
+  
+  
+    <a href="/2021-01-20/closure" class="right arrow">&#8594;</a>
+  
+
+</div>
+<style>
+  .nav li:nth-child(1) a {font-weight: 700;}
+</style>
+    </main>
+
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a href="https://github.com/phrygia" target="_blank"><i class="ri-github-fill"></i></a>
+      </li>
+      <li>
+        <a href="mailto:dmsgp62@gmail.com"><i class="ri-mail-open-fill"></i></a>
+      </li>
+      <li>
+        <a href="https://phrygia.github.io/"><i class="ri-home-2-fill"></i></a>
+      </li>
+    </ul>
+    <p>
+      &copy; <time datetime="2021-02-26 16:57:46 +0900">2021</time> phrygia. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+    </p>
+  </div>
+</footer>
+<button id="go-to-top">
+  <span class="left"></span>
+  <span class="right"></span>
+  <p>Back To Top</p>
+</button>
+<script src="/assets/js/common.js" /></script>
+
+  </body>
+</html>
