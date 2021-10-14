@@ -39,20 +39,20 @@ self.__precacheManifest = [
     "url": "framework-81279cacaab4bdba7685.js"
   },
   {
-    "url": "app-80ffbe5f443aba220e69.js"
+    "url": "app-b77040e7b01e973e915d.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "6719aafc669fe40f385d606b9a86d2b0"
+    "revision": "63cf2e93d32c8af641c5a07cbb18d565"
   },
   {
-    "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
+    "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
   },
   {
-    "url": "static/webfonts/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxK.woff2"
+    "url": "static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"
   },
   {
-    "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"
+    "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-241020a1cf7d0f317bbe.js"
@@ -63,7 +63,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "e3109e3cedc37eff47163ac64b7479c4"
+    "revision": "79fbd22532e5db851bf3289f7a6c37a7"
   },
   {
     "url": "polyfill-384ea82b9c97dbd7ee60.js"
@@ -162,7 +162,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-80ffbe5f443aba220e69.js`))) {
+  if (!resources || !(await caches.match(`/app-b77040e7b01e973e915d.js`))) {
     return await fetch(event.request)
   }
 
