@@ -8,18 +8,23 @@
   margin-top: 20px;
   margin-bottom: 40px;
   word-break: keep-all;
+  @include md {
+    margin-top: 50px;
+  }
 
   .post-header {
     display: flex;
     flex-direction: column;
     @include content-max-width;
 
-    padding-bottom: 15px;
+    padding-bottom: 17px;
     border-bottom: 1px solid var(--post-card-border-color);
+    @include md {
+      margin-bottom: 20px;
+    }
 
     .emoji {
-      font-size: 78px;
-      margin-bottom: 20px;
+      display: none;
     }
 
     .categories {
@@ -42,26 +47,28 @@
       font-weight: 600;
       font-size: 32px;
       color: var(--primary-text-color);
-      margin-bottom: 6px;
+      margin-bottom: 15px;
       line-height: 1.3;
+      @media (max-width: 767px) {
+        font-size: 1.6rem;
+      }
     }
 
     .info {
       display: flex;
-      // justify-content: space-between;
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 300;
       color: var(--secondary-text-color);
 
-
-      strong {
-        margin: 0 4px;
-
-
+      a {
         color: var(--primary-text-color);
-        font-weight: 600;
+        strong {
+          margin: 0 4px;
+        }
       }
-
+      @media (max-width: 767px) {
+        font-size: 0.85em;
+      }
     }
   }
 }

@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   height: 62px;
-  margin-top: auto;
+  margin-top: 50px;
   @include content-horizontal-padding;
 
   .page-footer {
@@ -21,7 +21,107 @@
     }
 
     a {
-      color: #3A95FF;
+      color: #4a9ae1;
     }
+  }
+}
+
+#go-to-top {
+  position: fixed;
+  width: 48px;
+  right: 50px;
+  height: 80px;
+  bottom: 8%;
+  margin: 0;
+  padding: 0;
+  z-index: 10000;
+  color: #323232;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+#go-to-top:hover .left {
+  -webkot-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#go-to-top:hover .right {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#go-to-top:hover span {
+  top: -9px;
+  height: 2px;
+  width: 60%;
+}
+#go-to-top span {
+  background-color: #323232;
+  display: inline-block;
+  width: 50%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.2s cubic-bezier(0.23, 0.24, 0, 0.99);
+  transition: all 0.2s cubic-bezier(0.23, 0.24, 0, 0.99);
+}
+#go-to-top .left {
+  left: 0;
+}
+#go-to-top .right {
+  right: 0;
+}
+#go-to-top p {
+  position: absolute;
+  top: 30px;
+  width: 80px;
+  margin: 0;
+  padding-bottom: 32px;
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+@media (max-width: 767px) {
+  #go-to-top {
+    right: 18px;
+  }
+  #go-to-top p {
+    padding-bottom: 36px;
+  }
+  #go-to-top span {
+    height: 1.5px;
+  }
+  .catalogue-item {
+    padding: 1.5rem 0;
+  }
+  .catalogue-title {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  .post-title {
+    font-size: 2rem;
+  }
+  .post-title {
+    font-size: 1.7rem;
+    line-height: 1.6 !important;
+  }
+  .catalogue-item p {
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: normal;
+    max-height: 5em;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;
+    overflow: hidden;
+  }
+  .catalogue-time {
+    font-size: 12.5px;
+  }
+  #go-to-top {
+    right: 11px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
   }
 }

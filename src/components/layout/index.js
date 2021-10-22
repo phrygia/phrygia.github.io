@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <PageHeader siteTitle={title || `Title`} />
-      <main>{children}</main>
+      <main id="main">{children}</main>
       <PageFooter
         author={author.name || `Author`}
         githubUrl={author.social?.github || `https://www.github.com`}

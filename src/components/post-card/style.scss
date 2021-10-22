@@ -38,6 +38,9 @@
       font-weight: 600;
       margin-bottom: 7px;
       line-height: 1.4;
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
     }
 
     .description {
@@ -52,6 +55,10 @@
       -webkit-line-clamp: 3;
       /* number of lines to show */
       -webkit-box-orient: vertical;
+      @media (max-width: 767px) {
+        margin-bottom: 0;
+        font-size: 12px;
+      }
     }
 
     .info {
@@ -60,6 +67,9 @@
       margin-top: auto;
       font-size: 14px;
       color: var(--about-link-icon-color);
+      @media (max-width: 767px) {
+        font-size: 12px;
+      }
 
       .categories {
         display: flex;

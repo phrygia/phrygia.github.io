@@ -27,6 +27,10 @@ strong {
   margin-bottom: 120px;
   color: var(--primary-text-color);
   @include content-horizontal-padding;
+  @media only screen and (max-width: 767px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 
   .bio {
     display: flex;
@@ -57,8 +61,19 @@ strong {
         font-weight: 100;
         font-size: 32px;
         line-height: 1.2;
+        @media only screen and (max-width: 767px) {
+          font-size: 24px;
+          .title {
+            & > span {
+              margin-top: -8px;
+            }
+          }
+        }
 
         .title {
+          & > span {
+            display: block;
+          }
           .react-rotating-text-cursor {
             font-size: 35px;
             line-height: 35px;
@@ -75,8 +90,6 @@ strong {
             }
           }
         }
-
-
       }
 
       &.english {
@@ -112,7 +125,9 @@ strong {
 
     .thumbnail {
       display: none;
-      width: 250px;
+      width: 150px;
+      border-radius: 100%;
+      margin-right: 30px;
 
       @include md {
         display: block;

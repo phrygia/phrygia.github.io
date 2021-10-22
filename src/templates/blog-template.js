@@ -8,7 +8,7 @@ import PostHeader from '../components/post-header';
 import PostCardsAdjacent from '../components/post-cards-adjacent';
 import Post from '../models/post';
 import PostContent from '../components/post-content';
-import { Utterances } from '../components/utterances';
+import Utterances from '../components/Utterances';
 
 export default ({ data }) => {
   const [viewCount, setViewCount] = useState(null);

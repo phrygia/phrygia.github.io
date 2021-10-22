@@ -6,7 +6,8 @@ module.exports = {
   siteMetadata: metaConfig,
 
   plugins: [
-    `gatsby-plugin-advanced-sitemap`,
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-feed',
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-feed`,
     `gatsby-plugin-offline`,
@@ -15,6 +16,30 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-theme-material-ui`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingIds: [
+          'G-TFDYHEFPQ1',
+          // 설정 Google Analytics / GA
+          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        head: true, // head에 tracking script를 넣고 싶다면 true로 변경
+        anonymize: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: 'G-TFDYHEFPQ1',
+          cookieName: 'gatsby-gdpr-google-analytics',
+          anonymize: true,
+        },
+      },
+      environments: ['development', 'production'],
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -51,14 +76,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: metaConfig.ga,
-        head: true,
-        anonymize: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: metaConfig.title,
@@ -67,7 +84,7 @@ module.exports = {
         lang: `en`,
         display: `standalone`,
         start_url: `/`,
-        icon: `static/favicon.png`,
+        icon: `static/favicon-16x16.png`,
       },
     },
     {

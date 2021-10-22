@@ -24,11 +24,14 @@ const PageHeader = ({ siteTitle }) => {
                 </Link>
               </div>
               <div className="trailing-section">
-                <Link className="link" to="/about">
-                  about
-                </Link>
                 <Link className="link" to="/posts">
                   posts
+                </Link>
+                <Link className="link diary" to="/posts/diary">
+                  diary
+                </Link>
+                <Link className="link" to="/about">
+                  about
                 </Link>
                 <Switch
                   className="dark-mode-switch"

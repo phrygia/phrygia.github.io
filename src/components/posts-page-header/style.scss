@@ -16,16 +16,22 @@
     width: fit-content;
     padding-bottom: 7px;
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 700;
     text-align: center;
     border-bottom: 3px solid var(--primary-text-color);
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
   }
 
   .posts-page-sub-title {
     padding-bottom: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     text-align: center;
+    @media (max-width: 767px) {
+      font-size: 15px;
+    }
   }
 }

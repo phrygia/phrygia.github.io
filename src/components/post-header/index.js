@@ -20,7 +20,10 @@ const PostHeader = ({ post, viewCount }) => {
 
         <h1 className="title">{post.title}</h1>
         <div className="info">
-          posted by <strong>{post.author}</strong> · {post.date}
+          <Link className="link" to="/about">
+            {post.author}
+          </Link>
+          · {post.date}
           {viewCount && ` · ${viewCount} views`}
         </div>
       </div>

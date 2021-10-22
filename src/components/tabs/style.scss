@@ -7,7 +7,7 @@
   top: 0px;
   align-self: flex-start;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 
   @include content-horizontal-padding;
 
@@ -27,8 +27,13 @@
         font-family: $font-family;
         color: var(--tab-text-color);
         font-weight: 500;
-        font-size: 17px;
+        font-size: 15px;
         transition: all 200ms ease;
+        @media (max-width: 767px) {
+          height: 34px;
+          padding: 6px 10px;
+          font-size: 13px;
+        }
 
         :hover {
           color: var(--tab-hover-text-color);

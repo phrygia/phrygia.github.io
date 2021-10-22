@@ -18,8 +18,7 @@ const Bio = ({ author, language = 'ko' }) => {
               안녕하세요.
               <br />
               <ReactRotatingText items={bio.description} />
-              <br />
-              {bio.role} <strong>{name}</strong>입니다.
+              {bio.role} <strong>phrygia</strong>입니다.
               <br />
             </p>
             <div className="social-links">
