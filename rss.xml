@@ -1,4 +1,247 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 26 Oct 2021 10:44:21 GMT</lastBuildDate><item><title><![CDATA[[javascript] closure (클로저)]]></title><description><![CDATA[사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/ 클로저(closure…]]></description><link>https://phrygia.github.io/closure/</link><guid isPermaLink="false">https://phrygia.github.io/closure/</guid><pubDate>Tue, 21 Sep 2021 04:20:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://i.pinimg.com/originals/f5/69/ae/f569aef9a09bec7ca74f0dcd228a5343.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 26 Oct 2021 14:36:46 GMT</lastBuildDate><item><title><![CDATA[[gatsby] Google Search Console과 Analytics 추가하기]]></title><description><![CDATA[최근 jekyll로 사용하던 블로그를 gatsby로 바꾸었다. 
+처음에 jekyll을 선택했었던 이유를 github으로 시작할 생각이었고 테마가 다양했던 jekyll을 선택했었다. Jeykll에서 Gatsby…]]></description><link>https://phrygia.github.io/gatsby-blog/</link><guid isPermaLink="false">https://phrygia.github.io/gatsby-blog/</guid><pubDate>Tue, 26 Oct 2021 04:12:00 GMT</pubDate><content:encoded>&lt;p&gt;최근 jekyll로 사용하던 블로그를 gatsby로 바꾸었다. &lt;br&gt;
+처음에 jekyll을 선택했었던 이유를 github으로 시작할 생각이었고 테마가 다양했던 jekyll을 선택했었다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;jeykll에서-gatsby로-이전한-이유는&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jeykll%EC%97%90%EC%84%9C-gatsby%EB%A1%9C-%EC%9D%B4%EC%A0%84%ED%95%9C-%EC%9D%B4%EC%9C%A0%EB%8A%94&quot; aria-label=&quot;jeykll에서 gatsby로 이전한 이유는 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Jeykll에서 Gatsby로 이전한 이유는?&lt;/h2&gt;
+&lt;p&gt;가장 큰 이유는 Jeykll은 Ruby로 만들어졌기 때문에 JS를 주언어로 사용하는 필자에게 어려우면서 생소했다. 프론트엔드 개발자가 많이 쓰는 gatsby는 react를 사용하는 나에게 쉬우면서도 재밌게 다가왔고 npm 플러그인을 쉽게 추가할 수 있어 다양한 기능을 다루기 수월했기 때문에 블로그 이전을 감행했다. (또한 전보다 많아진 테마도 마음에 들었다.)&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;나는 zoomkoding님의 &lt;a href=&quot;https://github.com/zoomKoding/zoomkoding-gatsby-blog&quot; target=&quot;_blank&quot;&gt;zoomkoding-gatsby-blog&lt;/a&gt;테마를 사용하여 블로그를 개설했다. &lt;br&gt;
+깃허브 테마는 심플한 테마가 많지만 zoomkoding님의 테마는 블랙/화이트 모드 선택 및 과하지 않게 동적인 요소들이 마음에 들어 이 테마로 블로그를 개설했다.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;google-search-console에-gatsby-블로그-등록하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#google-search-console%EC%97%90-gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0&quot; aria-label=&quot;google search console에 gatsby 블로그 등록하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Google Search Console에 gatsby 블로그 등록하기&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://search.google.com/search-console/about&quot; target=&quot;_blank&quot;&gt;google search console &lt;/a&gt; 사이트에 접속한다.&lt;/li&gt;
+&lt;li&gt;속성 추가 → URL 접두어 → 소유권 확인 (HTML 태그 : react-helmet을 이용해 meta 등록 )
+&lt;br&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAABYlAAAWJQFJUiTwAAACa0lEQVQoz3WSS2/TQBDH/dHgxAkhkEDiVMRDXIA7pdxApa1AtL2gfgjOIFRRUrVpuo7jxu930jiNY8dJQ9aOvXZsxu4rIDr6yxqv9+eZ+e9Stxee33ny4t6zV3efvrxxf+Ef3Xzw6L+CT7cePqaWPnx6v7m1vLn1bv3L0trG27WNpQu9WV1fnNfK58WVi3xt4/XyR6rnOL3BqON4dn9g9z3b8bquf+L5tjuYhNOckDyOiycoSQoRkkGepqeeR2mGyUg64hVaUAy73+75jKjTvFpryh3HzTGepWk2g0gnE4yDsMxneZb5nQ6lWy1OsxhRE/V2EMZRFLXtLvANSTtxB3kYZlkOkc4yre06rgd5uZAPu11KN1ucah0pUN/gZJXV3H3+mFONungJF5tjkpy4Q9cfpVD2CrZaQNK8ctiUv+9Wv/4St2n9SNYu4SSFxlMchuMJngTTv2Cz1Ybxvu0e/NhD29X6QaPZEBWYAjrv9Pp5gH/jwPGH3uj0tISTNM3n22YVE/EyFEecVBdUaKSpGMADnOEJlCJJQpI0IkkE3SdzsGG16qK+x0j7rFzjdCSYSDAK8edtE0LAxTguvIRICJmBC+C2bZewoP2ssRXEgaqsTAsGPQcDiDEmFwHzX8GF2xp4ZjRVk5V1VtKLvGx73m0ION6sxM5Wzma2GrJJCyrYizjwXIKkyHkFLlwB5+cBRUnp1vk5Q2VwWz/uymZbsY7nJRktbzjKApxgnAZBCk+Ms+k0C0N4zafTAcC+7xc/yy4LXB/QdxTN4jgrr+d4PKZ2dnYYhkEI0ddFvX4m2LFfrYIOEaohVKlU/gDx6C4+zdJ2XgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;search.png&quot;
+        title=&quot;search.png&quot;
+        src=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/37523/search.png&quot;
+        srcset=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/e9ff0/search.png 180w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/f21e7/search.png 360w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/37523/search.png 720w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/302a4/search.png 1080w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/07a9c/search.png 1440w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/b0de5/search.png 1517w&quot;
+        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;gatsby-plugin-sitemap 설치&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;npm i gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;sitemap
+yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;sitemap&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;내가 설치한 테마의 gatsby 버전이 낮은편이라 yarn add gatsby-plugin-sitemap을 입력했을때 높은버전의 플러그인이 설치되었기 때문에 warning 경고가 떴었다. 자신의 gatsby와 호환되는 버전의 플러그인을 설치하자!&lt;/p&gt;
+&lt;div style=&quot;display:inline-block&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 350px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 26.111111111111107%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQY0y2Q65KCMAxGfQ6loCiUlrYgN1EB0V1XV3f2/d9kZ4wmW9EfZ9JkOme+ZOT7/l0WFa4uv5i2PS53e4xkjP7UQ8MX2GYGN6nCUgmMpUDX89AbcNF13fd7gGx/G1nhQxYllV8XMtuOzKYlmZdUnK6UHb9JpBn5nktLvqBKBFTHIW2NoFxJGjOXHIfR2HFwPHGeQhj5s9lDWEF5uqIVWlrU6wbTrsf8cESZ5chNivYPlv0Bs6bDSGmMeYCp4CiDOVYqwkpLmjB2ewrxJbxQ8k6YNL2tDaXdnvR6a2mGefHcws4jzkmFCypVRCstqJCcjIjI86ZDwpu9IVTnH0iaHdiElg6StofscARV1bDsPyD/PIOpNzBjDuhwDrtMQ60F2HQQBCHYle+Msb9/PPqZkbXtQfgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;package.png&quot;
+        title=&quot;package.png&quot;
+        src=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png&quot;
+        srcset=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/e9ff0/package.png 180w,
+/static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png 350w&quot;
+        sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;gatsby-config.js 파일에 &lt;code class=&quot;language-text&quot;&gt;gatsby-plugin-sitemap&lt;/code&gt;추가한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style=&quot;display:inline-block&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 350px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACrUlEQVQ4y3WUSW8TQRCF/SNCHHt2M7tn857xkvFCAAmEgAtHhEAKF34/YvD043XbDiYJh1J197i+frW0W535ZH+xWzbtSdHoo7y5WJfN5WzYXA3SJg7DJorCRut2Gl3TaF3lTdNsDMNQ/swEz+qW6dgimkxRrHeYvX2PfPcSw9vXSK7nCNIMo90r5KsK+bJCcbNBlOUgFATAOJpaG4a0fcuyrMZxeuj1ekKa6/nCDSPh+r5w5D4Ihaf2gfJ+GApT14VSRDMNQ62P0H3LtizxPEnh5ANBg+YFMBwHbV3HpTSqOdmzblf5zkmZVHVQqIC0fcuwbTEthvhYLsS7+QKvsww718XGsbG2TCxNAyv+uLIsbHl2w7Oy04V9gtH/A9QcR0zabdzZhrhLfHzv+/gSefjWD/Ajj/E5cPE15nkaqf0nt4cP7Su4VK8/BbSp0OTt13EgNgyo0hhl5OMmibDL+xj7LuZxgC2/+bYDmyn3Dg24b8YjoLypIHA7yVGNUsyyGIsiwXacY0zwepRhyrPlIMGbcog0CiBF/IU+AMpaDAlcFn3MGTgj5JopVgQUVFtyvRmm6LFZOiEW62idAY8z+Bi4pZKKgZN+iBXhuzHnkOlKuLyoZAlilqCjG+hq+nnaj1OWQAmToFIG09bcS+CMwEkSUnmoSiFLkofeedpPKIwIZIorBozY4QXVbFlPGThNDumngYeMe3lJwjUH/2mg/iBlqe4AzJSyJdcKGPrQTAudrgZN/3/KjXxCUiEDxTyPBWsoCJWKBRUJ1lBMEz5B1xWObQn5uqzT0zMPT+8I/32vcMBunjelGqR4wbGRzbjlOEnVqhxMd8zvDjv+YBalbyTwF4H1uB/UBNSE1lRTU1W9GaU1Fdc3g6Sm+prp83taE177nlfLvyuClD/azz8vpdLZ/vsEpAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;serach4.png&quot;
+        title=&quot;serach4.png&quot;
+        src=&quot;/static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png&quot;
+        srcset=&quot;/static/75860cee561d3b71e1467161af0f84ac/e9ff0/serach4.png 180w,
+/static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png 350w&quot;
+        sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;build (build를 해야 sitemap.xml 파일이 생성된다.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;yarn &lt;span class=&quot;token function&quot;&gt;build&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;or gatsby build&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;build가 끝나면 로컬 서버를 실행한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;yarn &lt;span class=&quot;token function&quot;&gt;develop&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;or gatsby develop&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 생성된 걸 확인할 수 있다.&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA10lEQVQY042Q227EIAwF+f+PzI0sgaxxIIABR5uUbbV9qtSM/GRpzpEttJTLNE6jGae1H0zXLUMnx1495Cz7se+/N8OqlDOrA9hDiPRBpCegXJTalHRq3lcTdxuDLxRz8sG7ihtbrNYW7znEg+vr+iAIM0ywKm0VxD0QpVrqwcd1ntd/iAQRJYIGpx0FYuZaCxc+X2+5JfzOHzJhstI+9RM1Bhcy5R/tDoI2wtm+m41LIZVS2ic483UjQeQmPxAMbBrjHpvcDr5ZLsimbUZrrDcux3zfbHwBryXO8Hox7AsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;search2.png&quot;
+        title=&quot;search2.png&quot;
+        src=&quot;/static/2213e8eef411815dfc9a641d25cab611/37523/search2.png&quot;
+        srcset=&quot;/static/2213e8eef411815dfc9a641d25cab611/e9ff0/search2.png 180w,
+/static/2213e8eef411815dfc9a641d25cab611/f21e7/search2.png 360w,
+/static/2213e8eef411815dfc9a641d25cab611/37523/search2.png 720w,
+/static/2213e8eef411815dfc9a641d25cab611/302a4/search2.png 1080w,
+/static/2213e8eef411815dfc9a641d25cab611/07a9c/search2.png 1440w,
+/static/2213e8eef411815dfc9a641d25cab611/14586/search2.png 2314w&quot;
+        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;사이트맵 추가&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;or gatsby deploy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gatsby 변경사항을 사이트에 업로드 한다. github 페이지에서 sitemap.xml이 제대로 보여진다고 Google Search Console에서 새 sitemap.xml을 제출한다. &lt;br&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB0UlEQVQ4y51SyUoDQRTs7xNEPXjwIC4oGlFBTy4Xl+/z4K4QY4yZGONMJtvs3VN29aTDKIJooHjTr9+rV6/SYmp5A/Obe5iv7GNufRezazuYWqqgcniGreNzVI501CjiOTYOTjVOsLR3aOpnVrcxvbJleqYXFiGur55xc1fF7eMjHqpPqL284uLyGle392g4b3hpOqgTr19RazRNLfGkUa03UKvXId5bH2g5LXiuC89zMej3EYYBgtEIaZJAKYlcqTFkCeoLkOe6VkH4PR+dTgdBEGCoSRijKILv+3D1ECmlhkKmIRWbfkaWZUjTFCKOYwyHQ3OwYI6kYRiaAX6/wChMEESZRlpChihOMNJi2CdI5noeBoMBEr0ik7ykOqrk5DxXZh0Drbj4lgVksT7r2C9c10Oj2TTNJCcZ1REFWT4ho3qeOZR3zPFMIjkeJAyBXo0FLOQlyZhnMX/Mc3VaYK3ItW9JlkLlhWq7meCqXI9F1j/GsgJO59lGW5uO17R3xkNObrfbE7+sjzb+BGtJHJW+xz2GsNvtotfrmYRF+V//CwyhfTZldf+FIaSP5TX/QmCFTBRSHQlp6n9W/d4jPP2oHccxHtJc+zx+A2vLCu33JwbPay8mWl1HAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;search3.png&quot;
+        title=&quot;search3.png&quot;
+        src=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/37523/search3.png&quot;
+        srcset=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/e9ff0/search3.png 180w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/f21e7/search3.png 360w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/37523/search3.png 720w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/302a4/search3.png 1080w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/07a9c/search3.png 1440w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/92bee/search3.png 2340w&quot;
+        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;gatsby-블로그에-google-analytics-추적코드-심기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-google-analytics-%EC%B6%94%EC%A0%81%EC%BD%94%EB%93%9C-%EC%8B%AC%EA%B8%B0&quot; aria-label=&quot;gatsby 블로그에 google analytics 추적코드 심기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gatsby 블로그에 Google Analytics 추적코드 심기&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://analytics.google.com/&quot; target=&quot;_blank&quot;&gt;구글 애널리틱스&lt;/a&gt; 계정 만들기&lt;/li&gt;
+&lt;li&gt;속성에 내 블로그 정보 추가하기&lt;/li&gt;
+&lt;li&gt;gatsby-plugin-gtag 설치&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;npm i gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;gtag
+yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;gtag&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;gatsby-config.js 파일에 &lt;code class=&quot;language-text&quot;&gt;gatsby-plugin-gtag&lt;/code&gt; 옵션을 추가한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div style=&quot;display:inline-block&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/UlEQVQoz4WRSW7DMAxFfQ2PpGjZmj0rqZ266YS0i97/PJUDpKs4/RAICOIjqc9IdsPw+mEOJ9O2Ssksy/Kbsr9Y3FdEREIIYIxxjkQIRV1STYwTq66xLhkx3IUBoFvfhveL9k+m5rNTo5G9EktjRiPmRvdGAuB9mBGZ6Rh4d1yayWNVc4YIkGTbzGmeh+r7nYuCeDV+fhs/u/OX8idBUOIGwPWE+rtwSCuF8pefZl7VYa1az3SHXBS7Tt3gMHMwS1tbGStsI6wLV6gk1fJ/uCRSWgNiHMdJvCkN60rTJA1fzh/zESIbnX7u7dIa79TL4AYtg9vnwU1WhdcH8C+tkUpQUh2z9gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;analytics1.png&quot;
+        title=&quot;analytics1.png&quot;
+        src=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png&quot;
+        srcset=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/e9ff0/analytics1.png 180w,
+/static/6d3b5d4dbcd9af423ee7b7567db69782/f21e7/analytics1.png 360w,
+/static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png 400w&quot;
+        sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://janeljs.github.io/blog/google-analytics/&quot; target=&quot;_blank&quot;&gt;jane’s PS님의 블로그&lt;/a&gt;를 확인해 보면 추적이 되지 않을 때 gatsby-plugin-gtag를 플러그인 최상단에 배치하라고 되어있어 처음부터 최상단에 위치시켜 놓으면 편한다..&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+   resolve&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;gatsby-plugin-gtag&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      options&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+         trackingId&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;G-XXXXXXXXXX&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 측정 ID&lt;/span&gt;
+         head&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// head에 트래킹스크립트 넣고 싶다면 true로 설정&lt;/span&gt;
+         anonymize&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;동작 확인하기&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;yarn &lt;span class=&quot;token function&quot;&gt;build&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;or gatsby build&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;or gatsby deploy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gatsby 변경사항을 사이트에 업로드 한 뒤 제대로 작동하는 지 확인한다.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACOElEQVQoz2WSa2/aMBiF+f9/Y5q0D1O1VptatVM1WKlo1ZaVWyEQCCGJg5OUXEjIjT4zoH2apaNXluVH5xy7Yc0HpMmGNM2IogjHsZFBxMKJGM093pSEEHjeGke46twiCCS+76rpE0Yh221MHIfMtVcaz0MDEWTI95QwrUl3Nc96yvmdycW9yUN/RHcsMIXHYKzjzDtsRJdAyXenrO0pgTtBOhpr64mGNp3hhxmbJCdOK3Z5yZO+4+4txXLfSd4NLMdBX3n0xwbSvCdwHvGdF1zjBlNvK/AQ77BfdU7AOI7ZhCFFWVFXBSOrxJQ52zQlzwvY1xyWsGaYkxbSesU3msrxJ5bTG2L7gfn8GmN5S2NhLEm2mVJ6dFcWOf1VxcLNSbOcqqqVKrLigzBYsuj9wOyeYZk9+to1YtrCHpzhaj/xl20aK8smipOj8qKiKgsFrDH9PdusUDWU7IqadfTBRs7xxucs+srNoEmnfYvx5wKjd8VKa2MYvRMwjBI8PzgBqxPQCvYkaUFruGFqJ8fInj3B6H7Dmv1GmENW0w5idI2cN5GLJkv9kYa5shSoJNvlx8iHDnsqshuBH9ecPYa0RgmlqtG3Bpj9S7zhF4R2i2t2kb3PKu4lcvWAN7s5AUvV006V/w/4atbY7/Cxh5eJxJLbo8Ol47EY/UJOviP6X3HeFFy7wlUPI9WXWSun/wEPkcdOxdTd48V7hJ/hBDvltqJrFAwmM2xzpC7fI/QOUr/DXai51vDEkL9lAd/SMpaLSgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;analytics2.png&quot;
+        title=&quot;analytics2.png&quot;
+        src=&quot;/static/83e79380b40120e33d32660571e8c226/37523/analytics2.png&quot;
+        srcset=&quot;/static/83e79380b40120e33d32660571e8c226/e9ff0/analytics2.png 180w,
+/static/83e79380b40120e33d32660571e8c226/f21e7/analytics2.png 360w,
+/static/83e79380b40120e33d32660571e8c226/37523/analytics2.png 720w,
+/static/83e79380b40120e33d32660571e8c226/302a4/analytics2.png 1080w,
+/static/83e79380b40120e33d32660571e8c226/07a9c/analytics2.png 1440w,
+/static/83e79380b40120e33d32660571e8c226/92a6b/analytics2.png 2334w&quot;
+        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;블로그를 이전하면서 애널리틱스가 작동하지 않고 sitemap.xml이 제대로 생성되지 않아 한동안 방문자 추적이 전혀되지 않았다. 앞으로 미리미리 구글링 하면서 문제를 해결해야 겠다. 한달정도 방치해놨던 과거의 나야 반성하자&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#jeykll%EC%97%90%EC%84%9C-gatsby%EB%A1%9C-%EC%9D%B4%EC%A0%84%ED%95%9C-%EC%9D%B4%EC%9C%A0%EB%8A%94&quot;&gt;Jeykll에서 Gatsby로 이전한 이유는?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#google-search-console%EC%97%90-gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0&quot;&gt;Google Search Console에 gatsby 블로그 등록하기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-google-analytics-%EC%B6%94%EC%A0%81%EC%BD%94%EB%93%9C-%EC%8B%AC%EA%B8%B0&quot;&gt;gatsby 블로그에 Google Analytics 추적코드 심기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[react] firebase 프로젝트 배포하기]]></title><description><![CDATA[dddddd]]></description><link>https://phrygia.github.io/react-firebase 23-35-35-360/2021-10-26-firebase/</link><guid isPermaLink="false">https://phrygia.github.io/react-firebase 23-35-35-360/2021-10-26-firebase/</guid><pubDate>Tue, 26 Oct 2021 04:12:00 GMT</pubDate><content:encoded>&lt;p&gt;dddddd&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[javascript] closure (클로저)]]></title><description><![CDATA[사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/ 클로저(closure…]]></description><link>https://phrygia.github.io/closure/</link><guid isPermaLink="false">https://phrygia.github.io/closure/</guid><pubDate>Tue, 21 Sep 2021 04:20:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://i.pinimg.com/originals/f5/69/ae/f569aef9a09bec7ca74f0dcd228a5343.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
 &lt;small class=&quot;from&quot; style=&quot;text-align:right;&quot;&gt;사진 출처 : &lt;a href=&quot;https://www.pinterest.co.kr/pin/439734351121493066/&quot; target=&quot;_blank&quot;&gt;https://www.pinterest.co.kr/pin/439734351121493066/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;클로저(closure)는 자바스크립트 고유의 개념이 아니라 함수형 프로그래밍 언어에서 등장하는 보편적인 특성이다. 개념이 아니기 때문에 ECMAScript 명세서에도 클로저의 정의를 다루지 않고 있어 클로저에 대한 다양한 정의와 설명이 존재한다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;blockquote&gt;
