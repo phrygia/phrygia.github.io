@@ -6,6 +6,14 @@ module.exports = {
   siteMetadata: metaConfig,
 
   plugins: [
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `G-LV3317EKZF`, // 측정 ID
+        head: false, // head에 tracking script를 넣고 싶다면 true로 변경
+        anonymize: true,
+      },
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-feed',
     `gatsby-plugin-dark-mode`,
@@ -16,30 +24,17 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-theme-material-ui`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingIds: [
-          'G-TFDYHEFPQ1',
-          // 설정 Google Analytics / GA
-          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
-        ],
-        head: true, // head에 tracking script를 넣고 싶다면 true로 변경
-        anonymize: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        googleAnalytics: {
-          trackingId: 'G-TFDYHEFPQ1',
-          cookieName: 'gatsby-gdpr-google-analytics',
-          anonymize: true,
-        },
-      },
-      environments: ['development', 'production'],
-    },
+    // {
+    //   resolve: `gatsby-plugin-gdpr-cookies`,
+    //   options: {
+    //     googleAnalytics: {
+    //       trackingId: 'G-LV3317EKZF',
+    //       cookieName: 'gatsby-gdpr-google-analytics',
+    //       anonymize: true,
+    //     },
+    //   },
+    //   environments: ['development', 'production'],
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
