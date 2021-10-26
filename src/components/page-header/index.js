@@ -27,12 +27,12 @@ const PageHeader = ({ siteTitle }) => {
                 <Link className="link" to="/posts">
                   posts
                 </Link>
-                <Link className="link diary" to="/posts/diary">
+                {/* <Link className="link diary" to="/posts/diary">
                   diary
-                </Link>
-                <Link className="link" to="/about">
+                </Link> */}
+                {/* <Link className="link" to="/about">
                   about
-                </Link>
+                </Link> */}
                 <Switch
                   className="dark-mode-switch"
                   size="medium"
