@@ -27,12 +27,12 @@ const PageHeader = ({ siteTitle }) => {
                 <Link className="link" to="/posts">
                   posts
                 </Link>
-                {/* <Link className="link diary" to="/posts/diary">
+                {/* <Link className="link mo" to="/posts/diary">
                   diary
                 </Link> */}
-                {/* <Link className="link" to="/about">
+                <button className="link" onClick={() => window.open('https://evanescent-dog-4c8.notion.site/phrygia-80b52376264e4ad98e08cde0c4b61a40', '_blank')}>
                   about
-                </Link> */}
+                </button>
                 <Switch
                   className="dark-mode-switch"
                   size="medium"

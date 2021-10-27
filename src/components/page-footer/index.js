@@ -27,10 +27,8 @@ const PageFooter = ({ author, githubUrl }) => {
     <>
       <footer className="page-footer-wrapper">
         <p className="page-footer">
-          © {new Date().getFullYear()}
-          &nbsp;
-          <a href={githubUrl}>phrygia</a>
-          &nbsp;powered by
+          <span>© {new Date().getFullYear()} <a href={githubUrl}>phrygia</a>&nbsp;</span>
+          powered by
           <a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog">
             &nbsp;zoomkoding-gatsby-blog
           </a>

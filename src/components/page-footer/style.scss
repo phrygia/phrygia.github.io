@@ -12,16 +12,20 @@
   .page-footer {
     @include content-max-width;
     text-align: center;
-
+    line-height: 1.4;
     .link {
       font-weight: 700;
       font-size: 20px;
       color: var(--primary-text-color);
       margin-right: 20px;
     }
-
     a {
       color: #4a9ae1;
+    }
+    @media (max-width: 767px) {
+      span {
+        display: block;
+      }
     }
   }
 }
@@ -35,7 +39,6 @@
   margin: 0;
   padding: 0;
   z-index: 10000;
-  color: #323232;
   border: 0;
   outline: none;
   cursor: pointer;
@@ -55,7 +58,6 @@
   width: 60%;
 }
 #go-to-top span {
-  background-color: #323232;
   display: inline-block;
   width: 50%;
   height: 1px;
@@ -123,5 +125,17 @@
     right: 11px;
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
+  }
+}
+body.light #go-to-top {
+  color:#323232;
+  span {
+    background-color: #323232;
+  }
+}
+body.dark #go-to-top {
+  color: rgba(255,255,255,0.6);
+  span {
+    background-color: rgba(255,255,255,0.6);
   }
 }
