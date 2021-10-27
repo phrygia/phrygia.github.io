@@ -1,4 +1,275 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 26 Oct 2021 14:38:05 GMT</lastBuildDate><item><title><![CDATA[[gatsby] Google Search Console과 Analytics 추가하기]]></title><description><![CDATA[최근 jekyll로 사용하던 블로그를 gatsby로 바꾸었다. 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 27 Oct 2021 06:37:57 GMT</lastBuildDate><item><title><![CDATA[[react] firebase 프로젝트 배포하기]]></title><description><![CDATA[개인 포트폴리오 프로젝트 중 하나를 firebase를 이용하여 채팅앱을 만들었다. firebase를 이용하여 만들었으니 배포까지 해보자. google firebase에서 프로젝트를 만들어 앱에 연결된 상태이고 build까지 완료된 상태다.…]]></description><link>https://phrygia.github.io/react-firebase/</link><guid isPermaLink="false">https://phrygia.github.io/react-firebase/</guid><pubDate>Wed, 27 Oct 2021 07:32:00 GMT</pubDate><content:encoded>&lt;p&gt;개인 포트폴리오 프로젝트 중 하나를 firebase를 이용하여 채팅앱을 만들었다. firebase를 이용하여 만들었으니 배포까지 해보자. &lt;a href=&quot;https://firebase.google.com/&quot; target=&quot;_blank&quot;&gt;google firebase&lt;/a&gt;에서 프로젝트를 만들어 앱에 연결된 상태이고 &lt;strong&gt;build까지 완료&lt;/strong&gt;된 상태다. &lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-cli-설치-및-firebase-로그인&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-cli-%EC%84%A4%EC%B9%98-%EB%B0%8F-firebase-%EB%A1%9C%EA%B7%B8%EC%9D%B8&quot; aria-label=&quot;1 cli 설치 및 firebase 로그인 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. CLI 설치 및 firebase 로그인&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// CLI 설치&lt;/span&gt;
+npm install &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;g firebase&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;tools
+yarn add firebase&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;tools
+
+&lt;span class=&quot;token comment&quot;&gt;// firebase 로그인&lt;/span&gt;
+firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;터미널 창에서 위 코드를 입력하고 로그인을 하면 &lt;code class=&quot;language-text&quot;&gt;Allow Firebase to collect CLI usage and error reporting information?&lt;/code&gt;가 뜨면 Y를 입력하고 구글 계정을 선택하여 로그인한다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnklEQVQoz22SW08TURSF+2AMakOsN3qbmdKSUkptp9DLtMUaBLXoEwiUoP4Kf4Wv/gElEEhIfDCS+GJCTHzzBaOJibeGS1uklUopvcyc7uXhlPCiJ1mz9p7JXvl25pgCQ0MUjUZpmEtTw3Q7GqMbw1FS1SEKc4WCKoXUIHn6FFpeXiYApLd0arfb9L9jSseidCeVwlgigVvxOMY0roSGUe43Y1GkwmHEQyocDidWVlZwfKrVQxwd1UHUFj0PF+J5MGmcLBoKQfX7KRwI0HAwSMGBAbre309Bn4+O3/u9XrJYLLS0tNQh1HXh9WqZWs2aqE8JH2SzNJvNIjs3J3xmdhaTU1OYnpnB3Py88HnumUwGa2uvT4gYdAZsFSvY2ysJOnRSYUqkUjTCV06n05Tga0ciEcRiMWiaJhTndTKZhNfrxerqqhgs7GzjoFqFYbB/V3a53SRJEmRFIYfDAavVChuX9UR2ux2yLMNsNuPFwoII2N+voFQqQzcM0eu6gWazKWqTJEs80Hk8RLIiQ1EUSNyFXAp6HHZcs9rQdfYMFheei6F8Po9SucwJjVNCxliHsM/jJZfcix6rlZx2JySbA31OF7yyGz6bhLuRGB5OTkIbu4/Fl29EQL1eR6PRECFtZoDx4NOV1UiKvG4/dZ0zk/uyTJrdT5EeFwUsDpoYfUTv1j8QPn+kT+83aP1LWfzR7UKJcpvblC8UabO4T4XdErVaLfHNNJgZhy+govt8N3qvypiQgvBcUTD95Bk2Nn+hWjtA5dtXFNffYrdYEIS1ho7DWh2tlo46v0G60aEThP5742wwrrFLFy4yyXKVJT0j7PHTV+xnucL+FHKsmPvBfhd22FbuO9vZ3mL8DrJWs8n41eHiD0NnzUaDcULR/wWsd08itrtfFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase1.png&quot;
+        title=&quot;firebase1.png&quot;
+        src=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/5a190/firebase1.png&quot;
+        srcset=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/772e8/firebase1.png 200w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/e17e5/firebase1.png 400w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/5a190/firebase1.png 800w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/c1b63/firebase1.png 1200w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/29007/firebase1.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;로그인이 완료되면 Success! 문구가 뜬다.&lt;br&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACL0lEQVQoz22QzW8SURTFWaqpRRfC8DWgfE6hpQEKMwMUFmrSbmyEIH+F/4lLsW2iXdgadyYmRk23TVzqUndugDJ8DkhhKLnHNy+2weril3PvS97JOdciqynaLBQol81SNr9JuUKRFEUhVVUpnU5TIpGgVCpFkiTR68MjOpvOqNMdUKenMwZ/0e3rZJFlhYrFImRFQTarghlB4XMWsiwjmUwitrYGj8eD3b19GLM5NL2D8XQCw5hhOjW4js8mYKawxNfXKRaNIhKJkLSyQrFYjEKhEJl7OBzmycJsFgSBXuzt0/mcqN6sU6PZIE3T6PS0SUNdp/l8Tu1unyzlcpmq1SoqlQoxwHY82tnhau6lUonP29tbODx6g4lxDq2lodFooNfrQdd1jEYjnpQnNG/HQD6XIzmTQXpjAxmmF5Uv6rPkePnqAOyGYLfCQB+hv4D5xg0TwQCp7Ebq6irXZCiEoMsFuyDA4XDA6XDy+1mtVjyv7bKEc7TaPf75Kqapxef1UsDvB4OCwYCp8Pl8EL1eiExdzMzlduPW8hJqtRo31Do9dP8YLMITih4vOZ0u2Gw2EuwCTESnGz63CL/dgWRYQpFVDsYz2D14i6lhMMP+ZaKrWFbjafK67uHa9SUK3vEhYQsgbhMh3Xbgfv4J3r/7jObxRxx/OMGnb3X8Gg7RXqj4r+HWQwqFo7h5Y5kkux8PxDgi9rt4/PQZvv7UMJ6MMfzxHYMvJ6ifti6r/c/M5DcMvQaWPcPJBQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase2.png&quot;
+        title=&quot;firebase2.png&quot;
+        src=&quot;/static/51f526668bf1feaffaa869f16b4357d1/5a190/firebase2.png&quot;
+        srcset=&quot;/static/51f526668bf1feaffaa869f16b4357d1/772e8/firebase2.png 200w,
+/static/51f526668bf1feaffaa869f16b4357d1/e17e5/firebase2.png 400w,
+/static/51f526668bf1feaffaa869f16b4357d1/5a190/firebase2.png 800w,
+/static/51f526668bf1feaffaa869f16b4357d1/c1b63/firebase2.png 1200w,
+/static/51f526668bf1feaffaa869f16b4357d1/29007/firebase2.png 1600w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-firebase-설정하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-firebase-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0&quot; aria-label=&quot;2 firebase 설정하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. firebase 설정하기&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;firebase init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+설정에서 Hosting을 선택하고 **스페이스** 누르고 엔터(선택) &lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHllGDZV//EABYQAQEBAAAAAAAAAAAAAAAAAAEQMf/aAAgBAQABBQKmM//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAQEBAAAAAAAAAAAAAAAAADEAIP/aAAgBAQAGPwIjP//EABoQAQACAwEAAAAAAAAAAAAAAAEAMRARIUH/2gAIAQEAAT8hKoxOeJpiy//aAAwDAQACAAMAAAAQC8//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCH/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Qh//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFBMWGR/9oACAEBAAE/EAhxK3NQ5cjOqMi2JPZdz//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase2.jpg&quot;
+        title=&quot;firebase2.jpg&quot;
+        src=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/4b190/firebase2.jpg&quot;
+        srcset=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/e07e9/firebase2.jpg 200w,
+/static/47b9b22b9fc50911f9f1dd7d87398cb8/066f9/firebase2.jpg 400w,
+/static/47b9b22b9fc50911f9f1dd7d87398cb8/4b190/firebase2.jpg 800w,
+/static/47b9b22b9fc50911f9f1dd7d87398cb8/193c9/firebase2.jpg 1093w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;이미 프로젝트를 생성했기 때문에 &lt;code class=&quot;language-text&quot;&gt;Use an existing project&lt;/code&gt;를 선택했다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHKq1IEB//EABcQAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQEAAQUCHNv/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAaEAACAgMAAAAAAAAAAAAAAAAAARARIUHw/9oACAEBAAE/IWuow1FhtuP/2gAMAwEAAgADAAAAEMDP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHRAAAwAABwAAAAAAAAAAAAAAAAERECFRYaGxwf/aAAgBAQABPxBFk7CQvELsh6nAwzdw/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase4.jpg&quot;
+        title=&quot;firebase4.jpg&quot;
+        src=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/4b190/firebase4.jpg&quot;
+        srcset=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/e07e9/firebase4.jpg 200w,
+/static/a491ef3c6660e40bb1b3eff3bd6a5d47/066f9/firebase4.jpg 400w,
+/static/a491ef3c6660e40bb1b3eff3bd6a5d47/4b190/firebase4.jpg 800w,
+/static/a491ef3c6660e40bb1b3eff3bd6a5d47/a65aa/firebase4.jpg 1048w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;What do you want to use as your public directory?&lt;/code&gt; &lt;br&gt;
+  → 미리 build한 폴더의 index.html파일을 사용하기 위해 &lt;strong&gt;build&lt;/strong&gt;를 입력한다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Configure as a single-page app (rewrite all urls to /index.html)?&lt;/code&gt; &lt;br&gt;
+  → SPA일 경우 모든 url을 index.html으로 다시 작성하겠냐는 질문같은데 나는 리액트를 이용했기 때문에 &lt;strong&gt;Y&lt;/strong&gt;를 입력했다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Set up automatic builds and deploys with Github?&lt;/code&gt; &lt;br&gt;
+  → 자동적으로 Github을 배포할거냐는 질문같은데 나는 N를 입력했다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;File build/index.html already exists. Overwrite?&lt;/code&gt; &lt;br&gt;
+  → 이미 있는 index.html을 덮어쓰겠냐는 질문인데 나는 Y를 입력했다. &lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;자신의 상황에 맞게 설정하면 된다. firebase 설치완료가 뜨고 firebase.json파일과 .firebaserc 생성됐다면 설정이 완료된 것이다.&lt;/p&gt;
+&lt;div style=&quot;display:inline-block&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 238px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHlF4G2GEYyqv/EABkQAAEFAAAAAAAAAAAAAAAAABAAAREgQf/aAAgBAQABBQI4oq4//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAExEBEh/9oACAEBAAE/IVNSHGdCno6MRWf/2gAMAwEAAgADAAAAEOPBvP/EABURAQEAAAAAAAAAAAAAAAAAABBB/9oACAEDAQE/ECn/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAgEBPxAh/8QAHxAAAgEEAgMAAAAAAAAAAAAAAREAEDFBcSHwYYGR/9oACAEBAAE/EL6T8qhxCgmh3cJ7l+4eC32PksF1R2bEw1LBoUTjU//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase5.jpg&quot;
+        title=&quot;firebase5.jpg&quot;
+        src=&quot;/static/20fc5dee3d3392317d613cc534fa606a/7ec08/firebase5.jpg&quot;
+        srcset=&quot;/static/20fc5dee3d3392317d613cc534fa606a/e07e9/firebase5.jpg 200w,
+/static/20fc5dee3d3392317d613cc534fa606a/7ec08/firebase5.jpg 238w&quot;
+        sizes=&quot;(max-width: 238px) 100vw, 238px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;h2 id=&quot;3-firebase-배포하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-firebase-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0&quot; aria-label=&quot;3 firebase 배포하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. firebase 배포하기&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;firebase deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;Deploy complete가 완료되면 자신의 firebase URL이 나타난다. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwABBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAeWbmHbH/8QAFhABAQEAAAAAAAAAAAAAAAAAAQAQ/9oACAEBAAEFApxxv//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAAMAAwAAAAAAAAAAAAAAAAABMRARYf/aAAgBAQABPyF6XCsUMo//2gAMAwEAAgADAAAAENPP/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/EBF//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAICAwAAAAAAAAAAAAAAAQARMbEQIVH/2gAIAQEAAT8Q6Rekpiqerz5M1T//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase6.jpg&quot;
+        title=&quot;firebase6.jpg&quot;
+        src=&quot;/static/fe30b73df511336f83a298e6c029fc24/4b190/firebase6.jpg&quot;
+        srcset=&quot;/static/fe30b73df511336f83a298e6c029fc24/e07e9/firebase6.jpg 200w,
+/static/fe30b73df511336f83a298e6c029fc24/066f9/firebase6.jpg 400w,
+/static/fe30b73df511336f83a298e6c029fc24/4b190/firebase6.jpg 800w,
+/static/fe30b73df511336f83a298e6c029fc24/60398/firebase6.jpg 804w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;접속하면 정상적으로 작동한다.&lt;br&gt;&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 711px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 125.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEEAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB6KtRCXAZ00QC/wD/xAAcEAABBQADAAAAAAAAAAAAAAABAAIDERQQICH/2gAIAQEAAQUCywrHCskHAq14QGsB6f/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/ASn/xAAaEAACAgMAAAAAAAAAAAAAAAAAMgEQESAx/9oACAEBAAY/AlEErtYkWNf/xAAeEAEAAgEEAwAAAAAAAAAAAAABABFhECAxkUFR4f/aAAgBAQABPyEb7Zj9sxe2DQrKlXLOiIET0y0Ap5rb/9oADAMBAAIAAwAAABArxvz/xAAWEQEBAQAAAAAAAAAAAAAAAAAQARH/2gAIAQMBAT8QMh//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8QggwZ/8QAHxABAAIBBAMBAAAAAAAAAAAAAQARMSFxwfAQQWGR/9oACAEBAAE/EBHS+tW5nVOYst9r7BxgZZLF3Tb8jl3i4E6hYwZjIBZHLvDz/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase7.jpg&quot;
+        title=&quot;firebase7.jpg&quot;
+        src=&quot;/static/52311b0944c2349fe9025c31bb19e781/eabd5/firebase7.jpg&quot;
+        srcset=&quot;/static/52311b0944c2349fe9025c31bb19e781/e07e9/firebase7.jpg 200w,
+/static/52311b0944c2349fe9025c31bb19e781/066f9/firebase7.jpg 400w,
+/static/52311b0944c2349fe9025c31bb19e781/eabd5/firebase7.jpg 711w&quot;
+        sizes=&quot;(max-width: 711px) 100vw, 711px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;firebase-hosting-setup-complete이-뜬다면&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#firebase-hosting-setup-complete%EC%9D%B4-%EB%9C%AC%EB%8B%A4%EB%A9%B4&quot; aria-label=&quot;firebase hosting setup complete이 뜬다면 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;*Firebase Hosting Setup Complete이 뜬다면?&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 524px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 77%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAB3BdGXkA//8QAGBAAAgMAAAAAAAAAAAAAAAAAAhAAERP/2gAIAQEAAQUCZDczX//EABYRAAMAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwGlf//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAECAQE/AYf/xAAaEAACAgMAAAAAAAAAAAAAAAAAMQEQAoGR/9oACAEBAAY/AhU51I8u1//EABkQAQEBAAMAAAAAAAAAAAAAAAEAERAxgf/aAAgBAQABPyHg9wvcfCxcMAv/2gAMAwEAAgADAAAAEFg//8QAFxEBAAMAAAAAAAAAAAAAAAAAARARIf/aAAgBAwEBPxBswj//xAAWEQEBAQAAAAAAAAAAAAAAAAABEFH/2gAIAQIBAT8QDU//xAAcEAEBAQABBQAAAAAAAAAAAAABEQCRIVFxofH/2gAIAQEAAT8QoQS3zqd3vGIMDURIg433+6iLAKted//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase9.jpg&quot;
+        title=&quot;firebase9.jpg&quot;
+        src=&quot;/static/65a3bd270a3b2c89fc0dd297562d445c/98df1/firebase9.jpg&quot;
+        srcset=&quot;/static/65a3bd270a3b2c89fc0dd297562d445c/e07e9/firebase9.jpg 200w,
+/static/65a3bd270a3b2c89fc0dd297562d445c/066f9/firebase9.jpg 400w,
+/static/65a3bd270a3b2c89fc0dd297562d445c/98df1/firebase9.jpg 524w&quot;
+        sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;br&gt;
+난 처음에 Firebase Hosting Setup Complete이 계속 떴었는데 &lt;code class=&quot;language-text&quot;&gt;What do you want to use as your public directory?&lt;/code&gt;에서 public을 입력하라는 글을 보고 따라했던게 원인인 것 같다. build로 입력하고 배포하니 정상적으로 작동했다.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;*알 수 없는 오류발생&lt;/strong&gt; &lt;br&gt;
+로컬 파일에서는 채팅을 보내면 정상적으로 작동하는데 배포한 프로젝트에서는 저부분에 오류가 발생했다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;  로컬 화면 - 정상작동&lt;/strong&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 771px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 129.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe41CAWAD//EABoQAAEFAQAAAAAAAAAAAAAAABAAAQIRIDH/2gAIAQEAAQUCLKXBef/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CT//EABoQAAICAwAAAAAAAAAAAAAAAAERABAgITH/2gAIAQEAAT8hit1pqIdEY//aAAwDAQACAAMAAAAQ2AsM/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFREBAQAAAAAAAAAAAAAAAAAAASD/2gAIAQIBAT8QI//EAB4QAQACAQQDAAAAAAAAAAAAAAEAETEQIUGBIGGh/9oACAEBAAE/EKXYvqKC3YPenOfHoWc9RKorGIY8P//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase8-1.jpg&quot;
+        title=&quot;firebase8-1.jpg&quot;
+        src=&quot;/static/86cccf4337129fc92246fd17686257cb/87315/firebase8-1.jpg&quot;
+        srcset=&quot;/static/86cccf4337129fc92246fd17686257cb/e07e9/firebase8-1.jpg 200w,
+/static/86cccf4337129fc92246fd17686257cb/066f9/firebase8-1.jpg 400w,
+/static/86cccf4337129fc92246fd17686257cb/87315/firebase8-1.jpg 771w&quot;
+        sizes=&quot;(max-width: 771px) 100vw, 771px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;  프로젝트 화면 - 오류발생&lt;/strong&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 134.50000000000003%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAB7AzSzKFE6PgqAn//xAAbEAACAQUAAAAAAAAAAAAAAAAAAhIBEBETIP/aAAgBAQABBQKCGtCCGe62/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BKf/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABkQAAIDAQAAAAAAAAAAAAAAADKRAAECMP/aAAgBAQAGPwIKUDKgZXL/xAAbEAACAQUAAAAAAAAAAAAAAAAAAfEQESAhMf/aAAgBAQABPyFEoARA0Zd0fRYv/9oADAMBAAIAAwAAABAYy7z/xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8QSOp//8QAFhEBAQEAAAAAAAAAAAAAAAAAEBEB/9oACAECAQE/EMpD/8QAIBABAAEDAwUAAAAAAAAAAAAAAQAQESExcfBhgZHB0f/aAAgBAQABPxAxjwvkt54W05l6mmQvLhkDZpcMy9YLGq9q6Cn/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase8-2.jpg&quot;
+        title=&quot;firebase8-2.jpg&quot;
+        src=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/4b190/firebase8-2.jpg&quot;
+        srcset=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/e07e9/firebase8-2.jpg 200w,
+/static/e5f26cb2e27457fe36f6314c83f6a419/066f9/firebase8-2.jpg 400w,
+/static/e5f26cb2e27457fe36f6314c83f6a419/4b190/firebase8-2.jpg 800w,
+/static/e5f26cb2e27457fe36f6314c83f6a419/a19d2/firebase8-2.jpg 812w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;구글 콘솔에서 뜨는 URL(&lt;a href=&quot;https://reactjs.org/docs/error-decoder.html/?invariant=152&amp;args[]=Component&quot; target=&quot;_blank&quot;&gt;Error Decoder&lt;/a&gt;)을 살펴봐도 왜 오류가 뜨는지 알수가 없어 저부분은 해결하지 못하고 있다. 😭 (제일 중요한 페이지인데) 혹시 원인을 아신다면 댓글 부탁드립니다. 😭😭&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-cli-%EC%84%A4%EC%B9%98-%EB%B0%8F-firebase-%EB%A1%9C%EA%B7%B8%EC%9D%B8&quot;&gt;1. CLI 설치 및 firebase 로그인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-firebase-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0&quot;&gt;2. firebase 설정하기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-firebase-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0&quot;&gt;3. firebase 배포하기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#firebase-hosting-setup-complete%EC%9D%B4-%EB%9C%AC%EB%8B%A4%EB%A9%B4&quot;&gt;*Firebase Hosting Setup Complete이 뜬다면?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[gatsby] Google Search Console과 Analytics 추가하기]]></title><description><![CDATA[최근 jekyll로 사용하던 블로그를 gatsby로 바꾸었다. 
 처음에 jekyll을 선택했었던 이유를 github으로 시작할 생각이었고 테마가 다양했던 jekyll을 선택했었다. Jeykll에서 Gatsby…]]></description><link>https://phrygia.github.io/gatsby-blog/</link><guid isPermaLink="false">https://phrygia.github.io/gatsby-blog/</guid><pubDate>Tue, 26 Oct 2021 14:36:00 GMT</pubDate><content:encoded>&lt;p&gt;최근 jekyll로 사용하던 블로그를 gatsby로 바꾸었다. &lt;br&gt;
 처음에 jekyll을 선택했었던 이유를 github으로 시작할 생각이었고 테마가 다양했던 jekyll을 선택했었다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h2 id=&quot;jeykll에서-gatsby로-이전한-이유는&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jeykll%EC%97%90%EC%84%9C-gatsby%EB%A1%9C-%EC%9D%B4%EC%A0%84%ED%95%9C-%EC%9D%B4%EC%9C%A0%EB%8A%94&quot; aria-label=&quot;jeykll에서 gatsby로 이전한 이유는 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Jeykll에서 Gatsby로 이전한 이유는?&lt;/h2&gt;
@@ -12,24 +283,23 @@
 &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 80.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAABYlAAAWJQFJUiTwAAACa0lEQVQoz3WSS2/TQBDH/dHgxAkhkEDiVMRDXIA7pdxApa1AtL2gfgjOIFRRUrVpuo7jxu930jiNY8dJQ9aOvXZsxu4rIDr6yxqv9+eZ+e9Stxee33ny4t6zV3efvrxxf+Ef3Xzw6L+CT7cePqaWPnx6v7m1vLn1bv3L0trG27WNpQu9WV1fnNfK58WVi3xt4/XyR6rnOL3BqON4dn9g9z3b8bquf+L5tjuYhNOckDyOiycoSQoRkkGepqeeR2mGyUg64hVaUAy73+75jKjTvFpryh3HzTGepWk2g0gnE4yDsMxneZb5nQ6lWy1OsxhRE/V2EMZRFLXtLvANSTtxB3kYZlkOkc4yre06rgd5uZAPu11KN1ucah0pUN/gZJXV3H3+mFONungJF5tjkpy4Q9cfpVD2CrZaQNK8ctiUv+9Wv/4St2n9SNYu4SSFxlMchuMJngTTv2Cz1Ybxvu0e/NhD29X6QaPZEBWYAjrv9Pp5gH/jwPGH3uj0tISTNM3n22YVE/EyFEecVBdUaKSpGMADnOEJlCJJQpI0IkkE3SdzsGG16qK+x0j7rFzjdCSYSDAK8edtE0LAxTguvIRICJmBC+C2bZewoP2ssRXEgaqsTAsGPQcDiDEmFwHzX8GF2xp4ZjRVk5V1VtKLvGx73m0ION6sxM5Wzma2GrJJCyrYizjwXIKkyHkFLlwB5+cBRUnp1vk5Q2VwWz/uymZbsY7nJRktbzjKApxgnAZBCk+Ms+k0C0N4zafTAcC+7xc/yy4LXB/QdxTN4jgrr+d4PKZ2dnYYhkEI0ddFvX4m2LFfrYIOEaohVKlU/gDx6C4+zdJ2XgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 80.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAABYlAAAWJQFJUiTwAAACNElEQVQoz5WSS4/SUBTH+81cujG6cWk00bgwGp8L40IzTmKcmYwx0Y/hNzDxMSEYHi2vltKWggSGgUIBKb23t2//bYFhjAs9+fX23Bv+95zzL9zlG3ev3r5/7c6DK7fuXbp+87/gnr959+r448vjDy8O3j/dP3q2f/Tk9WHG472DRzs83HsLdk84mzhDwxxN5ykzYMwWYGzObcpi34sZi103wfMSsjw95IaTWbHREmSNb6r6YKwPDL6JXCuKSn80iQkJgzAKExxKKXGyPAqCcLXiUKEit6stXen2mRsQx+30T7GttjroKKY0itcxGJnD0SSK0gO8COHG07nQ1OpqFwK911N6k7Lca6gdQW6fjqdbcRAEA2NxZpie75+LMWpZ0qAs1Fufcz8+fde+CD9FVReaazG6xC8pY4ultYRDGHi3ck4QT0rVhHK9UBN5SUHZiqwPMDMllLmzX8v50iLUYa6HeS9UzlelfEUEOb4G82pKt6Z0YET/bBytVszzbOqAFaHpBR6EiWdZ5WJD5iUVQANl5ta2bUzrea6HB5EmmTi0bc4w0bb0tSB+K0knZTlfaxelLihJ7WEqhsK2bXcTW3EEcWqYWpE1eM5LLaGJ+npdgWHa2rAgCQyZzLlZz8XosKF28bXSK7Lm//xUCB/9+/56u3bbnJdFpZrYewG0k4iJHUK/IXYcEGElJLIszvd94jD6N5I6QRBhyJTQdQPGfMdJEqy+z8X/HInBhCwtC5fiP4PtbzFtOUBNbsekAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search.png&quot;
         title=&quot;search.png&quot;
-        src=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/37523/search.png&quot;
-        srcset=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/e9ff0/search.png 180w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/f21e7/search.png 360w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/37523/search.png 720w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/302a4/search.png 1080w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/07a9c/search.png 1440w,
+        src=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/5a190/search.png&quot;
+        srcset=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/772e8/search.png 200w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/e17e5/search.png 400w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/5a190/search.png 800w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/c1b63/search.png 1200w,
 /static/8df92c4f0d4e87f698f68ea30faf4b2d/b0de5/search.png 1517w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -47,14 +317,14 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 26.111111111111107%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQY0y2Q65KCMAxGfQ6loCiUlrYgN1EB0V1XV3f2/d9kZ4wmW9EfZ9JkOme+ZOT7/l0WFa4uv5i2PS53e4xkjP7UQ8MX2GYGN6nCUgmMpUDX89AbcNF13fd7gGx/G1nhQxYllV8XMtuOzKYlmZdUnK6UHb9JpBn5nktLvqBKBFTHIW2NoFxJGjOXHIfR2HFwPHGeQhj5s9lDWEF5uqIVWlrU6wbTrsf8cESZ5chNivYPlv0Bs6bDSGmMeYCp4CiDOVYqwkpLmjB2ewrxJbxQ8k6YNL2tDaXdnvR6a2mGefHcws4jzkmFCypVRCstqJCcjIjI86ZDwpu9IVTnH0iaHdiElg6StofscARV1bDsPyD/PIOpNzBjDuhwDrtMQ60F2HQQBCHYle+Msb9/PPqZkbXtQfgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 26.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQY0y2Q65KCMAxGfQ6loCiUlrYgN1EB0V1XV3f2/d9kZ4wmW9EfZ9JkOme+ZOT7/l0WFa4uv5i2PS53e4xkjP7UQ8MX2GYGN6nCUgmMpUDX89AbcNF13fd7gGx/G1nhQxYllV8XMtuOzKYlmZdUnK6UHb9JpBn5nktLvqBKBFTHIW2NoFxJGjOXHIfR2HFwPHGeQhj5s9lDWEF5uqIVWlrU6wbTrsf8cESZ5chNivYPlv0Bs6bDSGmMeYCp4CiDOVYqwkpLmjB2ewrxJbxQ8k6YNL2tDaXdnvR6a2mGefHcws4jzkmFCypVRCstqJCcjIjI86ZDwpu9IVTnH0iaHdiElg6StofscARV1bDsPyD/PIOpNzBjDuhwDrtMQ60F2HQQBCHYle+Msb9/PPqZkbXtQfgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;package.png&quot;
         title=&quot;package.png&quot;
         src=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png&quot;
-        srcset=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/e9ff0/package.png 180w,
+        srcset=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/772e8/package.png 200w,
 /static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png 350w&quot;
         sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -73,14 +343,14 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 78.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACrUlEQVQ4y3WUSW8TQRCF/SNCHHt2M7tn857xkvFCAAmEgAtHhEAKF34/YvD043XbDiYJh1J197i+frW0W535ZH+xWzbtSdHoo7y5WJfN5WzYXA3SJg7DJorCRut2Gl3TaF3lTdNsDMNQ/swEz+qW6dgimkxRrHeYvX2PfPcSw9vXSK7nCNIMo90r5KsK+bJCcbNBlOUgFATAOJpaG4a0fcuyrMZxeuj1ekKa6/nCDSPh+r5w5D4Ihaf2gfJ+GApT14VSRDMNQ62P0H3LtizxPEnh5ANBg+YFMBwHbV3HpTSqOdmzblf5zkmZVHVQqIC0fcuwbTEthvhYLsS7+QKvsww718XGsbG2TCxNAyv+uLIsbHl2w7Oy04V9gtH/A9QcR0zabdzZhrhLfHzv+/gSefjWD/Ajj/E5cPE15nkaqf0nt4cP7Su4VK8/BbSp0OTt13EgNgyo0hhl5OMmibDL+xj7LuZxgC2/+bYDmyn3Dg24b8YjoLypIHA7yVGNUsyyGIsiwXacY0zwepRhyrPlIMGbcog0CiBF/IU+AMpaDAlcFn3MGTgj5JopVgQUVFtyvRmm6LFZOiEW62idAY8z+Bi4pZKKgZN+iBXhuzHnkOlKuLyoZAlilqCjG+hq+nnaj1OWQAmToFIG09bcS+CMwEkSUnmoSiFLkofeedpPKIwIZIorBozY4QXVbFlPGThNDumngYeMe3lJwjUH/2mg/iBlqe4AzJSyJdcKGPrQTAudrgZN/3/KjXxCUiEDxTyPBWsoCJWKBRUJ1lBMEz5B1xWObQn5uqzT0zMPT+8I/32vcMBunjelGqR4wbGRzbjlOEnVqhxMd8zvDjv+YBalbyTwF4H1uB/UBNSE1lRTU1W9GaU1Fdc3g6Sm+prp83taE177nlfLvyuClD/azz8vpdLZ/vsEpAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 78.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACrUlEQVQ4y3WUSW8TQRCF/SNCHHt2M7tn857xkvFCAAmEgAtHhEAKF34/YvD043XbDiYJh1J197i+frW0W535ZH+xWzbtSdHoo7y5WJfN5WzYXA3SJg7DJorCRut2Gl3TaF3lTdNsDMNQ/swEz+qW6dgimkxRrHeYvX2PfPcSw9vXSK7nCNIMo90r5KsK+bJCcbNBlOUgFATAOJpaG4a0fcuyrMZxeuj1ekKa6/nCDSPh+r5w5D4Ihaf2gfJ+GApT14VSRDMNQ62P0H3LtizxPEnh5ANBg+YFMBwHbV3HpTSqOdmzblf5zkmZVHVQqIC0fcuwbTEthvhYLsS7+QKvsww718XGsbG2TCxNAyv+uLIsbHl2w7Oy04V9gtH/A9QcR0zabdzZhrhLfHzv+/gSefjWD/Ajj/E5cPE15nkaqf0nt4cP7Su4VK8/BbSp0OTt13EgNgyo0hhl5OMmibDL+xj7LuZxgC2/+bYDmyn3Dg24b8YjoLypIHA7yVGNUsyyGIsiwXacY0zwepRhyrPlIMGbcog0CiBF/IU+AMpaDAlcFn3MGTgj5JopVgQUVFtyvRmm6LFZOiEW62idAY8z+Bi4pZKKgZN+iBXhuzHnkOlKuLyoZAlilqCjG+hq+nnaj1OWQAmToFIG09bcS+CMwEkSUnmoSiFLkofeedpPKIwIZIorBozY4QXVbFlPGThNDumngYeMe3lJwjUH/2mg/iBlqe4AzJSyJdcKGPrQTAudrgZN/3/KjXxCUiEDxTyPBWsoCJWKBRUJ1lBMEz5B1xWObQn5uqzT0zMPT+8I/32vcMBunjelGqR4wbGRzbjlOEnVqhxMd8zvDjv+YBalbyTwF4H1uB/UBNSE1lRTU1W9GaU1Fdc3g6Sm+prp83taE177nlfLvyuClD/azz8vpdLZ/vsEpAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;serach4.png&quot;
         title=&quot;serach4.png&quot;
         src=&quot;/static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png&quot;
-        srcset=&quot;/static/75860cee561d3b71e1467161af0f84ac/e9ff0/serach4.png 180w,
+        srcset=&quot;/static/75860cee561d3b71e1467161af0f84ac/772e8/serach4.png 200w,
 /static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png 350w&quot;
         sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -102,24 +372,24 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
 localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 생성된 걸 확인할 수 있다.&lt;br&gt;&lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 42.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA10lEQVQY042Q227EIAwF+f+PzI0sgaxxIIABR5uUbbV9qtSM/GRpzpEttJTLNE6jGae1H0zXLUMnx1495Cz7se+/N8OqlDOrA9hDiPRBpCegXJTalHRq3lcTdxuDLxRz8sG7ihtbrNYW7znEg+vr+iAIM0ywKm0VxD0QpVrqwcd1ntd/iAQRJYIGpx0FYuZaCxc+X2+5JfzOHzJhstI+9RM1Bhcy5R/tDoI2wtm+m41LIZVS2ic483UjQeQmPxAMbBrjHpvcDr5ZLsimbUZrrDcux3zfbHwBryXO8Hox7AsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAABYlAAAWJQFJUiTwAAAA10lEQVQY042Q227EIAwF+f+PzI0sgaxxIIABR5uUbbV9qtSM/GRpzpEttJTLNE6jGae1H0zXLUMnx1495Cz7se+/N8OqlDOrA9hDiPRBpCegXJTalHRq3lcTdxuDLxRz8sG7ihtbrNYW7znEg+vr+iAIM0ywKm0VxD0QpVrqwcd1ntd/iAQRJYIGpx0FYuZaCxc+X2+5JfzOHzJhstI+9RM1Bhcy5R/tDoI2wtm+m41LIZVS2ic483UjQeQmPxAMbBrjHpvcDr5ZLsimbUZrrDcux3zfbHwBryXO8Hox7AsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search2.png&quot;
         title=&quot;search2.png&quot;
-        src=&quot;/static/2213e8eef411815dfc9a641d25cab611/37523/search2.png&quot;
-        srcset=&quot;/static/2213e8eef411815dfc9a641d25cab611/e9ff0/search2.png 180w,
-/static/2213e8eef411815dfc9a641d25cab611/f21e7/search2.png 360w,
-/static/2213e8eef411815dfc9a641d25cab611/37523/search2.png 720w,
-/static/2213e8eef411815dfc9a641d25cab611/302a4/search2.png 1080w,
-/static/2213e8eef411815dfc9a641d25cab611/07a9c/search2.png 1440w,
+        src=&quot;/static/2213e8eef411815dfc9a641d25cab611/5a190/search2.png&quot;
+        srcset=&quot;/static/2213e8eef411815dfc9a641d25cab611/772e8/search2.png 200w,
+/static/2213e8eef411815dfc9a641d25cab611/e17e5/search2.png 400w,
+/static/2213e8eef411815dfc9a641d25cab611/5a190/search2.png 800w,
+/static/2213e8eef411815dfc9a641d25cab611/c1b63/search2.png 1200w,
+/static/2213e8eef411815dfc9a641d25cab611/29007/search2.png 1600w,
 /static/2213e8eef411815dfc9a641d25cab611/14586/search2.png 2314w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -132,7 +402,7 @@ localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 
 &lt;p&gt;gatsby 변경사항을 사이트에 업로드 한다. github 페이지에서 sitemap.xml이 제대로 보여진다고 Google Search Console에서 새 sitemap.xml을 제출한다. &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -142,14 +412,14 @@ localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search3.png&quot;
         title=&quot;search3.png&quot;
-        src=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/37523/search3.png&quot;
-        srcset=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/e9ff0/search3.png 180w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/f21e7/search3.png 360w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/37523/search3.png 720w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/302a4/search3.png 1080w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/07a9c/search3.png 1440w,
+        src=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/5a190/search3.png&quot;
+        srcset=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/772e8/search3.png 200w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/e17e5/search3.png 400w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/5a190/search3.png 800w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/c1b63/search3.png 1200w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/29007/search3.png 1600w,
 /static/152b503f83f60f76d6aaddb2bf4c7ab0/92bee/search3.png 2340w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -174,15 +444,14 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/UlEQVQoz4WRSW7DMAxFfQ2PpGjZmj0rqZ266YS0i97/PJUDpKs4/RAICOIjqc9IdsPw+mEOJ9O2Ssksy/Kbsr9Y3FdEREIIYIxxjkQIRV1STYwTq66xLhkx3IUBoFvfhveL9k+m5rNTo5G9EktjRiPmRvdGAuB9mBGZ6Rh4d1yayWNVc4YIkGTbzGmeh+r7nYuCeDV+fhs/u/OX8idBUOIGwPWE+rtwSCuF8pefZl7VYa1az3SHXBS7Tt3gMHMwS1tbGStsI6wLV6gk1fJ/uCRSWgNiHMdJvCkN60rTJA1fzh/zESIbnX7u7dIa79TL4AYtg9vnwU1WhdcH8C+tkUpQUh2z9gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/UlEQVQoz4WRSW7DMAxFfQ2PpGjZmj0rqZ266YS0i97/PJUDpKs4/RAICOIjqc9IdsPw+mEOJ9O2Ssksy/Kbsr9Y3FdEREIIYIxxjkQIRV1STYwTq66xLhkx3IUBoFvfhveL9k+m5rNTo5G9EktjRiPmRvdGAuB9mBGZ6Rh4d1yayWNVc4YIkGTbzGmeh+r7nYuCeDV+fhs/u/OX8idBUOIGwPWE+rtwSCuF8pefZl7VYa1az3SHXBS7Tt3gMHMwS1tbGStsI6wLV6gk1fJ/uCRSWgNiHMdJvCkN60rTJA1fzh/zESIbnX7u7dIa79TL4AYtg9vnwU1WhdcH8C+tkUpQUh2z9gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;analytics1.png&quot;
         title=&quot;analytics1.png&quot;
         src=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png&quot;
-        srcset=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/e9ff0/analytics1.png 180w,
-/static/6d3b5d4dbcd9af423ee7b7567db69782/f21e7/analytics1.png 360w,
+        srcset=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/772e8/analytics1.png 200w,
 /static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png 400w&quot;
         sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -210,38 +479,38 @@ yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span c
 &lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACOElEQVQoz2WSa2/aMBiF+f9/Y5q0D1O1VptatVM1WKlo1ZaVWyEQCCGJg5OUXEjIjT4zoH2apaNXluVH5xy7Yc0HpMmGNM2IogjHsZFBxMKJGM093pSEEHjeGke46twiCCS+76rpE0Yh221MHIfMtVcaz0MDEWTI95QwrUl3Nc96yvmdycW9yUN/RHcsMIXHYKzjzDtsRJdAyXenrO0pgTtBOhpr64mGNp3hhxmbJCdOK3Z5yZO+4+4txXLfSd4NLMdBX3n0xwbSvCdwHvGdF1zjBlNvK/AQ77BfdU7AOI7ZhCFFWVFXBSOrxJQ52zQlzwvY1xyWsGaYkxbSesU3msrxJ5bTG2L7gfn8GmN5S2NhLEm2mVJ6dFcWOf1VxcLNSbOcqqqVKrLigzBYsuj9wOyeYZk9+to1YtrCHpzhaj/xl20aK8smipOj8qKiKgsFrDH9PdusUDWU7IqadfTBRs7xxucs+srNoEmnfYvx5wKjd8VKa2MYvRMwjBI8PzgBqxPQCvYkaUFruGFqJ8fInj3B6H7Dmv1GmENW0w5idI2cN5GLJkv9kYa5shSoJNvlx8iHDnsqshuBH9ecPYa0RgmlqtG3Bpj9S7zhF4R2i2t2kb3PKu4lcvWAN7s5AUvV006V/w/4atbY7/Cxh5eJxJLbo8Ol47EY/UJOviP6X3HeFFy7wlUPI9WXWSun/wEPkcdOxdTd48V7hJ/hBDvltqJrFAwmM2xzpC7fI/QOUr/DXai51vDEkL9lAd/SMpaLSgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 52%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACOElEQVQoz2WSa2/aMBiF+f9/Y5q0D1O1VptatVM1WKlo1ZaVWyEQCCGJg5OUXEjIjT4zoH2apaNXluVH5xy7Yc0HpMmGNM2IogjHsZFBxMKJGM093pSEEHjeGke46twiCCS+76rpE0Yh221MHIfMtVcaz0MDEWTI95QwrUl3Nc96yvmdycW9yUN/RHcsMIXHYKzjzDtsRJdAyXenrO0pgTtBOhpr64mGNp3hhxmbJCdOK3Z5yZO+4+4txXLfSd4NLMdBX3n0xwbSvCdwHvGdF1zjBlNvK/AQ77BfdU7AOI7ZhCFFWVFXBSOrxJQ52zQlzwvY1xyWsGaYkxbSesU3msrxJ5bTG2L7gfn8GmN5S2NhLEm2mVJ6dFcWOf1VxcLNSbOcqqqVKrLigzBYsuj9wOyeYZk9+to1YtrCHpzhaj/xl20aK8smipOj8qKiKgsFrDH9PdusUDWU7IqadfTBRs7xxucs+srNoEmnfYvx5wKjd8VKa2MYvRMwjBI8PzgBqxPQCvYkaUFruGFqJ8fInj3B6H7Dmv1GmENW0w5idI2cN5GLJkv9kYa5shSoJNvlx8iHDnsqshuBH9ecPYa0RgmlqtG3Bpj9S7zhF4R2i2t2kb3PKu4lcvWAN7s5AUvV006V/w/4atbY7/Cxh5eJxJLbo8Ol47EY/UJOviP6X3HeFFy7wlUPI9WXWSun/wEPkcdOxdTd48V7hJ/hBDvltqJrFAwmM2xzpC7fI/QOUr/DXai51vDEkL9lAd/SMpaLSgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;analytics2.png&quot;
         title=&quot;analytics2.png&quot;
-        src=&quot;/static/83e79380b40120e33d32660571e8c226/37523/analytics2.png&quot;
-        srcset=&quot;/static/83e79380b40120e33d32660571e8c226/e9ff0/analytics2.png 180w,
-/static/83e79380b40120e33d32660571e8c226/f21e7/analytics2.png 360w,
-/static/83e79380b40120e33d32660571e8c226/37523/analytics2.png 720w,
-/static/83e79380b40120e33d32660571e8c226/302a4/analytics2.png 1080w,
-/static/83e79380b40120e33d32660571e8c226/07a9c/analytics2.png 1440w,
+        src=&quot;/static/83e79380b40120e33d32660571e8c226/5a190/analytics2.png&quot;
+        srcset=&quot;/static/83e79380b40120e33d32660571e8c226/772e8/analytics2.png 200w,
+/static/83e79380b40120e33d32660571e8c226/e17e5/analytics2.png 400w,
+/static/83e79380b40120e33d32660571e8c226/5a190/analytics2.png 800w,
+/static/83e79380b40120e33d32660571e8c226/c1b63/analytics2.png 1200w,
+/static/83e79380b40120e33d32660571e8c226/29007/analytics2.png 1600w,
 /static/83e79380b40120e33d32660571e8c226/92a6b/analytics2.png 2334w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;&lt;strong&gt;블로그를 이전하면서 애널리틱스가 작동하지 않고 sitemap.xml이 제대로 생성되지 않아 한동안 방문자 추적이 전혀되지 않았다. 앞으로 미리미리 구글링 하면서 문제를 해결해야 겠다. 한달정도 방치해놨던 과거의 나야 반성하자&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;br&gt;
 &lt;div class=&quot;table-of-contents&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#jeykll%EC%97%90%EC%84%9C-gatsby%EB%A1%9C-%EC%9D%B4%EC%A0%84%ED%95%9C-%EC%9D%B4%EC%9C%A0%EB%8A%94&quot;&gt;Jeykll에서 Gatsby로 이전한 이유는?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#google-search-console%EC%97%90-gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0&quot;&gt;Google Search Console에 gatsby 블로그 등록하기&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#gatsby-%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%97%90-google-analytics-%EC%B6%94%EC%A0%81%EC%BD%94%EB%93%9C-%EC%8B%AC%EA%B8%B0&quot;&gt;gatsby 블로그에 Google Analytics 추적코드 심기&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[react] firebase 프로젝트 배포하기]]></title><description><![CDATA[dddddd]]></description><link>https://phrygia.github.io/react-firebase 23-35-35-360/2021-10-26-firebase/</link><guid isPermaLink="false">https://phrygia.github.io/react-firebase 23-35-35-360/2021-10-26-firebase/</guid><pubDate>Tue, 26 Oct 2021 04:12:00 GMT</pubDate><content:encoded>&lt;p&gt;dddddd&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[javascript] closure (클로저)]]></title><description><![CDATA[사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/ 클로저(closure…]]></description><link>https://phrygia.github.io/closure/</link><guid isPermaLink="false">https://phrygia.github.io/closure/</guid><pubDate>Tue, 21 Sep 2021 04:20:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://i.pinimg.com/originals/f5/69/ae/f569aef9a09bec7ca74f0dcd228a5343.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[javascript] closure (클로저)]]></title><description><![CDATA[사진 출처 : https://www.pinterest.co.kr/pin/439734351121493066/ 클로저(closure…]]></description><link>https://phrygia.github.io/closure/</link><guid isPermaLink="false">https://phrygia.github.io/closure/</guid><pubDate>Tue, 21 Sep 2021 04:20:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;https://i.pinimg.com/originals/f5/69/ae/f569aef9a09bec7ca74f0dcd228a5343.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
 &lt;small class=&quot;from&quot; style=&quot;text-align:right;&quot;&gt;사진 출처 : &lt;a href=&quot;https://www.pinterest.co.kr/pin/439734351121493066/&quot; target=&quot;_blank&quot;&gt;https://www.pinterest.co.kr/pin/439734351121493066/&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;클로저(closure)는 자바스크립트 고유의 개념이 아니라 함수형 프로그래밍 언어에서 등장하는 보편적인 특성이다. 개념이 아니기 때문에 ECMAScript 명세서에도 클로저의 정의를 다루지 않고 있어 클로저에 대한 다양한 정의와 설명이 존재한다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -262,24 +531,24 @@ yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span c
 &lt;p&gt;라고 소개한다. 직역하면 &quot;클로저는 함수와 그 함수가 선언될 당시의 lexical enviroment의 상호관계에 따른 현상&quot; 정도가 된다.&lt;/p&gt; &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 43.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHUlEQVQoz6WSa3LCMAyEcw+wJdlKyLsJ3ICh9z/SVjIB0mmZ/uiPb+SHZrXepNK6hqqCmMEsVv8Do2r7EeM44hAZUdTI3yAn2cC0rZ/7HY8zq1WIEbUKPuYJmm29w/dMBLIeIlv7K2wfY0AIx4LflR67K4IiglPNUJuQ7OKBMKFRq8JIKcH7jiGYMGEYBqzrivP5jNoioyIoL0F3cmgTQpdxHBSHLkG7FsN8QtM1uN0+cb1ecblcME0Tcs4Fz95dR3/BXvBUm+0sELUnGV4l2Xnj7u4OXcDdeO37HsuyYJ7nMqRtW0TiknPlX7ZRyyz9pPEMecvQiBs+QJ8uM5LIK0OSZOqCyL9A738Pd/SAHNPZBPP9l3iH/MG+xwZ9AWIn+4QUbCKfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 43%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHUlEQVQoz6WSa3LCMAyEcw+wJdlKyLsJ3ICh9z/SVjIB0mmZ/uiPb+SHZrXepNK6hqqCmMEsVv8Do2r7EeM44hAZUdTI3yAn2cC0rZ/7HY8zq1WIEbUKPuYJmm29w/dMBLIeIlv7K2wfY0AIx4LflR67K4IiglPNUJuQ7OKBMKFRq8JIKcH7jiGYMGEYBqzrivP5jNoioyIoL0F3cmgTQpdxHBSHLkG7FsN8QtM1uN0+cb1ecblcME0Tcs4Fz95dR3/BXvBUm+0sELUnGV4l2Xnj7u4OXcDdeO37HsuyYJ7nMqRtW0TiknPlX7ZRyyz9pPEMecvQiBs+QJ8uM5LIK0OSZOqCyL9A738Pd/SAHNPZBPP9l3iH/MG+xwZ9AWIn+4QUbCKfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;closure.png&quot;
         title=&quot;closure.png&quot;
-        src=&quot;/static/b193b6ba790a5946bc3596d8448891e7/37523/closure.png&quot;
-        srcset=&quot;/static/b193b6ba790a5946bc3596d8448891e7/e9ff0/closure.png 180w,
-/static/b193b6ba790a5946bc3596d8448891e7/f21e7/closure.png 360w,
-/static/b193b6ba790a5946bc3596d8448891e7/37523/closure.png 720w,
-/static/b193b6ba790a5946bc3596d8448891e7/302a4/closure.png 1080w,
-/static/b193b6ba790a5946bc3596d8448891e7/07a9c/closure.png 1440w,
+        src=&quot;/static/b193b6ba790a5946bc3596d8448891e7/5a190/closure.png&quot;
+        srcset=&quot;/static/b193b6ba790a5946bc3596d8448891e7/772e8/closure.png 200w,
+/static/b193b6ba790a5946bc3596d8448891e7/e17e5/closure.png 400w,
+/static/b193b6ba790a5946bc3596d8448891e7/5a190/closure.png 800w,
+/static/b193b6ba790a5946bc3596d8448891e7/c1b63/closure.png 1200w,
+/static/b193b6ba790a5946bc3596d8448891e7/29007/closure.png 1600w,
 /static/b193b6ba790a5946bc3596d8448891e7/ac25d/closure.png 2342w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -470,22 +739,22 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe7iSlD/xAAYEAEAAwEAAAAAAAAAAAAAAAAAAhARIf/aAAgBAQABBQJ1iV//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAbEAACAgMBAAAAAAAAAAAAAAAAARExIUFRcf/aAAgBAQABPyFz1HqxNGWaCtio/9oADAMBAAIAAwAAABAwz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQEBAQEBAAAAAAAAAAAAAAERACExQf/aAAgBAQABPxCU4JUv3RJzOvM30uAtg4BEnd57/9k=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 51%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe7iSlD/xAAYEAEAAwEAAAAAAAAAAAAAAAAAAhARIf/aAAgBAQABBQJ1iV//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAbEAACAgMBAAAAAAAAAAAAAAAAARExIUFRcf/aAAgBAQABPyFz1HqxNGWaCtio/9oADAMBAAIAAwAAABAwz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQEBAQEBAAAAAAAAAAAAAAERACExQf/aAAgBAQABPxCU4JUv3RJzOvM30uAtg4BEnd57/9k=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scope.jpg&quot;
         title=&quot;scope.jpg&quot;
-        src=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/80e3c/scope.jpg&quot;
-        srcset=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/4ec73/scope.jpg 180w,
-/static/0d14193b1617569e1c96a7b8a0e65b3e/158ba/scope.jpg 360w,
-/static/0d14193b1617569e1c96a7b8a0e65b3e/80e3c/scope.jpg 720w,
+        src=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/4b190/scope.jpg&quot;
+        srcset=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/e07e9/scope.jpg 200w,
+/static/0d14193b1617569e1c96a7b8a0e65b3e/066f9/scope.jpg 400w,
+/static/0d14193b1617569e1c96a7b8a0e65b3e/4b190/scope.jpg 800w,
 /static/0d14193b1617569e1c96a7b8a0e65b3e/6a068/scope.jpg 960w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -587,15 +856,15 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB3pqcYQl//8QAFRABAQAAAAAAAAAAAAAAAAAAASD/2gAIAQEAAQUCK//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAAAEAERMf/aAAgBAQABPyFo1Wf/2gAMAwEAAgADAAAAEPfv/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qg//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/EFf/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQUUFxkf/aAAgBAQABPxABaL1lPJ9lu2K2z//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB3pqcYQl//8QAFRABAQAAAAAAAAAAAAAAAAAAASD/2gAIAQEAAQUCK//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAAAEAERMf/aAAgBAQABPyFo1Wf/2gAMAwEAAgADAAAAEPfv/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qg//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/EFf/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQUUFxkf/aAAgBAQABPxABaL1lPJ9lu2K2z//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scope2.jpg&quot;
         title=&quot;scope2.jpg&quot;
         src=&quot;/static/9b73baeaf6c79efe075f19dc67315837/a18e1/scope2.jpg&quot;
-        srcset=&quot;/static/9b73baeaf6c79efe075f19dc67315837/4ec73/scope2.jpg 180w,
-/static/9b73baeaf6c79efe075f19dc67315837/158ba/scope2.jpg 360w,
+        srcset=&quot;/static/9b73baeaf6c79efe075f19dc67315837/e07e9/scope2.jpg 200w,
+/static/9b73baeaf6c79efe075f19dc67315837/066f9/scope2.jpg 400w,
 /static/9b73baeaf6c79efe075f19dc67315837/a18e1/scope2.jpg 612w&quot;
         sizes=&quot;(max-width: 612px) 100vw, 612px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -834,14 +1103,14 @@ html태그만으로 쉽게 작성이 가능하다는 점에서 사용성이 좋�
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 12.222222222222221%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAByyFRNf/EABcQAAMBAAAAAAAAAAAAAAAAAAECEDL/2gAIAQEAAQUCTJn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAABEQAQ/9oACAEBAAE/ISIpgU5//9oADAMBAAIAAwAAABCD3//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ECf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAgMBAAAAAAAAAAAAAAABAGERIVGR/9oACAEBAAE/EEIFsuE1HkwcJ//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 12%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAByyFRNf/EABcQAAMBAAAAAAAAAAAAAAAAAAECEDL/2gAIAQEAAQUCTJn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAABEQAQ/9oACAEBAAE/ISIpgU5//9oADAMBAAIAAwAAABCD3//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ECf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAgMBAAAAAAAAAAAAAAABAGERIVGR/9oACAEBAAE/EEIFsuE1HkwcJ//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scroll-move.jpg&quot;
         title=&quot;scroll-move.jpg&quot;
         src=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/d4da3/scroll-move.jpg&quot;
-        srcset=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/4ec73/scroll-move.jpg 180w,
+        srcset=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/e07e9/scroll-move.jpg 200w,
 /static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/d4da3/scroll-move.jpg 231w&quot;
         sizes=&quot;(max-width: 231px) 100vw, 231px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -1019,14 +1288,14 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 128.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABzZYAWAB//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQJP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGBABAQADAAAAAAAAAAAAAAAAEAEAMUH/2gAIAQEAAT8hYzLs4//aAAwDAQACAAMAAAAQEAYA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAARARACFRMWFx/9oACAEBAAE/ELoxbg3YqGOnTcee9HXPYPyBbFtcn//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 128.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABzZYAWAB//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQJP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGBABAQADAAAAAAAAAAAAAAAAEAEAMUH/2gAIAQEAAT8hYzLs4//aAAwDAQACAAMAAAAQEAYA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAARARACFRMWFx/9oACAEBAAE/ELoxbg3YqGOnTcee9HXPYPyBbFtcn//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;modal-1.jpg&quot;
         title=&quot;modal-1.jpg&quot;
         src=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg&quot;
-        srcset=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/4ec73/modal-1.jpg 180w,
+        srcset=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/e07e9/modal-1.jpg 200w,
 /static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg 205w&quot;
         sizes=&quot;(max-width: 205px) 100vw, 205px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -1254,22 +1523,22 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 &lt;h2 id=&quot;반응형-vs-적응형&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B0%98%EC%9D%91%ED%98%95-vs-%EC%A0%81%EC%9D%91%ED%98%95&quot; aria-label=&quot;반응형 vs 적응형 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;반응형 vs 적응형&lt;/h2&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 37.77777777777778%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjElEQVQozx2PW0wSABiFf1FXM3vy1afWWw/NuTWrh2qt0pXmaoqz2qhVD2qFMtKYkwQcaYEEWAnKTOUihnIT5GYbJIgpXkbqhhdQ8QJFE41Sp3/g2c7Ow9n/7T+wZWhIiRpYENEzyVELP7YzJNjYNrKGHK3PU+e7ymFroB5IJBK0GEfgTb8VWCpTusg0PtNpnwt12DwB0aBLI3dM+CUWd2OPfXwOwtpXqavaWoipnzFCvUW42UXEoJwcQAQCOssh2lMGJbJtYKjd0Go9gA+DeLJObTho+tKOVd0O7NOzJunmPBSZiqRh9WkExAAB49fTf7HUG17SexZ9uokINglmMAPiSnQUGuMoIQ2Sw+6RzFh0QfxzyazfXFuX4mIb870tV6IeLiSiKZMDGqkYLLwK6kxn9eGikrnk62UGg3JqxN1KdsZ5SQmogktLipSeOILWi+R975S23/w+++p7lSXAVVpjDIGaIXV+AhxPfBD30OtceoR9Fve4Wbgb9yY7C201F1fyHlEzzxBpcK6AlFiRjIFraffY7V/v8DRYItRhsUCLtxpkSKzmGIYBUvpVlOPgE5QuB4XFyy5eIfpcNAw7magVVh/4OfkoptylDlAuQT4A4Qm7TUJpM/rLhepfNV0dOOHhoNH8GZkSySFTIdq9WvDw/KnL1wFWB8owpK3E0Z63+2OTLt+YdzZi76xbC6juo0342Geilh3biU9tVOm8IrMCmzUWFGmt6/Nex8aU270sk+X/qzXcxJaPVe2V6QsE8O/v1gRi+y9/hPHp9+HRHLfLk9PM5xKlgzpRt6J7WsxjZ4RCmBrbWnuAe7MV+GedHFoJ3rZ9m7pgNjqz6XU3XtD5Bcp+/hVNWvZG8n+oAYYcGeCfbgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 37.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjElEQVQozx2PW0wSABiFf1FXM3vy1afWWw/NuTWrh2qt0pXmaoqz2qhVD2qFMtKYkwQcaYEEWAnKTOUihnIT5GYbJIgpXkbqhhdQ8QJFE41Sp3/g2c7Ow9n/7T+wZWhIiRpYENEzyVELP7YzJNjYNrKGHK3PU+e7ymFroB5IJBK0GEfgTb8VWCpTusg0PtNpnwt12DwB0aBLI3dM+CUWd2OPfXwOwtpXqavaWoipnzFCvUW42UXEoJwcQAQCOssh2lMGJbJtYKjd0Go9gA+DeLJObTho+tKOVd0O7NOzJunmPBSZiqRh9WkExAAB49fTf7HUG17SexZ9uokINglmMAPiSnQUGuMoIQ2Sw+6RzFh0QfxzyazfXFuX4mIb870tV6IeLiSiKZMDGqkYLLwK6kxn9eGikrnk62UGg3JqxN1KdsZ5SQmogktLipSeOILWi+R975S23/w+++p7lSXAVVpjDIGaIXV+AhxPfBD30OtceoR9Fve4Wbgb9yY7C201F1fyHlEzzxBpcK6AlFiRjIFraffY7V/v8DRYItRhsUCLtxpkSKzmGIYBUvpVlOPgE5QuB4XFyy5eIfpcNAw7magVVh/4OfkoptylDlAuQT4A4Qm7TUJpM/rLhepfNV0dOOHhoNH8GZkSySFTIdq9WvDw/KnL1wFWB8owpK3E0Z63+2OTLt+YdzZi76xbC6juo0342Geilh3biU9tVOm8IrMCmzUWFGmt6/Nex8aU270sk+X/qzXcxJaPVe2V6QsE8O/v1gRi+y9/hPHp9+HRHLfLk9PM5xKlgzpRt6J7WsxjZ4RCmBrbWnuAe7MV+GedHFoJ3rZ9m7pgNjqz6XU3XtD5Bcp+/hVNWvZG8n+oAYYcGeCfbgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;rwd-awd.png&quot;
         title=&quot;rwd-awd.png&quot;
-        src=&quot;/static/c39e66eea6555aec136389d7bf806b8f/37523/rwd-awd.png&quot;
-        srcset=&quot;/static/c39e66eea6555aec136389d7bf806b8f/e9ff0/rwd-awd.png 180w,
-/static/c39e66eea6555aec136389d7bf806b8f/f21e7/rwd-awd.png 360w,
-/static/c39e66eea6555aec136389d7bf806b8f/37523/rwd-awd.png 720w,
+        src=&quot;/static/c39e66eea6555aec136389d7bf806b8f/5a190/rwd-awd.png&quot;
+        srcset=&quot;/static/c39e66eea6555aec136389d7bf806b8f/772e8/rwd-awd.png 200w,
+/static/c39e66eea6555aec136389d7bf806b8f/e17e5/rwd-awd.png 400w,
+/static/c39e66eea6555aec136389d7bf806b8f/5a190/rwd-awd.png 800w,
 /static/c39e66eea6555aec136389d7bf806b8f/e088a/rwd-awd.png 1015w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1280,23 +1549,22 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 과거의 웹을 사용하는 주요기기는 컴퓨터였으며, 모니터에 맞춰 화면의 크기와 레이아웃이 구성되었다. 2007년 애플사에서 아이폰을 출시하면서 스마트폰의 시대가 열렸고, 어디서든 손쉽게 웹사이트에 접근할 수 있게 되었다. 하지만 아래의 사진처럼 문제가 발생하였다. &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 61.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAEhDLUMk4//xAAcEAACAgIDAAAAAAAAAAAAAAAAAgMRAQQSEzH/2gAIAQEAAQUCSO32oFReGTw7HkKP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGhAAAgIDAAAAAAAAAAAAAAAAABECEAEicf/aAAgBAQAGPwKPTCbdM3k6/8QAGxABAAIDAQEAAAAAAAAAAAAAAQAxESFREGH/2gAIAQEAAT8hYTSITP6ueGKLNkoITewmPJ//2gAMAwEAAgADAAAAECQ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oACAECAQE/EENsL//EAB0QAQACAgIDAAAAAAAAAAAAAAEAIRExEIFRYXH/2gAIAQEAAT8QIuifixWVWHnRvueqBem88JNHAABh6OF//9k=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 62%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAEhDLUMk4//xAAcEAACAgIDAAAAAAAAAAAAAAAAAgMRAQQSEzH/2gAIAQEAAQUCSO32oFReGTw7HkKP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGhAAAgIDAAAAAAAAAAAAAAAAABECEAEicf/aAAgBAQAGPwKPTCbdM3k6/8QAGxABAAIDAQEAAAAAAAAAAAAAAQAxESFREGH/2gAIAQEAAT8hYTSITP6ueGKLNkoITewmPJ//2gAMAwEAAgADAAAAECQ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAR/9oACAECAQE/EENsL//EAB0QAQACAgIDAAAAAAAAAAAAAAEAIRExEIFRYXH/2gAIAQEAAT8QIuifixWVWHnRvueqBem88JNHAABh6OF//9k=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;steveJobsIPhone.jpg&quot;
         title=&quot;steveJobsIPhone.jpg&quot;
-        src=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/80e3c/steveJobsIPhone.jpg&quot;
-        srcset=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/4ec73/steveJobsIPhone.jpg 180w,
-/static/e8d45910e5b006f9f26ab63a3422fbaa/158ba/steveJobsIPhone.jpg 360w,
-/static/e8d45910e5b006f9f26ab63a3422fbaa/80e3c/steveJobsIPhone.jpg 720w,
-/static/e8d45910e5b006f9f26ab63a3422fbaa/47311/steveJobsIPhone.jpg 1080w,
+        src=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/4b190/steveJobsIPhone.jpg&quot;
+        srcset=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/e07e9/steveJobsIPhone.jpg 200w,
+/static/e8d45910e5b006f9f26ab63a3422fbaa/066f9/steveJobsIPhone.jpg 400w,
+/static/e8d45910e5b006f9f26ab63a3422fbaa/4b190/steveJobsIPhone.jpg 800w,
 /static/e8d45910e5b006f9f26ab63a3422fbaa/f4296/steveJobsIPhone.jpg 1146w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1339,7 +1607,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1349,12 +1617,12 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;rwd.png&quot;
         title=&quot;rwd.png&quot;
-        src=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/37523/rwd.png&quot;
-        srcset=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/e9ff0/rwd.png 180w,
-/static/3a41d726b2ab5934b454d5fb92fb34fe/f21e7/rwd.png 360w,
-/static/3a41d726b2ab5934b454d5fb92fb34fe/37523/rwd.png 720w,
+        src=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/5a190/rwd.png&quot;
+        srcset=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/772e8/rwd.png 200w,
+/static/3a41d726b2ab5934b454d5fb92fb34fe/e17e5/rwd.png 400w,
+/static/3a41d726b2ab5934b454d5fb92fb34fe/5a190/rwd.png 800w,
 /static/3a41d726b2ab5934b454d5fb92fb34fe/eba85/rwd.png 1054w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1535,24 +1803,24 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;h3 id=&quot;html5에-추가된-시맨틱-태그&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#html5%EC%97%90-%EC%B6%94%EA%B0%80%EB%90%9C-%EC%8B%9C%EB%A7%A8%ED%8B%B1-%ED%83%9C%EA%B7%B8&quot; aria-label=&quot;html5에 추가된 시맨틱 태그 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;HTML5에 추가된 시맨틱 태그&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAF3LRQUTQf/xAAaEAEAAgMBAAAAAAAAAAAAAAADAQIABBIU/9oACAEBAAEFAtq6Q3b4EzYX17onlXCrwX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAADAAEFAQAAAAAAAAAAAAAAAQIREiExMjNB/9oACAEBAAY/AsTbSwetEN7vBqlrg7STL+H/xAAaEAEBAQEBAQEAAAAAAAAAAAABEQAhYXHR/9oACAEBAAE/IYposJ7kpenzOXTp0CZB3Ky8fX8zshRGb//aAAwDAQACAAMAAAAQk8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEBAQADAQEAAAAAAAAAAAABEQAhMWFR0f/aAAgBAQABPxB7NwYq8uTzIw4px+ctMdTtc3dUjRpfh7laUQwGQdOi7//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 68.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAF3LRQUTQf/xAAaEAEAAgMBAAAAAAAAAAAAAAADAQIABBIU/9oACAEBAAEFAtq6Q3b4EzYX17onlXCrwX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAADAAEFAQAAAAAAAAAAAAAAAQIREiExMjNB/9oACAEBAAY/AsTbSwetEN7vBqlrg7STL+H/xAAaEAEBAQEBAQEAAAAAAAAAAAABEQAhYXHR/9oACAEBAAE/IYposJ7kpenzOXTp0CZB3Ky8fX8zshRGb//aAAwDAQACAAMAAAAQk8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEBAQADAQEAAAAAAAAAAAABEQAhMWFR0f/aAAgBAQABPxB7NwYq8uTzIw4px+ctMdTtc3dUjRpfh7laUQwGQdOi7//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;semantic-tag.jpg&quot;
         title=&quot;semantic-tag.jpg&quot;
-        src=&quot;/static/2f0cc34769189625444beb282f7fe25b/80e3c/semantic-tag.jpg&quot;
-        srcset=&quot;/static/2f0cc34769189625444beb282f7fe25b/4ec73/semantic-tag.jpg 180w,
-/static/2f0cc34769189625444beb282f7fe25b/158ba/semantic-tag.jpg 360w,
-/static/2f0cc34769189625444beb282f7fe25b/80e3c/semantic-tag.jpg 720w,
-/static/2f0cc34769189625444beb282f7fe25b/47311/semantic-tag.jpg 1080w,
-/static/2f0cc34769189625444beb282f7fe25b/644c5/semantic-tag.jpg 1440w,
+        src=&quot;/static/2f0cc34769189625444beb282f7fe25b/4b190/semantic-tag.jpg&quot;
+        srcset=&quot;/static/2f0cc34769189625444beb282f7fe25b/e07e9/semantic-tag.jpg 200w,
+/static/2f0cc34769189625444beb282f7fe25b/066f9/semantic-tag.jpg 400w,
+/static/2f0cc34769189625444beb282f7fe25b/4b190/semantic-tag.jpg 800w,
+/static/2f0cc34769189625444beb282f7fe25b/e5166/semantic-tag.jpg 1200w,
+/static/2f0cc34769189625444beb282f7fe25b/b17f8/semantic-tag.jpg 1600w,
 /static/2f0cc34769189625444beb282f7fe25b/bdcd6/semantic-tag.jpg 1662w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1570,24 +1838,23 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:#99f&quot;&gt;Non-Semantic elements&lt;/span&gt; - Naver&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 97.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAECAwQF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB7eDZkquIkAP/xAAbEAACAQUAAAAAAAAAAAAAAAABAhEDEhMgQf/aAAgBAQABBQI3S9XEEYOvYB1//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAHBAAAQMFAAAAAAAAAAAAAAAAAQARIQIDIDFB/9oACAEBAAY/AoZPcI3DIVDuf//EABoQAQEBAAMBAAAAAAAAAAAAAAEAERAhMZH/2gAIAQEAAT8hPb9pMFHGCykaRY+gGADCfef/2gAMAwEAAgADAAAAECAHPP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/ECP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAdEAEBAAIBBQAAAAAAAAAAAAABEQAhMRBBUWGR/9oACAEBAAE/EAKEk53Cd6rsl38wjQqIS5KdT3gIFGylwEABwGAd8h4On//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 97.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAECAwQF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB7eDZkquIkAP/xAAbEAACAQUAAAAAAAAAAAAAAAABAhEDEhMgQf/aAAgBAQABBQI3S9XEEYOvYB1//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAHBAAAQMFAAAAAAAAAAAAAAAAAQARIQIDIDFB/9oACAEBAAY/AoZPcI3DIVDuf//EABoQAQEBAAMBAAAAAAAAAAAAAAEAERAhMZH/2gAIAQEAAT8hPb9pMFHGCykaRY+gGADCfef/2gAMAwEAAgADAAAAECAHPP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/ECP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAdEAEBAAIBBQAAAAAAAAAAAAABEQAhMRBBUWGR/9oACAEBAAE/EAKEk53Cd6rsl38wjQqIS5KdT3gIFGylwEABwGAd8h4On//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;naver-markup.jpg&quot;
         title=&quot;naver-markup.jpg&quot;
-        src=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/80e3c/naver-markup.jpg&quot;
-        srcset=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/4ec73/naver-markup.jpg 180w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/158ba/naver-markup.jpg 360w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/80e3c/naver-markup.jpg 720w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/47311/naver-markup.jpg 1080w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/644c5/naver-markup.jpg 1440w,
+        src=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/4b190/naver-markup.jpg&quot;
+        srcset=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/e07e9/naver-markup.jpg 200w,
+/static/bd495477b6f10a5dc19ef396c9e8ec9f/066f9/naver-markup.jpg 400w,
+/static/bd495477b6f10a5dc19ef396c9e8ec9f/4b190/naver-markup.jpg 800w,
+/static/bd495477b6f10a5dc19ef396c9e8ec9f/e5166/naver-markup.jpg 1200w,
 /static/bd495477b6f10a5dc19ef396c9e8ec9f/09f78/naver-markup.jpg 1488w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1596,23 +1863,23 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:#99f&quot;&gt;Semantic elements&lt;/span&gt; - 레진 코믹스&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 122.77777777777779%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB25faFLQKpTHEh//EABkQAAMAAwAAAAAAAAAAAAAAAAECAxAgQf/aAAgBAQABBQKrMGelQ0CTLPdf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQARAjCB/9oACAEBAAY/AsqXkC2Ct6v/xAAfEAEAAgEDBQAAAAAAAAAAAAABABEhEDFRIEFhodH/2gAIAQEAAT8hCxnAr3zEA4m1bxESVykveoLRz30xb5DxM9H/2gAMAwEAAgADAAAAEEfHQP/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QlBWr/8QAFREBAQAAAAAAAAAAAAAAAAAAIHH/2gAIAQIBAT8Qo//EABwQAQEAAwEAAwAAAAAAAAAAAAERACExQSBRkf/aAAgBAQABPxBVhQNBQ2R6xVGoxJ7dOXAsAHrlBau0LiXYKQPPvB1i9U3gDGPyYA9+H//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 122.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB25faFLQKpTHEh//EABkQAAMAAwAAAAAAAAAAAAAAAAECAxAgQf/aAAgBAQABBQKrMGelQ0CTLPdf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQARAjCB/9oACAEBAAY/AsqXkC2Ct6v/xAAfEAEAAgEDBQAAAAAAAAAAAAABABEhEDFRIEFhodH/2gAIAQEAAT8hCxnAr3zEA4m1bxESVykveoLRz30xb5DxM9H/2gAMAwEAAgADAAAAEEfHQP/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QlBWr/8QAFREBAQAAAAAAAAAAAAAAAAAAIHH/2gAIAQIBAT8Qo//EABwQAQEAAwEAAwAAAAAAAAAAAAERACExQSBRkf/aAAgBAQABPxBVhQNBQ2R6xVGoxJ7dOXAsAHrlBau0LiXYKQPPvB1i9U3gDGPyYA9+H//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;lezhin-markup.jpg&quot;
         title=&quot;lezhin-markup.jpg&quot;
-        src=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/80e3c/lezhin-markup.jpg&quot;
-        srcset=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/4ec73/lezhin-markup.jpg 180w,
-/static/296b86fc49d15b5a41fa9ef0ed6c73b7/158ba/lezhin-markup.jpg 360w,
-/static/296b86fc49d15b5a41fa9ef0ed6c73b7/80e3c/lezhin-markup.jpg 720w,
-/static/296b86fc49d15b5a41fa9ef0ed6c73b7/47311/lezhin-markup.jpg 1080w,
+        src=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/4b190/lezhin-markup.jpg&quot;
+        srcset=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/e07e9/lezhin-markup.jpg 200w,
+/static/296b86fc49d15b5a41fa9ef0ed6c73b7/066f9/lezhin-markup.jpg 400w,
+/static/296b86fc49d15b5a41fa9ef0ed6c73b7/4b190/lezhin-markup.jpg 800w,
+/static/296b86fc49d15b5a41fa9ef0ed6c73b7/e5166/lezhin-markup.jpg 1200w,
 /static/296b86fc49d15b5a41fa9ef0ed6c73b7/2c3a2/lezhin-markup.jpg 1402w&quot;
-        sizes=&quot;(max-width: 720px) 100vw, 720px&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
