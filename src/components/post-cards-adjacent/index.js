@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import Utterances from '../Utterances';
 import Phrygia from '../../../assets/phrygia.jpg';
 
 import './style.scss';

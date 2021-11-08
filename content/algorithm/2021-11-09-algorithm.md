@@ -22,7 +22,7 @@ categories: js algorithm
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-1.jpg](2021-10-22-algorithm-1.jpg)
+![2021-11-09-algorithm-1.jpg](2021-11-09-algorithm-1.jpg)
 
 </div><br><br>
 
@@ -47,7 +47,7 @@ function solution(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-2.jpg](2021-10-22-algorithm-2.jpg)
+![2021-11-09-algorithm-2.jpg](2021-11-09-algorithm-2.jpg)
 
 </div><br><br>
 
@@ -86,7 +86,7 @@ function solution(left, right) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-4.jpg](2021-10-22-algorithm-4.jpg)
+![2021-11-09-algorithm-4.jpg](2021-11-09-algorithm-4.jpg)
 
 </div><br><br>
 
@@ -162,7 +162,7 @@ function solution(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-5.jpg](2021-10-22-algorithm-5.jpg)
+![2021-11-09-algorithm-5.jpg](2021-11-09-algorithm-5.jpg)
 
 </div><br><br>
 
@@ -213,7 +213,7 @@ function solution(numbers) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-6.jpg](2021-10-22-algorithm-6.jpg)
+![2021-11-09-algorithm-6.jpg](2021-11-09-algorithm-6.jpg)
 
 </div><br><br>
 
@@ -251,7 +251,7 @@ function isPrime(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-7.jpg](2021-10-22-algorithm-7.jpg)
+![2021-11-09-algorithm-7.jpg](2021-11-09-algorithm-7.jpg)
 
 </div><br><br>
 
@@ -308,7 +308,7 @@ function gcdlcm(a, b) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-10-22-algorithm-3.jpg](2021-10-22-algorithm-3.jpg)
+![2021-11-09-algorithm-3.jpg](2021-11-09-algorithm-3.jpg)
 
 </div><br><br>
 
