@@ -39,9 +39,6 @@ const PostCardsAdjacent = ({ prevPost, nextPost }) => {
           </div>
         </div>
       </div>
-      <div id="utterances_thread">
-        <Utterances />
-      </div>
     </>
   );
 };

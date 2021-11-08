@@ -9,7 +9,6 @@ categories: react
 
 개인 포트폴리오 프로젝트 중 하나를 firebase를 이용하여 채팅앱을 만들었다. firebase를 이용하여 만들었으니 배포까지 해보자. <a href="https://firebase.google.com/" target="_blank">google firebase</a>에서 프로젝트를 만들어 앱에 연결된 상태이고 **build까지 완료**된 상태다. <br><br>
 
-
 ## 1. CLI 설치 및 firebase 로그인
 
 ```js
@@ -20,10 +19,12 @@ yarn add firebase-tools
 // firebase 로그인
 firebase login
 ```
+
 <br>
 
 터미널 창에서 위 코드를 입력하고 로그인을 하면 `Allow Firebase to collect CLI usage and error reporting information?`가 뜨면 Y를 입력하고 구글 계정을 선택하여 로그인한다.<br>
 
+![](firebase1.png)
 ![firebase1.png](firebase1.png)
 
 로그인이 완료되면 Success! 문구가 뜬다.<br><br>
@@ -70,9 +71,11 @@ firebase init
 <br><br>
 
 ## 3. firebase 배포하기
+
 ```js
 firebase deploy
 ```
+
 <br>
 
 Deploy complete가 완료되면 자신의 firebase URL이 나타난다. <br>
@@ -86,13 +89,12 @@ Deploy complete가 완료되면 자신의 firebase URL이 나타난다. <br>
 
 <br><br>
 
-## *Firebase Hosting Setup Complete이 뜬다면?
+## \*Firebase Hosting Setup Complete이 뜬다면?
 
 ![firebase9.jpg](firebase9.jpg)<br>
 난 처음에 Firebase Hosting Setup Complete이 계속 떴었는데 `What do you want to use as your public directory?`에서 public을 입력하라는 글을 보고 따라했던게 원인인 것 같다. build로 입력하고 배포하니 정상적으로 작동했다.<br><br><br>
 
-
-***알 수 없는 오류발생** <br>
+**\*알 수 없는 오류발생** <br>
 로컬 파일에서는 채팅을 보내면 정상적으로 작동하는데 배포한 프로젝트에서는 저부분에 오류가 발생했다.<br><br>
 
 **&nbsp;&nbsp;로컬 화면 - 정상작동**
