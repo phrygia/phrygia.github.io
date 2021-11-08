@@ -1,7 +1,7 @@
 ---
 emoji: 📓
 title: '[algorithm] 약수, 소수, 최대공약수, 최소공배수'
-date: '2021-11-09 12:56:00'
+date: '2021-11-09 00:56:00'
 author: phrygia
 tags: js posts
 categories: js algorithm
