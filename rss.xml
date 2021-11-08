@@ -1,7 +1,404 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 30 Oct 2021 16:03:15 GMT</lastBuildDate><item><title><![CDATA[[javascript] var, let, const]]></title><description><![CDATA[var 선언한 변수의 문제점 ES6의 let과 const가 생기기 전에 변수를 선언할 수 있는 유일한 방법은 var를 사용하는 것이었다. var로 선언된 변수는 다른 언어와는 구별되는 독특한 특징을 가지고 있다.  1. 변수 중복 선언 허용 var…]]></description><link>https://phrygia.github.io/2021-10-30-var-let-const/</link><guid isPermaLink="false">https://phrygia.github.io/2021-10-30-var-let-const/</guid><pubDate>Sat, 30 Oct 2021 16:01:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 457px; &quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Nov 2021 16:13:25 GMT</lastBuildDate><item><title><![CDATA[[algorithm] 약수, 소수, 최대공약수, 최소공배수]]></title><description><![CDATA[…]]></description><link>https://phrygia.github.io/algorithm/2021-11-09-algorithm/</link><guid isPermaLink="false">https://phrygia.github.io/algorithm/2021-11-09-algorithm/</guid><pubDate>Mon, 08 Nov 2021 15:56:00 GMT</pubDate><content:encoded>&lt;p&gt;프로그래머스에서 자바스크립트 알고리즘 문제를 풀다보면 간간히 접하게 되는 수학관련 문제들이 있다.
+그 중 자연수와 관련된(약수, 소수, 최대공약수, 최소공배수) 문제들이 있었는데 이에 대한 이론을 정리하고 프로그래머스 코딩테스트 연습에 나오는 문제들을 풀어보면서 정확한 개념을 터득하고자 정리해 보았다. &lt;br&gt;
+(문제 - 약수의 합, 약수의 개수와 덧셈, 소수 만들기, 소수 찾기, 최대공약수와 최소공배수, N개의 최소공배수)
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-약수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EC%95%BD%EC%88%98&quot; aria-label=&quot;1 약수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 약수&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;약수란 무엇인가?&lt;/strong&gt; &lt;br&gt;
+    &lt;u&gt;어떤 수를 나머지가 없이 나누어떨어지게 하는 수를 그 수의 약수라고 한다.&lt;/u&gt; &lt;br&gt;
+    예를 들면 8을 1, 2, 4, 8로 나누면 나머지가 없다. 이때 1, 2, 4, 8을 8의 약수라고 한다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 약수의 합&lt;/strong&gt; &lt;br&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 607px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnZsqANQID/8QAFhAAAwAAAAAAAAAAAAAAAAAAEBEg/9oACAEBAAEFAiq//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBAAAgMAAAAAAAAAAAAAAAAAARARIDH/2gAIAQEAAT8hOswoV//aAAwDAQACAAMAAAAQXzDD/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHhABAAICAQUAAAAAAAAAAAAAAQAREEEhMWGBkbH/2gAIAQEAAT8QQ2U+xex6i3oljhfMStmCdeP/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-1.jpg&quot;
+        title=&quot;2021-11-09-algorithm-1.jpg&quot;
+        src=&quot;/static/4c9655dd93af4eb0160b4d0db5aa2fd3/92d6d/2021-11-09-algorithm-1.jpg&quot;
+        srcset=&quot;/static/4c9655dd93af4eb0160b4d0db5aa2fd3/f93b5/2021-11-09-algorithm-1.jpg 300w,
+/static/4c9655dd93af4eb0160b4d0db5aa2fd3/b4294/2021-11-09-algorithm-1.jpg 600w,
+/static/4c9655dd93af4eb0160b4d0db5aa2fd3/92d6d/2021-11-09-algorithm-1.jpg 607w&quot;
+        sizes=&quot;(max-width: 607px) 100vw, 607px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; answer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;un&gt;
+&lt;small class=&quot;from&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/12928?language=javascript&lt;/small&gt; &lt;br&gt;
+&lt;p&gt;&lt;strong&gt;2. 약수의 개수와 덧셈&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 664px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 172.66666666666669%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAjABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAHOkawBKKCUEB//xAAWEAADAAAAAAAAAAAAAAAAAAABEDD/2gAIAQEAAQUCqV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/An//xAAZEAEAAwEBAAAAAAAAAAAAAAARAAEQYSH/2gAIAQEAAT8heR5lr7rHHkcKlDP/2gAMAwEAAgADAAAAEC87g/w//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxBf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxBf/8QAGxABAAIDAQEAAAAAAAAAAAAAAQARECFBUWH/2gAIAQEAAT8QQt0X27lPEW+BCNAOVm7GvZZOYT8c1EJq8XBqACisf//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-2.jpg&quot;
+        title=&quot;2021-11-09-algorithm-2.jpg&quot;
+        src=&quot;/static/4ddba2cda63c4c25b40e35c9b99479a6/3517e/2021-11-09-algorithm-2.jpg&quot;
+        srcset=&quot;/static/4ddba2cda63c4c25b40e35c9b99479a6/f93b5/2021-11-09-algorithm-2.jpg 300w,
+/static/4ddba2cda63c4c25b40e35c9b99479a6/b4294/2021-11-09-algorithm-2.jpg 600w,
+/static/4ddba2cda63c4c25b40e35c9b99479a6/3517e/2021-11-09-algorithm-2.jpg 664w&quot;
+        sizes=&quot;(max-width: 664px) 100vw, 664px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;left&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; right&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; left&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; right&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; count&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;count &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; answer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript&lt;/a&gt;&lt;/small&gt;
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-소수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EC%86%8C%EC%88%98&quot; aria-label=&quot;2 소수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 소수&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;소수란 무엇인가?&lt;/strong&gt; &lt;br&gt;
+    &lt;u&gt;소수는 1보다 큰 정수이며, 1과 자기 자신으로만 나누어지는 수다. (나머지가 0인 경우)&lt;/u&gt; &lt;br&gt;
+    1, 2, 4, 5를 예를 들어보자. 1은 1보다 큰 정수가 아니다. &lt;br&gt;
+    2는 1과 2이외의 자연수로 나눌 수 없으므로 소수다. &lt;br&gt;
+    4는 1과 4이외에도 2로 나누는 것이 가능하므로 소수가 아니다.&lt;br&gt;
+    5는 1과 5 이외의 자연수로 나눌 수 없으므로 소수다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 소수 찾기&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 644px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 91.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAASABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDQMg//8QAFhAAAwAAAAAAAAAAAAAAAAAAARAg/9oACAEBAAEFArK//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBAAAgMAAAAAAAAAAAAAAAAAAYEAECD/2gAIAQEAAT8hMVEPT//aAAwDAQACAAMAAAAQHzjD/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAAQAxEBEhQVFh/9oACAEBAAE/EFt6C+1i/EXfgijcIlmLvsHDH//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-4.jpg&quot;
+        title=&quot;2021-11-09-algorithm-4.jpg&quot;
+        src=&quot;/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/51442/2021-11-09-algorithm-4.jpg&quot;
+        srcset=&quot;/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/f93b5/2021-11-09-algorithm-4.jpg 300w,
+/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/b4294/2021-11-09-algorithm-4.jpg 600w,
+/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/51442/2021-11-09-algorithm-4.jpg 644w&quot;
+        sizes=&quot;(max-width: 644px) 100vw, 644px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이1&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; isPrime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; isPrime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;isPrime&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; answer&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; answer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;으로 풀었으나 타임아웃이 발생했다. &lt;br&gt;&lt;br&gt;
+&lt;strong&gt;문제풀이2 - 에라토스네테스의 체&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; arr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        arr&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;풀이참고: &lt;a href=&quot;https://velog.io/@jakeseo_me/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-14-%EC%86%8C%EC%88%98-%EC%B0%BE%EA%B8%B0-%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98-%EC%B2%B4&quot; target=&quot;_blank&quot;&gt;코딩테스트 #14 소수 찾기 (에라토스테네스의 체)&lt;/a&gt;&lt;/small&gt; &lt;br&gt;
+&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4&quot; target=&quot;_blank&quot;&gt;에라토스네테스의 체&lt;/a&gt;는 각 수의 배수에 해당하는 수는 소수가 아니므로 지운다. 예를 들어 3, 6, 9가 있다면 6, 9는 3의 배수이므로 제외시키면 소수만 남는다. 체로 걸르듯 배수와 제곱수는 일단 소수가 아니므로 제거하는 작업이다.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이3 - Set&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; s &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; k &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; k &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; k &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; j&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;k&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;프로그래머스 해설에서 본 문제풀이로 set을 이용한 풀이다.&lt;/p&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12921?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/12921?language=javascript&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 소수 찾기&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDWQA//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAgIDAAAAAAAAAAAAAAAAARAAESEx8P/aAAgBAQABPyEzHBWZa2//2gAMAwEAAgADAAAAEN8/w//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EAB0QAQACAgIDAAAAAAAAAAAAAAEAESExEFFBcbH/2gAIAQEAAT8QouRXurjTxCi4iTQJ7Ip384rfvuO8cf/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-5.jpg&quot;
+        title=&quot;2021-11-09-algorithm-5.jpg&quot;
+        src=&quot;/static/28f40d6170884dfe3d3864ee706b61a3/b9a87/2021-11-09-algorithm-5.jpg&quot;
+        srcset=&quot;/static/28f40d6170884dfe3d3864ee706b61a3/f93b5/2021-11-09-algorithm-5.jpg 300w,
+/static/28f40d6170884dfe3d3864ee706b61a3/b4294/2021-11-09-algorithm-5.jpg 600w,
+/static/28f40d6170884dfe3d3864ee706b61a3/b9a87/2021-11-09-algorithm-5.jpg 666w&quot;
+        sizes=&quot;(max-width: 666px) 100vw, 666px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; n &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; numbers&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; nums &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;combi&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;combi&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; s&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;nums&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          nums&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;chkPrime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; answer&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; t &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          t&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;token function&quot;&gt;combi&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;t&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; s &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chkPrime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; answer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42839?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/42839?language=javascript&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. 소수 만들기&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnzKoqDeAA/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFhAAAwAAAAAAAAAAAAAAAAAAADAx/9oACAEBAAY/AiI//8QAGxAAAgEFAAAAAAAAAAAAAAAAARAAESExcYH/2gAIAQEAAT8h5VDqHLs//9oADAMBAAIAAwAAABBsOMP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAcEAEAAgIDAQAAAAAAAAAAAAABACERMRBBkVH/2gAIAQEAAT8QUXOGXayg09ivQhSwX85tjfsd8f/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-6.jpg&quot;
+        title=&quot;2021-11-09-algorithm-6.jpg&quot;
+        src=&quot;/static/af6d9d0aed041e5fdd97ef18676104a9/b9a87/2021-11-09-algorithm-6.jpg&quot;
+        srcset=&quot;/static/af6d9d0aed041e5fdd97ef18676104a9/f93b5/2021-11-09-algorithm-6.jpg 300w,
+/static/af6d9d0aed041e5fdd97ef18676104a9/b4294/2021-11-09-algorithm-6.jpg 600w,
+/static/af6d9d0aed041e5fdd97ef18676104a9/b9a87/2021-11-09-algorithm-6.jpg 666w&quot;
+        sizes=&quot;(max-width: 666px) 100vw, 666px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; cnt &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; nums&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; nums&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; j&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; w &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; w &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; nums&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; w&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;isPrime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;nums&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; nums&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; nums&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;w&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; cnt&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; cnt&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 소수 판별 함수&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isPrime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12977?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/12977?language=javascript&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;3-최대공약수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98&quot; aria-label=&quot;3 최대공약수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 최대공약수&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;6. 최대공약수와 최소공배수&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 86.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDYMA//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAgIDAAAAAAAAAAAAAAAAAREAMRAgUf/aAAgBAQABPyE3UY5ghbf/2gAMAwEAAgADAAAAEM83w//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABsQAQADAAMBAAAAAAAAAAAAAAEAETEQIWGB/9oACAEBAAE/EEaF+s8fxii4Et9K3K4MhsdZ/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-7.jpg&quot;
+        title=&quot;2021-11-09-algorithm-7.jpg&quot;
+        src=&quot;/static/e9e17b9d09f0d1eae7fa49993cef77d6/b9a87/2021-11-09-algorithm-7.jpg&quot;
+        srcset=&quot;/static/e9e17b9d09f0d1eae7fa49993cef77d6/f93b5/2021-11-09-algorithm-7.jpg 300w,
+/static/e9e17b9d09f0d1eae7fa49993cef77d6/b4294/2021-11-09-algorithm-7.jpg 600w,
+/static/e9e17b9d09f0d1eae7fa49993cef77d6/b9a87/2021-11-09-algorithm-7.jpg 666w&quot;
+        sizes=&quot;(max-width: 666px) 100vw, 666px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이1 - 프로그래머스(유클리드 호제법)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;greatest&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greatest&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;least&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greatest&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;greatest&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;least&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이2 - 프로그래머스&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greatestCommonDivisor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greatestCommonDivisor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;leastCommonMultipleOfTwo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greatestCommonDivisor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcdlcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;greatestCommonDivisor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;leastCommonMultipleOfTwo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이3 - 프로그래머스&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcdlcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; r&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ab &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ab &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12940?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/12940?language=javascript&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;4-최소공배수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98&quot; aria-label=&quot;4 최소공배수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. 최소공배수&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;7. N개의 최소공배수&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnzKoqD//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAAMAAwAAAAAAAAAAAAAAAAABERBRgf/aAAgBAQABPyHlKtDLn//aAAwDAQACAAMAAAAQDD//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAZEAEAAgMAAAAAAAAAAAAAAAABABEQIYH/2gAIAQEAAT8QUW+0pZQuiiKXP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;2021-11-09-algorithm-3.jpg&quot;
+        title=&quot;2021-11-09-algorithm-3.jpg&quot;
+        src=&quot;/static/b3f248b27aec72da7fb7a55b45cb6f1f/b9a87/2021-11-09-algorithm-3.jpg&quot;
+        srcset=&quot;/static/b3f248b27aec72da7fb7a55b45cb6f1f/f93b5/2021-11-09-algorithm-3.jpg 300w,
+/static/b3f248b27aec72da7fb7a55b45cb6f1f/b4294/2021-11-09-algorithm-3.jpg 600w,
+/static/b3f248b27aec72da7fb7a55b45cb6f1f/b9a87/2021-11-09-algorithm-3.jpg 666w&quot;
+        sizes=&quot;(max-width: 666px) 100vw, 666px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이1 - 프로그래머스&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nlcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; num&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;문제풀이2 - 프로그래머스&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nlcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;lcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  answer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; num&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; min &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; max &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;lcm&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;min&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; max&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; answer&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;small class=&quot;from&quot;&gt;&lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript&lt;/a&gt;&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-%EC%95%BD%EC%88%98&quot;&gt;1. 약수&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-%EC%86%8C%EC%88%98&quot;&gt;2. 소수&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98&quot;&gt;3. 최대공약수&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#4-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98&quot;&gt;4. 최소공배수&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[javascript] var, let, const]]></title><description><![CDATA[var 선언한 변수의 문제점 ES6의 let과 const가 생기기 전에 변수를 선언할 수 있는 유일한 방법은 var를 사용하는 것이었다. var로 선언된 변수는 다른 언어와는 구별되는 독특한 특징을 가지고 있다.  1. 변수 중복 선언 허용 var…]]></description><link>https://phrygia.github.io/2021-10-30-var-let-const/</link><guid isPermaLink="false">https://phrygia.github.io/2021-10-30-var-let-const/</guid><pubDate>Sat, 30 Oct 2021 16:01:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 457px; &quot;&gt;
       &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 122%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAYABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQBAgP/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABtoo8ooYrjoNB/8QAGxAAAwACAwAAAAAAAAAAAAAAAAECAxEQEhP/2gAIAQEAAQUCq3OfHd0x6R6psqewlrj/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAbEAACAgMBAAAAAAAAAAAAAAABEQAQEiFRMv/aAAgBAQAGPwIl6455GPXTMQBNB3//xAAbEAEAAQUBAAAAAAAAAAAAAAABEQAQIUFhUf/aAAgBAQABPyHJQdufKy/jWQFIKAeose4DMUAAIi3/2gAMAwEAAgADAAAAEOzHPP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/ECP/xAAVEQEBAAAAAAAAAAAAAAAAAAARIP/aAAgBAgEBPxBI/8QAHBABAAICAwEAAAAAAAAAAAAAAREhAEEQMVGR/9oACAEBAAE/EC1c2TTxe3C6dKE9+cOAJarRhN5epUe8JREmXTg4gIA1gjMaz//Z&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;jsDeepDive&quot; title=&quot;jsDeepDive&quot; src=&quot;/static/0d4322b4ef4596768bb7f2c30c270662/78c04/jsDeepDive.jpg&quot; srcset=&quot;/static/0d4322b4ef4596768bb7f2c30c270662/e07e9/jsDeepDive.jpg 200w,
-/static/0d4322b4ef4596768bb7f2c30c270662/066f9/jsDeepDive.jpg 400w,
+  &lt;img class=&quot;gatsby-resp-image-image&quot; alt=&quot;jsDeepDive&quot; title=&quot;jsDeepDive&quot; src=&quot;/static/0d4322b4ef4596768bb7f2c30c270662/78c04/jsDeepDive.jpg&quot; srcset=&quot;/static/0d4322b4ef4596768bb7f2c30c270662/f93b5/jsDeepDive.jpg 300w,
 /static/0d4322b4ef4596768bb7f2c30c270662/78c04/jsDeepDive.jpg 457w&quot; sizes=&quot;(max-width: 457px) 100vw, 457px&quot; style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot; loading=&quot;lazy&quot;&gt;
     &lt;/span&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h2 id=&quot;var-선언한-변수의-문제점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#var-%EC%84%A0%EC%96%B8%ED%95%9C-%EB%B3%80%EC%88%98%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90&quot; aria-label=&quot;var 선언한 변수의 문제점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;var 선언한 변수의 문제점&lt;/h2&gt;
@@ -274,23 +671,44 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;터미널 창에서 위 코드를 입력하고 로그인을 하면 &lt;code class=&quot;language-text&quot;&gt;Allow Firebase to collect CLI usage and error reporting information?&lt;/code&gt;가 뜨면 Y를 입력하고 구글 계정을 선택하여 로그인한다.&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnklEQVQoz22SW08TURSF+2AMakOsN3qbmdKSUkptp9DLtMUaBLXoEwiUoP4Kf4Wv/gElEEhIfDCS+GJCTHzzBaOJibeGS1uklUopvcyc7uXhlPCiJ1mz9p7JXvl25pgCQ0MUjUZpmEtTw3Q7GqMbw1FS1SEKc4WCKoXUIHn6FFpeXiYApLd0arfb9L9jSseidCeVwlgigVvxOMY0roSGUe43Y1GkwmHEQyocDidWVlZwfKrVQxwd1UHUFj0PF+J5MGmcLBoKQfX7KRwI0HAwSMGBAbre309Bn4+O3/u9XrJYLLS0tNQh1HXh9WqZWs2aqE8JH2SzNJvNIjs3J3xmdhaTU1OYnpnB3Py88HnumUwGa2uvT4gYdAZsFSvY2ysJOnRSYUqkUjTCV06n05Tga0ciEcRiMWiaJhTndTKZhNfrxerqqhgs7GzjoFqFYbB/V3a53SRJEmRFIYfDAavVChuX9UR2ux2yLMNsNuPFwoII2N+voFQqQzcM0eu6gWazKWqTJEs80Hk8RLIiQ1EUSNyFXAp6HHZcs9rQdfYMFheei6F8Po9SucwJjVNCxliHsM/jJZfcix6rlZx2JySbA31OF7yyGz6bhLuRGB5OTkIbu4/Fl29EQL1eR6PRECFtZoDx4NOV1UiKvG4/dZ0zk/uyTJrdT5EeFwUsDpoYfUTv1j8QPn+kT+83aP1LWfzR7UKJcpvblC8UabO4T4XdErVaLfHNNJgZhy+govt8N3qvypiQgvBcUTD95Bk2Nn+hWjtA5dtXFNffYrdYEIS1ho7DWh2tlo46v0G60aEThP5742wwrrFLFy4yyXKVJT0j7PHTV+xnucL+FHKsmPvBfhd22FbuO9vZ3mL8DrJWs8n41eHiD0NnzUaDcULR/wWsd08itrtfFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnklEQVQoz22SW08TURSF+2AMakOsN3qbmdKSUkptp9DLtMUaBLXoEwiUoP4Kf4Wv/gElEEhIfDCS+GJCTHzzBaOJibeGS1uklUopvcyc7uXhlPCiJ1mz9p7JXvl25pgCQ0MUjUZpmEtTw3Q7GqMbw1FS1SEKc4WCKoXUIHn6FFpeXiYApLd0arfb9L9jSseidCeVwlgigVvxOMY0roSGUe43Y1GkwmHEQyocDidWVlZwfKrVQxwd1UHUFj0PF+J5MGmcLBoKQfX7KRwI0HAwSMGBAbre309Bn4+O3/u9XrJYLLS0tNQh1HXh9WqZWs2aqE8JH2SzNJvNIjs3J3xmdhaTU1OYnpnB3Py88HnumUwGa2uvT4gYdAZsFSvY2ysJOnRSYUqkUjTCV06n05Tga0ciEcRiMWiaJhTndTKZhNfrxerqqhgs7GzjoFqFYbB/V3a53SRJEmRFIYfDAavVChuX9UR2ux2yLMNsNuPFwoII2N+voFQqQzcM0eu6gWazKWqTJEs80Hk8RLIiQ1EUSNyFXAp6HHZcs9rQdfYMFheei6F8Po9SucwJjVNCxliHsM/jJZfcix6rlZx2JySbA31OF7yyGz6bhLuRGB5OTkIbu4/Fl29EQL1eR6PRECFtZoDx4NOV1UiKvG4/dZ0zk/uyTJrdT5EeFwUsDpoYfUTv1j8QPn+kT+83aP1LWfzR7UKJcpvblC8UabO4T4XdErVaLfHNNJgZhy+govt8N3qvypiQgvBcUTD95Bk2Nn+hWjtA5dtXFNffYrdYEIS1ho7DWh2tlo46v0G60aEThP5742wwrrFLFy4yyXKVJT0j7PHTV+xnucL+FHKsmPvBfhd22FbuO9vZ3mL8DrJWs8n41eHiD0NnzUaDcULR/wWsd08itrtfFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;firebase1&quot;
+        title=&quot;firebase1&quot;
+        src=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/c1b63/firebase1.png&quot;
+        srcset=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/5a46d/firebase1.png 300w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/0a47e/firebase1.png 600w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/c1b63/firebase1.png 1200w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/29007/firebase1.png 1600w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnklEQVQoz22SW08TURSF+2AMakOsN3qbmdKSUkptp9DLtMUaBLXoEwiUoP4Kf4Wv/gElEEhIfDCS+GJCTHzzBaOJibeGS1uklUopvcyc7uXhlPCiJ1mz9p7JXvl25pgCQ0MUjUZpmEtTw3Q7GqMbw1FS1SEKc4WCKoXUIHn6FFpeXiYApLd0arfb9L9jSseidCeVwlgigVvxOMY0roSGUe43Y1GkwmHEQyocDidWVlZwfKrVQxwd1UHUFj0PF+J5MGmcLBoKQfX7KRwI0HAwSMGBAbre309Bn4+O3/u9XrJYLLS0tNQh1HXh9WqZWs2aqE8JH2SzNJvNIjs3J3xmdhaTU1OYnpnB3Py88HnumUwGa2uvT4gYdAZsFSvY2ysJOnRSYUqkUjTCV06n05Tga0ciEcRiMWiaJhTndTKZhNfrxerqqhgs7GzjoFqFYbB/V3a53SRJEmRFIYfDAavVChuX9UR2ux2yLMNsNuPFwoII2N+voFQqQzcM0eu6gWazKWqTJEs80Hk8RLIiQ1EUSNyFXAp6HHZcs9rQdfYMFheei6F8Po9SucwJjVNCxliHsM/jJZfcix6rlZx2JySbA31OF7yyGz6bhLuRGB5OTkIbu4/Fl29EQL1eR6PRECFtZoDx4NOV1UiKvG4/dZ0zk/uyTJrdT5EeFwUsDpoYfUTv1j8QPn+kT+83aP1LWfzR7UKJcpvblC8UabO4T4XdErVaLfHNNJgZhy+govt8N3qvypiQgvBcUTD95Bk2Nn+hWjtA5dtXFNffYrdYEIS1ho7DWh2tlo46v0G60aEThP5742wwrrFLFy4yyXKVJT0j7PHTV+xnucL+FHKsmPvBfhd22FbuO9vZ3mL8DrJWs8n41eHiD0NnzUaDcULR/wWsd08itrtfFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase1.png&quot;
         title=&quot;firebase1.png&quot;
-        src=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/5a190/firebase1.png&quot;
-        srcset=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/772e8/firebase1.png 200w,
-/static/62dd40ca25fb9c2fa5f28571044f25ab/e17e5/firebase1.png 400w,
-/static/62dd40ca25fb9c2fa5f28571044f25ab/5a190/firebase1.png 800w,
+        src=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/c1b63/firebase1.png&quot;
+        srcset=&quot;/static/62dd40ca25fb9c2fa5f28571044f25ab/5a46d/firebase1.png 300w,
+/static/62dd40ca25fb9c2fa5f28571044f25ab/0a47e/firebase1.png 600w,
 /static/62dd40ca25fb9c2fa5f28571044f25ab/c1b63/firebase1.png 1200w,
 /static/62dd40ca25fb9c2fa5f28571044f25ab/29007/firebase1.png 1600w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -298,7 +716,7 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;로그인이 완료되면 Success! 문구가 뜬다.&lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -308,13 +726,12 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase2.png&quot;
         title=&quot;firebase2.png&quot;
-        src=&quot;/static/51f526668bf1feaffaa869f16b4357d1/5a190/firebase2.png&quot;
-        srcset=&quot;/static/51f526668bf1feaffaa869f16b4357d1/772e8/firebase2.png 200w,
-/static/51f526668bf1feaffaa869f16b4357d1/e17e5/firebase2.png 400w,
-/static/51f526668bf1feaffaa869f16b4357d1/5a190/firebase2.png 800w,
+        src=&quot;/static/51f526668bf1feaffaa869f16b4357d1/c1b63/firebase2.png&quot;
+        srcset=&quot;/static/51f526668bf1feaffaa869f16b4357d1/5a46d/firebase2.png 300w,
+/static/51f526668bf1feaffaa869f16b4357d1/0a47e/firebase2.png 600w,
 /static/51f526668bf1feaffaa869f16b4357d1/c1b63/firebase2.png 1200w,
 /static/51f526668bf1feaffaa869f16b4357d1/29007/firebase2.png 1600w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -326,22 +743,21 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 설정에서 Hosting을 선택하고 **스페이스** 누르고 엔터(선택) &lt;br&gt;&lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1093px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 56.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHllGDZV//EABYQAQEBAAAAAAAAAAAAAAAAAAEQMf/aAAgBAQABBQKmM//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAQEBAAAAAAAAAAAAAAAAADEAIP/aAAgBAQAGPwIjP//EABoQAQACAwEAAAAAAAAAAAAAAAEAMRARIUH/2gAIAQEAAT8hKoxOeJpiy//aAAwDAQACAAMAAAAQC8//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCH/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Qh//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFBMWGR/9oACAEBAAE/EAhxK3NQ5cjOqMi2JPZdz//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 56.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHllGDZV//EABYQAQEBAAAAAAAAAAAAAAAAAAEQMf/aAAgBAQABBQKmM//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAQEBAAAAAAAAAAAAAAAAADEAIP/aAAgBAQAGPwIjP//EABoQAQACAwEAAAAAAAAAAAAAAAEAMRARIUH/2gAIAQEAAT8hKoxOeJpiy//aAAwDAQACAAMAAAAQC8//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCH/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Qh//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFBMWGR/9oACAEBAAE/EAhxK3NQ5cjOqMi2JPZdz//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase2.jpg&quot;
         title=&quot;firebase2.jpg&quot;
-        src=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/4b190/firebase2.jpg&quot;
-        srcset=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/e07e9/firebase2.jpg 200w,
-/static/47b9b22b9fc50911f9f1dd7d87398cb8/066f9/firebase2.jpg 400w,
-/static/47b9b22b9fc50911f9f1dd7d87398cb8/4b190/firebase2.jpg 800w,
+        src=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/193c9/firebase2.jpg&quot;
+        srcset=&quot;/static/47b9b22b9fc50911f9f1dd7d87398cb8/f93b5/firebase2.jpg 300w,
+/static/47b9b22b9fc50911f9f1dd7d87398cb8/b4294/firebase2.jpg 600w,
 /static/47b9b22b9fc50911f9f1dd7d87398cb8/193c9/firebase2.jpg 1093w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1093px) 100vw, 1093px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -350,22 +766,21 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;이미 프로젝트를 생성했기 때문에 &lt;code class=&quot;language-text&quot;&gt;Use an existing project&lt;/code&gt;를 선택했다.&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1048px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHKq1IEB//EABcQAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQEAAQUCHNv/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAaEAACAgMAAAAAAAAAAAAAAAAAARARIUHw/9oACAEBAAE/IWuow1FhtuP/2gAMAwEAAgADAAAAEMDP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHRAAAwAABwAAAAAAAAAAAAAAAAERECFRYaGxwf/aAAgBAQABPxBFk7CQvELsh6nAwzdw/9k=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHKq1IEB//EABcQAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQEAAQUCHNv/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAaEAACAgMAAAAAAAAAAAAAAAAAARARIUHw/9oACAEBAAE/IWuow1FhtuP/2gAMAwEAAgADAAAAEMDP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHRAAAwAABwAAAAAAAAAAAAAAAAERECFRYaGxwf/aAAgBAQABPxBFk7CQvELsh6nAwzdw/9k=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase4.jpg&quot;
         title=&quot;firebase4.jpg&quot;
-        src=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/4b190/firebase4.jpg&quot;
-        srcset=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/e07e9/firebase4.jpg 200w,
-/static/a491ef3c6660e40bb1b3eff3bd6a5d47/066f9/firebase4.jpg 400w,
-/static/a491ef3c6660e40bb1b3eff3bd6a5d47/4b190/firebase4.jpg 800w,
+        src=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/a65aa/firebase4.jpg&quot;
+        srcset=&quot;/static/a491ef3c6660e40bb1b3eff3bd6a5d47/f93b5/firebase4.jpg 300w,
+/static/a491ef3c6660e40bb1b3eff3bd6a5d47/b4294/firebase4.jpg 600w,
 /static/a491ef3c6660e40bb1b3eff3bd6a5d47/a65aa/firebase4.jpg 1048w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1048px) 100vw, 1048px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -386,15 +801,14 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHlF4G2GEYyqv/EABkQAAEFAAAAAAAAAAAAAAAAABAAAREgQf/aAAgBAQABBQI4oq4//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAExEBEh/9oACAEBAAE/IVNSHGdCno6MRWf/2gAMAwEAAgADAAAAEOPBvP/EABURAQEAAAAAAAAAAAAAAAAAABBB/9oACAEDAQE/ECn/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAgEBPxAh/8QAHxAAAgEEAgMAAAAAAAAAAAAAAREAEDFBcSHwYYGR/9oACAEBAAE/EL6T8qhxCgmh3cJ7l+4eC32PksF1R2bEw1LBoUTjU//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 125.21008403361344%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHlF4G2GEYyqv/EABkQAAEFAAAAAAAAAAAAAAAAABAAAREgQf/aAAgBAQABBQI4oq4//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAExEBEh/9oACAEBAAE/IVNSHGdCno6MRWf/2gAMAwEAAgADAAAAEOPBvP/EABURAQEAAAAAAAAAAAAAAAAAABBB/9oACAEDAQE/ECn/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAgEBPxAh/8QAHxAAAgEEAgMAAAAAAAAAAAAAAREAEDFBcSHwYYGR/9oACAEBAAE/EL6T8qhxCgmh3cJ7l+4eC32PksF1R2bEw1LBoUTjU//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase5.jpg&quot;
         title=&quot;firebase5.jpg&quot;
         src=&quot;/static/20fc5dee3d3392317d613cc534fa606a/7ec08/firebase5.jpg&quot;
-        srcset=&quot;/static/20fc5dee3d3392317d613cc534fa606a/e07e9/firebase5.jpg 200w,
-/static/20fc5dee3d3392317d613cc534fa606a/7ec08/firebase5.jpg 238w&quot;
+        srcset=&quot;/static/20fc5dee3d3392317d613cc534fa606a/7ec08/firebase5.jpg 238w&quot;
         sizes=&quot;(max-width: 238px) 100vw, 238px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -408,22 +822,21 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Deploy complete가 완료되면 자신의 firebase URL이 나타난다. &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 804px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 42.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwABBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAeWbmHbH/8QAFhABAQEAAAAAAAAAAAAAAAAAAQAQ/9oACAEBAAEFApxxv//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAAMAAwAAAAAAAAAAAAAAAAABMRARYf/aAAgBAQABPyF6XCsUMo//2gAMAwEAAgADAAAAENPP/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/EBF//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAICAwAAAAAAAAAAAAAAAQARMbEQIVH/2gAIAQEAAT8Q6Rekpiqerz5M1T//2Q==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 42.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwABBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAeWbmHbH/8QAFhABAQEAAAAAAAAAAAAAAAAAAQAQ/9oACAEBAAEFApxxv//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAAMAAwAAAAAAAAAAAAAAAAABMRARYf/aAAgBAQABPyF6XCsUMo//2gAMAwEAAgADAAAAENPP/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/EBF//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAICAwAAAAAAAAAAAAAAAQARMbEQIVH/2gAIAQEAAT8Q6Rekpiqerz5M1T//2Q==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase6.jpg&quot;
         title=&quot;firebase6.jpg&quot;
-        src=&quot;/static/fe30b73df511336f83a298e6c029fc24/4b190/firebase6.jpg&quot;
-        srcset=&quot;/static/fe30b73df511336f83a298e6c029fc24/e07e9/firebase6.jpg 200w,
-/static/fe30b73df511336f83a298e6c029fc24/066f9/firebase6.jpg 400w,
-/static/fe30b73df511336f83a298e6c029fc24/4b190/firebase6.jpg 800w,
+        src=&quot;/static/fe30b73df511336f83a298e6c029fc24/60398/firebase6.jpg&quot;
+        srcset=&quot;/static/fe30b73df511336f83a298e6c029fc24/f93b5/firebase6.jpg 300w,
+/static/fe30b73df511336f83a298e6c029fc24/b4294/firebase6.jpg 600w,
 /static/fe30b73df511336f83a298e6c029fc24/60398/firebase6.jpg 804w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 804px) 100vw, 804px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -436,15 +849,15 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 125.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEEAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB6KtRCXAZ00QC/wD/xAAcEAABBQADAAAAAAAAAAAAAAABAAIDERQQICH/2gAIAQEAAQUCywrHCskHAq14QGsB6f/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/ASn/xAAaEAACAgMAAAAAAAAAAAAAAAAAMgEQESAx/9oACAEBAAY/AlEErtYkWNf/xAAeEAEAAgEEAwAAAAAAAAAAAAABABFhECAxkUFR4f/aAAgBAQABPyEb7Zj9sxe2DQrKlXLOiIET0y0Ap5rb/9oADAMBAAIAAwAAABArxvz/xAAWEQEBAQAAAAAAAAAAAAAAAAAQARH/2gAIAQMBAT8QMh//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8QggwZ/8QAHxABAAIBBAMBAAAAAAAAAAAAAQARMSFxwfAQQWGR/9oACAEBAAE/EBHS+tW5nVOYst9r7BxgZZLF3Tb8jl3i4E6hYwZjIBZHLvDz/9k=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 125.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEEAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB6KtRCXAZ00QC/wD/xAAcEAABBQADAAAAAAAAAAAAAAABAAIDERQQICH/2gAIAQEAAQUCywrHCskHAq14QGsB6f/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/ASn/xAAaEAACAgMAAAAAAAAAAAAAAAAAMgEQESAx/9oACAEBAAY/AlEErtYkWNf/xAAeEAEAAgEEAwAAAAAAAAAAAAABABFhECAxkUFR4f/aAAgBAQABPyEb7Zj9sxe2DQrKlXLOiIET0y0Ap5rb/9oADAMBAAIAAwAAABArxvz/xAAWEQEBAQAAAAAAAAAAAAAAAAAQARH/2gAIAQMBAT8QMh//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8QggwZ/8QAHxABAAIBBAMBAAAAAAAAAAAAAQARMSFxwfAQQWGR/9oACAEBAAE/EBHS+tW5nVOYst9r7BxgZZLF3Tb8jl3i4E6hYwZjIBZHLvDz/9k=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase7.jpg&quot;
         title=&quot;firebase7.jpg&quot;
         src=&quot;/static/52311b0944c2349fe9025c31bb19e781/eabd5/firebase7.jpg&quot;
-        srcset=&quot;/static/52311b0944c2349fe9025c31bb19e781/e07e9/firebase7.jpg 200w,
-/static/52311b0944c2349fe9025c31bb19e781/066f9/firebase7.jpg 400w,
+        srcset=&quot;/static/52311b0944c2349fe9025c31bb19e781/f93b5/firebase7.jpg 300w,
+/static/52311b0944c2349fe9025c31bb19e781/b4294/firebase7.jpg 600w,
 /static/52311b0944c2349fe9025c31bb19e781/eabd5/firebase7.jpg 711w&quot;
         sizes=&quot;(max-width: 711px) 100vw, 711px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -466,8 +879,7 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         alt=&quot;firebase9.jpg&quot;
         title=&quot;firebase9.jpg&quot;
         src=&quot;/static/65a3bd270a3b2c89fc0dd297562d445c/98df1/firebase9.jpg&quot;
-        srcset=&quot;/static/65a3bd270a3b2c89fc0dd297562d445c/e07e9/firebase9.jpg 200w,
-/static/65a3bd270a3b2c89fc0dd297562d445c/066f9/firebase9.jpg 400w,
+        srcset=&quot;/static/65a3bd270a3b2c89fc0dd297562d445c/f93b5/firebase9.jpg 300w,
 /static/65a3bd270a3b2c89fc0dd297562d445c/98df1/firebase9.jpg 524w&quot;
         sizes=&quot;(max-width: 524px) 100vw, 524px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -484,15 +896,15 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 129.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe41CAWAD//EABoQAAEFAQAAAAAAAAAAAAAAABAAAQIRIDH/2gAIAQEAAQUCLKXBef/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CT//EABoQAAICAwAAAAAAAAAAAAAAAAERABAgITH/2gAIAQEAAT8hit1pqIdEY//aAAwDAQACAAMAAAAQ2AsM/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFREBAQAAAAAAAAAAAAAAAAAAASD/2gAIAQIBAT8QI//EAB4QAQACAQQDAAAAAAAAAAAAAAEAETEQIUGBIGGh/9oACAEBAAE/EKXYvqKC3YPenOfHoWc9RKorGIY8P//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 129.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe41CAWAD//EABoQAAEFAQAAAAAAAAAAAAAAABAAAQIRIDH/2gAIAQEAAQUCLKXBef/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CT//EABoQAAICAwAAAAAAAAAAAAAAAAERABAgITH/2gAIAQEAAT8hit1pqIdEY//aAAwDAQACAAMAAAAQ2AsM/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFREBAQAAAAAAAAAAAAAAAAAAASD/2gAIAQIBAT8QI//EAB4QAQACAQQDAAAAAAAAAAAAAAEAETEQIUGBIGGh/9oACAEBAAE/EKXYvqKC3YPenOfHoWc9RKorGIY8P//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase8-1.jpg&quot;
         title=&quot;firebase8-1.jpg&quot;
         src=&quot;/static/86cccf4337129fc92246fd17686257cb/87315/firebase8-1.jpg&quot;
-        srcset=&quot;/static/86cccf4337129fc92246fd17686257cb/e07e9/firebase8-1.jpg 200w,
-/static/86cccf4337129fc92246fd17686257cb/066f9/firebase8-1.jpg 400w,
+        srcset=&quot;/static/86cccf4337129fc92246fd17686257cb/f93b5/firebase8-1.jpg 300w,
+/static/86cccf4337129fc92246fd17686257cb/b4294/firebase8-1.jpg 600w,
 /static/86cccf4337129fc92246fd17686257cb/87315/firebase8-1.jpg 771w&quot;
         sizes=&quot;(max-width: 771px) 100vw, 771px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -503,22 +915,21 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;  프로젝트 화면 - 오류발생&lt;/strong&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 812px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 134.50000000000003%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAB7AzSzKFE6PgqAn//xAAbEAACAQUAAAAAAAAAAAAAAAAAAhIBEBETIP/aAAgBAQABBQKCGtCCGe62/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BKf/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABkQAAIDAQAAAAAAAAAAAAAAADKRAAECMP/aAAgBAQAGPwIKUDKgZXL/xAAbEAACAQUAAAAAAAAAAAAAAAAAAfEQESAhMf/aAAgBAQABPyFEoARA0Zd0fRYv/9oADAMBAAIAAwAAABAYy7z/xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8QSOp//8QAFhEBAQEAAAAAAAAAAAAAAAAAEBEB/9oACAECAQE/EMpD/8QAIBABAAEDAwUAAAAAAAAAAAAAAQAQESExcfBhgZHB0f/aAAgBAQABPxAxjwvkt54W05l6mmQvLhkDZpcMy9YLGq9q6Cn/2Q==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 134.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAB7AzSzKFE6PgqAn//xAAbEAACAQUAAAAAAAAAAAAAAAAAAhIBEBETIP/aAAgBAQABBQKCGtCCGe62/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BKf/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABkQAAIDAQAAAAAAAAAAAAAAADKRAAECMP/aAAgBAQAGPwIKUDKgZXL/xAAbEAACAQUAAAAAAAAAAAAAAAAAAfEQESAhMf/aAAgBAQABPyFEoARA0Zd0fRYv/9oADAMBAAIAAwAAABAYy7z/xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8QSOp//8QAFhEBAQEAAAAAAAAAAAAAAAAAEBEB/9oACAECAQE/EMpD/8QAIBABAAEDAwUAAAAAAAAAAAAAAQAQESExcfBhgZHB0f/aAAgBAQABPxAxjwvkt54W05l6mmQvLhkDZpcMy9YLGq9q6Cn/2Q==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;firebase8-2.jpg&quot;
         title=&quot;firebase8-2.jpg&quot;
-        src=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/4b190/firebase8-2.jpg&quot;
-        srcset=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/e07e9/firebase8-2.jpg 200w,
-/static/e5f26cb2e27457fe36f6314c83f6a419/066f9/firebase8-2.jpg 400w,
-/static/e5f26cb2e27457fe36f6314c83f6a419/4b190/firebase8-2.jpg 800w,
+        src=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/a19d2/firebase8-2.jpg&quot;
+        srcset=&quot;/static/e5f26cb2e27457fe36f6314c83f6a419/f93b5/firebase8-2.jpg 300w,
+/static/e5f26cb2e27457fe36f6314c83f6a419/b4294/firebase8-2.jpg 600w,
 /static/e5f26cb2e27457fe36f6314c83f6a419/a19d2/firebase8-2.jpg 812w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 812px) 100vw, 812px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -547,23 +958,22 @@ firebase login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 80.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAABYlAAAWJQFJUiTwAAACNElEQVQoz5WSS4/SUBTH+81cujG6cWk00bgwGp8L40IzTmKcmYwx0Y/hNzDxMSEYHi2vltKWggSGgUIBKb23t2//bYFhjAs9+fX23Bv+95zzL9zlG3ev3r5/7c6DK7fuXbp+87/gnr959+r448vjDy8O3j/dP3q2f/Tk9WHG472DRzs83HsLdk84mzhDwxxN5ykzYMwWYGzObcpi34sZi103wfMSsjw95IaTWbHREmSNb6r6YKwPDL6JXCuKSn80iQkJgzAKExxKKXGyPAqCcLXiUKEit6stXen2mRsQx+30T7GttjroKKY0itcxGJnD0SSK0gO8COHG07nQ1OpqFwK911N6k7Lca6gdQW6fjqdbcRAEA2NxZpie75+LMWpZ0qAs1Fufcz8+fde+CD9FVReaazG6xC8pY4ultYRDGHi3ck4QT0rVhHK9UBN5SUHZiqwPMDMllLmzX8v50iLUYa6HeS9UzlelfEUEOb4G82pKt6Z0YET/bBytVszzbOqAFaHpBR6EiWdZ5WJD5iUVQANl5ta2bUzrea6HB5EmmTi0bc4w0bb0tSB+K0knZTlfaxelLihJ7WEqhsK2bXcTW3EEcWqYWpE1eM5LLaGJ+npdgWHa2rAgCQyZzLlZz8XosKF28bXSK7Lm//xUCB/9+/56u3bbnJdFpZrYewG0k4iJHUK/IXYcEGElJLIszvd94jD6N5I6QRBhyJTQdQPGfMdJEqy+z8X/HInBhCwtC5fiP4PtbzFtOUBNbsekAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 80.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAABYlAAAWJQFJUiTwAAACNElEQVQoz5WSS4/SUBTH+81cujG6cWk00bgwGp8L40IzTmKcmYwx0Y/hNzDxMSEYHi2vltKWggSGgUIBKb23t2//bYFhjAs9+fX23Bv+95zzL9zlG3ev3r5/7c6DK7fuXbp+87/gnr959+r448vjDy8O3j/dP3q2f/Tk9WHG472DRzs83HsLdk84mzhDwxxN5ykzYMwWYGzObcpi34sZi103wfMSsjw95IaTWbHREmSNb6r6YKwPDL6JXCuKSn80iQkJgzAKExxKKXGyPAqCcLXiUKEit6stXen2mRsQx+30T7GttjroKKY0itcxGJnD0SSK0gO8COHG07nQ1OpqFwK911N6k7Lca6gdQW6fjqdbcRAEA2NxZpie75+LMWpZ0qAs1Fufcz8+fde+CD9FVReaazG6xC8pY4ultYRDGHi3ck4QT0rVhHK9UBN5SUHZiqwPMDMllLmzX8v50iLUYa6HeS9UzlelfEUEOb4G82pKt6Z0YET/bBytVszzbOqAFaHpBR6EiWdZ5WJD5iUVQANl5ta2bUzrea6HB5EmmTi0bc4w0bb0tSB+K0knZTlfaxelLihJ7WEqhsK2bXcTW3EEcWqYWpE1eM5LLaGJ+npdgWHa2rAgCQyZzLlZz8XosKF28bXSK7Lm//xUCB/9+/56u3bbnJdFpZrYewG0k4iJHUK/IXYcEGElJLIszvd94jD6N5I6QRBhyJTQdQPGfMdJEqy+z8X/HInBhCwtC5fiP4PtbzFtOUBNbsekAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search.png&quot;
         title=&quot;search.png&quot;
-        src=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/5a190/search.png&quot;
-        srcset=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/772e8/search.png 200w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/e17e5/search.png 400w,
-/static/8df92c4f0d4e87f698f68ea30faf4b2d/5a190/search.png 800w,
+        src=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/c1b63/search.png&quot;
+        srcset=&quot;/static/8df92c4f0d4e87f698f68ea30faf4b2d/5a46d/search.png 300w,
+/static/8df92c4f0d4e87f698f68ea30faf4b2d/0a47e/search.png 600w,
 /static/8df92c4f0d4e87f698f68ea30faf4b2d/c1b63/search.png 1200w,
 /static/8df92c4f0d4e87f698f68ea30faf4b2d/b0de5/search.png 1517w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -581,14 +991,14 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 26.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQY0y2Q65KCMAxGfQ6loCiUlrYgN1EB0V1XV3f2/d9kZ4wmW9EfZ9JkOme+ZOT7/l0WFa4uv5i2PS53e4xkjP7UQ8MX2GYGN6nCUgmMpUDX89AbcNF13fd7gGx/G1nhQxYllV8XMtuOzKYlmZdUnK6UHb9JpBn5nktLvqBKBFTHIW2NoFxJGjOXHIfR2HFwPHGeQhj5s9lDWEF5uqIVWlrU6wbTrsf8cESZ5chNivYPlv0Bs6bDSGmMeYCp4CiDOVYqwkpLmjB2ewrxJbxQ8k6YNL2tDaXdnvR6a2mGefHcws4jzkmFCypVRCstqJCcjIjI86ZDwpu9IVTnH0iaHdiElg6StofscARV1bDsPyD/PIOpNzBjDuhwDrtMQ60F2HQQBCHYle+Msb9/PPqZkbXtQfgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 26.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLklEQVQY0y2Q65KCMAxGfQ6loCiUlrYgN1EB0V1XV3f2/d9kZ4wmW9EfZ9JkOme+ZOT7/l0WFa4uv5i2PS53e4xkjP7UQ8MX2GYGN6nCUgmMpUDX89AbcNF13fd7gGx/G1nhQxYllV8XMtuOzKYlmZdUnK6UHb9JpBn5nktLvqBKBFTHIW2NoFxJGjOXHIfR2HFwPHGeQhj5s9lDWEF5uqIVWlrU6wbTrsf8cESZ5chNivYPlv0Bs6bDSGmMeYCp4CiDOVYqwkpLmjB2ewrxJbxQ8k6YNL2tDaXdnvR6a2mGefHcws4jzkmFCypVRCstqJCcjIjI86ZDwpu9IVTnH0iaHdiElg6StofscARV1bDsPyD/PIOpNzBjDuhwDrtMQ60F2HQQBCHYle+Msb9/PPqZkbXtQfgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;package.png&quot;
         title=&quot;package.png&quot;
         src=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png&quot;
-        srcset=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/772e8/package.png 200w,
+        srcset=&quot;/static/f4d32a8abc5c097e45f1185316eb25e1/5a46d/package.png 300w,
 /static/f4d32a8abc5c097e45f1185316eb25e1/13ae7/package.png 350w&quot;
         sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -614,7 +1024,7 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
         alt=&quot;serach4.png&quot;
         title=&quot;serach4.png&quot;
         src=&quot;/static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png&quot;
-        srcset=&quot;/static/75860cee561d3b71e1467161af0f84ac/772e8/serach4.png 200w,
+        srcset=&quot;/static/75860cee561d3b71e1467161af0f84ac/5a46d/serach4.png 300w,
 /static/75860cee561d3b71e1467161af0f84ac/13ae7/serach4.png 350w&quot;
         sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -636,7 +1046,7 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
 localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 생성된 걸 확인할 수 있다.&lt;br&gt;&lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -646,14 +1056,13 @@ localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search2.png&quot;
         title=&quot;search2.png&quot;
-        src=&quot;/static/2213e8eef411815dfc9a641d25cab611/5a190/search2.png&quot;
-        srcset=&quot;/static/2213e8eef411815dfc9a641d25cab611/772e8/search2.png 200w,
-/static/2213e8eef411815dfc9a641d25cab611/e17e5/search2.png 400w,
-/static/2213e8eef411815dfc9a641d25cab611/5a190/search2.png 800w,
+        src=&quot;/static/2213e8eef411815dfc9a641d25cab611/c1b63/search2.png&quot;
+        srcset=&quot;/static/2213e8eef411815dfc9a641d25cab611/5a46d/search2.png 300w,
+/static/2213e8eef411815dfc9a641d25cab611/0a47e/search2.png 600w,
 /static/2213e8eef411815dfc9a641d25cab611/c1b63/search2.png 1200w,
-/static/2213e8eef411815dfc9a641d25cab611/29007/search2.png 1600w,
+/static/2213e8eef411815dfc9a641d25cab611/d61c2/search2.png 1800w,
 /static/2213e8eef411815dfc9a641d25cab611/14586/search2.png 2314w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -666,7 +1075,7 @@ localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 
 &lt;p&gt;gatsby 변경사항을 사이트에 업로드 한다. github 페이지에서 sitemap.xml이 제대로 보여진다고 Google Search Console에서 새 sitemap.xml을 제출한다. &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -676,14 +1085,13 @@ localhost:8000/sitemap.xml에 접속하면 다음 화면과 같이 xml파일이 
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;search3.png&quot;
         title=&quot;search3.png&quot;
-        src=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/5a190/search3.png&quot;
-        srcset=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/772e8/search3.png 200w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/e17e5/search3.png 400w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/5a190/search3.png 800w,
+        src=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/c1b63/search3.png&quot;
+        srcset=&quot;/static/152b503f83f60f76d6aaddb2bf4c7ab0/5a46d/search3.png 300w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/0a47e/search3.png 600w,
 /static/152b503f83f60f76d6aaddb2bf4c7ab0/c1b63/search3.png 1200w,
-/static/152b503f83f60f76d6aaddb2bf4c7ab0/29007/search3.png 1600w,
+/static/152b503f83f60f76d6aaddb2bf4c7ab0/d61c2/search3.png 1800w,
 /static/152b503f83f60f76d6aaddb2bf4c7ab0/92bee/search3.png 2340w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -715,7 +1123,7 @@ yarn add gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;plugin
         alt=&quot;analytics1.png&quot;
         title=&quot;analytics1.png&quot;
         src=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png&quot;
-        srcset=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/772e8/analytics1.png 200w,
+        srcset=&quot;/static/6d3b5d4dbcd9af423ee7b7567db69782/5a46d/analytics1.png 300w,
 /static/6d3b5d4dbcd9af423ee7b7567db69782/e17e5/analytics1.png 400w&quot;
         sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -743,7 +1151,7 @@ yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span c
 &lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -753,14 +1161,13 @@ yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span c
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;analytics2.png&quot;
         title=&quot;analytics2.png&quot;
-        src=&quot;/static/83e79380b40120e33d32660571e8c226/5a190/analytics2.png&quot;
-        srcset=&quot;/static/83e79380b40120e33d32660571e8c226/772e8/analytics2.png 200w,
-/static/83e79380b40120e33d32660571e8c226/e17e5/analytics2.png 400w,
-/static/83e79380b40120e33d32660571e8c226/5a190/analytics2.png 800w,
+        src=&quot;/static/83e79380b40120e33d32660571e8c226/c1b63/analytics2.png&quot;
+        srcset=&quot;/static/83e79380b40120e33d32660571e8c226/5a46d/analytics2.png 300w,
+/static/83e79380b40120e33d32660571e8c226/0a47e/analytics2.png 600w,
 /static/83e79380b40120e33d32660571e8c226/c1b63/analytics2.png 1200w,
-/static/83e79380b40120e33d32660571e8c226/29007/analytics2.png 1600w,
+/static/83e79380b40120e33d32660571e8c226/d61c2/analytics2.png 1800w,
 /static/83e79380b40120e33d32660571e8c226/92a6b/analytics2.png 2334w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -795,24 +1202,23 @@ yarn &lt;span class=&quot;token function&quot;&gt;deploy&lt;/span&gt; &lt;span c
 &lt;p&gt;라고 소개한다. 직역하면 &quot;클로저는 함수와 그 함수가 선언될 당시의 lexical enviroment의 상호관계에 따른 현상&quot; 정도가 된다.&lt;/p&gt; &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 43%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHUlEQVQoz6WSa3LCMAyEcw+wJdlKyLsJ3ICh9z/SVjIB0mmZ/uiPb+SHZrXepNK6hqqCmMEsVv8Do2r7EeM44hAZUdTI3yAn2cC0rZ/7HY8zq1WIEbUKPuYJmm29w/dMBLIeIlv7K2wfY0AIx4LflR67K4IiglPNUJuQ7OKBMKFRq8JIKcH7jiGYMGEYBqzrivP5jNoioyIoL0F3cmgTQpdxHBSHLkG7FsN8QtM1uN0+cb1ecblcME0Tcs4Fz95dR3/BXvBUm+0sELUnGV4l2Xnj7u4OXcDdeO37HsuyYJ7nMqRtW0TiknPlX7ZRyyz9pPEMecvQiBs+QJ8uM5LIK0OSZOqCyL9A738Pd/SAHNPZBPP9l3iH/MG+xwZ9AWIn+4QUbCKfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 43.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHUlEQVQoz6WSa3LCMAyEcw+wJdlKyLsJ3ICh9z/SVjIB0mmZ/uiPb+SHZrXepNK6hqqCmMEsVv8Do2r7EeM44hAZUdTI3yAn2cC0rZ/7HY8zq1WIEbUKPuYJmm29w/dMBLIeIlv7K2wfY0AIx4LflR67K4IiglPNUJuQ7OKBMKFRq8JIKcH7jiGYMGEYBqzrivP5jNoioyIoL0F3cmgTQpdxHBSHLkG7FsN8QtM1uN0+cb1ecblcME0Tcs4Fz95dR3/BXvBUm+0sELUnGV4l2Xnj7u4OXcDdeO37HsuyYJ7nMqRtW0TiknPlX7ZRyyz9pPEMecvQiBs+QJ8uM5LIK0OSZOqCyL9A738Pd/SAHNPZBPP9l3iH/MG+xwZ9AWIn+4QUbCKfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;closure.png&quot;
         title=&quot;closure.png&quot;
-        src=&quot;/static/b193b6ba790a5946bc3596d8448891e7/5a190/closure.png&quot;
-        srcset=&quot;/static/b193b6ba790a5946bc3596d8448891e7/772e8/closure.png 200w,
-/static/b193b6ba790a5946bc3596d8448891e7/e17e5/closure.png 400w,
-/static/b193b6ba790a5946bc3596d8448891e7/5a190/closure.png 800w,
+        src=&quot;/static/b193b6ba790a5946bc3596d8448891e7/c1b63/closure.png&quot;
+        srcset=&quot;/static/b193b6ba790a5946bc3596d8448891e7/5a46d/closure.png 300w,
+/static/b193b6ba790a5946bc3596d8448891e7/0a47e/closure.png 600w,
 /static/b193b6ba790a5946bc3596d8448891e7/c1b63/closure.png 1200w,
-/static/b193b6ba790a5946bc3596d8448891e7/29007/closure.png 1600w,
+/static/b193b6ba790a5946bc3596d8448891e7/d61c2/closure.png 1800w,
 /static/b193b6ba790a5946bc3596d8448891e7/ac25d/closure.png 2342w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1003,7 +1409,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1013,12 +1419,11 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scope.jpg&quot;
         title=&quot;scope.jpg&quot;
-        src=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/4b190/scope.jpg&quot;
-        srcset=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/e07e9/scope.jpg 200w,
-/static/0d14193b1617569e1c96a7b8a0e65b3e/066f9/scope.jpg 400w,
-/static/0d14193b1617569e1c96a7b8a0e65b3e/4b190/scope.jpg 800w,
+        src=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/6a068/scope.jpg&quot;
+        srcset=&quot;/static/0d14193b1617569e1c96a7b8a0e65b3e/f93b5/scope.jpg 300w,
+/static/0d14193b1617569e1c96a7b8a0e65b3e/b4294/scope.jpg 600w,
 /static/0d14193b1617569e1c96a7b8a0e65b3e/6a068/scope.jpg 960w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1120,15 +1525,15 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB3pqcYQl//8QAFRABAQAAAAAAAAAAAAAAAAAAASD/2gAIAQEAAQUCK//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAAAEAERMf/aAAgBAQABPyFo1Wf/2gAMAwEAAgADAAAAEPfv/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qg//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/EFf/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQUUFxkf/aAAgBAQABPxABaL1lPJ9lu2K2z//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB3pqcYQl//8QAFRABAQAAAAAAAAAAAAAAAAAAASD/2gAIAQEAAQUCK//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAAAEAERMf/aAAgBAQABPyFo1Wf/2gAMAwEAAgADAAAAEPfv/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qg//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/EFf/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQUUFxkf/aAAgBAQABPxABaL1lPJ9lu2K2z//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scope2.jpg&quot;
         title=&quot;scope2.jpg&quot;
         src=&quot;/static/9b73baeaf6c79efe075f19dc67315837/a18e1/scope2.jpg&quot;
-        srcset=&quot;/static/9b73baeaf6c79efe075f19dc67315837/e07e9/scope2.jpg 200w,
-/static/9b73baeaf6c79efe075f19dc67315837/066f9/scope2.jpg 400w,
+        srcset=&quot;/static/9b73baeaf6c79efe075f19dc67315837/f93b5/scope2.jpg 300w,
+/static/9b73baeaf6c79efe075f19dc67315837/b4294/scope2.jpg 600w,
 /static/9b73baeaf6c79efe075f19dc67315837/a18e1/scope2.jpg 612w&quot;
         sizes=&quot;(max-width: 612px) 100vw, 612px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
@@ -1367,15 +1772,14 @@ html태그만으로 쉽게 작성이 가능하다는 점에서 사용성이 좋�
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 12%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAByyFRNf/EABcQAAMBAAAAAAAAAAAAAAAAAAECEDL/2gAIAQEAAQUCTJn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAABEQAQ/9oACAEBAAE/ISIpgU5//9oADAMBAAIAAwAAABCD3//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ECf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAgMBAAAAAAAAAAAAAAABAGERIVGR/9oACAEBAAE/EEIFsuE1HkwcJ//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 12.121212121212121%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAByyFRNf/EABcQAAMBAAAAAAAAAAAAAAAAAAECEDL/2gAIAQEAAQUCTJn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAABEQAQ/9oACAEBAAE/ISIpgU5//9oADAMBAAIAAwAAABCD3//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ECf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAgMBAAAAAAAAAAAAAAABAGERIVGR/9oACAEBAAE/EEIFsuE1HkwcJ//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;scroll-move.jpg&quot;
         title=&quot;scroll-move.jpg&quot;
         src=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/d4da3/scroll-move.jpg&quot;
-        srcset=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/e07e9/scroll-move.jpg 200w,
-/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/d4da3/scroll-move.jpg 231w&quot;
+        srcset=&quot;/static/7a5666e3ac0c84f2f4b2fd6c9b318b1b/d4da3/scroll-move.jpg 231w&quot;
         sizes=&quot;(max-width: 231px) 100vw, 231px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -1552,15 +1956,14 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 128.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABzZYAWAB//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQJP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGBABAQADAAAAAAAAAAAAAAAAEAEAMUH/2gAIAQEAAT8hYzLs4//aAAwDAQACAAMAAAAQEAYA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAARARACFRMWFx/9oACAEBAAE/ELoxbg3YqGOnTcee9HXPYPyBbFtcn//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 128.29268292682926%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABzZYAWAB//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQJP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGBABAQADAAAAAAAAAAAAAAAAEAEAMUH/2gAIAQEAAT8hYzLs4//aAAwDAQACAAMAAAAQEAYA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAARARACFRMWFx/9oACAEBAAE/ELoxbg3YqGOnTcee9HXPYPyBbFtcn//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;modal-1.jpg&quot;
         title=&quot;modal-1.jpg&quot;
         src=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg&quot;
-        srcset=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/e07e9/modal-1.jpg 200w,
-/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg 205w&quot;
+        srcset=&quot;/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg 205w&quot;
         sizes=&quot;(max-width: 205px) 100vw, 205px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -1787,7 +2190,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 &lt;h2 id=&quot;반응형-vs-적응형&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B0%98%EC%9D%91%ED%98%95-vs-%EC%A0%81%EC%9D%91%ED%98%95&quot; aria-label=&quot;반응형 vs 적응형 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;반응형 vs 적응형&lt;/h2&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1015px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1797,12 +2200,11 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;rwd-awd.png&quot;
         title=&quot;rwd-awd.png&quot;
-        src=&quot;/static/c39e66eea6555aec136389d7bf806b8f/5a190/rwd-awd.png&quot;
-        srcset=&quot;/static/c39e66eea6555aec136389d7bf806b8f/772e8/rwd-awd.png 200w,
-/static/c39e66eea6555aec136389d7bf806b8f/e17e5/rwd-awd.png 400w,
-/static/c39e66eea6555aec136389d7bf806b8f/5a190/rwd-awd.png 800w,
+        src=&quot;/static/c39e66eea6555aec136389d7bf806b8f/e088a/rwd-awd.png&quot;
+        srcset=&quot;/static/c39e66eea6555aec136389d7bf806b8f/5a46d/rwd-awd.png 300w,
+/static/c39e66eea6555aec136389d7bf806b8f/0a47e/rwd-awd.png 600w,
 /static/c39e66eea6555aec136389d7bf806b8f/e088a/rwd-awd.png 1015w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1015px) 100vw, 1015px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1813,7 +2215,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 과거의 웹을 사용하는 주요기기는 컴퓨터였으며, 모니터에 맞춰 화면의 크기와 레이아웃이 구성되었다. 2007년 애플사에서 아이폰을 출시하면서 스마트폰의 시대가 열렸고, 어디서든 손쉽게 웹사이트에 접근할 수 있게 되었다. 하지만 아래의 사진처럼 문제가 발생하였다. &lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1146px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1823,12 +2225,11 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;steveJobsIPhone.jpg&quot;
         title=&quot;steveJobsIPhone.jpg&quot;
-        src=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/4b190/steveJobsIPhone.jpg&quot;
-        srcset=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/e07e9/steveJobsIPhone.jpg 200w,
-/static/e8d45910e5b006f9f26ab63a3422fbaa/066f9/steveJobsIPhone.jpg 400w,
-/static/e8d45910e5b006f9f26ab63a3422fbaa/4b190/steveJobsIPhone.jpg 800w,
+        src=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/f4296/steveJobsIPhone.jpg&quot;
+        srcset=&quot;/static/e8d45910e5b006f9f26ab63a3422fbaa/f93b5/steveJobsIPhone.jpg 300w,
+/static/e8d45910e5b006f9f26ab63a3422fbaa/b4294/steveJobsIPhone.jpg 600w,
 /static/e8d45910e5b006f9f26ab63a3422fbaa/f4296/steveJobsIPhone.jpg 1146w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1146px) 100vw, 1146px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -1871,7 +2272,7 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
 &lt;br&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1054px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -1881,12 +2282,11 @@ this는 메서드 내부의 객체에 접근 할 수 있기도 하고 실행컨�
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;rwd.png&quot;
         title=&quot;rwd.png&quot;
-        src=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/5a190/rwd.png&quot;
-        srcset=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/772e8/rwd.png 200w,
-/static/3a41d726b2ab5934b454d5fb92fb34fe/e17e5/rwd.png 400w,
-/static/3a41d726b2ab5934b454d5fb92fb34fe/5a190/rwd.png 800w,
+        src=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/eba85/rwd.png&quot;
+        srcset=&quot;/static/3a41d726b2ab5934b454d5fb92fb34fe/5a46d/rwd.png 300w,
+/static/3a41d726b2ab5934b454d5fb92fb34fe/0a47e/rwd.png 600w,
 /static/3a41d726b2ab5934b454d5fb92fb34fe/eba85/rwd.png 1054w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1054px) 100vw, 1054px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -2067,24 +2467,22 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;h3 id=&quot;html5에-추가된-시맨틱-태그&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#html5%EC%97%90-%EC%B6%94%EA%B0%80%EB%90%9C-%EC%8B%9C%EB%A7%A8%ED%8B%B1-%ED%83%9C%EA%B7%B8&quot; aria-label=&quot;html5에 추가된 시맨틱 태그 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;HTML5에 추가된 시맨틱 태그&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 68.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAF3LRQUTQf/xAAaEAEAAgMBAAAAAAAAAAAAAAADAQIABBIU/9oACAEBAAEFAtq6Q3b4EzYX17onlXCrwX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAADAAEFAQAAAAAAAAAAAAAAAQIREiExMjNB/9oACAEBAAY/AsTbSwetEN7vBqlrg7STL+H/xAAaEAEBAQEBAQEAAAAAAAAAAAABEQAhYXHR/9oACAEBAAE/IYposJ7kpenzOXTp0CZB3Ky8fX8zshRGb//aAAwDAQACAAMAAAAQk8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEBAQADAQEAAAAAAAAAAAABEQAhMWFR0f/aAAgBAQABPxB7NwYq8uTzIw4px+ctMdTtc3dUjRpfh7laUQwGQdOi7//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 68.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAF3LRQUTQf/xAAaEAEAAgMBAAAAAAAAAAAAAAADAQIABBIU/9oACAEBAAEFAtq6Q3b4EzYX17onlXCrwX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAADAAEFAQAAAAAAAAAAAAAAAQIREiExMjNB/9oACAEBAAY/AsTbSwetEN7vBqlrg7STL+H/xAAaEAEBAQEBAQEAAAAAAAAAAAABEQAhYXHR/9oACAEBAAE/IYposJ7kpenzOXTp0CZB3Ky8fX8zshRGb//aAAwDAQACAAMAAAAQk8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEBAQADAQEAAAAAAAAAAAABEQAhMWFR0f/aAAgBAQABPxB7NwYq8uTzIw4px+ctMdTtc3dUjRpfh7laUQwGQdOi7//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;semantic-tag.jpg&quot;
         title=&quot;semantic-tag.jpg&quot;
-        src=&quot;/static/2f0cc34769189625444beb282f7fe25b/4b190/semantic-tag.jpg&quot;
-        srcset=&quot;/static/2f0cc34769189625444beb282f7fe25b/e07e9/semantic-tag.jpg 200w,
-/static/2f0cc34769189625444beb282f7fe25b/066f9/semantic-tag.jpg 400w,
-/static/2f0cc34769189625444beb282f7fe25b/4b190/semantic-tag.jpg 800w,
+        src=&quot;/static/2f0cc34769189625444beb282f7fe25b/e5166/semantic-tag.jpg&quot;
+        srcset=&quot;/static/2f0cc34769189625444beb282f7fe25b/f93b5/semantic-tag.jpg 300w,
+/static/2f0cc34769189625444beb282f7fe25b/b4294/semantic-tag.jpg 600w,
 /static/2f0cc34769189625444beb282f7fe25b/e5166/semantic-tag.jpg 1200w,
-/static/2f0cc34769189625444beb282f7fe25b/b17f8/semantic-tag.jpg 1600w,
 /static/2f0cc34769189625444beb282f7fe25b/bdcd6/semantic-tag.jpg 1662w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -2102,7 +2500,7 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:#99f&quot;&gt;Non-Semantic elements&lt;/span&gt; - Naver&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -2112,13 +2510,12 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;naver-markup.jpg&quot;
         title=&quot;naver-markup.jpg&quot;
-        src=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/4b190/naver-markup.jpg&quot;
-        srcset=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/e07e9/naver-markup.jpg 200w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/066f9/naver-markup.jpg 400w,
-/static/bd495477b6f10a5dc19ef396c9e8ec9f/4b190/naver-markup.jpg 800w,
+        src=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/e5166/naver-markup.jpg&quot;
+        srcset=&quot;/static/bd495477b6f10a5dc19ef396c9e8ec9f/f93b5/naver-markup.jpg 300w,
+/static/bd495477b6f10a5dc19ef396c9e8ec9f/b4294/naver-markup.jpg 600w,
 /static/bd495477b6f10a5dc19ef396c9e8ec9f/e5166/naver-markup.jpg 1200w,
 /static/bd495477b6f10a5dc19ef396c9e8ec9f/09f78/naver-markup.jpg 1488w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -2127,23 +2524,22 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 &lt;code class=&quot;lan
 &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:#99f&quot;&gt;Semantic elements&lt;/span&gt; - 레진 코믹스&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 122.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB25faFLQKpTHEh//EABkQAAMAAwAAAAAAAAAAAAAAAAECAxAgQf/aAAgBAQABBQKrMGelQ0CTLPdf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQARAjCB/9oACAEBAAY/AsqXkC2Ct6v/xAAfEAEAAgEDBQAAAAAAAAAAAAABABEhEDFRIEFhodH/2gAIAQEAAT8hCxnAr3zEA4m1bxESVykveoLRz30xb5DxM9H/2gAMAwEAAgADAAAAEEfHQP/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QlBWr/8QAFREBAQAAAAAAAAAAAAAAAAAAIHH/2gAIAQIBAT8Qo//EABwQAQEAAwEAAwAAAAAAAAAAAAERACExQSBRkf/aAAgBAQABPxBVhQNBQ2R6xVGoxJ7dOXAsAHrlBau0LiXYKQPPvB1i9U3gDGPyYA9+H//Z&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 122.66666666666669%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB25faFLQKpTHEh//EABkQAAMAAwAAAAAAAAAAAAAAAAECAxAgQf/aAAgBAQABBQKrMGelQ0CTLPdf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQARAjCB/9oACAEBAAY/AsqXkC2Ct6v/xAAfEAEAAgEDBQAAAAAAAAAAAAABABEhEDFRIEFhodH/2gAIAQEAAT8hCxnAr3zEA4m1bxESVykveoLRz30xb5DxM9H/2gAMAwEAAgADAAAAEEfHQP/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QlBWr/8QAFREBAQAAAAAAAAAAAAAAAAAAIHH/2gAIAQIBAT8Qo//EABwQAQEAAwEAAwAAAAAAAAAAAAERACExQSBRkf/aAAgBAQABPxBVhQNBQ2R6xVGoxJ7dOXAsAHrlBau0LiXYKQPPvB1i9U3gDGPyYA9+H//Z&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;lezhin-markup.jpg&quot;
         title=&quot;lezhin-markup.jpg&quot;
-        src=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/4b190/lezhin-markup.jpg&quot;
-        srcset=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/e07e9/lezhin-markup.jpg 200w,
-/static/296b86fc49d15b5a41fa9ef0ed6c73b7/066f9/lezhin-markup.jpg 400w,
-/static/296b86fc49d15b5a41fa9ef0ed6c73b7/4b190/lezhin-markup.jpg 800w,
+        src=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/e5166/lezhin-markup.jpg&quot;
+        srcset=&quot;/static/296b86fc49d15b5a41fa9ef0ed6c73b7/f93b5/lezhin-markup.jpg 300w,
+/static/296b86fc49d15b5a41fa9ef0ed6c73b7/b4294/lezhin-markup.jpg 600w,
 /static/296b86fc49d15b5a41fa9ef0ed6c73b7/e5166/lezhin-markup.jpg 1200w,
 /static/296b86fc49d15b5a41fa9ef0ed6c73b7/2c3a2/lezhin-markup.jpg 1402w&quot;
-        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://phrygia.github.io/algorithm/2021-11-09-algorithm/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/2021-10-30-var-let-const/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/react-firebase/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/gatsby-blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -16,6 +17,7 @@
 <url> <loc>https://phrygia.github.io/vue-clap-button/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/posts</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/posts/js</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://phrygia.github.io/posts/algorithm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/posts/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/posts/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://phrygia.github.io/posts/web</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
