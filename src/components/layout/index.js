@@ -11,8 +11,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import PageHeader from '../page-header';
 import PageFooter from '../page-footer';
+import { createTheme } from '@material-ui/core/styles';
 
 const Layout = ({ children }) => {
+  const theme = createTheme();
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -31,7 +33,7 @@ const Layout = ({ children }) => {
   const { title, author } = data.site.siteMetadata;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div theme={theme} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <PageHeader siteTitle={title || `Title`} />
       <main id="main">{children}</main>
       <PageFooter

@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react';
 import { IconButton, Tooltip } from '@material-ui/core';
 
-import EmailIcon from '@material-ui/icons/Email';
-import DescriptionIcon from '@material-ui/icons/Description';
-import PlayIcon from '@material-ui/icons/PlayArrowOutlined';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import AndroidIcon from '@material-ui/icons/Android';
-import AppleIcon from '@material-ui/icons/Apple';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-
+import {
+  Email as EmailIcon,
+  Description as DescriptionIcon,
+  PlayArrowOutlined as PlayIcon,
+  GitHub as GitHubIcon,
+  Android as AndroidIcon,
+  Apple as AppleIcon,
+  LinkedIn as LinkedInIcon,
+} from '@material-ui/icons';
 import './style.scss';
 
 const IconButtonBar = ({ links = {} }) => {
