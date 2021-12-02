@@ -24,11 +24,10 @@ firebase login
 
 터미널 창에서 위 코드를 입력하고 로그인을 하면 `Allow Firebase to collect CLI usage and error reporting information?`가 뜨면 Y를 입력하고 구글 계정을 선택하여 로그인한다.<br>
 
-![](firebase1.png)
-![firebase1.png](firebase1.png)
+![img/firebase1.png](img/firebase1.png)
 
 로그인이 완료되면 Success! 문구가 뜬다.<br><br>
-![firebase2.png](firebase2.png)
+![img/firebase2.png](img/firebase2.png)
 
 <br><br>
 
@@ -41,13 +40,13 @@ firebase init
 <br>
 설정에서 Hosting을 선택하고 **스페이스** 누르고 엔터(선택) <br><br>
 
-![firebase2.jpg](firebase2.jpg)
+![img/firebase2.jpg](img/firebase2.jpg)
 
 <br>
 
 이미 프로젝트를 생성했기 때문에 `Use an existing project`를 선택했다.<br>
 
-![firebase4.jpg](firebase4.jpg)
+![img/firebase4.jpg](img/firebase4.jpg)
 
 `What do you want to use as your public directory?` <br>
 &nbsp; → 미리 build한 폴더의 index.html파일을 사용하기 위해 **build**를 입력한다.<br>
@@ -65,7 +64,7 @@ firebase init
 
 <div style="display:inline-block">
 
-![firebase5.jpg](firebase5.jpg)
+![img/firebase5.jpg](img/firebase5.jpg)
 
 </div>
 <br><br>
@@ -80,30 +79,30 @@ firebase deploy
 
 Deploy complete가 완료되면 자신의 firebase URL이 나타난다. <br>
 
-![firebase6.jpg](firebase6.jpg)
+![img/firebase6.jpg](img/firebase6.jpg)
 
 <br>
 
 접속하면 정상적으로 작동한다.<br><br>
-![firebase7.jpg](firebase7.jpg)
+![img/firebase7.jpg](img/firebase7.jpg)
 
 <br><br>
 
 ## \*Firebase Hosting Setup Complete이 뜬다면?
 
-![firebase9.jpg](firebase9.jpg)<br>
+![img/firebase9.jpg](img/firebase9.jpg)<br>
 난 처음에 Firebase Hosting Setup Complete이 계속 떴었는데 `What do you want to use as your public directory?`에서 public을 입력하라는 글을 보고 따라했던게 원인인 것 같다. build로 입력하고 배포하니 정상적으로 작동했다.<br><br><br>
 
 **\*알 수 없는 오류발생** <br>
 로컬 파일에서는 채팅을 보내면 정상적으로 작동하는데 배포한 프로젝트에서는 저부분에 오류가 발생했다.<br><br>
 
 **&nbsp;&nbsp;로컬 화면 - 정상작동**
-![firebase8-1.jpg](firebase8-1.jpg)
+![img/firebase8-1.jpg](img/firebase8-1.jpg)
 
 <br>
 
 **&nbsp;&nbsp;프로젝트 화면 - 오류발생**
-![firebase8-2.jpg](firebase8-2.jpg)
+![img/firebase8-2.jpg](img/firebase8-2.jpg)
 
 <br>
 

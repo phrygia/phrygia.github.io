@@ -22,7 +22,7 @@ categories: js algorithm
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-1.jpg](2021-11-09-algorithm-1.jpg)
+![img/2021-11-09-algorithm-1.jpg](img/2021-11-09-algorithm-1.jpg)
 
 </div><br><br>
 
@@ -47,7 +47,7 @@ function solution(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-2.jpg](2021-11-09-algorithm-2.jpg)
+![img/2021-11-09-algorithm-2.jpg](img/2021-11-09-algorithm-2.jpg)
 
 </div><br><br>
 
@@ -86,7 +86,7 @@ function solution(left, right) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-4.jpg](2021-11-09-algorithm-4.jpg)
+![img/2021-11-09-algorithm-4.jpg](img/2021-11-09-algorithm-4.jpg)
 
 </div><br><br>
 
@@ -113,7 +113,9 @@ function solution(n) {
 
 ```js
 function solution(n) {
-  let arr = Array(n + 1).fill(true).fill(false, 0, 2);
+  let arr = Array(n + 1)
+    .fill(true)
+    .fill(false, 0, 2);
 
   for (let i = 2; i * i <= n; i++) {
     if (arr[i]) {
@@ -162,7 +164,7 @@ function solution(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-5.jpg](2021-11-09-algorithm-5.jpg)
+![img/2021-11-09-algorithm-5.jpg](img/2021-11-09-algorithm-5.jpg)
 
 </div><br><br>
 
@@ -213,7 +215,7 @@ function solution(numbers) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-6.jpg](2021-11-09-algorithm-6.jpg)
+![img/2021-11-09-algorithm-6.jpg](img/2021-11-09-algorithm-6.jpg)
 
 </div><br><br>
 
@@ -251,7 +253,7 @@ function isPrime(n) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-7.jpg](2021-11-09-algorithm-7.jpg)
+![img/2021-11-09-algorithm-7.jpg](img/2021-11-09-algorithm-7.jpg)
 
 </div><br><br>
 
@@ -308,7 +310,7 @@ function gcdlcm(a, b) {
 
 <div style="text-align: left; display:inline-block;">
 
-![2021-11-09-algorithm-3.jpg](2021-11-09-algorithm-3.jpg)
+![img/2021-11-09-algorithm-3.jpg](img/2021-11-09-algorithm-3.jpg)
 
 </div><br><br>
 
@@ -352,7 +354,6 @@ function nlcm(num) {
 ```
 
 <small class="from">https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript</small><br>
-
 
 ```toc
 

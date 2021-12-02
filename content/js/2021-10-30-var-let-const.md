@@ -7,7 +7,7 @@ tags: js posts
 categories: js
 ---
 
-<img src="../assets/jsDeepDive.jpg"><br>
+<img src="../../assets/jsDeepDive.jpg"><br>
 
 ## var 선언한 변수의 문제점
 
@@ -225,12 +225,11 @@ a = 2; // TypeError: Assignment to constant variable.
 ```js
 /* let을 사용했을 때 */
 // 세전 가격
-let preTaxPrice = 100;  
+let preTaxPrice = 100;
 // 세후 가격
 let afterTaxPrice = preTaxPrice + preTaxPrice * 0.1;
 
 console.log(afterTaxPrice); // 110
-
 
 /* const를 사용했을 때 */
 const TAX_RATE = 0.1; // 세율을 의미하는 0.1은 변경할 수 없다.
@@ -239,21 +238,25 @@ let afterTaxPrice = preTaxPrice + preTaxPrice * TAX_RATE;
 
 console.log(afterTaxPrice); // 100
 ```
+
 <br>
 
 let을 사용한 코드는<br>
+
 - 0.1은 어떤 의미로 사용했는지 명확히 알기 어렵기 때문에 가독성이 좋지 않다. <br>
 - 세율을 의미하는 0.1은 쉽게 바뀌지 않는 값이다. → 고정된 값
 
 <br>
 
 const를 사용한 코드로 바꾸면<br>
+
 - 세율을 의미하는 TAX_RATE변수는 변경할 수 없는 값으로 할당된 값을 변경할 수 없다.
 - 프로그램 전체에서 공통적으로 사용 → 나중에 세율이 변경되면 값만 바꾼다 → **유지보수성 향상**
 
 <br>
 
 ### 4. const 키워드와 객체
+
 const로 선언된 변수에 값을 변경할 수 없다. 하지만 const로 선언된 변수에 객체가 할당된 경우에는 값을 변경할 수 있다. <br>
 (변경 가능한 값인 객체는 재할당 없이도 직접 변경이 가능하기 때문에)
 
@@ -261,17 +264,19 @@ const로 선언된 변수에 값을 변경할 수 없다. 하지만 const로 선
 
 ```js
 const person = {
-  age: 33
+  age: 33,
 };
 person.age = 32;
 
-console.log(person);  // {age: 32}
+console.log(person); // {age: 32}
 ```
+
 **const는 재할당은 금지할 뿐 `불변`을 의미하지 않는다.** 새로운 값을 재할당 하는것은 불가능 하지만 프로퍼티 동적 생성, 삭제, 값의 변경 등을 토해 객체를 변경하는 것은 가능하다.
 
 <br>
 
 ## var, let, const
+
 - ES6를 사용한다면 var는 사용하지 않는다.
 - 재할당이 필요한 경우 let을 사용한다. (스코프는 최대한 좁게)
 - 값이 변경되지 않을 경우 const를 사용한다.

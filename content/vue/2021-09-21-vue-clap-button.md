@@ -32,7 +32,7 @@ npm에서 clap button을 검색하여 위의 박수치는 액션을 찾았다. �
 
 '역시! react가 있으면 vue도 있었어!' 흡족한 마음으로 테스트용 프로젝트에 모듈을 설치해보았다.
 그런데 내가 원하던 액션이 아니었다. react clap button은 버튼을 누르면 초록색 동그라미안에 숫자가 카운트 되면서 위로 사라지지만 vue clap button은 버튼에 마우스가 hover된 상태에서만 카운트되는 숫자가 보이는 치명적인 단점이 있었다.
-![clap-vue.gif](clap-vue.gif)
+![img/clap-vue.gif](img/clap-vue.gif)
 <br><br>
 css를 수정으로 작동이 되는지 확인해 보았지만 css문제는 아닌것으로 보여 npm 모듈이용을 포기하기로 했다.
 <br><br><br>
@@ -42,7 +42,7 @@ css를 수정으로 작동이 되는지 확인해 보았지만 css문제는 아�
 내가 생각한 2번째 방법은 직접 자바스크립트 코드를 작성하면 되잖아 였다. 엄청난 고난이도 작업은 아니지만 버튼을 연속으로 누르면 위로가던 숫자 카운터가 밑에서 다시 카운트되어야 하는 귀찮은 작업이기는 했다. 하지만, 이 액션만 사용하려고 npm 모듈을 설치하는 것보다는 낫다고 생각되어 직접 만들기에 도전했다.
 <br><br><br> -**완성된 모습**-
 
-![clap-vue2.gif](clap-vue2.gif)
+![img/clap-vue2.gif](img/clap-vue2.gif)
 <br>vue 프로젝트젝트를 생성한 후 코드를 작성해 보자.<br><br>
 
 **- HTML**
@@ -109,7 +109,7 @@ new Vue({
 ```
 
 <br>클릭했을 때 박수횟수를 증가시키는 clapClick함수를 작성하였다. 클릭했을 때, 박수 횟수가 증가한다.
-![clap-vue3.gif](clap-vue3.gif)
+![img/clap-vue3.gif](img/clap-vue3.gif)
 <br><br>
 
 ## 3. 직접 코드를 작성한다면 클릭할때와 카운트될때의 액션을 제외하고 css로 처리가 가능할까?
@@ -210,7 +210,7 @@ methods: {
 }
 ```
 
-![clap-vue4.gif](clap-vue4.gif)
+![img/clap-vue4.gif](img/clap-vue4.gif)
 <br>
 
 ## 4. CSS 보강 및 최종 완성 코드
