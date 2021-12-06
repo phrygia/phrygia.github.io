@@ -172,40 +172,38 @@ function solution(n) {
 
 ```js
 function solution(numbers) {
-  function solution2(numbers) {
-    let answer = 0;
+  let answer = 0;
 
-    let n = numbers.split('');
-    let nums = new Set();
-    combi(n, '');
+  let n = numbers.split('');
+  let nums = new Set();
+  combi(n, '');
 
-    function combi(a, s) {
-      if (s.length > 0) {
-        if (nums.has(Number(s)) === false) {
-          nums.add(Number(s));
-          if (chkPrime(Number(s))) answer++;
-        }
-      }
-      if (a.length > 0) {
-        for (var i = 0; i < a.length; i++) {
-          var t = a.slice(0);
-          t.splice(i, 1);
-          combi(t, s + a[i]);
-        }
+  function combi(a, s) {
+    if (s.length > 0) {
+      if (nums.has(Number(s)) === false) {
+        nums.add(Number(s));
+        if (chkPrime(Number(s))) answer++;
       }
     }
-
-    function chkPrime(num) {
-      if (num < 2) return false;
-      if (num === 2) return true;
-      for (var i = 2; i <= Math.sqrt(num); i++) {
-        if (num % i === 0) return false;
+    if (a.length > 0) {
+      for (var i = 0; i < a.length; i++) {
+        var t = a.slice(0);
+        t.splice(i, 1);
+        combi(t, s + a[i]);
       }
-      return true;
     }
-
-    return answer;
   }
+
+  function chkPrime(num) {
+    if (num < 2) return false;
+    if (num === 2) return true;
+    for (var i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+  return answer;
 }
 ```
 
