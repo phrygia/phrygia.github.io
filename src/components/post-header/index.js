@@ -21,7 +21,7 @@ const PostHeader = ({ post, viewCount }) => {
         <h1 className="title">{post.title}</h1>
         <div className="info">
           {post.author}· {post.date}
-          {viewCount && ` · ${viewCount} views`}
+          {/* {viewCount && ` · ${viewCount} views`} */}
         </div>
       </div>
     </header>
