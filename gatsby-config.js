@@ -14,6 +14,12 @@ module.exports = {
         anonymize: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-5291962399728632`,
+      },
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-feed',
     `gatsby-plugin-dark-mode`,
