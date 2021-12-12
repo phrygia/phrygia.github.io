@@ -1,4 +1,188 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 08 Dec 2021 16:03:03 GMT</lastBuildDate><item><title><![CDATA[[algorithm] 정렬 알고리즘 - 버블, 삽입, 선택, 병합, 퀵]]></title><description><![CDATA[정렬된 배열에서 요소를 찾는 것이 정렬되지 않는 배열에서 찾는 것보다 빠르고 쉽다. 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[phrygia devlog]]></title><description><![CDATA[프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 12 Dec 2021 15:23:05 GMT</lastBuildDate><item><title><![CDATA[[gatsby] gaysby로 TIL만들기]]></title><description><![CDATA[최근 비전공자를 위한 개발자 취업 인강을 듣고 있다. 그곳에서 TIL에 대한 용어를 처음 알게되었다.  TIL ? TIL이란 의 약자로 오늘 내가 배운것이라는 뜻이다. 
+한국에서는 개발자들 사이에서 많이 쓰이는 용어이지만 외국에서는 SNS…]]></description><link>https://phrygia.github.io/gatsby/2021-12-12-gaysby/</link><guid isPermaLink="false">https://phrygia.github.io/gatsby/2021-12-12-gaysby/</guid><pubDate>Sun, 12 Dec 2021 02:59:00 GMT</pubDate><content:encoded>&lt;p&gt;최근 비전공자를 위한 개발자 취업 인강을 듣고 있다. 그곳에서 TIL에 대한 용어를 처음 알게되었다. &lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h1 id=&quot;til-&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#til-&quot; aria-label=&quot;til  permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;TIL ?&lt;/h1&gt;
+&lt;p&gt;TIL이란 &lt;code class=&quot;language-text&quot;&gt;Today I Learned&lt;/code&gt;의 약자로 오늘 내가 배운것이라는 뜻이다. &lt;br&gt;
+한국에서는 개발자들 사이에서 많이 쓰이는 용어이지만 외국에서는 SNS상에서 자주 쓰이는 약어라고 한다. &lt;br&gt;
+개발자들은 자신의 기술 블로그를 운영하기 때문에 TIL을 따로 운영하지는 분들은 많지 않은것 같다.&lt;br&gt;
+(어떻게 생각하면 기술 블로그 = TIL과 비슷한 느낌이랄까.. 🤔) &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;나는 기술블로그를 운영하지고 있지만 많은 포스팅을 올리지 못하고 있기 때문에 TIL 페이지를 따로 생성할 지 고민을 했다.&lt;br&gt;
+TIL을 &lt;u&gt;자기가 배운 내용을 매일 하나씩 쌓으면서 만드는 나만의 지식 사전&lt;/u&gt;으로 생각해 보기로 했다. &lt;br&gt;
+추후에 동일한 문제가 발생하였을때 해결하지 못한다면 자기반성 및 습득하지 못한 지식을 정리하기에 도움이 될 것 같았기 때문에 TIL 페이지를 생성하기로 결정하였다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TIL 참고 예시&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://milooy.github.io/TIL/&quot; target=&quot;_blank&quot;&gt;진유림(milooy)님의 TIL 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cheese10yun/TIL&quot; target=&quot;_blank&quot;&gt;김남윤(Cheese10Yun)님의 TIL 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/HomoEfficio/dev-tips&quot; target=&quot;_blank&quot;&gt;HomoEfficio님의 문제해결 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/namjunemy/TIL&quot; target=&quot;_blank&quot;&gt; 김남준(namjunemy)님의 TIL 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/wayhome25/wayhome25.github.io&quot; target=&quot;_blank&quot;&gt; 초보몽키(wayhome25)의 TIL 저장소&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;어떻게 만들기 고민하다가 vue 개발자분이 &lt;a href=&quot;https://vuepress.vuejs.org/&quot; target=&quot;_blank&quot;&gt;vuepress&lt;/a&gt;를 이용해서 문서화 시킨 페이지가 생각이 났고 나도 그렇게 만들어 보고 싶어 검색을 했다.&lt;br&gt;
+react에서 vuepress와 비슷한 &lt;a href=&quot;https://www.docz.site/&quot; target=&quot;_blank&quot;&gt;Docz&lt;/a&gt; &lt;a href=&quot;https://docusaurus.io/&quot; target=&quot;_blank&quot;&gt;Docusaurus&lt;/a&gt;가 검색되었다. 둘다 설치해본 결과 Docusaurus는 블로그 느낌이 강해서 Docz를 선택했다. 하지만 Docz는 페이지를 생성할때 마다 404 에러가 뜨면서 page에 파일이 없다는 에러가 발생했다. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1173px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnElEQVQY05WOzQ6DIBCEff/3MyhpS+NBwWJiERaJgJ3ioUfrd9i/zGS2ut9uvG2FeDasqeuac951HWPsIcR+RqW1HsdRKRVCwJ5zPuoxnJinSUsl+76f37O11hiDuhRcoawGncg5Oi4LZusckl8ID2EF3nsq+C8UYzxJlsOAt6GFFGkppf1vKudWKZdt22BDZkr5ghlqopgvWH58AJ2PmD3vqC+DAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;docz 에러&quot;
+        title=&quot;docz 에러&quot;
+        src=&quot;/static/1f0d2bd2b677e3c9310d4b716df31280/03914/2021-12-12-docz02.png&quot;
+        srcset=&quot;/static/1f0d2bd2b677e3c9310d4b716df31280/5a46d/2021-12-12-docz02.png 300w,
+/static/1f0d2bd2b677e3c9310d4b716df31280/0a47e/2021-12-12-docz02.png 600w,
+/static/1f0d2bd2b677e3c9310d4b716df31280/03914/2021-12-12-docz02.png 1173w&quot;
+        sizes=&quot;(max-width: 1173px) 100vw, 1173px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+물론 내가 해결을 못하는 거겠지만 Docz 여러 테마를 설치해봤지만 계속 에러가 발생했다. 😭 &lt;br&gt;
+공식사이트에서 설치하란데로 설치하고 파일을 만들었는데 계속 오류가 발생했다. 구글링을 해보았지만 오래전에 포스팅된 내용들만 존재했고 그조차도 제대로 작동하지 않았다. &lt;br&gt;
+공식 페이지의 &lt;code class=&quot;language-text&quot;&gt;npx create-docz-app docz-app-basic&lt;/code&gt;나 &lt;code class=&quot;language-text&quot;&gt;yarn create docz-app docz-app-basic&lt;/code&gt;는 오류가 나면서 설치조차 되지 않았다.&lt;br&gt;
+하루넘게 해결이 되지 않아 다른 방법을 찾기 시작했다. (docz의 공식 github 페이지에서 설치하라고 하는 코드를 입력해도 오류가 나는걸 보면 자체 업데이트 문제인거 같기도 하다.)&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;vuepress는 vue 기반의 정적 사이트 생성기이다. 그럼 react 기반의 정적 사이트로 유명한건 뭐가있지? &lt;br&gt;
+바로 내가 지금 글을 쓰는 블로그에도 이용되고 있는 &lt;code class=&quot;language-text&quot;&gt;gatsby&lt;/code&gt;이다 !&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;우선 gatsby가 설치되어 있지 않다면 글로벌로 설치하자. &lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// gatsby 글로벌 설치&lt;/span&gt;
+npm install &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;g gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;gatsby-document-설치-테마-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gatsby-document-%EC%84%A4%EC%B9%98-%ED%85%8C%EB%A7%88-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;gatsby document 설치 테마 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gatsby document 설치 (테마 설치)&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACVElEQVQ4y41UPYsTURSdykIUBUtBWBVsBFFcLLTTBUG7VVisXBA7K2srazv/gKWV/0OWkA1ZyW4mWTOTyWQ+M5+ZZDIzx3vf5oXE7Oo+OLw37913OPfc+0bxPA+maWIymYBHVVU4z+A4GZskCaIoguu6UCzLgmEYCIJAHDBxWZYoimKBv78ZkpDB53meYzqdQjnudqFpGkajEWzbRpZl0HUd9XodzWYTjUYDrVYLtVoN9f19/NzbQxiGQhkTy7tyKIdHR1A7XaHQcRykaSrkm4OBgDUcigwMWrsDE0GvD9/1kM9mQp2qqhhSjLRBGfw+xqB9CJ+8ZA9YISttd1Q4vgfbdcQFh84cssczh4hIYTlPlbNhMQtCn1SNbGtByApz8nHi+Cj9EFWanVkYJuQaSAtEyp7vw/NH8Hkm0oQITwwqQXnRrWpxebkQcq/f76PX6wkf4zgmQiJhMCErHI/Hotou71EQz1w9Wc1l8J6sOleZoTCRhPSQ518HB+iQ4arapsApzjvWCFlhFCfQ+gZ0Aq/jJEUQRgijWIDXvLdsgcQKoUXV5fH5y1dcu/MINze3cOXWQ1y8cQ+XNx7g0sZ9XL29iQvX7+LJyzdkRb72ulYIbUFY4dv3H3i+8w7bux+w9XoXT7ff4tmrOWj9+MUO3n/8JHrxn4SybWYUGCeJQJZxkWLE1OxcrNPe9H89TOMIQ12DZehCNfeaTf06DnwUgYsijU71b83DE4VjlJMMeUjPKw5QkFrRGtwmjIKeXFmc+VdaIeR+TOdpVRLLfxWJslprdIk/dPiq1U93DDIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gatsby-theme-document 테마&quot;
+        title=&quot;gatsby-theme-document 테마&quot;
+        src=&quot;/static/c68229cb3ddec04e5e36756ef0dae027/c1b63/2021-12-12-gatsby01.png&quot;
+        srcset=&quot;/static/c68229cb3ddec04e5e36756ef0dae027/5a46d/2021-12-12-gatsby01.png 300w,
+/static/c68229cb3ddec04e5e36756ef0dae027/0a47e/2021-12-12-gatsby01.png 600w,
+/static/c68229cb3ddec04e5e36756ef0dae027/c1b63/2021-12-12-gatsby01.png 1200w,
+/static/c68229cb3ddec04e5e36756ef0dae027/d61c2/2021-12-12-gatsby01.png 1800w,
+/static/c68229cb3ddec04e5e36756ef0dae027/e4d4a/2021-12-12-gatsby01.png 2198w&quot;
+        sizes=&quot;(max-width: 1200px) 100vw, 1200px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;살펴보기 : &lt;a href=&quot;https://gatsby-theme-document.netlify.app&quot; target=&quot;_blank&quot;&gt; gatsby-theme-document demo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;내가 선택한 테마는 &lt;a href=&quot;https://github.com/codebushi/gatsby-theme-document&quot; target=&quot;_blank&quot;&gt;gatsby-theme-document&lt;/a&gt; 이다. 문서관련 테마는 많지는 않았고 그나마 깔끔해 보이는 이 테마를 선택했다. &lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;gatsby &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;site https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;github&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;codebushi&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;theme&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;document&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;example
+cd document&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;site
+gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;h2 id=&quot;gatsby-파일-생성하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gatsby-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0&quot; aria-label=&quot;gatsby 파일 생성하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;gatsby 파일 생성하기&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;*기본구조&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;root
+└── content
+  ├── index.mdx &lt;span class=&quot;token comment&quot;&gt;#homepage &quot;/&quot;&lt;/span&gt;
+  ├── codeblock.mdx &lt;span class=&quot;token comment&quot;&gt;#codeblock &quot;/codeblock&quot;&lt;/span&gt;
+  └── codeblock
+    └── subpage.mdx &lt;span class=&quot;token comment&quot;&gt;#subpage under codeblock &quot;/codeblock/subpage&quot;&lt;/span&gt;
+    └── subpage-2.mdx &lt;span class=&quot;token comment&quot;&gt;#subpage under codeblock &quot;/codeblock/subpage-2&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 300px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 90.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB6UlEQVQ4y61U22rCQBDN//9DiyBE8KFWKS0ivimCF6RaqFpai3ezm4vRRKHNTGe20Sa23qAPJ9nsZs+emTmzmmVZAQH+CZ+aaZpAwHNAG04h0Phh2zYSgMEnRcdRhIf/QriOSqGUEqbTKRqGAbPZDIUQOJ/PcTKZIK2dpTASZaD1+31IJBKYzWbVO51OKySTSSwWi6z8MsKtQlIH4/EYR6ORUsdgpeGGPwm3czFCztV6vUbf92Gz2SCPGZ7n7dQdK0S4Do7jfBdlMBgAhYu5XA5SqRRmMhmFQqEQU3dIIR9K0UCtVuM6BBqFBY1GA2kCKpUK1ut1rFar2Gq1oiGhdSJkIvvJ4Wq14hDBpzC9EMvlUpHESI+EvPNhr9cDTr5JxJImJf0gyTqmTTmhvKhwj+cvXpTO8zMYtNmsVUDo1ygKdyjub1DoVygebonYPunFGGG32wWDFFnCAPn+hnI8RHNOBn96RPn6ghYRWpf4UBFSQm3HAdfz0aV8sqpNEKBHNjLPy2Mk5E6H+5arC7quYz6f567BsHuwVCqpdryEMOCeHQ6H0Gw2gQ9gb5bLZWi328Ctub0AIhfBXxfH9+XAPuQPdjrbx3VdNabOUdZZLBb7FT14tSmFzMr+4Q9Sqt77Y8b2n0MIL+qPLw78OLcDof8BAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;폴더 구조&quot;
+        title=&quot;폴더 구조&quot;
+        src=&quot;/static/cc0f7ef88649bbd763fbaa294521bbee/5a46d/2021-12-12-gatsby3.png&quot;
+        srcset=&quot;/static/cc0f7ef88649bbd763fbaa294521bbee/5a46d/2021-12-12-gatsby3.png 300w&quot;
+        sizes=&quot;(max-width: 300px) 100vw, 300px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;test 파일을 생성해 보자. &lt;br&gt;
+우선 content안에 test.mdx 파일을 생성한다.&lt;br&gt;
+content바로 밑에 파일을 생성하는건 introduction처럼 상위에 나타나는 파일이다.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;*test.mdx&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;md&quot;&gt;&lt;pre class=&quot;language-md&quot;&gt;&lt;code class=&quot;language-md&quot;&gt;&lt;span class=&quot;token front-matter-block&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;token font-matter yaml language-yaml&quot;&gt;title: &apos;Test&apos;
+description: &apos;test page&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;&lt;/span&gt;
+
+test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;파일을 생성하면 다음과 같이 생성된다.&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABUElEQVQoz4WT4W6CMBSFef8X8Al8D/+OPyxKdMQxJFrQYQt/1Bjtubu3g4pgtpuctCHt6Xd6S6CNsSx4aT3S8XjE+XyGtRZSMt7vdzcOZAPNi3X1TbqqnIwxI7EhXS4Xkrper9QVe9OgEJg8Q7OIqInfYZYLyAGmR9rNT6eT7MZsNsNkMsF0OkUcx+5bSy4HICiLAlma0tfnGmWhHBEbOHXz/X7vCdmYkiQhNqO6rjtSeMLNZoO3MKQwDJHnOTVNMzIsisIb3m6354y/Xg/Dw+GA3W5HWZYhZVK5ryGliJvidmy3W5L1Uhx1TKiUQpJ8SATM53Oq2sb0zfpNGTZkRKj4DperFUVRBI5NfAU+9ivD9vKHXX4YVhy5VIrKsgTHARP6zsooknfIhmjToY34NPeGOkthkhXVTCVkw7ivCP8oNtTausfd+zP+I2yJXsn+AEm7SJGRtAH1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;test.mdx파일&quot;
+        title=&quot;test.mdx파일&quot;
+        src=&quot;/static/949cba2a6813b5dd9958def3c765d0bc/0a47e/2021-12-12-gatsby5.png&quot;
+        srcset=&quot;/static/949cba2a6813b5dd9958def3c765d0bc/5a46d/2021-12-12-gatsby5.png 300w,
+/static/949cba2a6813b5dd9958def3c765d0bc/0a47e/2021-12-12-gatsby5.png 600w&quot;
+        sizes=&quot;(max-width: 600px) 100vw, 600px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;하위에 파일을 생성하고 싶다면 test.mdx와 이름이 같은 &lt;code class=&quot;language-text&quot;&gt;test&lt;/code&gt; 폴더를 생성하면 된다. &lt;br&gt;
+이렇게 하면 자동으로 /test/하위 파일명 으로 url이 생성된다. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;*test/test-1.mdx&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;md&quot;&gt;&lt;pre class=&quot;language-md&quot;&gt;&lt;code class=&quot;language-md&quot;&gt;&lt;span class=&quot;token front-matter-block&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;token font-matter yaml language-yaml&quot;&gt;title: &apos;test-1 Page&apos;
+description: &apos;This is the meta description for this page&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;---&lt;/span&gt;&lt;/span&gt;
+
+test -1 page&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;test 폴더에 test-1.mdx을 추가하였더니 해당 파일의 title로 subpage가 생성되었다. &lt;br&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: left; display:inline-block;&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 300px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 99.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB50lEQVQ4y6VUXY/aQAzk//8R+oDUcq3gKooEiAcEFQIhBEKU0gDiY5ckkAR67eGpvU1CVCBQ3YPltRPNesb2ZmzbPm23W2L/JhOM/X7/mgkDpBn/E/tbJt8Z8JQR5N1uB9/35QbyPC/2nKdHq48BXdelyWSCbrdLw+EQ/X4fg8EAvV4Pko9uv1VhmD8DSjWtVgsfn57o8/MzcrkcisUi8vk8qtUqHMe5CZiQg7TWZ8p7z0dw/En+8Yjg5QX+4SgxmPa9yiLtiJmCJTplbMchvZhDWz9If/8GNR5BzyyOp9BKpVKWnOg/Go2MbEEQMCALrztfoQofSH3KQb3PQpUK0F8K2K5XsEPKKZ1Fs9kk0f5wOPyl7Lo70Yoc9rbjXqWWRlkmRCo1lAVoNpthuVzSer2G/R8zGOUXiwWtVqtzl9vtNt5ls1Sr1eAxBenYo4DSDB43mk6nUmlE2YVSijabjQH7164BJ3Myy3KOKVuWZTTkLkmnjNB8m4hs4kfmMB5sARqPx5jP51Sv1yG0O50OKpUKyuWyiR/Y50tAaYpsTKPRkLkyK1gqlQxg2rZcAEogHRIvNMVkBGRLkpTTXpoLwLACSjZBLIrvPRAXgOHP8UOZdr5mVwHvULprScDfHLyyf5MJBgP++gP4w9gX/C2DoAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;폴더 구조&quot;
+        title=&quot;폴더 구조&quot;
+        src=&quot;/static/04a4adaa7611a2b2471bd4420fe6dd38/5a46d/2021-12-12-gatsby04.png&quot;
+        srcset=&quot;/static/04a4adaa7611a2b2471bd4420fe6dd38/5a46d/2021-12-12-gatsby04.png 300w&quot;
+        sizes=&quot;(max-width: 300px) 100vw, 300px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;나는 github페이지로 배포하기위해 gh-pages를 설치했고 배포했다. &lt;br&gt;
+나는 이걸 보고 설정했다. 설명이 자세하다 :) &lt;a href=&quot;https://dailyco.tech/share/gatsby-blog-deploy/&quot; target=&quot;_blank&quot;&gt;https://dailyco.tech/share/gatsby-blog-deploy/&lt;/a&gt; &lt;br&gt;
+브랜치를 하나 추가하고 gh-pages를 설치하고 package.json에 “deploy” 속성을 추가하면 된다.&lt;/p&gt;
+&lt;p&gt;나처럼 &lt;a href=&quot;https://phrygia.github.io%EB%A5%BC&quot;&gt;https://phrygia.github.io를&lt;/a&gt; 사용중이라 다른 레포지토리를 쓰고 싶다면 gatsby-config.js에 설정해주면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;pathPrefix&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;/phrygia-TIL&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 레포지토리명&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;성공적으로 배포가 완료되었다. &lt;a href=&quot;https://phrygia.github.io/phrygia-TIL/&quot; target=&quot;_blank&quot;&gt;phrygia TIL&lt;/a&gt; &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;1일 1커밋보다 1일 1배움을 실천하자 !&lt;/p&gt;
+&lt;br&gt;</content:encoded></item><item><title><![CDATA[[algorithm] 정렬 알고리즘 - 버블, 삽입, 선택, 병합, 퀵]]></title><description><![CDATA[정렬된 배열에서 요소를 찾는 것이 정렬되지 않는 배열에서 찾는 것보다 빠르고 쉽다. 
 정렬 알고리즘을 사용해 메모리에서 배열을 정렬하거나 정렬된 배열을 파일에 기록할 수 있다. ArrayList…]]></description><link>https://phrygia.github.io/algorithm/2021-12-07-sorting-algorithm/</link><guid isPermaLink="false">https://phrygia.github.io/algorithm/2021-12-07-sorting-algorithm/</guid><pubDate>Tue, 07 Dec 2021 09:21:00 GMT</pubDate><content:encoded>&lt;p&gt;정렬된 배열에서 요소를 찾는 것이 정렬되지 않는 배열에서 찾는 것보다 빠르고 쉽다. &lt;br&gt;
 정렬 알고리즘을 사용해 메모리에서 배열을 정렬하거나 정렬된 배열을 파일에 기록할 수 있다.&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;ArrayList함수를 만들어 정렬/검색 대상 데이터를 저장한다.&lt;br&gt;
