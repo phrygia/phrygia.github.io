@@ -25,13 +25,27 @@ const PageHeader = ({ siteTitle }) => {
               </div>
               <div className="trailing-section">
                 <Link className="link" to="/posts">
-                  posts
+                  Posts
                 </Link>
                 {/* <Link className="link mo" to="/posts/diary">
                   diary
                 </Link> */}
-                <button className="link" onClick={() => window.open('https://evanescent-dog-4c8.notion.site/phrygia-80b52376264e4ad98e08cde0c4b61a40', '_blank')}>
-                  about
+                <button
+                  className="link"
+                  onClick={() =>
+                    window.open(
+                      'https://evanescent-dog-4c8.notion.site/phrygia-80b52376264e4ad98e08cde0c4b61a40',
+                      '_blank',
+                    )
+                  }
+                >
+                  About
+                </button>
+                <button
+                  className="link"
+                  onClick={() => window.open('https://phrygia.github.io/phrygia-TIL/', '_blank')}
+                >
+                  TIL
                 </button>
                 <Switch
                   className="dark-mode-switch"
