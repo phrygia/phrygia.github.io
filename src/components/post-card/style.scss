@@ -6,11 +6,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  &:hover {
-    .post-card {
-      border-color: #99f;
-    }
-  }
 
   .post-card {
     display: flex;
@@ -22,9 +17,17 @@
     border-radius: 6px;
     padding: 15px;
     margin-bottom: 15px;
+
     color: var(--primary-text-color);
+
     cursor: pointer;
-    transition: all 0.2s;
+    transition: transform 0.2s;
+
+    &:hover {
+      .title {
+        text-decoration: underline;
+      }
+    }
 
     @include md {
       margin-bottom: 0;
@@ -33,19 +36,21 @@
     .title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
       line-height: 1.4;
     }
 
     .description {
-      font-size: 14px;
-      margin-bottom: 14px;
+      font-size: 13px;
+      margin-bottom: 10px;
       line-height: 20px;
       color: var(--primary-text-color);
+
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 3;
+      /* number of lines to show */
       -webkit-box-orient: vertical;
     }
 
@@ -55,33 +60,16 @@
       margin-top: auto;
       font-size: 14px;
       color: var(--about-link-icon-color);
+
       .categories {
         display: flex;
+
         .category {
           margin-left: 4px;
+
           &:hover {
             text-decoration: underline;
           }
-        }
-      }
-    }
-  }
-
-  @media (max-width: 767px) {
-    &.post-card-wrapper {
-      min-height: auto;
-      .post-card {
-        padding: 12px;
-        .title {
-          font-size: 14px;
-          margin-bottom: 7px;
-        }
-        .description {
-          margin-bottom: 0;
-          font-size: 13px;
-        }
-        .info {
-          font-size: 12px;
         }
       }
     }

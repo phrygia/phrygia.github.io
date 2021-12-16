@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 
-const PageFooter = ({ author, githubUrl }) => {
+function PageFooter({ author, githubUrl }) {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -24,34 +24,23 @@ const PageFooter = ({ author, githubUrl }) => {
   }, []);
 
   return (
-    <>
-      <footer className="page-footer-wrapper">
-        <p className="page-footer">
-          <span>
-            © {new Date().getFullYear()} <a href={githubUrl}>phrygia</a>&nbsp;
-          </span>
-          powered by
-          <button
-            className="link"
-            onClick={() =>
-              window.open('https://github.com/zoomKoding/zoomkoding-gatsby-blog', '_blank')
-            }
-          >
-            zoomkoding-gatsby-blog
-          </button>
-        </p>
-        <button
-          id="go-to-top"
-          onClick={scrollToTop}
-          style={{ display: visible ? 'block' : 'none' }}
-        >
-          <span className="left"></span>
-          <span className="right"></span>
-          <p>Back To Top</p>
-        </button>
-      </footer>
-    </>
+    <footer className="page-footer-wrapper">
+      <p className="page-footer">
+        © {new Date().getFullYear()}
+        &nbsp;
+        <a href={githubUrl}>{author}</a>
+        &nbsp;powered by
+        <a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog">
+          &nbsp;zoomkoding-gatsby-blog
+        </a>
+      </p>
+      <button id="go-to-top" onClick={scrollToTop} style={{ display: visible ? 'block' : 'none' }}>
+        <span className="left"></span>
+        <span className="right"></span>
+        <p>Back To Top</p>
+      </button>
+    </footer>
   );
-};
+}
 
 export default PageFooter;

@@ -22,7 +22,7 @@ categories: js algorithm
 
 <div style="text-align: left; display:inline-block;">
 
-![약수의 합](img/2021-11-09-algorithm-1.jpg)
+![약수의 합](./img/2021-11-09-algorithm-1.jpg)
 
 </div><br><br>
 

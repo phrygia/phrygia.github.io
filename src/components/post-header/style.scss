@@ -1,74 +1,60 @@
 @use '../../styles/mixins'as *;
 
-.post-header-wrapper {
+.post-header {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
-  @include content-horizontal-padding;
+
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--post-card-border-color);
+
   margin-top: 20px;
   margin-bottom: 40px;
   word-break: keep-all;
-  @include md {
-    margin-top: 50px;
+
+  .emoji {
+    display: none;
   }
 
-  .post-header {
-    display: flex;
-    flex-direction: column;
-    @include content-max-width;
+  .categories {
+    margin-bottom: 5px;
 
-    padding-bottom: 17px;
-    border-bottom: 1px solid var(--post-card-border-color);
-    @include md {
-      margin-bottom: 20px;
-    }
-
-    .emoji {
-      display: none;
-    }
-
-    .categories {
-      margin-bottom: 5px;
-
-      .category {
-        margin-right: 4px;
-
-        font-weight: 600;
-        // color: rgb(243, 147, 37);
-        color: var(--primary-text-color);
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .title {
+    .category {
+      margin-right: 4px;
       font-weight: 600;
-      font-size: 32px;
       color: var(--primary-text-color);
-      margin-bottom: 15px;
-      line-height: 1.3;
-      @media (max-width: 767px) {
-        font-size: 1.6rem;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
+  }
 
-    .info {
-      display: flex;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--secondary-text-color);
+  .title {
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--primary-text-color);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
 
-      a {
-        color: var(--primary-text-color);
-        strong {
-          margin: 0 4px;
-        }
-      }
-      @media (max-width: 767px) {
-        font-size: 0.85em;
-      }
+  .info {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+
+    .author {
+      margin-right: 4px;
+    }
+
+    strong {
+      color: var(--primary-text-color);
+      font-weight: 600;
     }
   }
 }

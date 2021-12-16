@@ -1,18 +1,16 @@
 import React, { useCallback } from 'react';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, Tooltip } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import DescriptionIcon from '@mui/icons-material/Description';
+import PlayIcon from '@mui/icons-material/PlayArrowOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import AndroidIcon from '@mui/icons-material/Android';
+import AppleIcon from '@mui/icons-material/Apple';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-import {
-  Email as EmailIcon,
-  Description as DescriptionIcon,
-  PlayArrowOutlined as PlayIcon,
-  GitHub as GitHubIcon,
-  Android as AndroidIcon,
-  Apple as AppleIcon,
-  LinkedIn as LinkedInIcon,
-} from '@material-ui/icons';
 import './style.scss';
 
-const IconButtonBar = ({ links = {} }) => {
+function IconButtonBar({ links = {} }) {
   const IconPicker = useCallback((icon) => {
     const props = { className: 'icon' };
     switch (icon) {
@@ -50,6 +48,6 @@ const IconButtonBar = ({ links = {} }) => {
       })}
     </>
   );
-};
+}
 
 export default IconButtonBar;

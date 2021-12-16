@@ -1,18 +1,16 @@
 import React from 'react';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import NF from '../../assets/oops.png';
+import Layout from '../layout';
+import Seo from '../components/seo';
 
-const NotFoundPage = () => (
-  <Layout>
-    <div id="nf_page">
-      <img src={NF} alt="not found" />
-      <SEO title="404: Not found" />
-      <h1>404: PAGE MOT FOUND</h1>
-      <p>존재하지 않는 페이지 입니다.</p>
-    </div>
-  </Layout>
-);
+function NotFoundPage() {
+  return (
+    <Layout>
+      <Seo title="404: Not found" />
+      <h1>404: Not Found</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    </Layout>
+  );
+}
 
 export default NotFoundPage;
