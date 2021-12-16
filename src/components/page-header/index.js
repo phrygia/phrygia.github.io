@@ -28,7 +28,7 @@ function PageHeader({ siteTitle }) {
         <header className="page-header-wrapper">
           <div className="page-header">
             <div className="front-section">
-              <Link className="link" to="/">
+              <Link className="link tit" to="/">
                 {siteTitle}
               </Link>
             </div>

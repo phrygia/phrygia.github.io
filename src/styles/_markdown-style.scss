@@ -1,4 +1,5 @@
 @use './variables'as *;
+@use './mixins'as *;
 
 .markdown .octicon {
   display: inline-block;
@@ -62,12 +63,9 @@
 .markdown {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
   color: var(--content-text-color);
   font-family: $font-family;
-  font-size: 16px;
   font-weight: 500;
-  line-height: 1.5;
   word-wrap: break-word;
 }
 
@@ -105,12 +103,11 @@
 .markdown code,
 .markdown kbd,
 .markdown pre {
-  font-family: monospace, monospace;
+  // font-family: monospace, monospace;
   font-size: 1em;
 }
 
 .markdown hr {
-  box-sizing: initial;
   height: 0;
   overflow: visible;
 }
@@ -125,16 +122,11 @@
 }
 
 .markdown [type='checkbox'] {
-  box-sizing: border-box;
   padding: 0;
 }
 
-.markdown * {
-  box-sizing: border-box;
-}
-
 .markdown input {
-  font-family: inherit;
+  // font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -283,7 +275,7 @@
 
 .markdown code,
 .markdown pre {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
 }
 
@@ -293,9 +285,9 @@
   padding: 0.2em 0.4em;
 }
 
-.markdown :not(pre)>code.language-text {
+.markdown :not(pre) > code.language-text {
   background: rgba(135, 131, 120, 0.15);
-  color: #EB5757;
+  color: #eb5757;
   overflow-wrap: break-word;
 }
 
@@ -311,7 +303,7 @@
   appearance: none;
 }
 
-.markdown :checked+.radio-label {
+.markdown :checked + .radio-label {
   position: relative;
   z-index: 1;
   border-color: #0366d6;
@@ -326,6 +318,7 @@
 }
 
 .markdown .border-bottom {
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--markdown-border-color) !important;
 }
 
@@ -634,11 +627,11 @@
   clear: both;
 }
 
-.markdown> :first-child {
+.markdown > :first-child {
   margin-top: 0 !important;
 }
 
-.markdown> :last-child {
+.markdown > :last-child {
   margin-bottom: 0 !important;
 }
 
@@ -656,7 +649,7 @@
 .markdown table,
 .markdown ul {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .markdown hr {
@@ -673,11 +666,11 @@
   border-left: 0.25em solid var(--markdown-blockquote-border-color);
 }
 
-.markdown blockquote> :first-child {
+.markdown blockquote > :first-child {
   margin-top: 0;
 }
 
-.markdown blockquote> :last-child {
+.markdown blockquote > :last-child {
   margin-bottom: 0;
 }
 
@@ -688,13 +681,28 @@
 .markdown h5,
 .markdown h6 {
   margin-top: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   font-weight: 600;
   line-height: 1.25;
 }
 
-.markdown h1 {
-  font-size: 2em;
+@media (max-width: 767px) {
+  .markdown {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .markdown h1 {
+    font-size: 1.5em;
+  }
+}
+@include md {
+  .markdown {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .markdown h1 {
+    font-size: 2em;
+  }
 }
 
 .markdown h2 {
@@ -745,11 +753,11 @@
   text-align: -webkit-match-parent;
 }
 
-.markdown li>p {
+.markdown li > p {
   margin-top: 16px;
 }
 
-.markdown li+li {
+.markdown li + li {
   margin-top: 0.25em;
 }
 
@@ -798,7 +806,6 @@
   display: block;
   margin: 0px auto;
   max-width: 100%;
-  box-sizing: initial;
   background-color: transparent;
 }
 
@@ -822,7 +829,7 @@
   word-wrap: normal;
 }
 
-.markdown pre>code {
+.markdown pre > code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -865,7 +872,7 @@
 
 .markdown .commit-tease-sha {
   display: inline-block;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 90%;
   color: #444d56;
 }
@@ -890,7 +897,7 @@
   min-width: 50px;
   padding-right: 10px;
   padding-left: 10px;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
   line-height: 20px;
   color: rgba(27, 31, 35, 0.3);
@@ -922,7 +929,7 @@
 
 .markdown .blob-code-inner {
   overflow: visible;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
   color: #24292e;
   word-wrap: normal;
@@ -999,7 +1006,7 @@
   list-style-type: none;
 }
 
-.markdown .task-list-item+.task-list-item {
+.markdown .task-list-item + .task-list-item {
   margin-top: 3px;
 }
 
@@ -1069,7 +1076,7 @@
 }
 
 // caption
-.markdown .gatsby-resp-image-wrapper+em {
+.markdown .gatsby-resp-image-wrapper + em {
   display: block;
   text-align: center;
   font-style: italic;

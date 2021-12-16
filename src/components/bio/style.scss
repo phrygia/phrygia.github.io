@@ -19,16 +19,15 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin-top: 120px;
-  margin-bottom: 120px;
 
   color: var(--primary-text-color);
 
   @include md {
     flex-direction: row;
     align-items: center;
+    margin-top: 90px;
+    margin-bottom: 90px;
   }
-
   .introduction {
     display: flex;
     flex-direction: column;
@@ -49,6 +48,9 @@
       line-height: 1.2;
 
       .title {
+        & > span {
+          display: block;
+        }
         .react-rotating-text-cursor {
           font-size: 35px;
           line-height: 35px;
@@ -105,6 +107,21 @@
 
     @include md {
       display: block;
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    .title {
+      font-size: 24px;
+      line-height: 1.2;
+      & > span {
+        margin-top: -8px;
+      }
+    }
+    .social-links .icon {
+      font-size: 20px;
     }
   }
 }

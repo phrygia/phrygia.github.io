@@ -3,11 +3,6 @@
 @use '../styles/reset'as *;
 @use '../styles/colors'as *;
 
-* {
-  box-sizing: border-box;
-  appearance: none;
-}
-
 html {
   width: 100%;
   height: 100%;
@@ -35,12 +30,19 @@ a {
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family;
   color: var(--primary-text-color);
-  @include content-horizontal-padding;
+  // @include content-horizontal-padding;
 
   .page-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     @include content-max-width;
+    padding-top: 62px;
+  }
+
+  @media (max-width: 767px) {
+    .page-content {
+      padding: 54px 15px 0;
+    }
   }
 }

@@ -5,12 +5,9 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-
-  padding-bottom: 10px;
   border-bottom: 1px solid var(--post-card-border-color);
-
-  margin-top: 20px;
-  margin-bottom: 40px;
+  // margin-top: 20px;
+  // margin-bottom: 40px;
   word-break: keep-all;
 
   .emoji {
@@ -21,10 +18,9 @@
     margin-bottom: 5px;
 
     .category {
-      margin-right: 4px;
+      margin-right: 5px;
       font-weight: 600;
       color: var(--primary-text-color);
-
       &:hover {
         text-decoration: underline;
       }
@@ -33,9 +29,8 @@
 
   .title {
     font-weight: 600;
-    font-size: 32px;
     color: var(--primary-text-color);
-    margin-bottom: 6px;
+    margin-bottom: 12px;
     line-height: 1.3;
   }
 
@@ -44,7 +39,6 @@
     width: 100%;
     flex-wrap: wrap;
     line-height: 1.5;
-    font-size: 16px;
     font-weight: 500;
     color: var(--secondary-text-color);
 
@@ -55,6 +49,34 @@
     strong {
       color: var(--primary-text-color);
       font-weight: 600;
+    }
+  }
+
+  @include md {
+    &.post-header {
+      margin-top: 50px;
+      margin-bottom: 60px;
+      padding-bottom: 10px;
+    }
+    .title {
+      margin-bottom: 16px;
+      font-size: 30px;
+    }
+    .info {
+      font-size: 13.5px;
+    }
+  }
+  @media (max-width: 767px) {
+    &.post-header {
+      margin-top: 25px;
+      margin-bottom: 40px;
+      padding-bottom: 8px;
+    }
+    .title {
+      font-size: 1.6em;
+    }
+    .info {
+      font-size: 0.85em;
     }
   }
 }
