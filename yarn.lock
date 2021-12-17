@@ -5441,6 +5441,11 @@ follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.4:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.6.tgz#8cfb281bbc035b3c067d6cd975b0f6ade6e855cd"
   integrity sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==
 
+fontsource-noto-sans-kr@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/fontsource-noto-sans-kr/-/fontsource-noto-sans-kr-4.0.0.tgz#52e9600e16e0c93efc69c73b2ce4a609bb0b4605"
+  integrity sha512-yASjwj/LWdxO2HHUEzC97bDRTBZy2mHRg3IpgmGbklEjoSoedHywtqH2vscQQU8gnFrVzFFPjwi8a2tKk0FGPg==
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

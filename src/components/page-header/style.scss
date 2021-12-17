@@ -34,18 +34,9 @@ html[data-theme='light'] {
     @include content-max-width;
 
     .link {
-      height: 20px;
       font-weight: 700;
       font-size: 16px;
       color: var(--primary-text-color);
-
-      @include md {
-        font-weight: 700;
-        font-size: 18px;
-        &.tit {
-          font-size: 20px;
-        }
-      }
     }
 
     .trailing-section {
@@ -58,11 +49,10 @@ html[data-theme='light'] {
       }
 
       .link {
-        margin-left: 15px !important;
-        margin-right: 10px;
         @media (max-width: 767px) {
           &.link {
-            margin-right: 0;
+            margin-right: 10px;
+            font-size: 15px;
           }
           &.mo {
             display: none;
@@ -70,7 +60,10 @@ html[data-theme='light'] {
         }
         @include md {
           font-size: 16px;
-          margin-left: 22px;
+          margin-right: 20px;
+          &.tit {
+            font-size: 20px;
+          }
         }
       }
     }

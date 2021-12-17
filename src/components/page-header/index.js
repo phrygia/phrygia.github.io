@@ -36,9 +36,12 @@ function PageHeader({ siteTitle }) {
               {/* <Link className="link" to="/about">
                 about
               </Link> */}
-              <Link className="link" to="/posts">
+              {/* <Link className="link" to="/posts">
                 posts
-              </Link>
+              </Link> */}
+              <button className="link" onClick={() => window.open('/posts', '_self')}>
+                Posts
+              </button>
               <button
                 className="link"
                 onClick={() =>
