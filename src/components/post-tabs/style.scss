@@ -14,7 +14,7 @@
     height: 40px;
     width: 100%;
     max-width: $content-max-width + 40px;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 
     .mui-tabs {
       .MuiTab-root {
@@ -25,9 +25,8 @@
         font-family: $font-family;
         color: var(--tab-text-color);
         font-weight: 500;
-        font-size: 13px;
+        font-size: 15px;
         transition: all 200ms ease;
-
         :hover {
           color: var(--tab-hover-text-color);
           transition: all 200ms ease;
@@ -38,7 +37,6 @@
         background-color: rgba(153, 153, 255, 0.3);
         color: var(--tab-hover-text-color);
         border-radius: 8px;
-        font-weight: 600;
         transition: all 200ms ease;
       }
 
@@ -53,6 +51,15 @@
 
       .MuiTabs-indicator {
         display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      margin-bottom: 18px;
+      .mui-tabs {
+        .MuiTab-root {
+          font-size: 14px;
+        }
       }
     }
   }

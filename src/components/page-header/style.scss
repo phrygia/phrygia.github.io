@@ -50,10 +50,8 @@ html[data-theme='light'] {
 
       .link {
         @media (max-width: 767px) {
-          &.link {
-            margin-right: 10px;
-            font-size: 15px;
-          }
+          margin-left: 5px;
+          font-size: 15px;
           &.mo {
             display: none;
           }
