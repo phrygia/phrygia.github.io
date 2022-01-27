@@ -16,7 +16,7 @@ styled-components에는 `ThemeProvider`라는 속성을 사용해 공통으로 �
 Context API를 기반으로 작동하기 때문에 ThemeProvider로 감싸진 모든 하위 컴포넌트들은 전달받은 theme를 props로 사용할 수 있다.<br>
 *특히 color사용에 좋다 → 프로젝트를 진행하면서 메인컬러가 바뀌는 경우가 있는데 모든 컴포넌트를 수정하는건 너무 비효율적이다.<br><br>
 
-/assets/style/theme.js
+\/assets/style/theme.js
 
 ```js
 const size = {
