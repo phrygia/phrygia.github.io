@@ -53,422 +53,83 @@
         }
       }
     })
-  </script><title data-react-helmet="true">[algorithm] 약수, 소수, 최대공약수, 최소공배수</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[algorithm] 약수, 소수, 최대공약수, 최소공배수"/><meta data-react-helmet="true" property="og:site_title" content="[algorithm] 약수, 소수, 최대공약수, 최소공배수"/><meta data-react-helmet="true" name="description" content="프로그래머스에서 자바스크립트 알고리즘 문제를 풀다보면 간간히 접하게 되는 수학관련 문제들이 있다.
-그 중 자연수와 관련된(약수, 소수, 최대공약수, 최소공배수) 문제들이 있었는데 이에 대한 이론을 정리하고 프로그래머스 코딩테스트 연습에 나오는 문제들을 풀어보면서 정확한 개념을 터득하고자 정리해 보았다. 
-(문제 - 약수의 합, 약수의 개수와 덧셈, 소수 만들기, 소수 찾기, 최대공약수와 최소공배수, N개의 최소공배수)
- 1. 약수 약수란 무엇인가? 
-    어떤 수를 나머지가 없이 나누어떨어지게 하는 수를 그 수의 약수라고 한다. 
-    예를 들면 8을 1, 2, 4, 8로 나누면 나머지가 없다. 이때 1, 2, 4, 8을 8의 약수라고 한다. 1. 약수의 합   문제풀이 2. 약수의 개수와 덧셈  문제풀이 https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript
- 2. 소수 소수란 무엇인…"/><meta data-react-helmet="true" property="og:description" content="프로그래머스에서 자바스크립트 알고리즘 문제를 풀다보면 간간히 접하게 되는 수학관련 문제들이 있다.
-그 중 자연수와 관련된(약수, 소수, 최대공약수, 최소공배수) 문제들이 있었는데 이에 대한 이론을 정리하고 프로그래머스 코딩테스트 연습에 나오는 문제들을 풀어보면서 정확한 개념을 터득하고자 정리해 보았다. 
-(문제 - 약수의 합, 약수의 개수와 덧셈, 소수 만들기, 소수 찾기, 최대공약수와 최소공배수, N개의 최소공배수)
- 1. 약수 약수란 무엇인가? 
-    어떤 수를 나머지가 없이 나누어떨어지게 하는 수를 그 수의 약수라고 한다. 
-    예를 들면 8을 1, 2, 4, 8로 나누면 나머지가 없다. 이때 1, 2, 4, 8을 8의 약수라고 한다. 1. 약수의 합   문제풀이 2. 약수의 개수와 덧셈  문제풀이 https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript
- 2. 소수 소수란 무엇인…"/><meta data-react-helmet="true" property="og:author" content="phrygia"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-41921a2a231952800354.js"/><link as="script" rel="preload" href="/framework-73a0decd0f341130f472.js"/><link as="script" rel="preload" href="/app-9f1f6cea40b338df396d.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-6e3fea6fa4ce1c442886.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js"/><link as="fetch" rel="preload" href="/page-data/algorithm/2021-11-09-algorithm/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link tit" href="/">phrygia devlog</a></div><div class="trailing-section"><button class="link">Posts</button><button class="link">About</button><button class="link">TIL</button><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">📓</div><div class="info"><div class="categories"><a class="category" href="/posts/js">js</a><a class="category" href="/posts/algorithm">algorithm</a></div></div><h1 class="title">[algorithm] 약수, 소수, 최대공약수, 최소공배수</h1><div class="info">phrygia · <!-- -->November 09, 2021</div></header><div class="post-content"><div class="markdown"><p>프로그래머스에서 자바스크립트 알고리즘 문제를 풀다보면 간간히 접하게 되는 수학관련 문제들이 있다.
-그 중 자연수와 관련된(약수, 소수, 최대공약수, 최소공배수) 문제들이 있었는데 이에 대한 이론을 정리하고 프로그래머스 코딩테스트 연습에 나오는 문제들을 풀어보면서 정확한 개념을 터득하고자 정리해 보았다. <br>
-(문제 - 약수의 합, 약수의 개수와 덧셈, 소수 만들기, 소수 찾기, 최대공약수와 최소공배수, N개의 최소공배수)
-<br><br></p>
-<h2 id="1-약수" style="position:relative;"><a href="#1-%EC%95%BD%EC%88%98" aria-label="1 약수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 약수</h2>
-<p><strong>약수란 무엇인가?</strong> <br>
-    <u>어떤 수를 나머지가 없이 나누어떨어지게 하는 수를 그 수의 약수라고 한다.</u> <br>
-    예를 들면 8을 1, 2, 4, 8로 나누면 나머지가 없다. 이때 1, 2, 4, 8을 8의 약수라고 한다.<br><br></p>
-<p><strong>1. 약수의 합</strong> <br></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 607px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 83.38461538461539%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnZsqANQID/8QAFhAAAwAAAAAAAAAAAAAAAAAAEBEg/9oACAEBAAEFAiq//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBAAAgMAAAAAAAAAAAAAAAAAARARIDH/2gAIAQEAAT8hOswoV//aAAwDAQACAAMAAAAQXzDD/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHhABAAICAQUAAAAAAAAAAAAAAQAREEEhMWGBkbH/2gAIAQEAAT8QQ2U+xex6i3oljhfMStmCdeP/2Q=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="약수의 합"
-        title="약수의 합"
-        src="/static/4c9655dd93af4eb0160b4d0db5aa2fd3/92d6d/2021-11-09-algorithm-1.jpg"
-        srcset="/static/4c9655dd93af4eb0160b4d0db5aa2fd3/c989d/2021-11-09-algorithm-1.jpg 325w,
-/static/4c9655dd93af4eb0160b4d0db5aa2fd3/92d6d/2021-11-09-algorithm-1.jpg 607w"
-        sizes="(max-width: 607px) 100vw, 607px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> answer <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+  </script><title data-react-helmet="true">[scss] @for ~ through / to 차이점</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[scss] @for ~ through / to 차이점"/><meta data-react-helmet="true" property="og:site_title" content="[scss] @for ~ through / to 차이점"/><meta data-react-helmet="true" name="description" content="scss의 @for를 이용하면 반복적인 구문을 쉽게 처리할 수있다. 
+인강에선 @for ~ through로 설명을 했는데 vs코드의 자동완성 코드는 @for ~ to였다. 
+어떤 차이점이 있는걸까? @for 기본 사용법  $var : 변수명 
+&lt;start&gt; : 시작하는 숫자와 
+&lt;end&gt; : 끝나는 숫자  for ~ through end로 지장한 숫자까지 반복 for ~ to end로 지장한 숫자-1까지 반복 솔직히 to가 왜있는지 모르겠다 😅 
+scss가 자바스크립트랑 비슷한 개념이 많다보니까 js for문의 0인덱스에 익숙한 개발자들을 위해서 나온걸까? 
+나는 주로 through를 이용해서 코딩하는 습관을 길러야겠다. 
+(to / through를 동시다발적으로 사용하면 나중에 리뷰할 때 헷갈릴 것 같다.) @for 기본 사용법 for ~ through for ~ to"/><meta data-react-helmet="true" property="og:description" content="scss의 @for를 이용하면 반복적인 구문을 쉽게 처리할 수있다. 
+인강에선 @for ~ through로 설명을 했는데 vs코드의 자동완성 코드는 @for ~ to였다. 
+어떤 차이점이 있는걸까? @for 기본 사용법  $var : 변수명 
+&lt;start&gt; : 시작하는 숫자와 
+&lt;end&gt; : 끝나는 숫자  for ~ through end로 지장한 숫자까지 반복 for ~ to end로 지장한 숫자-1까지 반복 솔직히 to가 왜있는지 모르겠다 😅 
+scss가 자바스크립트랑 비슷한 개념이 많다보니까 js for문의 0인덱스에 익숙한 개발자들을 위해서 나온걸까? 
+나는 주로 through를 이용해서 코딩하는 습관을 길러야겠다. 
+(to / through를 동시다발적으로 사용하면 나중에 리뷰할 때 헷갈릴 것 같다.) @for 기본 사용법 for ~ through for ~ to"/><meta data-react-helmet="true" property="og:author" content="phrygia"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-41921a2a231952800354.js"/><link as="script" rel="preload" href="/framework-73a0decd0f341130f472.js"/><link as="script" rel="preload" href="/app-9f1f6cea40b338df396d.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-6e3fea6fa4ce1c442886.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js"/><link as="fetch" rel="preload" href="/page-data/css/2022-02-06-scss-for/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link tit" href="/">phrygia devlog</a></div><div class="trailing-section"><button class="link">Posts</button><button class="link">About</button><button class="link">TIL</button><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">📓</div><div class="info"><div class="categories"><a class="category" href="/posts/css">css</a></div></div><h1 class="title">[scss] @for ~ through / to 차이점</h1><div class="info">phrygia · <!-- -->February 06, 2022</div></header><div class="post-content"><div class="markdown"><p>scss의 @for를 이용하면 반복적인 구문을 쉽게 처리할 수있다. <br>
+인강에선 @for ~ through로 설명을 했는데 vs코드의 자동완성 코드는 @for ~ to였다. <br>
+어떤 차이점이 있는걸까?<br><br></p>
+<h2 id="for-기본-사용법" style="position:relative;"><a href="#for-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-label="for 기본 사용법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@for 기본 사용법</h2>
+<div class="blockquote">
+    @for $var from &lt;start&gt; through &lt;end&gt; <br>
+    @for $var from &lt;start&gt; to &lt;end&gt;
+</div>
+<p> $var : 변수명 <br>
+&#x3C;start> : 시작하는 숫자와 <br>
+&#x3C;end> : 끝나는 숫자 <br><br></p>
+<h2 id="for--through" style="position:relative;"><a href="#for--through" aria-label="for  through permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>for ~ through</h2>
+<p>end로 지장한 숫자까지 반복</p>
+<ul class="half_tag">
+<li>
+<b>scss</b>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@for</span> $i from 1 through 5</span> <span class="token punctuation">{</span>
+  <span class="token selector">.box:nth-child(#</span><span class="token punctuation">{</span>$i<span class="token punctuation">}</span><span class="token selector">)</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px * $i<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<un>
-<small class="from">https://programmers.co.kr/learn/courses/30/lessons/12928?language=javascript</small> <br>
-<p><strong>2. 약수의 개수와 덧셈</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 664px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 172.6153846153846%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAjABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAHOkawBKKCUEB//xAAWEAADAAAAAAAAAAAAAAAAAAABEDD/2gAIAQEAAQUCqV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/An//xAAZEAEAAwEBAAAAAAAAAAAAAAARAAEQYSH/2gAIAQEAAT8heR5lr7rHHkcKlDP/2gAMAwEAAgADAAAAEC87g/w//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxBf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxBf/8QAGxABAAIDAQEAAAAAAAAAAAAAAQARECFBUWH/2gAIAQEAAT8QQt0X27lPEW+BCNAOVm7GvZZOYT8c1EJq8XBqACisf//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="약수의 개수와 덧셈"
-        title="약수의 개수와 덧셈"
-        src="/static/4ddba2cda63c4c25b40e35c9b99479a6/3517e/2021-11-09-algorithm-2.jpg"
-        srcset="/static/4ddba2cda63c4c25b40e35c9b99479a6/c989d/2021-11-09-algorithm-2.jpg 325w,
-/static/4ddba2cda63c4c25b40e35c9b99479a6/6aca1/2021-11-09-algorithm-2.jpg 650w,
-/static/4ddba2cda63c4c25b40e35c9b99479a6/3517e/2021-11-09-algorithm-2.jpg 664w"
-        sizes="(max-width: 664px) 100vw, 664px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> j <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> count<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> answer <span class="token operator">-=</span> i<span class="token punctuation">;</span>
-    <span class="token keyword">else</span> answer <span class="token operator">+=</span> i<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/77884?language=javascript</a></small>
-<br><br></p>
-<h2 id="2-소수" style="position:relative;"><a href="#2-%EC%86%8C%EC%88%98" aria-label="2 소수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 소수</h2>
-<p><strong>소수란 무엇인가?</strong> <br>
-    <u>소수는 1보다 큰 정수이며, 1과 자기 자신으로만 나누어지는 수다. (나머지가 0인 경우)</u> <br>
-    1, 2, 4, 5를 예를 들어보자. 1은 1보다 큰 정수가 아니다. <br>
-    2는 1과 2이외의 자연수로 나눌 수 없으므로 소수다. <br>
-    4는 1과 4이외에도 2로 나누는 것이 가능하므로 소수가 아니다.<br>
-    5는 1과 5 이외의 자연수로 나눌 수 없으므로 소수다.<br><br></p>
-<p><strong>3. 소수 찾기</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 644px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 91.69230769230768%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAASABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDQMg//8QAFhAAAwAAAAAAAAAAAAAAAAAAARAg/9oACAEBAAEFArK//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBAAAgMAAAAAAAAAAAAAAAAAAYEAECD/2gAIAQEAAT8hMVEPT//aAAwDAQACAAMAAAAQHzjD/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAAQAxEBEhQVFh/9oACAEBAAE/EFt6C+1i/EXfgijcIlmLvsHDH//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="img/2021-11-09-algorithm-4.jpg"
-        title="img/2021-11-09-algorithm-4.jpg"
-        src="/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/51442/2021-11-09-algorithm-4.jpg"
-        srcset="/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/c989d/2021-11-09-algorithm-4.jpg 325w,
-/static/87fcdad94ba8c08b0f7f917b9f0a6f1a/51442/2021-11-09-algorithm-4.jpg 644w"
-        sizes="(max-width: 644px) 100vw, 644px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이1</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> isPrime <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> j <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> isPrime <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>isPrime<span class="token punctuation">)</span> answer<span class="token operator">++</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>으로 풀었으나 타임아웃이 발생했다. <br><br>
-<strong>문제풀이2 - 에라토스네테스의 체</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">*</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">*</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j <span class="token operator">+=</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> e<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><small class="from">풀이참고: <a href="https://velog.io/@jakeseo_me/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-14-%EC%86%8C%EC%88%98-%EC%B0%BE%EA%B8%B0-%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98-%EC%B2%B4" target="_blank">코딩테스트 #14 소수 찾기 (에라토스테네스의 체)</a></small> <br>
-<a href="https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4" target="_blank">에라토스네테스의 체</a>는 각 수의 배수에 해당하는 수는 소수가 아니므로 지운다. 예를 들어 3, 6, 9가 있다면 6, 9는 3의 배수이므로 제외시키면 소수만 남는다. 체로 걸르듯 배수와 제곱수는 일단 소수가 아니므로 제거하는 작업이다.<br><br></p>
-<p><strong>문제풀이3 - Set</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  s<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token operator">=</span> j <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> k <span class="token operator">+=</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        s<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> s<span class="token punctuation">.</span>size<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>프로그래머스 해설에서 본 문제풀이로 set을 이용한 풀이다.</p>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/12921?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/12921?language=javascript</a></small><br><br></p>
-<p><strong>4. 소수 찾기</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 107.6923076923077%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDWQA//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAgIDAAAAAAAAAAAAAAAAARAAESEx8P/aAAgBAQABPyEzHBWZa2//2gAMAwEAAgADAAAAEN8/w//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EAB0QAQACAgIDAAAAAAAAAAAAAAEAESExEFFBcbH/2gAIAQEAAT8QouRXurjTxCi4iTQJ7Ip384rfvuO8cf/Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="img/2021-11-09-algorithm-5.jpg"
-        title="img/2021-11-09-algorithm-5.jpg"
-        src="/static/28f40d6170884dfe3d3864ee706b61a3/b9a87/2021-11-09-algorithm-5.jpg"
-        srcset="/static/28f40d6170884dfe3d3864ee706b61a3/c989d/2021-11-09-algorithm-5.jpg 325w,
-/static/28f40d6170884dfe3d3864ee706b61a3/6aca1/2021-11-09-algorithm-5.jpg 650w,
-/static/28f40d6170884dfe3d3864ee706b61a3/b9a87/2021-11-09-algorithm-5.jpg 666w"
-        sizes="(max-width: 666px) 100vw, 666px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">numbers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">let</span> n <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">let</span> nums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">combi</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">function</span> <span class="token function">combi</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        nums<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">chkPrime</span><span class="token punctuation">(</span><span class="token function">Number</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> answer<span class="token operator">++</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">var</span> t <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        t<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">combi</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> s <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">function</span> <span class="token function">chkPrime</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">%</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/42839?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/42839?language=javascript</a></small><br><br></p>
-<p><strong>5. 소수 만들기</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 107.6923076923077%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnzKoqDeAA/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFhAAAwAAAAAAAAAAAAAAAAAAADAx/9oACAEBAAY/AiI//8QAGxAAAgEFAAAAAAAAAAAAAAAAARAAESExcYH/2gAIAQEAAT8h5VDqHLs//9oADAMBAAIAAwAAABBsOMP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAcEAEAAgIDAQAAAAAAAAAAAAABACERMRBBkVH/2gAIAQEAAT8QUXOGXayg09ivQhSwX85tjfsd8f/Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="img/2021-11-09-algorithm-6.jpg"
-        title="img/2021-11-09-algorithm-6.jpg"
-        src="/static/af6d9d0aed041e5fdd97ef18676104a9/b9a87/2021-11-09-algorithm-6.jpg"
-        srcset="/static/af6d9d0aed041e5fdd97ef18676104a9/c989d/2021-11-09-algorithm-6.jpg 325w,
-/static/af6d9d0aed041e5fdd97ef18676104a9/6aca1/2021-11-09-algorithm-6.jpg 650w,
-/static/af6d9d0aed041e5fdd97ef18676104a9/b9a87/2021-11-09-algorithm-6.jpg 666w"
-        sizes="(max-width: 666px) 100vw, 666px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">nums</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> w <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPrime</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> cnt<span class="token operator">++</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> cnt<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 소수 판별 함수</span>
-<span class="token keyword">function</span> <span class="token function">isPrime</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/12977?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/12977?language=javascript</a></small><br><br></p>
-<h2 id="3-최대공약수" style="position:relative;"><a href="#3-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98" aria-label="3 최대공약수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 최대공약수</h2>
-<p><strong>6. 최대공약수와 최소공배수</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 86.76923076923076%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnRKgDYMA//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQIf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAgIDAAAAAAAAAAAAAAAAAREAMRAgUf/aAAgBAQABPyE3UY5ghbf/2gAMAwEAAgADAAAAEM83w//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABsQAQADAAMBAAAAAAAAAAAAAAEAETEQIWGB/9oACAEBAAE/EEaF+s8fxii4Et9K3K4MhsdZ/9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="img/2021-11-09-algorithm-7.jpg"
-        title="img/2021-11-09-algorithm-7.jpg"
-        src="/static/e9e17b9d09f0d1eae7fa49993cef77d6/b9a87/2021-11-09-algorithm-7.jpg"
-        srcset="/static/e9e17b9d09f0d1eae7fa49993cef77d6/c989d/2021-11-09-algorithm-7.jpg 325w,
-/static/e9e17b9d09f0d1eae7fa49993cef77d6/6aca1/2021-11-09-algorithm-7.jpg 650w,
-/static/e9e17b9d09f0d1eae7fa49993cef77d6/b9a87/2021-11-09-algorithm-7.jpg 666w"
-        sizes="(max-width: 666px) 100vw, 666px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이1 - 프로그래머스(유클리드 호제법)</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span> m</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">greatest</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> a<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">greatest</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">least</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">greatest</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token function">greatest</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">least</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
+</li>
+<li>
+<b>css</b>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.box:nth-child(1)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(2)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(3)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(4)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(5)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre></div>
+</li>
+</ul>
 <br>
-<p><strong>문제풀이2 - 프로그래머스</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">greatestCommonDivisor</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> b <span class="token operator">?</span> <span class="token function">greatestCommonDivisor</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span> <span class="token operator">:</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">leastCommonMultipleOfTwo</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">greatestCommonDivisor</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">gcdlcm</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token function">greatestCommonDivisor</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">leastCommonMultipleOfTwo</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<br>
-<p><strong>문제풀이3 - 프로그래머스</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">gcdlcm</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> r<span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> ab <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span> <span class="token punctuation">(</span>r <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> a <span class="token operator">=</span> b<span class="token punctuation">,</span> b <span class="token operator">=</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-  <span class="token keyword">return</span> <span class="token punctuation">[</span>b<span class="token punctuation">,</span> ab <span class="token operator">/</span> b<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/12940?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/12940?language=javascript</a></small><br><br></p>
-<h2 id="4-최소공배수" style="position:relative;"><a href="#4-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98" aria-label="4 최소공배수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 최소공배수</h2>
-<p><strong>7. N개의 최소공배수</strong></p>
-<div style="text-align: left; display:inline-block;">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 68.61538461538461%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHnzKoqD//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABkQAAMAAwAAAAAAAAAAAAAAAAABERBRgf/aAAgBAQABPyHlKtDLn//aAAwDAQACAAMAAAAQDD//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAZEAEAAgMAAAAAAAAAAAAAAAABABEQIYH/2gAIAQEAAT8QUW+0pZQuiiKXP//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="img/2021-11-09-algorithm-3.jpg"
-        title="img/2021-11-09-algorithm-3.jpg"
-        src="/static/b3f248b27aec72da7fb7a55b45cb6f1f/b9a87/2021-11-09-algorithm-3.jpg"
-        srcset="/static/b3f248b27aec72da7fb7a55b45cb6f1f/c989d/2021-11-09-algorithm-3.jpg 325w,
-/static/b3f248b27aec72da7fb7a55b45cb6f1f/6aca1/2021-11-09-algorithm-3.jpg 650w,
-/static/b3f248b27aec72da7fb7a55b45cb6f1f/b9a87/2021-11-09-algorithm-3.jpg 666w"
-        sizes="(max-width: 666px) 100vw, 666px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div><br><br>
-<p><strong>문제풀이1 - 프로그래머스</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">nlcm</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> num<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> a <span class="token operator">%</span> b <span class="token operator">?</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span> <span class="token operator">:</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<br>
-<p><strong>문제풀이2 - 프로그래머스</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">nlcm</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">function</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>b<span class="token punctuation">)</span> <span class="token keyword">return</span> a<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="for--to" style="position:relative;"><a href="#for--to" aria-label="for  to permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>for ~ to</h2>
+<p>end로 지장한 숫자-1까지 반복</p>
+<ul class="half_tag">
+<li>
+<b>scss</b>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@for</span> $i from 1 to 5</span> <span class="token punctuation">{</span>
+  <span class="token selector">.box:nth-child(#</span><span class="token punctuation">{</span>$i<span class="token punctuation">}</span><span class="token selector">)</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px * $i<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-
-  <span class="token keyword">function</span> <span class="token function">lcm</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  answer <span class="token operator">=</span> num<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> min <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> max <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">lcm</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p><small class="from"><a href="https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript">https://programmers.co.kr/learn/courses/30/lessons/12953?language=javascript</a></small><br></p>
+</li>
+<li>
+<b>css</b>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.box:nth-child(1)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(2)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(3)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.box:nth-child(4)</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre></div>
+</li>
+</ul>
+<br><br>
+<p>솔직히 to가 왜있는지 모르겠다 😅 <br>
+scss가 자바스크립트랑 비슷한 개념이 많다보니까 js for문의 0인덱스에 익숙한 개발자들을 위해서 나온걸까? <br>
+나는 주로 through를 이용해서 코딩하는 습관을 길러야겠다. <br>
+(to / through를 동시다발적으로 사용하면 나중에 리뷰할 때 헷갈릴 것 같다.)<br><br></p>
 <div class="table-of-contents">
 <ul>
-<li><a href="#1-%EC%95%BD%EC%88%98">1. 약수</a></li>
-<li><a href="#2-%EC%86%8C%EC%88%98">2. 소수</a></li>
-<li><a href="#3-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98">3. 최대공약수</a></li>
-<li><a href="#4-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98">4. 최소공배수</a></li>
+<li><a href="#for-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95">@for 기본 사용법</a></li>
+<li><a href="#for--through">for ~ through</a></li>
+<li><a href="#for--to">for ~ to</a></li>
 </ul>
-</div></div><div class="phrygia_info_post"><dl><dt><img src="/static/phrygia-c14fc3043cf0982ab6c58276a5308c8a.jpg" alt="phrygia"/></dt><dd><strong>Chaeyeon Lee (phrygia)</strong><p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p></dd></dl></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/js/2021-10-30-var-let-const/"><div class="direction">이전 글</div><div class="title">[javascript] var, let, const</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/react/2021-11-25-mui-react/"><div class="direction">다음 글</div><div class="title">[react] Material ui 템플릿 (Mui) 으로 회원가입 페이지 만들기 </div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/phrygia">phrygia</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p><button id="go-to-top" style="display:none"><span class="left"></span><span class="right"></span><p>Back To Top</p></button></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LV3317EKZF"></script><script>
+</div></div><div class="phrygia_info_post"><dl><dt><img src="/static/phrygia-c14fc3043cf0982ab6c58276a5308c8a.jpg" alt="phrygia"/></dt><dd><strong>Chaeyeon Lee (phrygia)</strong><p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p></dd></dl></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/react/2022-01-27-styled-components/"><div class="direction">이전 글</div><div class="title">[react] styled-components 반응형 스타일 설정하기</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/phrygia">phrygia</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p><button id="go-to-top" style="display:none"><span class="left"></span><span class="right"></span><p>Back To Top</p></button></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LV3317EKZF"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-LV3317EKZF'
     );
@@ -486,4 +147,4 @@
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-LV3317EKZF', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algorithm/2021-11-09-algorithm/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a9688c4a2477bd1d90bc.js"],"app":["/app-9f1f6cea40b338df396d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3cc6d60cc2fcb2463216.js"],"component---src-pages-404-js":["/component---src-pages-404-js-976c24a48f4461624353.js"],"component---src-pages-about-js":["/component---src-pages-about-js-d02fa7e92c21c96c1440.js"],"component---src-pages-index-js":["/component---src-pages-index-js-56a4a41d4b8df07d38d0.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-7e46726c0e7b750fff49.js"]};/*]]>*/</script><script src="/polyfill-a9688c4a2477bd1d90bc.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-6e3fea6fa4ce1c442886.js" async=""></script><script src="/app-9f1f6cea40b338df396d.js" async=""></script><script src="/framework-73a0decd0f341130f472.js" async=""></script><script src="/webpack-runtime-41921a2a231952800354.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/css/2022-02-06-scss-for/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a9688c4a2477bd1d90bc.js"],"app":["/app-9f1f6cea40b338df396d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3cc6d60cc2fcb2463216.js"],"component---src-pages-404-js":["/component---src-pages-404-js-976c24a48f4461624353.js"],"component---src-pages-about-js":["/component---src-pages-about-js-d02fa7e92c21c96c1440.js"],"component---src-pages-index-js":["/component---src-pages-index-js-56a4a41d4b8df07d38d0.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-7e46726c0e7b750fff49.js"]};/*]]>*/</script><script src="/polyfill-a9688c4a2477bd1d90bc.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-b3d587d02ad06c320ad1.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-6e3fea6fa4ce1c442886.js" async=""></script><script src="/app-9f1f6cea40b338df396d.js" async=""></script><script src="/framework-73a0decd0f341130f472.js" async=""></script><script src="/webpack-runtime-41921a2a231952800354.js" async=""></script></body></html>
