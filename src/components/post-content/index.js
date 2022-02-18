@@ -14,7 +14,7 @@ function PostContent({ html }) {
           </dt>
           <dd>
             <strong>Chaeyeon Lee (phrygia)</strong>
-            <p>Frontend Engineer 꿈꾸는 3년차 Publisher입니다-*</p>
+            <p>Frontend Engineer 꿈꾸는 4년차 마크업 개발자입니다-*</p>
           </dd>
         </dl>
       </div>

@@ -141,15 +141,13 @@ const Modal = (props) => {
           <header>
             {header}
             <button className="close" onClick={close}>
-              {' '}
-              &times;{' '}
+              &times;
             </button>
           </header>
           <main>{props.children}</main>
           <footer>
             <button className="close" onClick={close}>
-              {' '}
-              close{' '}
+              close
             </button>
           </footer>
         </section>
@@ -215,15 +213,13 @@ export class Modal extends Component {
             <header>
               {header}
               <button className="close" onClick={close}>
-                {' '}
-                &times;{' '}
+                &times;
               </button>
             </header>
             <main>{this.props.children}</main>
             <footer>
               <button className="close" onClick={close}>
-                {' '}
-                close{' '}
+                close
               </button>
             </footer>
           </section>
