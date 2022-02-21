@@ -51,10 +51,13 @@ function Seo({ description, title }) {
           property: 'og:image',
           content: site.siteMetadata.ogImage,
         },
-
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          name: `google-site-verification`,
+          content: `Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw`,
         },
       ]}
     />
