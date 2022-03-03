@@ -14,7 +14,7 @@
     height: 40px;
     width: 100%;
     max-width: $content-max-width + 40px;
-    margin-bottom: 22px;
+    margin-bottom: 70px;
 
     .mui-tabs {
       .MuiTab-root {
@@ -25,7 +25,7 @@
         font-family: $font-family;
         color: var(--tab-text-color);
         font-weight: 500;
-        font-size: 15px;
+        font-size: 14px;
         transition: all 200ms ease;
         :hover {
           color: var(--tab-hover-text-color);
@@ -53,9 +53,11 @@
         display: none;
       }
     }
+  }
 
-    @media (max-width: 767px) {
-      margin-bottom: 18px;
+  @media (max-width: 767px) {
+    .post-tabs {
+      margin-bottom: 40px;
       .mui-tabs {
         .MuiTab-root {
           font-size: 14px;

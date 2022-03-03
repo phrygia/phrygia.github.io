@@ -14,7 +14,7 @@ module.exports = {
     name: `phrygia`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      description: ['기획에 한계를 주지 않는', '사용자 관점에서 생각하는', '사람에 가치를 두는'],
       thumbnail: 'phrygia.gif', // Path to the image in the 'asset' folder
     },
     social: {
