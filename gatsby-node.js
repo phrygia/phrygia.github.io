@@ -72,6 +72,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               categories
               title
               date(formatString: "MMMM DD, YYYY")
+              emoji
             }
           }
           next {

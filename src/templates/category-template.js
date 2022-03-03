@@ -23,6 +23,7 @@ function CategoryTemplate({ pageContext }) {
     },
     [categories],
   );
+  console.log(posts);
 
   return (
     <Layout>
