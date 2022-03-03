@@ -53,303 +53,252 @@
         }
       }
     })
-  </script><title data-react-helmet="true">[react] CRA없이 React환경 구축하기 (웹팩, 바벨)</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[react] CRA없이 React환경 구축하기 (웹팩, 바벨)"/><meta data-react-helmet="true" property="og:site_title" content="[react] CRA없이 React환경 구축하기 (웹팩, 바벨)"/><meta data-react-helmet="true" name="description" content="최근 구직활동을 시작하면서 사전과제를 받게 되었다. 
-나의 포지션은 프론트엔드 개발자로 react 라이브러리를 사용하고 있기때문에 react로 자사 사이트 클론 코딩하고 api 요청에 대한 응답결과를 구현하는 과제였다. 
-포트폴리오를 만들었을때는 CRA를 사용해서 리액트 프로젝트를 만들었었다. create-react-app 한줄만 입력하면 손쉽게 리액트 프로젝트를 만들 수 있었기 때문이다. 생각해보니 프론트엔드 자격요건이나 우대사항에 webpack &amp; babel에 대한 이해나 지식을 요구하는 경우를 종종 보았는데 직접 설정해서 사용해본적은 인강으로 react를 배웠을때 정도였던 것 같다. 문득 직접 프로젝트를 설정할 수 있지만 CRA를 사용하는 것과 모르고 사용하는 것의 차이는 매우 크다는 생각이 들었다. 그래서 마침 사전과제도 요청받았겠다 과제도 하고 내 공부도 할 겸 (꿩먹고 알먹고😋) CRA없이 react 프로젝트를 만들고 프로젝트 환경을 설정해 보기로 했다.  웹팩과 바…"/><meta data-react-helmet="true" property="og:description" content="최근 구직활동을 시작하면서 사전과제를 받게 되었다. 
-나의 포지션은 프론트엔드 개발자로 react 라이브러리를 사용하고 있기때문에 react로 자사 사이트 클론 코딩하고 api 요청에 대한 응답결과를 구현하는 과제였다. 
-포트폴리오를 만들었을때는 CRA를 사용해서 리액트 프로젝트를 만들었었다. create-react-app 한줄만 입력하면 손쉽게 리액트 프로젝트를 만들 수 있었기 때문이다. 생각해보니 프론트엔드 자격요건이나 우대사항에 webpack &amp; babel에 대한 이해나 지식을 요구하는 경우를 종종 보았는데 직접 설정해서 사용해본적은 인강으로 react를 배웠을때 정도였던 것 같다. 문득 직접 프로젝트를 설정할 수 있지만 CRA를 사용하는 것과 모르고 사용하는 것의 차이는 매우 크다는 생각이 들었다. 그래서 마침 사전과제도 요청받았겠다 과제도 하고 내 공부도 할 겸 (꿩먹고 알먹고😋) CRA없이 react 프로젝트를 만들고 프로젝트 환경을 설정해 보기로 했다.  웹팩과 바…"/><meta data-react-helmet="true" property="og:author" content="phrygia"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-65f8f0d5cf2e4e0b9cf5.js"/><link as="script" rel="preload" href="/framework-73a0decd0f341130f472.js"/><link as="script" rel="preload" href="/app-9f1f6cea40b338df396d.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-31960fda4529b9fdb9ef.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-23388a78004d0760b00a.js"/><link as="fetch" rel="preload" href="/page-data/react/2022-02-18-react/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link tit" href="/">phrygia devlog</a></div><div class="trailing-section"><button class="link">Posts</button><button class="link">About</button><button class="link">TIL</button><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">📓</div><div class="info"><div class="categories"><a class="category" href="/posts/react">react</a></div></div><h1 class="title">[react] CRA없이 React환경 구축하기 (웹팩, 바벨)</h1><div class="info">phrygia · <!-- -->February 18, 2022</div></header><div class="post-content"><div class="markdown"><p>최근 구직활동을 시작하면서 사전과제를 받게 되었다. <br>
-나의 포지션은 프론트엔드 개발자로 react 라이브러리를 사용하고 있기때문에 react로 자사 사이트 클론 코딩하고 api 요청에 대한 응답결과를 구현하는 과제였다. <br>
-포트폴리오를 만들었을때는 CRA를 사용해서 리액트 프로젝트를 만들었었다. create-react-app 한줄만 입력하면 손쉽게 리액트 프로젝트를 만들 수 있었기 때문이다.<br></p>
-<p>생각해보니 프론트엔드 자격요건이나 우대사항에 webpack &#x26; babel에 대한 이해나 지식을 요구하는 경우를 종종 보았는데 직접 설정해서 사용해본적은 인강으로 react를 배웠을때 정도였던 것 같다. 문득 <strong>직접 프로젝트를 설정할 수 있지만 CRA를 사용하는 것과 모르고 사용하는 것의 차이는 매우 크다</strong>는 생각이 들었다.<br></p>
-<p>그래서 마침 사전과제도 요청받았겠다 과제도 하고 내 공부도 할 겸 (꿩먹고 알먹고😋) CRA없이 react 프로젝트를 만들고 프로젝트 환경을 설정해 보기로 했다. <br><br><br></p>
-<h2 id="웹팩과-바벨" style="position:relative;"><a href="#%EC%9B%B9%ED%8C%A9%EA%B3%BC-%EB%B0%94%EB%B2%A8" aria-label="웹팩과 바벨 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹팩과 바벨</h2>
-<p>설정을 시작하기 전에 바벨과 웹팩에 대해 간단하게 알아보자. <br><br></p>
-<h3 id="웹팩" style="position:relative;"><a href="#%EC%9B%B9%ED%8C%A9" aria-label="웹팩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹팩</h3>
+  </script><title data-react-helmet="true">[react] transition이 적용된 Modal 만들기</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[react] transition이 적용된 Modal 만들기"/><meta data-react-helmet="true" property="og:site_title" content="[react] transition이 적용된 Modal 만들기"/><meta data-react-helmet="true" name="description" content="내 블로그에서 가장 조회수가 높은 포스팅은 react 모달 포스팅이다. ([react] 모달 팝업창 만들기) 
+전에 만들었던 Modal은 트랜지션이 적용되지 않았었다. 최근 프로젝트를 만들면서 트랜지션이 적용된 Modal을 만들어야 했었기에 트랜지션이 적용된 react Modal을 만들어 보기로 했다. 
+(* Modal은 이전에 만들었던 코드에 트랜지션을 추가 적용한다.) 트랜지션이 적용된 Modal 컴포넌트 (함수형) -완성된 모습- 트랜지션 모달 *파일구조   - CSS - Modal.js - App.js 이전코드와 달라진점은 animate, visible 상태값을 추가하고 모달창을 열때와 닫을때의 상태를 체크하여 그에 맞는 css animation 값을 준다는 것이다. 특히, 모달창을 닫을때의 상태를 체크해서 setTimeout으로 애니메이션을 보여준다음 모달창을 사라지게 해야한다는 것이다."/><meta data-react-helmet="true" property="og:description" content="내 블로그에서 가장 조회수가 높은 포스팅은 react 모달 포스팅이다. ([react] 모달 팝업창 만들기) 
+전에 만들었던 Modal은 트랜지션이 적용되지 않았었다. 최근 프로젝트를 만들면서 트랜지션이 적용된 Modal을 만들어야 했었기에 트랜지션이 적용된 react Modal을 만들어 보기로 했다. 
+(* Modal은 이전에 만들었던 코드에 트랜지션을 추가 적용한다.) 트랜지션이 적용된 Modal 컴포넌트 (함수형) -완성된 모습- 트랜지션 모달 *파일구조   - CSS - Modal.js - App.js 이전코드와 달라진점은 animate, visible 상태값을 추가하고 모달창을 열때와 닫을때의 상태를 체크하여 그에 맞는 css animation 값을 준다는 것이다. 특히, 모달창을 닫을때의 상태를 체크해서 setTimeout으로 애니메이션을 보여준다음 모달창을 사라지게 해야한다는 것이다."/><meta data-react-helmet="true" property="og:author" content="phrygia"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="google-site-verification" content="Qwl1ByUT9JKdKH-gShcyEFtOESV8O62F4LH-zNIjiQw"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-65f8f0d5cf2e4e0b9cf5.js"/><link as="script" rel="preload" href="/framework-73a0decd0f341130f472.js"/><link as="script" rel="preload" href="/app-9f1f6cea40b338df396d.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-31960fda4529b9fdb9ef.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-23388a78004d0760b00a.js"/><link as="fetch" rel="preload" href="/page-data/react/2022-03-03-react-modal/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link tit" href="/">phrygia devlog</a></div><div class="trailing-section"><button class="link">Posts</button><button class="link">About</button><button class="link">TIL</button><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">📓</div><div class="info"><div class="categories"><a class="category" href="/posts/react">react</a></div></div><h1 class="title">[react] transition이 적용된 Modal 만들기</h1><div class="info">phrygia · <!-- -->March 03, 2022</div></header><div class="post-content"><div class="markdown"><div style="text-align: left; display:inline-block;">
 <p><span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1300px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 561px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 45.53846153846154%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAABzqhIsRl//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAISIP/aAAgBAQABBQIac//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABcQAAMBAAAAAAAAAAAAAAAAAAABEiD/2gAIAQEABj8CFOf/xAAbEAABBAMAAAAAAAAAAAAAAAAAARAhMRFBUf/aAAgBAQABPyFaO5U5INP/AP/aAAwDAQACAAMAAAAQc+//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAZEAACAwEAAAAAAAAAAAAAAAAAARARcfD/2gAIAQEAAT8Qpo4aYw5f/9k='); background-size: cover; display: block;"
+    style="padding-bottom: 71.38461538461539%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHWa1kQkK//xAAaEAABBQEAAAAAAAAAAAAAAAACAAEDEBEh/9oACAEBAAEFApCJlktZ2v/EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/AYf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGn/8QAGhAAAgIDAAAAAAAAAAAAAAAAAQIAIDJBkf/aAAgBAQAGPwJQuzM15X//xAAbEAACAgMBAAAAAAAAAAAAAAABERAhADHR8P/aAAgBAQABPyEyg1WHno9hSBNkan//2gAMAwEAAgADAAAAEDcP/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/ENKrP//EABYRAQEBAAAAAAAAAAAAAAAAAAEQIf/aAAgBAgEBPxDIAT//xAAbEAEAAgIDAAAAAAAAAAAAAAABABEhQRCRwf/aAAgBAQABPxAKDk6FdzB64LovLuJmsqnS8//Z'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="웹팩"
-        title="웹팩"
-        src="/static/744d5d3bd352809d36ac3cc46be99ef8/01ab0/2022-02-18-react.jpg"
-        srcset="/static/744d5d3bd352809d36ac3cc46be99ef8/c989d/2022-02-18-react.jpg 325w,
-/static/744d5d3bd352809d36ac3cc46be99ef8/6aca1/2022-02-18-react.jpg 650w,
-/static/744d5d3bd352809d36ac3cc46be99ef8/01ab0/2022-02-18-react.jpg 1300w,
-/static/744d5d3bd352809d36ac3cc46be99ef8/c4e70/2022-02-18-react.jpg 1373w"
-        sizes="(max-width: 1300px) 100vw, 1300px"
+        alt="애널리틱스"
+        title="애널리틱스"
+        src="/static/83a70d7b20918aaf79f1978608b51d23/611f2/2022-03-03-modal1.jpg"
+        srcset="/static/83a70d7b20918aaf79f1978608b51d23/c989d/2022-03-03-modal1.jpg 325w,
+/static/83a70d7b20918aaf79f1978608b51d23/611f2/2022-03-03-modal1.jpg 561w"
+        sizes="(max-width: 561px) 100vw, 561px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<br>
-<div class="blockquote">
-    웹팩은 자바스크립트 애플리케이션을 위해 여러개의 파일을 하나로 <b>묶어주는</b> 모듈 번들러이다.
 </div>
-<p>웹팩은 여러 파일을 하나의 파일로 합치는 역할을 하며, 각 모듈간의 의존성을 분석하여 그룹화시켜준다. <br>
-(모듈을 하나의 파일이라고 생각하고 각 파일들을 하나로 합쳐준다고 생각하면 쉽다.)
-프로젝트에 사용되는 많은 라이브러리들을 빌드과정을 통해 html이 실행할 수 있는 하나의 파일로 합쳐준다.<br>
-js, jsx뿐만 아니라 css, 폰트, 이미지 등 다양한 파일을 번들링 할 수 있다.<br><br></p>
-<p><strong>*웹팩이 필요한 이유</strong></p>
-<ol>
-<li>파일 단위의 자바스크립트 모듈 관리의 필요성 : 전역변수 오염 방지</li>
-<li>웹 개발 작업 자동화 도구 : 적용 → 새로고침의 문제 해결, 용량이 큰 파일 자동 압축 등</li>
-<li>웹 애플리케이션의 빠른 로딩 속도와 높은 성능 → 로딩속도를 높여 사용자 이탈 방지 등</li>
-</ol>
+<p>내 블로그에서 가장 조회수가 높은 포스팅은 react 모달 포스팅이다. (<a href="https://phrygia.github.io/react/2021-09-21-react-modal/" target="_blank">[react] 모달 팝업창 만들기</a>) <br>
+전에 만들었던 Modal은 트랜지션이 적용되지 않았었다. 최근 프로젝트를 만들면서 트랜지션이 적용된 Modal을 만들어야 했었기에 트랜지션이 적용된 react Modal을 만들어 보기로 했다. <br>
+(* Modal은 이전에 만들었던 코드에 트랜지션을 추가 적용한다.)</p>
 <br>
-<h3 id="바벨" style="position:relative;"><a href="#%EB%B0%94%EB%B2%A8" aria-label="바벨 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>바벨</h3>
-<div style="display:inline-block">
-<img src="https://d33wubrfki0l68.cloudfront.net/7a197cfe44548cc1a3f581152af70a3051e11671/78df8/img/babel.svg" style="max-width: 500px; width: 100%;">
+<h2 id="트랜지션이-적용된-modal-컴포넌트-함수형" style="position:relative;"><a href="#%ED%8A%B8%EB%9E%9C%EC%A7%80%EC%85%98%EC%9D%B4-%EC%A0%81%EC%9A%A9%EB%90%9C-modal-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%ED%95%A8%EC%88%98%ED%98%95" aria-label="트랜지션이 적용된 modal 컴포넌트 함수형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>트랜지션이 적용된 Modal 컴포넌트 (함수형)</h2>
+<p><small class="from">-완성된 모습-</small></p>
+<p><img src="/0e833206b7cd6c90dfcc765783c0c5c8/2022-03-03-modal2.gif" alt="트랜지션 모달"></p>
+<br>
+<p><strong>*파일구조</strong> <br></p>
+<div style="text-align: left; display:inline-block;">
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 205px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 128.29268292682926%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABzZYAWAB//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQABBQJP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAGBABAQADAAAAAAAAAAAAAAAAEAEAMUH/2gAIAQEAAT8hYzLs4//aAAwDAQACAAMAAAAQEAYA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAIDAAMAAAAAAAAAAAAAARARACFRMWFx/9oACAEBAAE/ELoxbg3YqGOnTcee9HXPYPyBbFtcn//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="img/modal-1.jpg"
+        title="img/modal-1.jpg"
+        src="/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg"
+        srcset="/static/7b23bd1265e9a973d8336bb183665ff6/e6c22/modal-1.jpg 205w"
+        sizes="(max-width: 205px) 100vw, 205px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 </div>
-<br>
-<br>
-<div class="blockquote">
-    바벨은 ES6+ 버전 이상의 자바스크립트 코드를 하위 버전의 자바스크립트 문법으로 <b>변환</b> 시켜준다. 
-</div>
-<p>바벨 웹사이트를 방문하면 <code class="language-text">Babel is a Javascript compiler</code>이란 문구가 보인다. <br>
-문구 그대로 바벨은 자바스크립트 컴파일러다. 자바스크립트의 특정 문법, 타입스크립트, JSX 등의 문법은 웹 브라우저에서 지원하지 않는 경우가 많은데 호환 가능한 ES5이하의 문법으로 변환 해준다. <br><br></p>
-<p><strong>*바벨이 필요한 이유</strong></p>
-<ol>
-<li>크로스 브라우징 (호환성) : 오래된 브라우저 유저들을 고려하고 모든 브라우저에서 동작하기 위해 사용</li>
-<li>개발자를의 편리성: 브라우저의 호환여부를 따지지 않고 최신문법 사용이 자유롭기 때문에 개발의 효율성이 증가</li>
-</ol>
-<p><br><br></p>
-<h2 id="개발환경-구축" style="position:relative;"><a href="#%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95" aria-label="개발환경 구축 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개발환경 구축</h2>
-<h3 id="1-packagejson-생성-및-react-설치" style="position:relative;"><a href="#1-packagejson-%EC%83%9D%EC%84%B1-%EB%B0%8F-react-%EC%84%A4%EC%B9%98" aria-label="1 packagejson 생성 및 react 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. package.json 생성 및 react 설치</h3>
-<ul>
-<li>react : 리액트 코어 라이브러리</li>
-<li>react-dom : 리액트와 DOM을 연결</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// package.json 생성</span>
-yarn init <span class="token operator">-</span>y
+<p><strong>- CSS</strong></p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.modal</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 99<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> 0.25s<span class="token punctuation">;</span>
+  <span class="token property">animation-timing-function</span><span class="token punctuation">:</span> ease-out<span class="token punctuation">;</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> fadeIn<span class="token punctuation">;</span>
+  <span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> forwards<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal.close</span> <span class="token punctuation">{</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> fadeOut<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal button</span> <span class="token punctuation">{</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 450px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.3rem<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> 0.25s<span class="token punctuation">;</span>
+  <span class="token property">animation-timing-function</span><span class="token punctuation">:</span> ease-out<span class="token punctuation">;</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> slideUp<span class="token punctuation">;</span>
+  <span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> forwards<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal.close > section</span> <span class="token punctuation">{</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> slideDown<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section > header</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 16px 64px 16px 16px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f1f1f1<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section > header button</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+  <span class="token property">right</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 21px<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #999<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section > main</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px solid #dee2e6<span class="token punctuation">;</span>
+  <span class="token property">border-top</span><span class="token punctuation">:</span> 1px solid #dee2e6<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section > footer</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 12px 16px<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.modal > section > footer button</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 6px 12px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #6c757d<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 13px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-yarn add react react<span class="token operator">-</span>dom</code></pre></div>
-<br>
-<h3 id="2-바벨설치" style="position:relative;"><a href="#2-%EB%B0%94%EB%B2%A8%EC%84%A4%EC%B9%98" aria-label="2 바벨설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 바벨설치</h3>
-<ul>
-<li>@babel/core : 바벨 코어</li>
-<li>@babel/preset-react : 리액트의 JSX 코드를 트랜스파일링</li>
-<li>@babel/cpreset-env : ES6+ 코드를 ES5 코드로 트랜스파일링 (+폴리필 자동화)</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">yarn add <span class="token operator">-</span><span class="token constant">D</span> @babel<span class="token operator">/</span>core @babel<span class="token operator">/</span>preset<span class="token operator">-</span>react @babel<span class="token operator">/</span>preset<span class="token operator">-</span>env</code></pre></div>
-<br>
-<h3 id="3-웹팩과-관련-모듈loader-설치" style="position:relative;"><a href="#3-%EC%9B%B9%ED%8C%A9%EA%B3%BC-%EA%B4%80%EB%A0%A8-%EB%AA%A8%EB%93%88loader-%EC%84%A4%EC%B9%98" aria-label="3 웹팩과 관련 모듈loader 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 웹팩과 관련 모듈(loader) 설치</h3>
-<ul>
-<li>webpack : 웹팩 코어</li>
-<li>webpack-cli : 터미널의 커맨드라인에서 웹팩 사용</li>
-<li>webpack-dev-server : 웹팩을 메모리 상으로만 빌드한 결과물을 개발 서버에 구동</li>
-<li>babel-loader : ES6+, JSX 문법을 트랜스파일링</li>
-<li>css-loader : CSS 코드를 JS로 변환</li>
-<li>style-loader : 변환된 css파일을 index.hmtl의 &#x3C;style>태그에 삽입</li>
-<li>file-loader : 이미지, 폰트 등의 파일 로딩</li>
-<li>json-loader : json 파일 로딩</li>
-<li>dotenv : .env 파일을 환경변수에 대신 설정해줌</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack 설치</span>
-yarn add <span class="token operator">-</span><span class="token constant">D</span> webpack webpack<span class="token operator">-</span>cli webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server
+<span class="token atrule"><span class="token rule">@keyframes</span> modal-bg-show</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment">// 관련모듈 설치</span>
-yarn add <span class="token operator">-</span><span class="token constant">D</span> babel<span class="token operator">-</span>loader css<span class="token operator">-</span>loader style<span class="token operator">-</span>loader file<span class="token operator">-</span>loader
-
-<span class="token comment">// 나는 프로젝트에서 json을 사용했기 때문에 추가로 설치했다. (선택)</span>
-yarn add <span class="token operator">-</span><span class="token constant">D</span> json<span class="token operator">-</span>loader
-
-<span class="token comment">// .env 파일을 사용한다면 설치 (선택)</span>
-yarn add dotenv</code></pre></div>
-<br>
-<p>웹팩으로 번들링 한 후의 파일에 적용할 플러그인을 설치한다.</p>
-<ul>
-<li>html-webpack-plugin : html 파일에 번들링된 JS 코드를 삽입하고 dist 폴더에 번들링된 결과물을 옮겨줌</li>
-<li>clean-webpack-plugin : 번들링을 할 때 마다 이전의 번들링 결과를 제거</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">yarn add <span class="token operator">-</span><span class="token constant">D</span> html<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin clean<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin</code></pre></div>
-<br>
-<h3 id="4-바벨-웹팩-설정" style="position:relative;"><a href="#4-%EB%B0%94%EB%B2%A8-%EC%9B%B9%ED%8C%A9-%EC%84%A4%EC%A0%95" aria-label="4 바벨 웹팩 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 바벨, 웹팩 설정</h3>
-<p>프로젝트 루트에 <code class="language-text">babel.config.js</code> 파일을 만들고 프리셋을 설정한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js</span>
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'@babel/preset-env'</span><span class="token punctuation">,</span> <span class="token string">'@babel/preset-react'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<br>
-<p>프로젝트 루트에 <code class="language-text">webpack.config.js</code> 파일과 <code class="language-text">.env</code>파일을 만든다. <br>
-(웹팩 설정에 따라 프로젝트 결과물이 달라질 수 있으며, 설정 옵션이 많기 때문에 webpack 사이트를 참고하면서 필요한 설정을 하면 된다.)</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">//.env</span>
-<span class="token constant">MODE</span> <span class="token operator">=</span> <span class="token string">'development'</span><span class="token punctuation">;</span> <span class="token comment">// development(개발 모드), production(프로덕션 모드)</span>
-<span class="token constant">PORT</span> <span class="token operator">=</span> <span class="token string">'3000'</span><span class="token punctuation">;</span></code></pre></div>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js</span>
-<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token punctuation">{</span> CleanWebpackPlugin <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'clean-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> dotenv <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'dotenv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  mode<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">MODE</span><span class="token punctuation">,</span> <span class="token comment">// 만약 환경변수를 사용하지 않는다면 직접 'development' 입력</span>
-  entry<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
-  output<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 번들링 결과 : /dist폴더</span>
-    path<span class="token operator">:</span> __dirname <span class="token operator">+</span> <span class="token string">'/dist'</span><span class="token punctuation">,</span>
-    <span class="token comment">// bundle.해쉬.js로 생성</span>
-    filename<span class="token operator">:</span> <span class="token string">'bundle.[hash].js'</span><span class="token punctuation">,</span>
-    publicPath<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 번들링을 할 파일 설정</span>
-    extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.jsx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// loader 설정 - 등록한 로더의 뒤의 요소부터 번들링에 반영</span>
-    <span class="token comment">// node_modules 제외</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|jsx)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        exclude<span class="token operator">:</span> <span class="token string">'/node_modules/'</span><span class="token punctuation">,</span>
-        loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> loader<span class="token operator">:</span> <span class="token string">'style-loader'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> loader<span class="token operator">:</span> <span class="token string">'css-loader'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|jpe?g|gif|svg)$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">,</span>
-        loader<span class="token operator">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
-        options<span class="token operator">:</span> <span class="token punctuation">{</span>
-          name<span class="token operator">:</span> <span class="token string">'assets/[contenthash].[ext]'</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token comment">// 빌드 이전 결과물을 제거</span>
-    <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment">// 번들한 css파일과 js파일을 html 파일에 link 태그, script태그로 추가</span>
-    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      template<span class="token operator">:</span> <span class="token string">'public/index.html'</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment">// 환경 정보를 제공</span>
-    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      mode<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">MODE</span><span class="token punctuation">,</span>
-      port<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
-    host<span class="token operator">:</span> <span class="token string">'localhost'</span><span class="token punctuation">,</span>
-    port<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span><span class="token punctuation">,</span>
-    open<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    historyApiFallback<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token comment">// hot : 모듈의 변화된 부분만 서버에 자동으로 반영</span>
-    hot<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<br>
-<ul>
-<li>start : 개발서버에서 리액트 프로젝트 수행</li>
-<li>build : dist 폴더에 번들링된 파일 생성</li>
-</ul>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// package.json</span>
-<span class="token string">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token string">"start"</span><span class="token operator">:</span> <span class="token string">"webpack-dev-server --progress --mode development"</span><span class="token punctuation">,</span>
-  <span class="token string">"build"</span><span class="token operator">:</span> <span class="token string">"webpack --progress --mode production"</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> fadeIn</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> fadeOut</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> slideUp</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>-100px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> slideDown</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>-100px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<br>
-<h3 id="5-리액트-컴포넌트-생성" style="position:relative;"><a href="#5-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%83%9D%EC%84%B1" aria-label="5 리액트 컴포넌트 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. 리액트 컴포넌트 생성</h3>
-<p>루트에 public 폴더를 만들고 index.html 파일을 만든다. <br></p>
-<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ko<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=divice-width, initial-scale=1.0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ie=edge<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
-<br>
-<p>src 폴더를 생성하고 index.js와 App.js 파일을 만들고 다음과 같이 입력한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// index.js</span>
-<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> ReactDom <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span><span class="token punctuation">;</span>
+<p><strong>- Modal.js</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token comment">// public/index.html 파일에서 root아이디를 가진 DOM에 랜더</span>
-ReactDom<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<br>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// App.js</span>
-<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Modal</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> open<span class="token punctuation">,</span> close<span class="token punctuation">,</span> header <span class="token punctuation">}</span> <span class="token operator">=</span> props<span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// 현재 트랜지션 효과를 보여주고 있는 중이라는 상태 값</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>animate<span class="token punctuation">,</span> setAnimate<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 실제 컴포넌트가 사라지는 시점을 지연시키기 위한 값</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>visible<span class="token punctuation">,</span> setVisible<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>open<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// open 값이 true -> false 가 되는 것을 감지 (즉, 모달창을 닫을 때)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>visible <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>open<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">setAnimate</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setAnimate</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">setAnimate</span><span class="token punctuation">(</span>open<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>visible<span class="token punctuation">,</span> open<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>animate <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>visible<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"App"</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>h1<span class="token operator">></span>Hello React World<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token comment">// 모달의 open close클래스로 css animation을 구현</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>open <span class="token operator">?</span> <span class="token string">'modal open'</span> <span class="token operator">:</span> <span class="token string">'modal close'</span><span class="token punctuation">}</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>section<span class="token operator">></span>
+        <span class="token operator">&lt;</span>header<span class="token operator">></span>
+          <span class="token punctuation">{</span>header<span class="token punctuation">}</span>
+          <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"close"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>close<span class="token punctuation">}</span><span class="token operator">></span>
+            <span class="token operator">&amp;</span>times<span class="token punctuation">;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>header<span class="token operator">></span>
+        <span class="token operator">&lt;</span>main<span class="token operator">></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">></span>
+        <span class="token operator">&lt;</span>footer<span class="token operator">></span>
+          <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"close"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>close<span class="token punctuation">}</span><span class="token operator">></span>
+            close
+          <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>footer<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>section<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Modal<span class="token punctuation">;</span></code></pre></div>
+<p><strong>- App.js</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>modalOpen<span class="token punctuation">,</span> setModalOpen<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">openModal</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">setModalOpen</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">closeModal</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">setModalOpen</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>React<span class="token punctuation">.</span>Fragment<span class="token operator">></span>
+      <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>openModal<span class="token punctuation">}</span><span class="token operator">></span>모달팝업<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span>Modal open<span class="token operator">=</span><span class="token punctuation">{</span>modalOpen<span class="token punctuation">}</span> close<span class="token operator">=</span><span class="token punctuation">{</span>closeModal<span class="token punctuation">}</span> header<span class="token operator">=</span><span class="token string">"Modal heading"</span><span class="token operator">></span>
+        함수형 모달 팝업창입니다<span class="token punctuation">.</span> 쉽게 만들 수 있어요<span class="token punctuation">.</span> 같이 만들어봐요<span class="token operator">!</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Modal<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>React<span class="token punctuation">.</span>Fragment<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
 <span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span></code></pre></div>
 <br>
-<br>
-<p><code class="language-text">yarn start</code>로 프로젝트 실행하면 서버가 실행된다.</p>
-<div style="display:inline-block">
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 520px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 67.38461538461537%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAUBBP/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe3aQnKI/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAMUAiD/2gAIAQEAAQUCjwRrI1cf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGxAAAQQDAAAAAAAAAAAAAAAAABEgIZExQqL/2gAIAQEABj8Cx0Stm1s//8QAGRAAAgMBAAAAAAAAAAAAAAAAAUEAIIGR/9oACAEBAAE/IQFuoFsV5//aAAwDAQACAAMAAAAQAw//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAdEAABAgcAAAAAAAAAAAAAAAABAGERICFxkcHR/9oACAEBAAE/EClA24IwGBLh0mssn//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="webpack dev 실행"
-        title="webpack dev 실행"
-        src="/static/b73f2b7e01bc89494b1961540ba79c7b/ddb38/2022-02-18-react2.jpg"
-        srcset="/static/b73f2b7e01bc89494b1961540ba79c7b/c989d/2022-02-18-react2.jpg 325w,
-/static/b73f2b7e01bc89494b1961540ba79c7b/ddb38/2022-02-18-react2.jpg 520w"
-        sizes="(max-width: 520px) 100vw, 520px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-</div>
-<p><code class="language-text">yarn build</code> 명령어를 실행하면 dist 파일에 번들링 된 결과물인 bundle.js와 index.html이 생성된다.</p>
-<p><br><br></p>
-<h2 id="포스팅을-마치며" style="position:relative;"><a href="#%ED%8F%AC%EC%8A%A4%ED%8C%85%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0" aria-label="포스팅을 마치며 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>포스팅을 마치며..</h2>
-<p>처음에는 babel-loader와 css-loader style-loader만 설치해서 설정했었다. 근데 코딩하면서 import로 이미지를 불러오는 것도 json을 불러오는 것도 전부 설정이 필요하다는 것을 알게 되었다. <br>
-그동안 CRA가 한번에 설치해주는게 얼마나 편한지 알게되었고, webpack과 babel이 어렵다는 막연한 두려움을 해소해주는 계기가 되었다. 😉<br>
-(나중에 scss-loader도 웹팩에 추가해서 사용해봐야지…)<br><br></p>
-<p>⚙ prettier나 es-lint까지 설정하면 개발 효율성이 더욱 높아질 것 같다.</p>
-<br>
-<div class="table-of-contents">
-<ul>
-<li>
-<p><a href="#%EC%9B%B9%ED%8C%A9%EA%B3%BC-%EB%B0%94%EB%B2%A8">웹팩과 바벨</a></p>
-<ul>
-<li><a href="#%EC%9B%B9%ED%8C%A9">웹팩</a></li>
-<li><a href="#%EB%B0%94%EB%B2%A8">바벨</a></li>
-</ul>
-</li>
-<li>
-<p><a href="#%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95">개발환경 구축</a></p>
-<ul>
-<li><a href="#1-packagejson-%EC%83%9D%EC%84%B1-%EB%B0%8F-react-%EC%84%A4%EC%B9%98">1. package.json 생성 및 react 설치</a></li>
-<li><a href="#2-%EB%B0%94%EB%B2%A8%EC%84%A4%EC%B9%98">2. 바벨설치</a></li>
-<li><a href="#3-%EC%9B%B9%ED%8C%A9%EA%B3%BC-%EA%B4%80%EB%A0%A8-%EB%AA%A8%EB%93%88loader-%EC%84%A4%EC%B9%98">3. 웹팩과 관련 모듈(loader) 설치</a></li>
-<li><a href="#4-%EB%B0%94%EB%B2%A8-%EC%9B%B9%ED%8C%A9-%EC%84%A4%EC%A0%95">4. 바벨, 웹팩 설정</a></li>
-<li><a href="#5-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%83%9D%EC%84%B1">5. 리액트 컴포넌트 생성</a></li>
-</ul>
-</li>
-<li>
-<p><a href="#%ED%8F%AC%EC%8A%A4%ED%8C%85%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0">포스팅을 마치며..</a></p>
-</li>
-</ul>
-</div></div><div class="phrygia_info_post"><dl><dt><img src="/static/phrygia-c14fc3043cf0982ab6c58276a5308c8a.jpg" alt="phrygia"/></dt><dd><strong>Chaeyeon Lee (phrygia)</strong><p>Frontend Engineer 꿈꾸는 4년차 마크업 개발자입니다-*</p></dd></dl></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/css/2022-02-06-scss-for/"><div class="direction">이전 글</div><div class="title">[scss] @for ~ through / to 차이점</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/react/2022-03-03-react-modal/"><div class="direction">다음 글</div><div class="title">[react] transition이 적용된 Modal 만들기</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/phrygia">phrygia</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p><button id="go-to-top" style="display:none"><span class="left"></span><span class="right"></span><p>Back To Top</p></button></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LV3317EKZF"></script><script>
+<p>이전코드와 달라진점은 animate, visible 상태값을 추가하고 모달창을 열때와 닫을때의 상태를 체크하여 그에 맞는 css animation 값을 준다는 것이다. 특히, 모달창을 닫을때의 상태를 체크해서 setTimeout으로 애니메이션을 보여준다음 모달창을 사라지게 해야한다는 것이다.</p>
+<br></div><div class="phrygia_info_post"><dl><dt><img src="/static/phrygia-c14fc3043cf0982ab6c58276a5308c8a.jpg" alt="phrygia"/></dt><dd><strong>Chaeyeon Lee (phrygia)</strong><p>Frontend Engineer 꿈꾸는 4년차 마크업 개발자입니다-*</p></dd></dl></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/react/2022-02-18-react/"><div class="direction">이전 글</div><div class="title">[react] CRA없이 React환경 구축하기 (웹팩, 바벨)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/phrygia">phrygia</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p><button id="go-to-top" style="display:none"><span class="left"></span><span class="right"></span><p>Back To Top</p></button></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LV3317EKZF"></script><script>
     window.GATSBY_GTAG_PLUGIN_GA_TRACKING_ID = (
       'G-LV3317EKZF'
     );
@@ -367,4 +316,4 @@ ReactDom<span class="token punctuation">.</span><span class="token function">ren
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-LV3317EKZF', options);
-  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react/2022-02-18-react/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a9688c4a2477bd1d90bc.js"],"app":["/app-9f1f6cea40b338df396d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3cc6d60cc2fcb2463216.js"],"component---src-pages-404-js":["/component---src-pages-404-js-976c24a48f4461624353.js"],"component---src-pages-about-js":["/component---src-pages-about-js-d02fa7e92c21c96c1440.js"],"component---src-pages-index-js":["/component---src-pages-index-js-56a4a41d4b8df07d38d0.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-23388a78004d0760b00a.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-7e46726c0e7b750fff49.js"]};/*]]>*/</script><script src="/polyfill-a9688c4a2477bd1d90bc.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-23388a78004d0760b00a.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-31960fda4529b9fdb9ef.js" async=""></script><script src="/app-9f1f6cea40b338df396d.js" async=""></script><script src="/framework-73a0decd0f341130f472.js" async=""></script><script src="/webpack-runtime-65f8f0d5cf2e4e0b9cf5.js" async=""></script></body></html>
+  </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react/2022-03-03-react-modal/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a9688c4a2477bd1d90bc.js"],"app":["/app-9f1f6cea40b338df396d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3cc6d60cc2fcb2463216.js"],"component---src-pages-404-js":["/component---src-pages-404-js-976c24a48f4461624353.js"],"component---src-pages-about-js":["/component---src-pages-about-js-d02fa7e92c21c96c1440.js"],"component---src-pages-index-js":["/component---src-pages-index-js-56a4a41d4b8df07d38d0.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-23388a78004d0760b00a.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-7e46726c0e7b750fff49.js"]};/*]]>*/</script><script src="/polyfill-a9688c4a2477bd1d90bc.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-23388a78004d0760b00a.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-31960fda4529b9fdb9ef.js" async=""></script><script src="/app-9f1f6cea40b338df396d.js" async=""></script><script src="/framework-73a0decd0f341130f472.js" async=""></script><script src="/webpack-runtime-65f8f0d5cf2e4e0b9cf5.js" async=""></script></body></html>
