@@ -145,6 +145,17 @@ html[data-theme='dark'] {
       color: #fff;
     }
   }
+  .page-content {
+    .post-card-wrapper .title .post-card {
+      color: #fff;
+    }
+    .post-card-wrapper .categories a {
+      color: rgba(153, 153, 255, 1);
+    }
+  }
+  .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
+    color: #fff;
+  }
 }
 html[data-theme='light'] {
   #go-to-top {
