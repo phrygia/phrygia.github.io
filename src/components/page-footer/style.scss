@@ -136,6 +136,12 @@
   }
 }
 html[data-theme='dark'] {
+  .markdown blockquote {
+    color: #90b0ec;
+  }
+  .markdown .blockquote {
+    background-color: rgba(135, 131, 120, 0.15);
+  }
   #go-to-top {
     color: rgba(255, 255, 255, 0.6);
     span {
