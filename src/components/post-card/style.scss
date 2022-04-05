@@ -24,6 +24,7 @@
   }
   .description {
     // color: #444;
+    font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -81,17 +82,18 @@
     & > .cont {
       width: calc(100% - 210px);
       .title {
-        margin: 20px 0 22px;
+        margin: 20px 0 24px;
         .post-card {
           font-size: 18px;
         }
       }
       .description {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         line-height: 1.8;
+        font-size: 15px;
       }
       .read-more {
-        font-size: 12px;
+        font-size: 13px;
       }
     }
   }

@@ -1,5 +1,5 @@
 ---
-emoji: '/img/reacty-modal-thumb.jpg'
+emoji: '/img/react-modal-thumb.jpg'
 title: '[react] transition이 적용된 Modal 만들기'
 date: '2022-03-03 15:37:00'
 author: phrygia
