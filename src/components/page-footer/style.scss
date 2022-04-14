@@ -171,3 +171,7 @@ html[data-theme='light'] {
     }
   }
 }
+
+.gatsby-resp-image-link > .gatsby-resp-image-link {
+  padding-bottom: 0 !important;
+}
