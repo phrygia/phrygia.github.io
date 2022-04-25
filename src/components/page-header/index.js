@@ -53,12 +53,15 @@ function PageHeader({ siteTitle }) {
               >
                 About
               </button>
-              <button
+              <button className="link" onClick={() => window.open('/posts/diary', '_self')}>
+                Diary
+              </button>
+              {/* <button
                 className="link"
                 onClick={() => window.open('https://phrygia.github.io/phrygia-TIL/', '_blank')}
               >
                 TIL
-              </button>
+              </button> */}
               <PostSearch
                 posts={data.allMarkdownRemark.edges.map(({ node }) => new Post(node, true))}
               />

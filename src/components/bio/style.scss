@@ -19,14 +19,15 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  max-width: 650px;
 
   color: var(--primary-text-color);
 
   @include md {
     flex-direction: row;
     align-items: center;
-    margin-top: 90px;
-    margin-bottom: 60px;
+    margin-top: 50px;
+    margin-bottom: 30px;
   }
   .introduction {
     display: flex;
@@ -50,6 +51,7 @@
       .title {
         & > span {
           display: block;
+          margin-top: -9px;
         }
         .react-rotating-text-cursor {
           font-size: 35px;
@@ -58,7 +60,7 @@
       }
 
       @include md {
-        font-size: 40px;
+        font-size: 30px;
 
         .title {
           .react-rotating-text-cursor {
@@ -102,7 +104,7 @@
 
   .thumbnail {
     display: none;
-    width: 320px;
+    width: 280px;
     border-radius: 100%;
 
     @include md {

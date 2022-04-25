@@ -111,6 +111,13 @@ section {
 }
 body {
   line-height: 1;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-clip: padding-box;
+  }
 }
 ol,
 ul {

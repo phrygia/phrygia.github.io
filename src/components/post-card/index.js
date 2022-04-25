@@ -3,14 +3,14 @@ import React from 'react';
 import './style.scss';
 
 function PostCard({ post }) {
-  const { id, slug, title, excerpt, date, categories, emoji } = post;
+  const { id, slug, title, excerpt } = post;
+  // const { id, slug, title, excerpt, date, categories, emoji } = post;
 
   return (
     <div className="post-card-wrapper" key={id}>
-      <div className="date">
+      {/* <div className="date">
         {
           emoji && emoji.indexOf('img') !== -1 ? <img src={emoji} alt={emoji} /> : null
-          // <img src="/img/no-img.jpg" className="no-img" alt="no-img" />
         }
         <p>
           <b>{date.split(',')[0].split(' ')[1]} </b> <br />
@@ -18,9 +18,9 @@ function PostCard({ post }) {
           {date.split(',')[0].split(' ')[0][1]}
           {date.split(',')[0].split(' ')[0][2]}
         </p>
-      </div>
+      </div> */}
       <div className="cont">
-        <div className="categories">
+        {/* <div className="categories">
           {categories.map((category) => (
             <div className="category" key={category}>
               <Link className="post-card" to={`/posts/${category}`}>
@@ -28,16 +28,16 @@ function PostCard({ post }) {
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
         <div className="title">
           <Link className="post-card" to={slug}>
-            {title}
+            <h3>{title}</h3>
+            <p className="description" dangerouslySetInnerHTML={{ __html: excerpt }} />
           </Link>
         </div>
-        <p className="description" dangerouslySetInnerHTML={{ __html: excerpt }} />
-        <Link className="read-more" to={slug}>
+        {/* <Link className="read-more" to={slug}>
           Read More
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

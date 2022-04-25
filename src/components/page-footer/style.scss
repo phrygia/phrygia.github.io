@@ -136,6 +136,14 @@
   }
 }
 html[data-theme='dark'] {
+  body {
+    &::-webkit-scrollbar-thumb {
+      background-color: #383636;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #2d2d2d;
+    }
+  }
   .markdown blockquote {
     color: #90b0ec;
   }
@@ -159,11 +167,41 @@ html[data-theme='dark'] {
       color: rgba(153, 153, 255, 1);
     }
   }
+  .post-card-wrapper > .cont .title .description,
   .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
+    color: #d8d7d7;
+  }
+  .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
+    border-color: #383636 !important;
+  }
+  .post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected {
+    border-color: #666 !important;
+  }
+  .post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,
+  .post-card-wrapper .title .post-card h3 {
     color: #fff;
+  }
+  .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
+    background-color: transparent;
+    border-color: #999;
+  }
+  .post-tabs-wrapper .post-tabs > div .MuiTabs-scrollButtons {
+    background-color: #24272c;
+  }
+  .post-tabs-wrapper .post-tabs {
+    background-color: #24272c;
+    border-color: #383636;
   }
 }
 html[data-theme='light'] {
+  body {
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(153, 153, 255, 0.15);
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+  }
   #go-to-top {
     color: #323232;
     span {
