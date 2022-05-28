@@ -11,7 +11,7 @@
   .page-footer {
     @include content-max-width;
     text-align: center;
-
+    font-size: 12px;
     .link {
       font-weight: 700;
       font-size: 20px;
@@ -21,6 +21,9 @@
 
     a {
       color: #3a95ff;
+    }
+    @media (max-width: 767px) {
+      font-size: 10px;
     }
   }
 }
