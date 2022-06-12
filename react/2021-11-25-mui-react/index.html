@@ -487,15 +487,16 @@ react 코드안에서 if {} else {} 구문에서 return 사용이 까다롭고 �
 <span class="token keyword">import</span> <span class="token punctuation">{</span> createTheme<span class="token punctuation">,</span> ThemeProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mui/material/styles'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> styled <span class="token keyword">from</span> <span class="token string">'styled-components'</span><span class="token punctuation">;</span>
 
+<span class="token comment">// mui의 css 우선순위가 높기때문에 important를 설정 - 실무하다 보면 종종 발생 우선순위 문제</span>
 <span class="token keyword">const</span> FormHelperTexts <span class="token operator">=</span> <span class="token function">styled</span><span class="token punctuation">(</span>FormHelperText<span class="token punctuation">)</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   width: 100%;
   padding-left: 16px;
-  font-weight: 700;
-  color: #d32f2f;
+  font-weight: 700 !important;
+  color: #d32f2f !important;
 </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> Boxs <span class="token operator">=</span> <span class="token function">styled</span><span class="token punctuation">(</span>Box<span class="token punctuation">)</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  padding-bottom: 40px;
+  padding-bottom: 40px !important;
 </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">Register</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
