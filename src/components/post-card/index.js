@@ -3,7 +3,7 @@ import React from 'react';
 import './style.scss';
 
 function PostCard({ post }) {
-  const { id, slug, title, excerpt } = post;
+  const { id, slug, title, excerpt, date } = post;
   // const { id, slug, title, excerpt, date, categories, emoji } = post;
 
   return (
@@ -33,6 +33,7 @@ function PostCard({ post }) {
           <Link className="post-card" to={slug}>
             <h3>{title}</h3>
             <p className="description" dangerouslySetInnerHTML={{ __html: excerpt }} />
+            <span style={{ color: '#919191' }}>{date}</span>
           </Link>
         </div>
         {/* <Link className="read-more" to={slug}>

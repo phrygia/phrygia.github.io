@@ -88,7 +88,7 @@ function AboutPage({ data }) {
             </h3>
             <img src={Skill} alt="" />
             <ul>
-              <li>주로 사용하는 언어는 JavaScript 입니다.</li>
+              <li>주로 사용하는 언어는 JS, TS 입니다.</li>
               <li>React 라이브러리를 사용할 수 있으며, 열심히 공부하고 있습니다 😄 (+ Next.js)</li>
               <li>CSS & SCSS 등 CSS Preprocessor를 사용할 수 있습니다.</li>
               <li>웹 접근성을 고려하여 UI를 개발하려고 항상 노력합니다.</li>
