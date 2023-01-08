@@ -39,10 +39,10 @@ function PageHeader({ siteTitle }) {
               <button className="link" onClick={() => window.open('/posts', '_self')}>
                 Posts
               </button>
-              <Link className="link" to="/about" style={{marginTop: '-2px'}}>
+              <Link className="link" to="/about">
                 About
               </Link>
-              {/* <button
+              {/* <button.l
                 className="link"
                 onClick={() =>
                   window.open(
@@ -52,7 +52,7 @@ function PageHeader({ siteTitle }) {
                 }
               >
                 About
-              </button> */}
+              </button.l> */}
               <button className="link" onClick={() => window.open('/posts/diary', '_self')}>
                 Diary
               </button>

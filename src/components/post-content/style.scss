@@ -29,6 +29,10 @@ html[data-theme='dark'] {
   margin: 50px auto 0;
   @include content-max-width;
 
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
+
   dl {
     padding-bottom: 25px;
     display: flex;
@@ -44,6 +48,13 @@ html[data-theme='dark'] {
         margin: 0;
         border-radius: 100%;
         border: 1px solid #f1f1f1;
+      }
+      @media (max-width: 767px) {
+        height: auto;
+
+        & img {
+          height: atuo;
+        }
       }
     }
     dd {

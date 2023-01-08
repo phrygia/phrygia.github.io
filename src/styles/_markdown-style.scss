@@ -138,6 +138,10 @@
   border-color: var(--link-text-color);
 }
 
+.markdown a[class*='mage-link'] {
+  border-color: transparent;
+}
+
 .markdown a.anchor {
   border-bottom: none;
 }

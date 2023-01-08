@@ -78,6 +78,15 @@ html[data-theme='light'] {
     justify-content: space-between;
     @include content-max-width;
 
+    a.link {
+      position: relative;
+      top: -2px;
+
+      @media (max-width: 767px) {
+        top: -1px;
+      }
+    }
+
     .link {
       font-weight: 700;
       font-size: 16px;
@@ -95,7 +104,7 @@ html[data-theme='light'] {
 
       .link {
         @media (max-width: 767px) {
-          margin-left: 5px;
+          margin-left: 8px;
           font-size: 15px;
           &.mo {
             display: none;
