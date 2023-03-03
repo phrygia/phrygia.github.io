@@ -26,10 +26,11 @@ categories: js
 { 99ngh08: 2, 5gxyt1q: 1, 3ifu0ie: 1 }
 ```
 
-<br><br>
+<br>
 
 우선 장바구니 상품들중 선택한 상품을 id로 필터하고 map으로 store_key키만 추출한 다음 reduce안에서 다시 filter해서 해당 상품의 수량을 붙여서 코딩을 했다..<br>
 (진짜 부끄럽고 지저분하고 개발자답지 못한 코드.. 🤪)
+<br><br>
 
 **\*기존코드**
 
@@ -47,7 +48,6 @@ const filteredKey = listItems
   }, {});
 ```
 
-<br>
 개발하고 나서 코드가 너무 말이 안되는것 같아서 배열을 객체로 바꾸는 법을 검색해서 새로운 코드를 적용해 보았다.
 
 ```js
@@ -70,7 +70,7 @@ arrayToObject 출력결과
 */
 ```
 
-OMG.. 훨씬 깔끔한 코드가 완성됐다. (개인적으로 reduce가 들어가는 순간 깔끔함이 사라진다고 생각하는 사람..) <br><br>
+OMG.. 훨씬 깔끔한 코드가 완성됐다. (개인적으로 reduce가 들어가는 순간 깔끔함이 사라진다고 생각하는 사람..) <br><br><br>
 
 ## Obejct.fromEntries ?
 
@@ -82,7 +82,11 @@ Object.fromEntries() 메서드는 키-값(key-value) 요소를 갖고 있는 Arr
 
 ```js
 // 인자로 배열 넘겨줄 때
-const arr = [['0', 'a'], ['1', 'b'], ['2', 'c']];
+const arr = [
+  ['0', 'a'],
+  ['1', 'b'],
+  ['2', 'c'],
+];
 const obj = Object.fromEntries(arr);
 console.log(obj); // { 0: "a", 1: "b", 2: "c" }
 
@@ -97,6 +101,7 @@ console.log(obj); // { foo: "bar", baz: 42 }
 ## 이 외의 방법
 
 ### 1. Object.assign()
+
 해당 포스트(<a href="https://phrygia.github.io/js/2021-09-21-object/" target="_blank">[javascript] Object.assign() & Object.create()</a>)에서는 {}에 대해서만 다뤘기 때문에 배열을 인자로 넘겨주면 자동으로 키값이 생성된다는 걸 몰랐다. 😳 <br>
 
 <div class="blockquote">
@@ -109,33 +114,46 @@ let arr = ['first', 'second', 'third'];
 let obj = Object.assign({}, arr);
 console.log(obj); // { 0: 'first', 1: 'second', 2: 'third' }
 
-let arr2 = [{ "id": 1386, "quantity": 1 }, { "id": 1385, "quantity": 2 }];
+let arr2 = [
+  { id: 1386, quantity: 1 },
+  { id: 1385, quantity: 2 },
+];
 let obj2 = Object.assign({}, arr2);
-console.log(obj2); 
+console.log(obj2);
 // { 0: { "id": 1386, "quantity": 1 }, 1: { "id": 1385, "quantity": 2 } }
 ```
 
 <br>
 
 ### 2. Spread operator
+
 Spread operator을 사용하면 배열을 객체로 변환할 수 있다. index가 자동으로 key값이 되고, 배열의 요소가 value인 객체가 생성된다.
 
 ```js
 let arr = ['first', 'second', 'third'];
-let obj = {...arr}
+let obj = { ...arr };
 console.log(obj); // { 0: 'first', 1: 'second', 2: 'third' }
 
-let arr2 = [{ "id": 1386, "quantity": 1 }, { "id": 1385, "quantity": 2 }];
-let obj2 = {...arr2}
-console.log(obj2); 
+let arr2 = [
+  { id: 1386, quantity: 1 },
+  { id: 1385, quantity: 2 },
+];
+let obj2 = { ...arr2 };
+console.log(obj2);
 // { 0: { "id": 1386, "quantity": 1 }, 1: { "id": 1385, "quantity": 2 } }
 ```
+
 <br>
 
 ### 3. forEach()
+
 Object.assign()이나 Spread operator를 사용하면 key는 자동으로 index가 된다. index가 아닌 특정 key를 사용하고 싶다면 forEach 반복문을 사용한다.
+
 ```js
-let arr = [{ "id": 1386, "quantity": 1 }, { "id": 1385, "quantity": 2 }];
+let arr = [
+  { id: 1386, quantity: 1 },
+  { id: 1385, quantity: 2 },
+];
 let obj = {};
 
 arr.forEach((elem, index) => {
@@ -144,22 +162,28 @@ arr.forEach((elem, index) => {
 
 console.log(obj);
 // { key0: { "id": 1386, "quantity": 1 }, key1: { "id": 1385, "quantity": 2 } }
-
 ```
+
 <br>
 
 ### 4. reduce()
+
 내가 실무에서 사용했던 reduce.. forEach 사용.
+
 ```js
-let arr = [{ "id": 1386, "quantity": 1 }, { "id": 1385, "quantity": 2 }];
+let arr = [
+  { id: 1386, quantity: 1 },
+  { id: 1385, quantity: 2 },
+];
 
 let obj = arr.reduce((acc, cur, index) => {
-  return {...acc, ['key' + index]: cur};
+  return { ...acc, ['key' + index]: cur };
 }, {});
 
 console.log(obj);
 // { key0: { "id": 1386, "quantity": 1 }, key1: { "id": 1385, "quantity": 2 } }
 ```
+
 <br>
 
 코딩하면서 비효율적으로 코딩한다고 느끼는 순간이 있고, 아직 기초지식이 많이 부족하다고 느낀다. 자바스크립트 Deep Dive를 열심히 공부해야 겠다..

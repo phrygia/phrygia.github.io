@@ -12,13 +12,14 @@
     @include content-max-width;
     text-align: center;
     font-size: 12px;
+    color: var(--content-text-color);
+
     .link {
       font-weight: 700;
       font-size: 20px;
       color: var(--primary-text-color);
       margin-right: 20px;
     }
-
     a {
       color: #3a95ff;
     }
@@ -148,7 +149,8 @@ html[data-theme='dark'] {
     }
   }
   .markdown blockquote {
-    color: #90b0ec;
+    color: #ececec;
+    background-color: #2d2d2d;
   }
   .markdown .blockquote {
     background-color: rgba(135, 131, 120, 0.15);
@@ -172,28 +174,28 @@ html[data-theme='dark'] {
   }
   .post-card-wrapper > .cont .title .description,
   .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
-    color: #d8d7d7;
+    color: #ececec;
   }
   .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
-    border-color: #383636 !important;
+    border-color: #383636;
   }
   .post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected {
-    border-color: #666 !important;
+    background-color: #414141 !important;
+    border-color: #494949;
   }
-  .post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,
-  .post-card-wrapper .title .post-card h3 {
-    color: #fff;
-  }
+  // .post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,
+  // .post-card-wrapper .title .post-card h3 {
+  //   color: #fff;
+  // }
   .post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root {
-    background-color: transparent;
-    border-color: #999;
+    background-color: #333;
   }
   .post-tabs-wrapper .post-tabs > div .MuiTabs-scrollButtons {
-    background-color: #24272c;
+    background-color: #393939;
   }
   .post-tabs-wrapper .post-tabs {
-    background-color: #24272c;
-    border-color: #383636;
+    background-color: #393939;
+    border-color: #333;
   }
 }
 html[data-theme='light'] {

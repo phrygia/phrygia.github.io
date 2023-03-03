@@ -29,8 +29,6 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-family;
-  color: var(--primary-text-color);
-  // @include content-horizontal-padding;
 
   .page-content {
     display: flex;

@@ -10,8 +10,7 @@ categories: web
 <br>
 
 > "HTML is the World Wide Web's core markup language. Originally, HTML was primarily designed as a language for semantically describing scientific documents." <br><br> > <i>- "HTML은 World Wide Web의 핵심 markup 언어이다. 원래 HTML은 과학적인 문서를 `의미를 담아 기술하는 언어`로 설계되었다."</i> <br><br>
-> "Elements, attributes, and attribute values in HTML are defined (by this specification) to have certain meanings (semantics)"<br><br>
-> <i>- "HTML의 요소와 속성 및 속성 값은 `특정한 의미를 가지도록 정의`되었다."</i>
+> "Elements, attributes, and attribute values in HTML are defined (by this specification) to have certain meanings (semantics)"<br><br> > <i>- "HTML의 요소와 속성 및 속성 값은 `특정한 의미를 가지도록 정의`되었다."</i>
 
 <br>
 <small class="from">출처 : <a href="https://www.w3.org/TR/2016/REC-html51-20161101/introduction.html" target="_blank">W3C Recommendation</a></small>
@@ -43,11 +42,11 @@ HTML5 이전의 웹사이트는 거의 모든 태그를 `<div>`를 사용하여 
 
 ## 시맨틱 태그의 장점
 
-**<span style="color:#99f">Non-Semantic elements</span> - Naver**<br><br>
+**<span style="color:#6868ac">Non-Semantic elements</span> - Naver**<br><br>
 ![img/naver-markup.jpg](img/naver-markup.jpg)
 <br><br>
 
-**<span style="color:#99f">Semantic elements</span> - 레진 코믹스**<br><br>
+**<span style="color:#6868ac">Semantic elements</span> - 레진 코믹스**<br><br>
 ![img/lezhin-markup.jpg](img/lezhin-markup.jpg)
 
 <br>위의 두 사이트를 보면, <br>

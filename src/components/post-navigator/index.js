@@ -8,7 +8,7 @@ function PostNavigator({ prevPost, nextPost }) {
       <div className="post-navigator-card-wrapper">
         {nextPost && (
           <Link className="post-card prev" key={nextPost.id} to={nextPost.slug}>
-            <div className="direction">이전 글</div>
+            <div className="direction">이전 포스트</div>
             <div className="title">{nextPost.title}</div>
           </Link>
         )}
@@ -16,7 +16,7 @@ function PostNavigator({ prevPost, nextPost }) {
       <div className="post-navigator-card-wrapper">
         {prevPost && (
           <Link className="post-card next" key={prevPost.id} to={prevPost.slug}>
-            <div className="direction">다음 글</div>
+            <div className="direction">다음 포스트</div>
             <div className="title">{prevPost.title}</div>
           </Link>
         )}

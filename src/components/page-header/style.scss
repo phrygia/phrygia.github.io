@@ -2,6 +2,10 @@
 html[data-theme='dark'] {
   .page-header-wrapper {
     background-color: #232326;
+
+    div[class*=' MuiInputBase-formControl']:before {
+      border-color: #fff;
+    }
   }
   .about_container {
     .me h1,
@@ -21,7 +25,19 @@ html[data-theme='dark'] {
       }
     }
   }
+
+  .post-card-column-wrapper {
+    .more-post-card-button {
+      background-color: #393939;
+      color: rgb(145, 145, 145);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }
+
 html[data-theme='light'] {
   .page-header-wrapper {
     background-color: #fff;
@@ -50,6 +66,17 @@ html[data-theme='light'] {
             background-color: rgb(55, 53, 47);
           }
         }
+      }
+    }
+  }
+
+  .post-card-column-wrapper {
+    .more-post-card-button {
+      background-color: #f0f0f7;
+      color: var(--about-link-icon-color);
+
+      &:hover {
+        color: var(--link-text-color);
       }
     }
   }
@@ -82,6 +109,10 @@ html[data-theme='light'] {
       position: relative;
       top: -2px;
 
+      &:hover {
+        color: #6868ac;
+      }
+
       @media (max-width: 767px) {
         top: -1px;
       }
@@ -91,6 +122,10 @@ html[data-theme='light'] {
       font-weight: 700;
       font-size: 16px;
       color: var(--primary-text-color);
+
+      &:hover {
+        color: #6868ac;
+      }
     }
 
     .trailing-section {

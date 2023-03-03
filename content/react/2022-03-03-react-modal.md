@@ -46,21 +46,21 @@ categories: react
   left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.6);
-  animation-duration: 0.25s;
-  animation-timing-function: ease-out;
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
+  animation: fadeOut 0.25s ease-out forwards;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.modal.close {
-  animation-name: fadeOut;
 }
 .modal button {
   outline: none;
   cursor: pointer;
   border: 0;
+}
+.modal.open {
+  animation-name: fadeIn;
+}
+.modal.open > section {
+  animation-name: slideUp;
 }
 .modal > section {
   width: 90%;
@@ -69,13 +69,7 @@ categories: react
   border-radius: 0.3rem;
   background-color: #fff;
   overflow: hidden;
-  animation-duration: 0.25s;
-  animation-timing-function: ease-out;
-  animation-name: slideUp;
-  animation-fill-mode: forwards;
-}
-.modal.close > section {
-  animation-name: slideDown;
+  animation: slideDown 0.25s ease-out forwards;
 }
 .modal > section > header {
   position: relative;
@@ -109,15 +103,6 @@ categories: react
   background-color: #6c757d;
   border-radius: 5px;
   font-size: 13px;
-}
-
-@keyframes modal-bg-show {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes fadeIn {
@@ -169,19 +154,23 @@ const Modal = (props) => {
   const [visible, setVisible] = useState(open);
 
   useEffect(() => {
+    setVisible(open);
+
     // open 값이 true -> false 가 되는 것을 감지 (즉, 모달창을 닫을 때)
     if (visible && !open) {
       setAnimate(true);
-      setTimeout(() => setAnimate(false), 250);
+      setTimeout(() => setAnimate(false), 200);
     }
-    setAnimate(open);
+    return () => {
+      setVisible(false);
+    };
   }, [visible, open]);
 
   if (!animate && !visible) return null;
 
   return (
     // 모달의 open close클래스로 css animation을 구현
-    <div className={open ? 'modal open' : 'modal close'}>
+    <div className={open ? 'modal open' : 'modal'}>
       <section>
         <header>
           {header}
