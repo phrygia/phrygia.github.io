@@ -1,3 +1,4 @@
 User-agent: *
-Sitemap: https://phrygia.github.io/sitemap/sitemap-index.xml
+Allow: /
+Sitemap: https://phrygia.github.io/sitemap-index.xml
 Host: https://phrygia.github.io
