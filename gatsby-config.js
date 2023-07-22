@@ -77,8 +77,10 @@ module.exports = {
               wrapperStyle: "margin-bottom: 16px;",
               quality: 100,
               showCaptions: true,
+              linkImagesToOriginal: false,
             },
           },
+          { resolve: `gatsby-remark-images-zoom`, options: { margin: 0 } },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

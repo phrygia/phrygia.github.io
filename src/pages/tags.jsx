@@ -63,13 +63,11 @@ const TagsPage = ({ data }) => {
             There are {tags.length} tag{tags.length > 1 && "s"}.
           </Title>
         )}
-
         <TagList
           count
           tagList={tags}
           selected={selected}
           onClick={tag => {
-            console.log(tag, selected)
             if (tag === selected) {
               navigate("/tags")
               alert("zz")
