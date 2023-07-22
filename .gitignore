@@ -56,8 +56,7 @@ typings/
 
 # gatsby files
 .cache/
-public/*
-!public/img
+public
 
 # Mac files
 .DS_Store
@@ -68,14 +67,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-
-
-# yarn-berry
-.yarn/*
-.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-

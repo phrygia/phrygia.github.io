@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap");
+
+a {
+  &:hover {
+    color: #6868ac !important;
+  }
+}
+
+.from {
+  display: block;
+  word-break: break-all;
+  font-size: 12px;
+  color: #ababab;
+
+  & a {
+    color: #4a9ae1;
+    text-decoration: none;
+    border-bottom: 0;
+    word-break: break-all;
+  }
+  &.add {
+    margin-top: 50px;
+    padding-top: 10px;
+    border-top: 1px solid #aaa;
+
+    & ul {
+      margin-top: 3px;
+      padding-left: 15px;
+      list-style: none;
+
+      & a {
+        display: block;
+      }
+    }
+  }
+}
+
+.blockquote {
+  margin: 0 0 1rem;
+  padding: 0.8rem 1rem 0.8rem 1.3rem;
+  border-left: 5px solid rgb(64, 120, 242);
+  background-color: rgb(247, 246, 243);
+}
+
+#go-to-top {
+  position: fixed;
+  width: 48px;
+  right: 30px;
+  height: 80px;
+  bottom: 100px;
+  margin: 0;
+  padding: 0;
+  z-index: 10000;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  &.dark {
+    color: rgba(255, 255, 255, 0.6);
+
+    & span {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    & p {
+      color: #fff;
+    }
+  }
+  &.light {
+    color: #323232;
+
+    & span {
+      background-color: #323232;
+    }
+  }
+
+  & p {
+    position: absolute;
+    top: 30px;
+    width: 80px;
+    margin: 0;
+    padding-bottom: 32px;
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+  & span {
+    display: inline-block;
+    width: 50%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.2s cubic-bezier(0.23, 0.24, 0, 0.99);
+    transition: all 0.2s cubic-bezier(0.23, 0.24, 0, 0.99);
+
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
+  }
+}
+
+.phrygia_info_post {
+  margin: 50px auto 20px;
+
+  & .phrygia_info_dl {
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+
+    & dt {
+      width: 146px;
+      height: 140px;
+      overflow: hidden;
+    }
+    & dd {
+      margin-left: 25px;
+      width: -webkit-calc(100% - 142px);
+      width: calc(100% - 142px);
+
+      & strong {
+        color: #323232;
+        font-size: 18px;
+        letter-spacing: -1px;
+      }
+      & p {
+        word-break: break-all;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #ababab;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+#layout_container {
+  &.dark {
+    & .phrygia_info_post dd strong {
+      color: #fff;
+    }
+  }
+}
+
+.first_post_list {
+  margin-top: 80px;
+}
+
+@media (min-width: 768px) {
+  #go-to-top:hover {
+    & span {
+      top: -9px;
+      height: 2px;
+      width: 60%;
+      &.left {
+        -webkot-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      &.right {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .first_post_list {
+    margin-top: 50px;
+  }
+
+  #go-to-top {
+    right: 10px;
+    bottom: 80px;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+
+    & p {
+      padding-bottom: 36px;
+    }
+
+    & span {
+      height: 1.5px;
+
+      &.left {
+        left: 3px;
+        -webkot-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      &.right {
+        right: 4px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .phrygia_info_post {
+    margin-top: 20px;
+
+    & .phrygia_info_dl {
+      padding: 15px 15px 10px;
+
+      & dt {
+        width: 80px;
+        height: auto;
+      }
+
+      & dd {
+        margin-left: 15px;
+        width: -webkit-calc(100% - 90px);
+        width: calc(100% - 90px);
+
+        & strong {
+          font-size: 1.1em;
+        }
+        & p {
+          margin-top: 8px;
+          font-size: 0.85em;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}

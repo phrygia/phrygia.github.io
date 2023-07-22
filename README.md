@@ -1,218 +1,162 @@
 <h1 align="center">
-  Zoomkoding Gatsby Blog
+    gatsby-starter-hoodie
 </h1>
 
-<p align="center">
-  <a href="https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-0BSD-blue.svg" alt="Zoomkoding Gatsby Blog is released under the 0BSD license." />
-  </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome" />
-</p>
+<h4 align="center">
+  A gatsby starter developed for developers to build tech blogs.
+</h4>
 
-**Demo Websites**: [**English**](https://zoomkoding.netlify.app) | [**Korean**](https://www.zoomkoding.com)
+![](mockup.png)
 
-[**English README.md**](https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/README.en.md)
+> gatsby-starter-hoodie has been migrated to **Gatsby 5** as of 2023-06-30. gatsby-starter-hoodie is now available for **node.js 20**.
 
-## 👋 소개
+## 🚀 About gatsby-starter-hoodie
 
-블로그를 직접 운영하면서 조금씩 그려봤던 이상적인 개발 블로그 테마를 Gatsby를 통해 만들어보게 되었습니다.  
-이 테마가 블로그를 운영하고자 하시는 분들에게 자신의 이야기를 잘 담을 수 있는 공간이 되었으면 좋겠습니다.🙌
+[한국어 문서 바로가기](https://github.com/devHudi/gatsby-starter-hoodie/blob/develop/README-kr.md)
 
-블로그 테마가 맘에 드셨다면 아래 과정을 통해 자신의 블로그를 만들어보시길 바랍니다!
+gatsby-starter-hoodie is a gatsby starter created for writing tech blogs. Markdown, Code Highlighting in various programming languages, and Katex syntax are supported. Also, you can easily categorize articles into tags and series.
 
-> 혹시 만드시는 과정에서 궁금하신 점이나 어려움이 있으시다면 [이슈](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/new)를 통해 문의 남겨주세요!  
-> ⭐️는 블로그 운영에 큰 힘이 됩니다!😊
+Start your blog with a neatly designed gatsby-starter-hoodie that supports dark mode.
 
-## ✨ 기능
+This project inspired by [velog](https://velog.io).
 
-- 😛 미모지와 문자 애니메이션를 통한 자기 소개
-- 🔍 포스팅 검색 지원
-- 🌘 다크모드 지원
-- 💅 코드 하이라이팅 지원
-- 👉 글 목차 자동 생성(ToC)
-- 👀 글 조회수 표시
-- 💬 Utterances 댓글 기능 지원
-- ⚙️ meta-config를 통한 세부 설정 가능
-- 👨‍💻 About Page 내용 변경 가능
-- 📚 Posts Page 자동 생성
-- 🛠 sitemap.xml, robots.txt 자동 생성
-- 📈 Google Analytics 지원
-- 🧢 Emoji 지원
+## [Live Demo](https://hoodie.gatsbyjs.io)
 
-## 🚀 시작하기
+## Features
 
-Github Page나 Netlify 중 원하시는 배포 환경에 따라 다음 과정을 진행하시면 빠르게 블로그를 만드실 수 있습니다.
+- Markdown
+- Code Highlighting
+- Katex Syntax
+- Dark Mode (Responsive to the settings of the OS)
+- Tag Categoriazation
+- Series Categorization
+- Responsive Web
+- SEO
+- Utterance (Comment widget)
 
-### 🦖 GitHub Page로 만들기
+Getting started your blog with gatsby-starter-hoodie by following steps below. It's very easy 😉.
 
-깃헙 페이지를 통해 블로그를 만드시다면 아래 글을 참고해주세요!  
-[Gatsby 테마로 GitHub Blog 만들기](https://www.zoomkoding.com/gatsby-github-blog/)
+## 1. Create a Gatsby site
 
-### 🔧 Netlify로 만들기
-
-아래 버튼을 활용하면 개인 계정에 `zoomkoding-gatsby-blog`를 사용하고 있는 Repository 생성과 Netlify에 배포를 동시에 진행할 수 있습니다. 이후에, 생성된 Repository를 clone합니다.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/zoomkoding/zoomkoding-gatsby-blog)
-
-### 🏃‍♀️ 실행하기
-
-아래 명령어를 실행하여 로컬 환경에 블로그를 실행합니다.
-
-```bash
-# Install dependencies
-$ npm install
-
-# Start development server
-$ npm start
-```
-
-<br/>
-
-위 명령어가 문제 없이 실행됐다면 [http://localhost:8000](http://localhost:8000)에서 블로그를 확인하실 수 있습니다.
-
-## ⚙️ 블로그 정보 입력하기
-
-위의 과정을 다 진행하셨다면 배포와 개발 환경이 세팅이 끝났습니다! 🙌  
-이제 블로그 정보를 입력하게 되면 나만의 블로그가 만들어지게 됩니다. 이를 위해 `gatsby-meta-config.js`에 있는 여러값들을 변경해줍니다.
-
-### 1. 블로그 기본 정보
-
-```js
-title: '' // zoomkoding.com
-description: '' // 줌코딩의 개발일기
-language: 'ko', // 'ko', 'en' (영어 버전도 지원하고 있습니다.)
-siteUrl: '' // https://www.zoomkoding.com
-ogImage: '/og-image.png', // 공유할 때 보이는 미리보기 이미지로 '/static' 하위에 넣고 싶은 이미지를 추가하시면 됩니다.
-```
-
-### 2. 댓글 설정
-
-블로그 글들에 댓글을 달 수 있길 원하신다면 utterances를 통해서 이를 설정하실 수 있습니다.
-
-> 🦄 utterances 사용방법은 [링크](https://utteranc.es/)를 참고해주세요!
-
-```js
-comments: {
-    utterances: {
-        repo: '' // zoomkoding/zoomkoding-gatsby-blog
-    },
-}
+> Make sure you have **node.js** and **gatsby-cli** installed on your computer.
 
 ```
-
-### 3. 글쓴이 정보
-
-글쓴이(author)에 입력하신 정보는 홈페이지와 about 페이지 상단에 있는 글쓴이를 소개하는 섹션인 bio에서 사용됩니다. **description**에 자신을 설명하는 문구들을 넣으면 애니메이션으로 보여지게 됩니다. bio에 들어가는 이미지를 바꾸시려면 `assets`에 원하시는 파일을 추가하시고 파일의 이름을 **thumbnail**에 넣어주시면 됩니다.(gif도 지원합니다!)
-
-아이폰 미모티콘으로 thumbnail을 만드는 방법이 궁금하시면 [이 글](https://www.zoomkoding.com/memoji-to-gif/)을 참고해주세요!
-
-> 🤖 위에서 설정한 언어에 따라 description의 포맷이 달라집니다.
-
-```js
-author: {
-    name: '정진혁',
-    bio: {
-      role: '개발자',
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
-      thumbnail: `zoomkoding.gif`,
-    },
-    social: {
-      github: 'https://github.com/zoomKoding',
-      linkedIn: 'https://www.linkedin.com/in/jinhyeok-jeong-800871192',
-      email: 'zoomkoding@gmail.com',
-    },
-},
+$ npx gatsby new my-hoodie-blog https://github.com/devHudi/gatsby-starter-hoodie
 ```
 
-## 🙋‍♀️ about page 만들기
+## 2. Start dev server
 
-about 페이지 또한 gatsby-meta-config.js를 통해 생성됩니다. about 하위에 있는 timestamps와 projects에 각각 정보를 입력하시면 about 페이지가 자동 생성됩니다.
+```
+$ cd my-hoodie-blog
+$ npm run start
+```
 
-### 1. timestamps
+Now you can access to your blog at localhost:8000.
 
-아래와 같이 각 timestamp 정보를 배열로 제공해주시면 입력하신 순서에 맞춰서 timestamps section에 보여지게 됩니다.
+## 3. Create your own Github repository
 
-> links에 해당 정보가 없다면 생략해도 됩니다.
+Utterance comment widget is based on **Github issue system**. So you need your own GitHub repository. Also, if you want to publish your blog through Github Pages or Netlify, the Github Repository is a necessary.
 
-```js
-{
-  date: '2021.02 ~',
-  activity: '개인 블로그 개발 및 운영',
+If you don't know how to create a GitHub repository, follow the [official GitHub documentation](https://docs.github.com/en/github/getting-started-with-github/create-a-repo).
+
+### Add remote repository
+
+```
+git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
+```
+
+## 4. Write blog-config.js
+
+```javascript
+module.exports = {
+  title: "MY BLOG",
+  description: "Hello, This is my blog",
+  author: "YOUR NAME",
+  siteUrl: "https://myblog.com",
   links: {
-    post: '/gatsby-starter-zoomkoding-introduction',
-    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-    demo: 'https://www.zoomkoding.com',
+    github: "https://github.com",
+    facebook: "https://www.facebook.com",
+    instagram: "https://www.instagram.com",
+    etc: "https://www.google.com/",
   },
-},
-```
-
-### 2. projects
-
-마찬가지로 각 project 정보를 배열로 제공해주시면 입력하신 순서에 맞춰서 projects section에 보여지게 됩니다.
-
-```js
-{
-  title: '개발 블로그 테마 개발',
-  description:
-    '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-  techStack: ['gatsby', 'react'],
-  thumbnailUrl: 'blog.png',
-  links: {
-    post: '/gatsby-starter-zoomkoding-introduction',
-    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-    demo: 'https://www.zoomkoding.com',
-  }
+  utterances: {
+    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
+    type: "pathname",
+  },
 }
 ```
 
-<br/>
+gatsby-starter-hoodie provides a configuration file called `blog-config.js`. In this file, you can configure blog, biography (profile), and utterance.
 
-그렇게 내용을 문제 없이 입력하셨다면 나만의 블로그가 탄생한 것을 확인하실 수 있습니다.🎉
+Configure `blog-config.js` to suit your blog. However, it is recommended not to modify `utterances.type`.
 
-> 변동사항을 실행 중인 블로그에서 확인하시려면 `npm start`를 통해 재실행해주세요!
+## 5. Add your content
 
-## ✍️ 글 쓰기
+Markdown content is in `contents/posts`. You can write and add your articles. [Click here](https://hoodie.gatsbyjs.io/gatsby-starter-hoodie/writing-guide) to see the detail writing guide.
 
-본격적으로 블로그에 글을 쓰려면 `/content` 아래에 디렉토리를 생성하고 `index.md`에 markdown으로 작성하시면 됩니다.
+## 6. Deploy your blog
 
-> 이 때, 폴더의 이름은 경로를 생성하는데 됩니다.
+### 6-1 via Netlify
 
-### 🏗 메타 정보
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
-index.md 파일의 상단에는 아래와 같이 emoji, title, date, author, tags, categories 정보를 제공해야 합니다.
+Follow the Connecting to Netlify steps in [A Step-by-Step Guide: Gatsby on Netlify](https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/). It's not difficult.
 
-> emoji는 글머리에 보여지게 되며, categories는 띄어쓰기로 나누어 여러개를 입력할 수 있습니다.
+If you connect the github repository using Netlify, it is automatically distributed whenever you push it, so it is convenient.
 
-```
----
-emoji: 🧢
-title: Getting Started
-date: '2021-03-22 23:00:00'
-author: 줌코딩
-tags: tutorial
-categories: tutorial
----
-```
+### 6-2. via Github Pages
 
-### 🖼 이미지 경로
+#### Case 1
 
-글에 이미지를 첨부하고 싶으시다면 같은 디렉토리에 이미지 파일을 추가하셔서 아래와 같이 사용하시면 됩니다.
+If the repository name is in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
 
 ```
-![사진](./[이미지 파일명])
+$ npm run deploy-gh
 ```
 
-### 🔍 목차 생성
+#### Case 2
 
-글의 우측에 목차가 보이기를 원하신다면 `index.md` 파일 맨 아래에 다음 내용을 추가하시면 자동으로 목차가 생성됩니다.
+If the repository name is not in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
 
-    ```toc
-    ```
+```
+$ npm run deploy-gh-prefix-paths
+```
 
-### 💡 버그 리포트 & 문의
+In the above case, you need to change `pathPrefix` in `gatsby-config.js` to your repository name.
 
-궁금하신 점이 있으시다면 [이슈](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/new)로 남겨주시면 최대한 빠르게 답변 드리도록 하겠습니다!🙋‍♂️
+### 6-3. other platforms
 
-> 🤔 혹시 특정 기능이 없어서 테마 사용을 망설이시거나 제안하고 싶으신 기능이 있으시다면,  
-> 👉 [여기](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/40)에 댓글 남겨주세요! 적극적으로 반영하겠습니다 :)
+```
+$ npm run build
+```
+
+You can build the gatsby website with the command above. The build output is created in the `/public` directory. Deploy the `/public` directory using the command for the platform you want to deploy.
+
+## 7. Cutomize
+
+### Project Structure
+
+You can customize your own gatsby-starter-hoodie by referring to the following file structure 🙊.
+
+```
+├── node_modules
+├── contents
+│   └── posts // your articles are here
+├── public // build outputs are here
+└── src
+    ├── assets
+    │   └── theme // theme config is here
+    ├── components
+    │   └── Article
+    │       └── Body
+    │           └── StyledMarkdown
+    │               └── index.jsx // markdown styles are here
+    │   ...
+    ├── fonts // webfonts are here
+    ├── hooks
+    ├── images
+    ├── pages // page components are here
+    ├── reducers
+    ├── templates // post components are here
+    └── utils
+```

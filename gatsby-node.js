@@ -1,101 +1,115 @@
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `content` });
-    createNodeField({ node, name: `slug`, value: slug });
-  }
-};
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
 
-const createBlogPages = ({ createPage, results }) => {
-  const blogPostTemplate = require.resolve(`./src/templates/blog-template.js`);
-  results.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
-    createPage({
-      path: node.fields.slug,
-      component: blogPostTemplate,
-      context: {
-        // additional data can be passed via context
-        slug: node.fields.slug,
-        nextSlug: next?.fields.slug ?? '',
-        prevSlug: previous?.fields.slug ?? '',
-      },
-    });
-  });
-};
+  const postTemplate = require.resolve(`./src/templates/Post.jsx`)
+  const seriesTemplate = require.resolve(`./src/templates/Series.jsx`)
 
-const createPostsPages = ({ createPage, results }) => {
-  const categoryTemplate = require.resolve(`./src/templates/category-template.js`);
-  const categorySet = new Set(['All']);
-  const { edges } = results.data.allMarkdownRemark;
-
-  edges.forEach(({ node }) => {
-    const postCategories = node.frontmatter.categories.split(' ');
-    postCategories.forEach((category) => categorySet.add(category));
-  });
-
-  const categories = [...categorySet];
-
-  createPage({
-    path: `/posts`,
-    component: categoryTemplate,
-    context: { currentCategory: 'All', edges, categories },
-  });
-
-  categories.forEach((currentCategory) => {
-    createPage({
-      path: `/posts/${currentCategory}`,
-      component: categoryTemplate,
-      context: {
-        currentCategory,
-        categories,
-        edges: edges.filter(({ node }) => node.frontmatter.categories.includes(currentCategory)),
-      },
-    });
-  });
-};
-
-exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions;
-
-  const results = await graphql(`
+  const result = await graphql(`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
-        edges {
-          node {
-            id
-            excerpt(pruneLength: 500, truncate: true)
-            fields {
-              slug
-            }
-            frontmatter {
-              categories
-              title
-              date(formatString: "MMMM DD, YYYY")
-              emoji
-            }
+      postsRemark: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: ASC }
+        limit: 1000
+      ) {
+        nodes {
+          id
+          fields {
+            slug
           }
-          next {
-            fields {
-              slug
-            }
-          }
-          previous {
-            fields {
-              slug
-            }
+          frontmatter {
+            series
           }
         }
       }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
-  `);
+  `)
 
-  // Handle errors
-  if (results.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      result.errors
+    )
+    return
   }
 
-  createBlogPages({ createPage, results });
-  createPostsPages({ createPage, results });
-};
+  const posts = result.data.postsRemark.nodes
+  const series = _.reduce(
+    posts,
+    (acc, cur) => {
+      const seriesName = cur.frontmatter.series
+      if (seriesName && !_.includes(acc, seriesName))
+        return [...acc, seriesName]
+      return acc
+    },
+    []
+  )
+
+  if (posts.length > 0) {
+    posts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : posts[index - 1].id
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+
+      createPage({
+        path: post.fields.slug,
+        component: postTemplate,
+        context: {
+          id: post.id,
+          series: post.frontmatter.series,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+  }
+
+  if (series.length > 0) {
+    series.forEach(singleSeries => {
+      const path = `/series/${_.replace(singleSeries, /\s/g, "-")}`
+      createPage({
+        path,
+        component: seriesTemplate,
+        context: {
+          series: singleSeries,
+        },
+      })
+    })
+  }
+}
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode })
+    const newSlug = `/${slug.split("/").reverse()[1]}/`
+
+    createNodeField({
+      node,
+      name: `slug`,
+      value: newSlug,
+    })
+  }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+  type MarkdownRemark implements Node {
+    frontmatter: Frontmatter!
+  }
+  type Frontmatter {
+    title: String!
+    description: String
+    tags: [String!]!
+    series: String
+  }
+  `
+  createTypes(typeDefs)
+}
