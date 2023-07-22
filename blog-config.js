@@ -8,7 +8,8 @@ module.exports = {
     email: "mailto:dmsgp62@gmail.com",
   },
   utterances: {
-    repo: `phrygia/blog-comments`,
+    repo: "phrygia/blog-comments",
+    type: "pathname",
   },
   ga: "G-LV3317EKZF",
 }
