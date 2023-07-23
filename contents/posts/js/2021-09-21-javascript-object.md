@@ -3,7 +3,7 @@ title: "[javascript] 객체 수정 제어 : preventExtensions(), seal(), freeze(
 date: "2021-09-21 13:12:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 `const`는 블록 스코프이며, 변수의 재선언 및 재할당이 모두 불가능하다.<br>

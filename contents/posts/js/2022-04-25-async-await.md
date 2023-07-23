@@ -3,7 +3,7 @@ title: "[javascript] Async await"
 date: "2022-04-25 19:26:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 async/await는 ES8에서 채택되었으며 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기처럼 동작하도록 구현할 수 있다. <br>

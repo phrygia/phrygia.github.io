@@ -10,7 +10,7 @@ a {
   display: block;
   word-break: break-all;
   font-size: 12px;
-  color: #ababab;
+  color: #868e96;
 
   & a {
     color: #4a9ae1;
@@ -38,7 +38,7 @@ a {
 .blockquote {
   margin: 0 0 1rem;
   padding: 0.8rem 1rem 0.8rem 1.3rem;
-  border-left: 5px solid rgb(64, 120, 242);
+  border-left: 5px solid rgb(104, 104, 172);
   background-color: rgb(247, 246, 243);
 }
 
@@ -130,7 +130,7 @@ a {
         word-break: break-all;
         margin-top: 20px;
         font-size: 14px;
-        color: #ababab;
+        color: #868e96;
         font-weight: 300;
       }
     }
@@ -141,6 +141,14 @@ a {
   &.dark {
     & .phrygia_info_post dd strong {
       color: #fff;
+    }
+
+    & .phrygia_info_dl {
+      border-bottom: 0;
+    }
+
+    & .blockquote {
+      background-color: rgb(37, 37, 37);
     }
   }
 }

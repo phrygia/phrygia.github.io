@@ -60,10 +60,13 @@ const ArticleButtonWrapper = styled.div`
   font-size: 17.6px;
   border-radius: 5px;
   border: 1px solid #eee;
-  background-color: #fff;
   color: ${props => props.theme.colors.text};
   cursor: pointer;
   transition: background-color 0.3s;
+
+  &.dark {
+    border: 1px solid rgb(37, 37, 37);
+  }
 
   &:hover {
     background-color: ${props => props.theme.colors.nextPostButtonBackground};
@@ -96,6 +99,7 @@ const ArticleButtonWrapper = styled.div`
 const ArticleButtonLabel = styled.div`
   margin-bottom: 9.6px;
   font-size: 12.8px;
+  color: ${props => props.theme.colors.tertiaryText};
 
   @media (max-width: 768px) {
     font-size: 11px;
@@ -104,6 +108,7 @@ const ArticleButtonLabel = styled.div`
 
 const ArticleButtonTitle = styled.div`
   padding: 2px 0;
+  font-weight: 500;
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -127,9 +132,9 @@ const HiddenWrapper = styled.div`
   overflow: ${props => (props.isHidden ? "hidden" : "auto")};
 `
 
-const ArticleButton = ({ right, children, onClick }) => {
+const ArticleButton = ({ theme, right, children, onClick }) => {
   return (
-    <ArticleButtonWrapper right={right} onClick={onClick}>
+    <ArticleButtonWrapper right={right} onClick={onClick} className={theme}>
       <ArrowFlexWrapper>
         <Arrow>{right ? <BiRightArrowAlt /> : <BiLeftArrowAlt />}</Arrow>
         <ArticleButtonTextWrapper>
@@ -187,19 +192,28 @@ const Comment = () => {
 }
 
 const Footer = ({ previous, next }) => {
+  const { theme } = useSelector(state => state.theme)
+
   return (
     <>
       <PhrygiaInfo />
       <ArticleButtonContainer>
         {previous ? (
-          <ArticleButton onClick={() => navigate(previous?.fields?.slug)}>
+          <ArticleButton
+            theme={theme}
+            onClick={() => navigate(previous?.fields?.slug)}
+          >
             {previous?.frontmatter?.title}
           </ArticleButton>
         ) : (
           <div></div>
         )}
         {next && (
-          <ArticleButton right onClick={() => navigate(next?.fields?.slug)}>
+          <ArticleButton
+            theme={theme}
+            right
+            onClick={() => navigate(next?.fields?.slug)}
+          >
             {next?.frontmatter?.title}
           </ArticleButton>
         )}

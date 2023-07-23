@@ -5,6 +5,8 @@ import { author } from "../../../../blog-config"
 
 import Divider from "components/Divider"
 import TagList from "components/TagList"
+import dayjs from "dayjs"
+import { useSelector } from "react-redux"
 
 const Wrapper = styled.div`
   margin-top: 32px;
@@ -16,14 +18,18 @@ const Wrapper = styled.div`
 
 const ArticleTitle = styled.h1`
   margin-bottom: 25.6px;
-  line-height: 1.2;
-  font-size: 35px;
-  font-weight: 700;
-  color: ${props => props.theme.colors.text};
+  line-height: 1.3;
+  font-size: 40px;
+  font-weight: 900;
+  color: #212529;
 
   @media (max-width: 767px) {
     margin-bottom: 22px;
-    font-size: 25px;
+    font-size: 30px;
+  }
+
+  &.dark {
+    color: #fff;
   }
 `
 
@@ -38,21 +44,23 @@ const Information = styled.div`
 
 const Author = styled.span`
   font-weight: 700;
-  color: ${props => props.theme.colors.text};
+  color: #495057;
 `
 
 const Date = styled.span`
   font-weight: 300;
-  color: ${props => props.theme.colors.secondaryText};
+  color: #495057;
 `
 
 const Header = ({ title, date, tags /* minToRead*/ }) => {
+  const { theme } = useSelector(state => state.theme)
+
   return (
     <Wrapper>
-      <ArticleTitle> {title} </ArticleTitle>
+      <ArticleTitle className={theme}> {title} </ArticleTitle>
       <Information>
-        <Author> @{author} </Author>
-        <Date>· {date} </Date>
+        <Author> {author} </Author>
+        <Date>· {dayjs(date).format("YYYY월 M월 D일")} </Date>
         {/* <Date>· {minToRead} min read </Date> */}
       </Information>
       {tags && <TagList tagList={tags} />}

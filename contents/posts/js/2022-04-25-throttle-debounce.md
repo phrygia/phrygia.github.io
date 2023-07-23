@@ -3,7 +3,7 @@ title: "[javascript] throttling과 debouncing"
 date: "2022-04-25 19:26:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 scroll 이벤트를 사용하면 스크롤을 올리거나 내리는 짧은 시간동안 많은 이벤트가 발생한다. 복잡한 작업의 scroll 이벤트를 처리한다면 빈번하게 실행되는 이벤트 때문에 성능이 저하되고 렉이 걸릴 확률이 높아진다. <br>

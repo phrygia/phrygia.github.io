@@ -3,8 +3,8 @@ title: "[algorithm] 약수, 소수, 최대공약수, 최소공배수"
 description: ""
 date: "2021-11-09 00:56:00"
 tags:
-  - js
   - algorithm
+  - javascript
 ---
 
 프로그래머스에서 자바스크립트 알고리즘 문제를 풀다보면 간간히 접하게 되는 수학관련 문제들이 있다.

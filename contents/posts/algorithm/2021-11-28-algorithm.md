@@ -3,8 +3,8 @@ title: "[algorithm] LeetCode 139. Word Break "
 description: ""
 date: "2021-11-28 00:56:00"
 tags:
-  - js
   - algorithm
+  - javascript
 ---
 
 ## Word Break.
@@ -12,7 +12,7 @@ tags:
 ### Description:
 
 Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words. <br><br>
-문자열s와 단어들로 이루어진 배열 wordDict가 주어질 때, <br>
+문자열s와 단어들로 이루어진 배열 wordDict가 주어질 때,
 wordDict내의 문자들로 문자열 s를 만들 수 있는지 구하는 문제 (구할 수 있다면 true 반환)<br>
 동일한 단어를 여러번 사용해도 되고 사용하지 않아도 된다.
 

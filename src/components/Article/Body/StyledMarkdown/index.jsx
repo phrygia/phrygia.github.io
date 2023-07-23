@@ -8,7 +8,7 @@ const StyledMarkdown = styled.div`
     overflow: hidden;
 
     @media (max-width: 767px) {
-      font-size: 15.7px;
+      font-size: 16px;
     }
   }
 

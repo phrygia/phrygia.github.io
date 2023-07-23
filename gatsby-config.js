@@ -13,6 +13,20 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-robots-txt`,
     {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `G-LV3317EKZF`, // 측정 ID
+        head: false, // head에 tracking script를 넣고 싶다면 true로 변경
+        anonymize: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-5291962399728632`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-redux`,
       options: {
         pathToCreateStoreModule: "./src/reducers/createStore",

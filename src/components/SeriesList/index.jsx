@@ -9,8 +9,9 @@ import Divider from "components/Divider"
 
 const SeriesListWrapper = styled.div`
   margin-bottom: 60px;
+
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 `
 

@@ -49,7 +49,7 @@ const Search = ({ data }) => {
           placeholder="Search"
         />
       </SearchWrapper>
-      <VerticalSpace size={70} />
+      <VerticalSpace size={20} />
       <PostList postList={filteredPosts} />
     </Layout>
   )

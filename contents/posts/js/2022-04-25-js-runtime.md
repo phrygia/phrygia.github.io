@@ -3,7 +3,7 @@ title: "[javascript] 자바스크립트 런타임"
 date: "2022-04-25 19:26:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 **자바스크립트는 싱글 스레드로 한번에 한개의 작업만을 다룰 수 있는 동기식 언어이다.** <br>

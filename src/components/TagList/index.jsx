@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { useSelector } from "react-redux"
 
 const TagListWrapper = styled.div`
   margin-bottom: 16px;
@@ -29,7 +30,17 @@ const TagLink = styled.div`
   &:hover {
     color: #fff;
     background-color: ${props =>
-      props.selected ? "rgba(104,104,172,.6)" : "rgba(104,104,172,.6)"}
+      props.selected ? "rgba(104,104,172,.6)" : "rgba(104,104,172,.6)"};
+  }
+
+  &.dark {
+    color: #fff;
+    background-color: ${props => (props.selected ? "#6868ac" : "#252525")};
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
 `
 
 const spaceToDash = text => {
@@ -37,6 +48,7 @@ const spaceToDash = text => {
 }
 
 const TagList = ({ tagList, count, selected }) => {
+  const { theme } = useSelector(state => state.theme)
   if (!tagList) return null
 
   if (!count) {
@@ -44,7 +56,7 @@ const TagList = ({ tagList, count, selected }) => {
       <TagListWrapper>
         {tagList.map((tag, i) => (
           <Link key={JSON.stringify({ tag, i })} to={`/tags?q=${tag}`}>
-            <TagLink>{spaceToDash(tag)}</TagLink>
+            <TagLink className={theme}>{spaceToDash(tag)}</TagLink>
           </Link>
         ))}
       </TagListWrapper>
@@ -60,7 +72,7 @@ const TagList = ({ tagList, count, selected }) => {
             selected === tag.fieldValue ? "/tags" : `/tags?q=${tag.fieldValue}`
           }
         >
-          <TagLink selected={tag.fieldValue === selected}>
+          <TagLink selected={tag.fieldValue === selected} className={theme}>
             {spaceToDash(tag.fieldValue)} ({tag.totalCount})
           </TagLink>
         </Link>

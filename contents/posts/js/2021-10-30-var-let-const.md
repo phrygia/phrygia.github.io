@@ -3,7 +3,7 @@ title: "[javascript] var, let, const"
 date: "2021-10-31 01:01:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 ![](img/jsDeepDive.jpg)

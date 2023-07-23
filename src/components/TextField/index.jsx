@@ -20,7 +20,7 @@ const Icon = styled.span`
 const Input = styled.input.attrs({ type: "text" })`
   padding: 14px 19.2px 12px 50px;
   width: 100%;
-  border: 1px solid ${props => props.theme.colors.textFieldBorder};
+  border: 1px solid rgba(104, 104, 172, 0.3);
   border-radius: 1vh;
   background-color: transparent;
   font-size: 16px;
@@ -30,7 +30,7 @@ const Input = styled.input.attrs({ type: "text" })`
   transition: all 0.2s;
 
   &:focus {
-    border: 1px solid ${props => props.theme.colors.textFieldActivatedBorder};
+    border: 1px solid rgba(104, 104, 172, 0.6);
   }
 
   &:focus + ${Icon} {

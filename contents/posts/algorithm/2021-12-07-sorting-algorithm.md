@@ -3,8 +3,8 @@ title: "[algorithm] 정렬 알고리즘 - 버블, 삽입, 선택, 병합, 퀵"
 description: ""
 date: "2021-12-07 18:21:00"
 tags:
-  - js
   - algorithm
+  - javascript
 ---
 
 정렬된 배열에서 요소를 찾는 것이 정렬되지 않는 배열에서 찾는 것보다 빠르고 쉽다. <br>

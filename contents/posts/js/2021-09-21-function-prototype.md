@@ -3,7 +3,7 @@ title: "[javascript] 함수의 call, apply, bind 메서드"
 date: "2021-09-21 13:15:00"
 description: ""
 tags:
-  - js
+  - javascript
 ---
 
 자바스크립트는 원시타입(기본타입)과 참조타입으로 나뉜다.

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import _ from "lodash"
 import { Link } from "gatsby"
+import dayjs from "dayjs"
+import { useSelector } from "react-redux"
 // import Divider from "components/Divider"
 // import TagList from "components/TagList"
 
 const PostListWrapper = styled.div`
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 `
 
@@ -18,22 +20,20 @@ const PostWrapper = styled.div`
   margin-bottom: 100px;
 
   @media (max-width: 768px) {
-    margin-bottom: 80px;
     padding: 0 5px;
   }
 `
 
 const Date = styled.p`
   font-size: 14.4px;
-  color: ${props => props.theme.colors.tertiaryText};
-  opacity: 0.6;
+  color: #868e96;
 `
 
 const Excerpt = styled.p`
   line-height: 1.7;
   margin: 18px 0 25px;
   font-size: 16px;
-  color: ${props => props.theme.colors.tertiaryText};
+  color: #495057;
   overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
@@ -52,7 +52,7 @@ const PostTitle = styled.h1`
   font-size: 25px;
   font-weight: 700;
   line-height: 1.4;
-  color: ${props => props.theme.colors.text};
+  color: #212529;
   word-break: break-all;
 
   @media (max-width: 768px) {
@@ -68,6 +68,10 @@ const PostTitle = styled.h1`
   & > a:hover {
     color: ${props => props.theme.colors.secondaryText};
   }
+
+  &.dark {
+    color: #fff;
+  }
 `
 
 const checkIsScrollAtBottom = () => {
@@ -79,6 +83,7 @@ const checkIsScrollAtBottom = () => {
 }
 
 const PostList = ({ postList }) => {
+  const { theme } = useSelector(state => state.theme)
   const [postCount, setPostCount] = useState(10)
 
   const handleMoreLoad = _.throttle(() => {
@@ -109,7 +114,7 @@ const PostList = ({ postList }) => {
         return (
           <div key={i} className={i === 0 ? "first_post_list" : ""}>
             <PostWrapper>
-              <PostTitle>
+              <PostTitle className={theme}>
                 <Link to={slug}>{title}</Link>
               </PostTitle>
               {description ? (
@@ -117,7 +122,7 @@ const PostList = ({ postList }) => {
               ) : (
                 <Excerpt>{excerpt}</Excerpt>
               )}
-              <Date>{date}</Date>
+              <Date>{dayjs(date).format("YYYY월 M월 D일")} </Date>
               {/* <TagList tagList={tags} /> */}
             </PostWrapper>
 
