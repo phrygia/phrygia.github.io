@@ -46,6 +46,10 @@ const Excerpt = styled.p`
     margin: 15px 0 20px;
     font-size: 14.5px;
   }
+
+  &.dark {
+    color: rgb(175, 185, 195);
+  }
 `
 
 const PostTitle = styled.h1`
@@ -118,9 +122,9 @@ const PostList = ({ postList }) => {
                 <Link to={slug}>{title}</Link>
               </PostTitle>
               {description ? (
-                <Excerpt>{description}</Excerpt>
+                <Excerpt className={theme}>{description}</Excerpt>
               ) : (
-                <Excerpt>{excerpt}</Excerpt>
+                <Excerpt className={theme}>{excerpt}</Excerpt>
               )}
               <Date>{dayjs(date).format("YYYY월 M월 D일")} </Date>
               {/* <TagList tagList={tags} /> */}

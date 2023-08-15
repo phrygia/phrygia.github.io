@@ -45,11 +45,19 @@ const Information = styled.div`
 const Author = styled.span`
   font-weight: 700;
   color: #495057;
+
+  &.dark {
+    color: rgb(175, 185, 195);
+  }
 `
 
 const Date = styled.span`
   font-weight: 300;
   color: #495057;
+
+  &.dark {
+    color: rgb(175, 185, 195);
+  }
 `
 
 const Header = ({ title, date, tags /* minToRead*/ }) => {
@@ -59,8 +67,8 @@ const Header = ({ title, date, tags /* minToRead*/ }) => {
     <Wrapper>
       <ArticleTitle className={theme}> {title} </ArticleTitle>
       <Information>
-        <Author> {author} </Author>
-        <Date>· {dayjs(date).format("YYYY월 M월 D일")} </Date>
+        <Author className={theme}> {author} </Author>
+        <Date className={theme}>· {dayjs(date).format("YYYY월 M월 D일")} </Date>
         {/* <Date>· {minToRead} min read </Date> */}
       </Information>
       {tags && <TagList tagList={tags} />}
