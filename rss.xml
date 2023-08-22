@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of phrygia dev.log]]></title><description><![CDATA[주니어 개발자 프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 15 Aug 2023 06:39:22 GMT</lastBuildDate><item><title><![CDATA[[nextjs] nextjs node버전 업데이트 여정 (tailwind custom class error)]]></title><description><![CDATA[Nextjs로 자사 브랜드를 2개 운영중인 회사의 프론트엔드 개발자로 일하고 있는 필자는 어느순간부터 vercel에 접속할때마다 이런 문구를 발견했다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of phrygia dev.log]]></title><description><![CDATA[주니어 개발자 프리지아의 개발일기]]></description><link>https://phrygia.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 22 Aug 2023 10:21:14 GMT</lastBuildDate><item><title><![CDATA[[nextjs] nextjs node버전 업데이트 여정 (tailwind custom class error)]]></title><description><![CDATA[Nextjs로 자사 브랜드를 2개 운영중인 회사의 프론트엔드 개발자로 일하고 있는 필자는 어느순간부터 vercel에 접속할때마다 이런 문구를 발견했다.
  
 
 2023년 8월 15일부터 새로운 빌드가 적용되지 않는다니😱😱…]]></description><link>https://phrygia.github.io/2023-08-15-vercel-node-version-update/</link><guid isPermaLink="false">https://phrygia.github.io/2023-08-15-vercel-node-version-update/</guid><pubDate>Tue, 15 Aug 2023 06:30:00 GMT</pubDate><content:encoded>&lt;p&gt;Nextjs로 자사 브랜드를 2개 운영중인 회사의 프론트엔드 개발자로 일하고 있는 필자는 어느순간부터 vercel에 접속할때마다 이런 문구를 발견했다.&lt;br /&gt;
@@ -1409,44 +1409,7 @@ ReactDOM&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
 &lt;br&gt;
 &lt;img src=&apos;https://media.vlpt.us/images/woo0_hooo/post/e119383c-61cc-46d5-a85d-b27b65ddee1e/Untitled.png&apos;&gt;
 &lt;p&gt;&lt;small class=&quot;from add&quot;&gt;참고 : &lt;a href=&quot;https://sophia2730.tistory.com/entry/DNS-주소창에-wwwnavercom을-치면-일어나는-일&quot; tearget=&quot;_blank&quot;&gt;https://sophia2730.tistory.com/entry/DNS-주소창에-wwwnavercom을-치면-일어나는-일&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://velog.io/@woo0_hooo/네트워크-웹-통신의-흐름&quot; target=&quot;_blank&quot;&gt;https://velog.io/@woo0_hooo/네트워크-웹-통신의-흐름&lt;/a&gt;
-&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[react] Virtual Dom (가상 돔)]]></title><description><![CDATA[리액트를 사용하면서 virtual dom(VDOM)과 관련된 글을 많이 보게 되었다. 
-virtual dom, 직역하면' 가상의 dom'이란 뜻인데 의미만으론 정확한 개념을 알수가 없었다. 
-VDOM…]]></description><link>https://phrygia.github.io/2022-04-25-virtual-dom/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-virtual-dom/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;리액트를 사용하면서 virtual dom(VDOM)과 관련된 글을 많이 보게 되었다. &lt;br&gt;
-virtual dom, 직역하면&apos; 가상의 dom&apos;이란 뜻인데 의미만으론 정확한 개념을 알수가 없었다. &lt;br&gt;
-VDOM엔 대해 알기위해서 팔요한 선행지식에 대해 알아보자&lt;/p&gt;
-&lt;h2&gt;브라우저 workflow&lt;/h2&gt;
-&lt;p&gt;Virtual DOM을 사용하는 이유를 알기 위해서는 우리가 사용하는 브라우저가 어떻게 동작하는지 알아야 할 필요가 있다.&lt;/p&gt;
-&lt;h4&gt;렌더링 엔진의 동작 과정&lt;/h4&gt;&lt;br&gt;
-&lt;p&gt;&lt;img src=&apos;https://d2.naver.com/content/images/2015/06/helloworld-59361-2.png&apos;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-&lt;img src=&apos;https://d2.naver.com/content/images/2015/06/helloworld-59361-3.png&apos;&gt;
-&lt;small class=&quot;from&quot;&gt;이미지 출처 : &lt;a href=&quot;https://d2.naver.com/helloworld/59361&quot; target=&quot;_blank&quot;&gt;브라우저는 어떻게 동작하는가?&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-&lt;h3&gt;DOM Tree 생성&lt;/h3&gt;
-&lt;p&gt;브라우저가 서버에서 HTML을 전달받으면, 렌더링 엔진이 HTML을 파싱하고, DOM의 Node로 이루어진 트리를 만든다. (Node는 html 엘리먼트와 연관)&lt;/p&gt;
-&lt;h3&gt;Render Tree 생성&lt;/h3&gt;
-&lt;p&gt;css파일과 각 엘리먼트의 inline 스타일을 파싱하고 CSSOM을 생성한다. (노드의 스타일을 처리하는 과정 : 어테치먼트)
-→ DOM Tree와 CSSOM을 결합하여 새로운 &lt;strong&gt;Render Tree&lt;/strong&gt;를 생성한다.&lt;/p&gt;
-&lt;h3&gt;Layout (=Reflow)&lt;/h3&gt;
-&lt;p&gt;생성된 렌더트리의 각 노드들이 스크린상의 좌표가 주어지고, 어느 공간에 위치해야 하는지가 결정된다. &lt;br&gt;
-(position이나 size 등이 여기서 계산된다)&lt;/p&gt;
-&lt;h3&gt;Painting&lt;/h3&gt;
-&lt;p&gt;구성된 레이아웃을 화면에 그리는 과정이 진행된다. 트리의 각 노드들을 거쳐가면서 화면이 스크린에 나타난다. &lt;br&gt;
-DOM을 임의적으로 조작을 하면 이 과정들이 반복된다.&lt;br&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;h2&gt;Virtual DOM&lt;/h2&gt;
-&lt;p&gt;DOM에 하나라도 변화가 생기면 렌더트리 재생성~~페인팅 과정이 반복된다. 이 과정들이 반복될수록 브라우저가 많은 연산을 하게되고 전체적인 성능이 떨어지고 속도가 느려지게 된다.&lt;/p&gt;
-&lt;p&gt;리액트는 SPA(Single Page Application)로써, SPA로 만들어진 페이지의 DOM 객체는 매우 많고 복잡하다. DOM이 많아진 만큼 DOM의 조작이 많이 발생하게 되기때문에 비효율적인 프로세스가 만들어진다.&lt;/p&gt;
-&lt;p&gt;Virtual DOM은 DOM의 변화가 실제 DOM에 적용되기 전의 변화들을 감지한다. 변경사항을 메모리에 올라간 가상 DOM을 수정하고 실제 DOM과 비교하여 변경된 부분만 실제 DOM에 반영한다. &lt;br&gt; 이로 인해 더 반응성이 빠른 웹을 구현할 수 있다.&lt;/p&gt;
-&lt;p&gt;Virtual DOM은 실제 DOM의 복사본이다. 리액트는 Virtual DOM을 두고 개발자는 직접 DOM을 제어하지 않고 Virtual DOM을 제어한다. (React가 DOM과 Virtual DOM을 비교하여 반영한다.)&lt;/p&gt;
-&lt;h2&gt;리액트는 이전과 현재의 Virtual DOM을 어떻게 비교할까?&lt;/h2&gt;
-&lt;p&gt;리액트는 render() 함수를 통해 리액트 엘리먼트들의 트리를 만든다. 리액트의 state값이 바뀌면서 리렌더링이 발생하면 render() 함수는 새로운 리액트 엘리먼트 트리를 생성해서 리턴해줘야 한다. 하나의 트리가 N개의 엘리먼트를 가지고 있을때 새로운 엘리먼트 트리로 변환하는데는 O(n³)시간이 소요되는 적지않는 시간이 소요된다. &lt;br&gt;
-그래서 리액트의 Virtual DOM은 이전과 VDOM과 현재의 VDOM을 비교해서 바뀐 부분만 변경한다. (최적화에 유리)&lt;br&gt;
-리액트에서 가장 효과적으로 업데이트된 부분만을 찾아서 갱신하는 방법으로 &lt;code class=&quot;language-text&quot;&gt;Reconciliation&lt;/code&gt;이 있다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Reconciliation : 직전에 렌더링된 엘리먼트와 새로 반환된 엘리먼트를 비교하여 두 엘리먼트가 일치하지 않으면 리액트는 새로운 요소로 DOM을 업데이트하는 프로세스.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;↓ Reconciliation은 리액트 공식문서에 자세히 나와있으니 참고&lt;/p&gt;
-&lt;iframe src=&quot;https://ko.reactjs.org/docs/reconciliation.html&quot; style=&quot;width:100%; height:400px; border: 1px solid #ddd&quot;&gt;&lt;/iframe&gt;
-&lt;a href=&quot;https://ko.reactjs.org/docs/reconciliation.html&quot; traget=&quot;_blank&quot;&gt;https://ko.reactjs.org/docs/reconciliation.html&lt;/a&gt;</content:encoded></item><item><title><![CDATA[[redux] Redux Saga]]></title><description><![CDATA[Redux의 미들웨어 라이브러리 중 한 개로 Redux-thunk, Redux-toolkit 등 다양한 라이브러리가 존재하지만 Redux-saga를 사용하는 기업이 많다. 
+&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[redux] Redux Saga]]></title><description><![CDATA[Redux의 미들웨어 라이브러리 중 한 개로 Redux-thunk, Redux-toolkit 등 다양한 라이브러리가 존재하지만 Redux-saga를 사용하는 기업이 많다. 
 Redux-saga…]]></description><link>https://phrygia.github.io/2022-04-25-redux-saga/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-redux-saga/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;Redux의 미들웨어 라이브러리 중 한 개로 Redux-thunk, Redux-toolkit 등 다양한 라이브러리가 존재하지만 Redux-saga를 사용하는 기업이 많다. &lt;br&gt;
 Redux-saga는 다른 라이브러리에 비해 더 복잡한 비동기 처리를 할 수 있다는 장점이 있다. &lt;br&gt;
 단점은 러닝커브가 높고 제네레이터라는 문법에 익숙하지 않다면 어색하게 느껴 질 수 있다. 또한 코드가 길어져 복잡해질 수 있다. &lt;br&gt;
@@ -1849,7 +1812,44 @@ reducer는 현재 상태와 액션 객체를 파라미터로 받아와서 새로
 &lt;a href=&quot;https://sustainable-dev.tistory.com/137&quot; target=&quot;_blank&quot;&gt;https://sustainable-dev.tistory.com/137&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://ko.reactjs.org/&quot; target=&quot;_blank&quot;&gt;https://ko.reactjs.org/&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://velog.io/@goyou123/Custom-Hook&quot; target=&quot;_blank&quot;&gt;https://velog.io/@goyou123/Custom-Hook&lt;/a&gt;
-&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[javascript] Async await]]></title><description><![CDATA[async/await는 ES8에서 채택되었으며 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기처럼 동작하도록 구현할 수 있다. 
+&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[react] Virtual Dom (가상 돔)]]></title><description><![CDATA[리액트를 사용하면서 virtual dom(VDOM)과 관련된 글을 많이 보게 되었다. 
+virtual dom, 직역하면' 가상의 dom'이란 뜻인데 의미만으론 정확한 개념을 알수가 없었다. 
+VDOM…]]></description><link>https://phrygia.github.io/2022-04-25-virtual-dom/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-virtual-dom/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;리액트를 사용하면서 virtual dom(VDOM)과 관련된 글을 많이 보게 되었다. &lt;br&gt;
+virtual dom, 직역하면&apos; 가상의 dom&apos;이란 뜻인데 의미만으론 정확한 개념을 알수가 없었다. &lt;br&gt;
+VDOM엔 대해 알기위해서 팔요한 선행지식에 대해 알아보자&lt;/p&gt;
+&lt;h2&gt;브라우저 workflow&lt;/h2&gt;
+&lt;p&gt;Virtual DOM을 사용하는 이유를 알기 위해서는 우리가 사용하는 브라우저가 어떻게 동작하는지 알아야 할 필요가 있다.&lt;/p&gt;
+&lt;h4&gt;렌더링 엔진의 동작 과정&lt;/h4&gt;&lt;br&gt;
+&lt;p&gt;&lt;img src=&apos;https://d2.naver.com/content/images/2015/06/helloworld-59361-2.png&apos;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;img src=&apos;https://d2.naver.com/content/images/2015/06/helloworld-59361-3.png&apos;&gt;
+&lt;small class=&quot;from&quot;&gt;이미지 출처 : &lt;a href=&quot;https://d2.naver.com/helloworld/59361&quot; target=&quot;_blank&quot;&gt;브라우저는 어떻게 동작하는가?&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h3&gt;DOM Tree 생성&lt;/h3&gt;
+&lt;p&gt;브라우저가 서버에서 HTML을 전달받으면, 렌더링 엔진이 HTML을 파싱하고, DOM의 Node로 이루어진 트리를 만든다. (Node는 html 엘리먼트와 연관)&lt;/p&gt;
+&lt;h3&gt;Render Tree 생성&lt;/h3&gt;
+&lt;p&gt;css파일과 각 엘리먼트의 inline 스타일을 파싱하고 CSSOM을 생성한다. (노드의 스타일을 처리하는 과정 : 어테치먼트)
+→ DOM Tree와 CSSOM을 결합하여 새로운 &lt;strong&gt;Render Tree&lt;/strong&gt;를 생성한다.&lt;/p&gt;
+&lt;h3&gt;Layout (=Reflow)&lt;/h3&gt;
+&lt;p&gt;생성된 렌더트리의 각 노드들이 스크린상의 좌표가 주어지고, 어느 공간에 위치해야 하는지가 결정된다. &lt;br&gt;
+(position이나 size 등이 여기서 계산된다)&lt;/p&gt;
+&lt;h3&gt;Painting&lt;/h3&gt;
+&lt;p&gt;구성된 레이아웃을 화면에 그리는 과정이 진행된다. 트리의 각 노드들을 거쳐가면서 화면이 스크린에 나타난다. &lt;br&gt;
+DOM을 임의적으로 조작을 하면 이 과정들이 반복된다.&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h2&gt;Virtual DOM&lt;/h2&gt;
+&lt;p&gt;DOM에 하나라도 변화가 생기면 렌더트리 재생성~~페인팅 과정이 반복된다. 이 과정들이 반복될수록 브라우저가 많은 연산을 하게되고 전체적인 성능이 떨어지고 속도가 느려지게 된다.&lt;/p&gt;
+&lt;p&gt;리액트는 SPA(Single Page Application)로써, SPA로 만들어진 페이지의 DOM 객체는 매우 많고 복잡하다. DOM이 많아진 만큼 DOM의 조작이 많이 발생하게 되기때문에 비효율적인 프로세스가 만들어진다.&lt;/p&gt;
+&lt;p&gt;Virtual DOM은 DOM의 변화가 실제 DOM에 적용되기 전의 변화들을 감지한다. 변경사항을 메모리에 올라간 가상 DOM을 수정하고 실제 DOM과 비교하여 변경된 부분만 실제 DOM에 반영한다. &lt;br&gt; 이로 인해 더 반응성이 빠른 웹을 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;Virtual DOM은 실제 DOM의 복사본이다. 리액트는 Virtual DOM을 두고 개발자는 직접 DOM을 제어하지 않고 Virtual DOM을 제어한다. (React가 DOM과 Virtual DOM을 비교하여 반영한다.)&lt;/p&gt;
+&lt;h2&gt;리액트는 이전과 현재의 Virtual DOM을 어떻게 비교할까?&lt;/h2&gt;
+&lt;p&gt;리액트는 render() 함수를 통해 리액트 엘리먼트들의 트리를 만든다. 리액트의 state값이 바뀌면서 리렌더링이 발생하면 render() 함수는 새로운 리액트 엘리먼트 트리를 생성해서 리턴해줘야 한다. 하나의 트리가 N개의 엘리먼트를 가지고 있을때 새로운 엘리먼트 트리로 변환하는데는 O(n³)시간이 소요되는 적지않는 시간이 소요된다. &lt;br&gt;
+그래서 리액트의 Virtual DOM은 이전과 VDOM과 현재의 VDOM을 비교해서 바뀐 부분만 변경한다. (최적화에 유리)&lt;br&gt;
+리액트에서 가장 효과적으로 업데이트된 부분만을 찾아서 갱신하는 방법으로 &lt;code class=&quot;language-text&quot;&gt;Reconciliation&lt;/code&gt;이 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reconciliation : 직전에 렌더링된 엘리먼트와 새로 반환된 엘리먼트를 비교하여 두 엘리먼트가 일치하지 않으면 리액트는 새로운 요소로 DOM을 업데이트하는 프로세스.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;↓ Reconciliation은 리액트 공식문서에 자세히 나와있으니 참고&lt;/p&gt;
+&lt;iframe src=&quot;https://ko.reactjs.org/docs/reconciliation.html&quot; style=&quot;width:100%; height:400px; border: 1px solid #ddd&quot;&gt;&lt;/iframe&gt;
+&lt;a href=&quot;https://ko.reactjs.org/docs/reconciliation.html&quot; traget=&quot;_blank&quot;&gt;https://ko.reactjs.org/docs/reconciliation.html&lt;/a&gt;</content:encoded></item><item><title><![CDATA[[javascript] Async await]]></title><description><![CDATA[async/await는 ES8에서 채택되었으며 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기처럼 동작하도록 구현할 수 있다. 
 프로미스를 기반으로 동작하며 프로미스의 then/catch/finally…]]></description><link>https://phrygia.github.io/2022-04-25-async-await/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-async-await/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;async/await는 ES8에서 채택되었으며 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기처럼 동작하도록 구현할 수 있다. &lt;br&gt;
 프로미스를 기반으로 동작하며 프로미스의 then/catch/finally 후속 처리 메서드에 콜백 함수를 전달해서 비동기 처리 결과를 후속 처리할 필요 없이 마치 동기 처리처럼 프로미스가 처리 결과를 반환하도록 구현할 수 있다.&lt;/p&gt;
 &lt;h2&gt;제너레이터 (Generator)&lt;/h2&gt;
@@ -2018,7 +2018,66 @@ cosnole&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; $button &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// null&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;// 옵셔널 체이닝 연산자 (?.)를 사용하지 않으면 TypeError가 발생한다.&lt;/span&gt;
-$button&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;classList&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;disabled&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[javascript] Promise]]></title><description><![CDATA[자바스크립트는 비동기 처리를 위한 하나의 패턴으로 콜백 함수를 사용한다. 하지만 비동기에서 사용되던 콜백 패턴은 계속되는 콜백으로 인해 콜백 지옥(Callback Hell…]]></description><link>https://phrygia.github.io/2022-04-25-promise/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-promise/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트는 비동기 처리를 위한 하나의 패턴으로 콜백 함수를 사용한다. 하지만 비동기에서 사용되던 콜백 패턴은 계속되는 콜백으로 인해 콜백 지옥(Callback Hell)에 빠질 확률이 높다. 콜백 지옥에 빠지면 코드의 가독성이 떨어지고 비동기 처리 중 발생한 에러를 처리하는데 많은 노력이 필요하며 여러 개의 비동기 처리를 한번에 처리하는 데도 한계가 있다. &lt;br&gt;
+$button&lt;span class=&quot;token operator&quot;&gt;?.&lt;/span&gt;classList&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;disabled&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[javascript] 자바스크립트 런타임]]></title><description><![CDATA[…]]></description><link>https://phrygia.github.io/2022-04-25-js-runtime/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-js-runtime/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;자바스크립트는 싱글 스레드로 한번에 한개의 작업만을 다룰 수 있는 동기식 언어이다.&lt;/strong&gt; &lt;br&gt;
+  *싱글 스레드 : 하나의 프로그램에서 하나의 코드만 실행할 수 있다는 뜻이다. 하나의 작업이 끝나야 다음 작업을 시작할 수 있다.&lt;/p&gt;
+&lt;h2&gt;자바스크립트 런타임이란?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;런타임이란 프로그래밍 언어가 구동되는 환경을 말한다.&lt;/li&gt;
+&lt;li&gt;자바스크립트 런타임은 자바스크립트가 구동되는 환경&lt;/li&gt;
+&lt;li&gt;종류 : 웹 브라우저 (크롬, 파이어폭스 등), Node.js&lt;/li&gt;
+&lt;li&gt;런타임 환경 : Memory heap, call stack, web Apis(setTimeout, DOM, AJAX), callback queue, event loop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;구글의 v8 자바스크립트 엔진 영역&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;콜 스택(call stack) : 소스코드 (전역, 함수 등) 평가 과정에서 생성된 실행 컨텍스트가 추가 및 제거되는 곳이다.&lt;/li&gt;
+&lt;li&gt;힙(heap) : 객체가 저장되는 메모리 공간. 콜 스택의 실행 컨텍스트는 여기에 저장된 객체를 참조한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;브라우저 환경 및 Node.js 제공&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;콜백 큐(callback queue/event queue/task queue) : setTimeout이나 setInterval과 같은 비동기 함수나 이벤트 핸들러가 일시적으로 보관되는 영역이다.&lt;/li&gt;
+&lt;li&gt;이벤트 루프(event loop) : 콜 스택에 현재 실행 중인 실행 컨텍스트가 있는지, 콜백 큐에 대기 중인 함수가 있는지 반복해서 확인한다. &lt;br&gt;
+· 비어있는 콜스택 &amp;#x26; 콜백 큐에 대기중인 함수가 있을 때 : 이벤트 루프는 &lt;strong&gt;순차적(FIFO)으로 콜백 큐에 대기 중인 함수를 콜 스택으로 이동&lt;/strong&gt;시킨다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;어떻게 작동할까?&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
+      &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 75.29411764705883%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklEQVR42p1Ty27TUBD1b/BTLPiBInZ0AQKxYAESFSyyQUiFDUtYokogIVQhEfJ0nIfzcpOUlESp1KZJHL/y8COJncOda8UlBaGKkUbjGd85M3fOXAH/Ket1qFd9YblcwjTNLTVMi1nr0jcMrFarv4AGCIIls34UE4rFIkRRRL1eR7VaZVrGkSJzS36tVkM+n0epVOIJQRBwa07W6PYmaLQG6J1OMBqv4bgBhEKhgNlsFlVY6O/Qb+zC0z9EMdd1QYVDwPCeL15ZuHVHxe37Gnbuabi5M8J30YVAlafTaZTcrT7A/vMb+Fl5GnXkOA4qlQp0XWc3UaCqFzj47OFJzEDs9QSxNxb2XpqoNxch4Gx2CejoX2Gd7cMzk1sdyrLMwV3XYxEfb9/PcPexjofPDDzaM7DLvgsVD0K5XMZwOMRoNMR5/xymNQmBHRedTge9Xg+WZYHObdgkyRY9fDq08eWbw/XjoYPTsxUEqpxKpSFKMpSqgpyYZcO1UWSzJaIURUE6neZXvo4IUi6HZDqLkz6Q1yUkinEYmoFWqxUdoi3YsLwRItu/onwPc+ywxLpE/wLTkzLklgJ9rPGVUVWVjWKEZDLJZ3itDqm6VMjDMWxg7kJpHEEbj/8ApA7XrIXNHpL4vs99shFgVsyhLEtsyCvoFtBs1jFmgLTQZAmUAGm5NU3jBC4WC55MPhWk2Hw+DwFpsWnoP46P0W63IUkS3zsCoO7JJhIJTkq32+UkUUf0TaQRYMh+SD9fGwJMpVI8kQpQEgHH43Eey2QyfAT0AGi5CZDe92Aw2HplHJB+2rYNz/O4Und0iOwmRv9/n9O/SPkFCvZQS/MAyGMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;런타임 구성요소&apos; title=&apos;&apos; src=&apos;/static/3fd5d2bfd9dc65f3f688896aa5987257/ca1dc/runtime2.png&apos; srcset=&apos;/static/3fd5d2bfd9dc65f3f688896aa5987257/e7570/runtime2.png 170w,
+/static/3fd5d2bfd9dc65f3f688896aa5987257/f46e7/runtime2.png 340w,
+/static/3fd5d2bfd9dc65f3f688896aa5987257/ca1dc/runtime2.png 680w,
+/static/3fd5d2bfd9dc65f3f688896aa5987257/02d09/runtime2.png 1020w,
+/static/3fd5d2bfd9dc65f3f688896aa5987257/42a19/runtime2.png 1024w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;런타임 구성요소&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;위의 예제를 보면 setTimeout을 0초로 설정했기때문에 console.log(&quot;foo&quot;)가 먼저 출력되고 console.log(&quot;bar&quot;)가 실행된다고 생각한다. 하지만 실제로는 console.log(&quot;bar&quot;)가 먼저 출력된다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;setTimeout 함수의 실행 컨텍스트가 생성되고 콜스택에 푸시된다. (setTimeout callstack push)&lt;/li&gt;
+&lt;li&gt;setTimeout 함수가 실행되면 콜백 함수를 호출 스케줄링하고 종료되어 콜스택에서 팝(pop)된다. (setTimeout callstack pop)&lt;/li&gt;
+&lt;li&gt;브라우저 또는 Node.js가 타이머를 설정하고 타이머의 만료를 기다린다. (호출 스케줄링)&lt;/li&gt;
+&lt;li&gt;타이머가 만료되면 콜백 함수 foo가 콜백 큐에 푸시되고 대기하게 된다. (최소 4ms 후에 setTimeout callback queue push)&lt;/li&gt;
+&lt;li&gt;bar 함수의 실행 컨텍스트가 생성되고 콜 스택에 푸시되어 현재 실행 실행중인 컨텍스트가 된다. (setTimeout callstack push)&lt;/li&gt;
+&lt;li&gt;bar 함수가 종료되고 콜 스택에서 팝된다. (bar callstack pop)&lt;/li&gt;
+&lt;li&gt;콜 스택의 모든 실행 컨텍스트가 종료되어 &lt;u&gt;비어있다면&lt;/u&gt; 이벤트 루프가 감지한다.&lt;/li&gt;
+&lt;li&gt;태스크 큐에서 대기 중인 foo가 이벤트 루프에 의해 콜 스택에 푸시되고 실행된후 종료되어 팝된다. (foo callstack push/pop)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 style=&quot;line-height: 1.6;&quot;&gt;
+- 콜 스택에 푸시되는 함수가 많아질수록 속도는 느려진다. &lt;br&gt;
+- 콜 스택에 너무 어려운 연산이 실행되면 속도가 느려지며 연산을 처리하는 동안 다른 이벤트의 작동이 멈춘다 (click 이벤트 등이 제대로 작동하지 않을 수 있다.) &lt;br&gt;
+&lt;small&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;→ 처리 시간이 오래 걸리는 연산으로 코딩하면 안된다.&lt;/small&gt;&lt;br&gt;
+- 콜백 큐에 들어가는 이벤트 (onClick 등) 하나에 너무 많은 연산 및 실행 이벤트를 처리하면 안된다. &lt;br&gt;
+&lt;small&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;→ 콜 스택으로 푸시될때의 속도가 저하된다.&lt;/small&gt;
+&lt;/h4&gt;</content:encoded></item><item><title><![CDATA[[javascript] Promise]]></title><description><![CDATA[자바스크립트는 비동기 처리를 위한 하나의 패턴으로 콜백 함수를 사용한다. 하지만 비동기에서 사용되던 콜백 패턴은 계속되는 콜백으로 인해 콜백 지옥(Callback Hell…]]></description><link>https://phrygia.github.io/2022-04-25-promise/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-promise/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;자바스크립트는 비동기 처리를 위한 하나의 패턴으로 콜백 함수를 사용한다. 하지만 비동기에서 사용되던 콜백 패턴은 계속되는 콜백으로 인해 콜백 지옥(Callback Hell)에 빠질 확률이 높다. 콜백 지옥에 빠지면 코드의 가독성이 떨어지고 비동기 처리 중 발생한 에러를 처리하는데 많은 노력이 필요하며 여러 개의 비동기 처리를 한번에 처리하는 데도 한계가 있다. &lt;br&gt;
 Es6에서는 비동기 처리를 위한 패턴으로 프로미스(Promise)를 도입했다. 프로미스는 전통적인 콜백 패턴이 가진 단점을 보완하며 비동기 처리 시점을 명확하게 표현할 수 있어 비동기 처리가 간결하다는 장점이 있다.&lt;br&gt;
 또한 프로미스는 HTTP 요청 전송이 가능한 Web API인 fetch함수를 지원한다. 이 포스팅에서는 Promise 뿐만 아니라 콜백과 fetch에 관해서도 간단하게 다룬다.&lt;/p&gt;
 &lt;h2&gt;콜백 함수(Callback Function)란?&lt;/h2&gt;
@@ -2380,66 +2439,7 @@ request
   &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;err&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// {}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;small class=&quot;from add&quot;&gt;참고 : 모던 자바스크립트 Deep Dive
-&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[javascript] 자바스크립트 런타임]]></title><description><![CDATA[…]]></description><link>https://phrygia.github.io/2022-04-25-js-runtime/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-js-runtime/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;자바스크립트는 싱글 스레드로 한번에 한개의 작업만을 다룰 수 있는 동기식 언어이다.&lt;/strong&gt; &lt;br&gt;
-  *싱글 스레드 : 하나의 프로그램에서 하나의 코드만 실행할 수 있다는 뜻이다. 하나의 작업이 끝나야 다음 작업을 시작할 수 있다.&lt;/p&gt;
-&lt;h2&gt;자바스크립트 런타임이란?&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;런타임이란 프로그래밍 언어가 구동되는 환경을 말한다.&lt;/li&gt;
-&lt;li&gt;자바스크립트 런타임은 자바스크립트가 구동되는 환경&lt;/li&gt;
-&lt;li&gt;종류 : 웹 브라우저 (크롬, 파이어폭스 등), Node.js&lt;/li&gt;
-&lt;li&gt;런타임 환경 : Memory heap, call stack, web Apis(setTimeout, DOM, AJAX), callback queue, event loop&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;구글의 v8 자바스크립트 엔진 영역&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;콜 스택(call stack) : 소스코드 (전역, 함수 등) 평가 과정에서 생성된 실행 컨텍스트가 추가 및 제거되는 곳이다.&lt;/li&gt;
-&lt;li&gt;힙(heap) : 객체가 저장되는 메모리 공간. 콜 스택의 실행 컨텍스트는 여기에 저장된 객체를 참조한다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;브라우저 환경 및 Node.js 제공&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;콜백 큐(callback queue/event queue/task queue) : setTimeout이나 setInterval과 같은 비동기 함수나 이벤트 핸들러가 일시적으로 보관되는 영역이다.&lt;/li&gt;
-&lt;li&gt;이벤트 루프(event loop) : 콜 스택에 현재 실행 중인 실행 컨텍스트가 있는지, 콜백 큐에 대기 중인 함수가 있는지 반복해서 확인한다. &lt;br&gt;
-· 비어있는 콜스택 &amp;#x26; 콜백 큐에 대기중인 함수가 있을 때 : 이벤트 루프는 &lt;strong&gt;순차적(FIFO)으로 콜백 큐에 대기 중인 함수를 콜 스택으로 이동&lt;/strong&gt;시킨다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;어떻게 작동할까?&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;token function&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;foo&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
-      &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 75.29411764705883%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklEQVR42p1Ty27TUBD1b/BTLPiBInZ0AQKxYAESFSyyQUiFDUtYokogIVQhEfJ0nIfzcpOUlESp1KZJHL/y8COJncOda8UlBaGKkUbjGd85M3fOXAH/Ket1qFd9YblcwjTNLTVMi1nr0jcMrFarv4AGCIIls34UE4rFIkRRRL1eR7VaZVrGkSJzS36tVkM+n0epVOIJQRBwa07W6PYmaLQG6J1OMBqv4bgBhEKhgNlsFlVY6O/Qb+zC0z9EMdd1QYVDwPCeL15ZuHVHxe37Gnbuabi5M8J30YVAlafTaZTcrT7A/vMb+Fl5GnXkOA4qlQp0XWc3UaCqFzj47OFJzEDs9QSxNxb2XpqoNxch4Gx2CejoX2Gd7cMzk1sdyrLMwV3XYxEfb9/PcPexjofPDDzaM7DLvgsVD0K5XMZwOMRoNMR5/xymNQmBHRedTge9Xg+WZYHObdgkyRY9fDq08eWbw/XjoYPTsxUEqpxKpSFKMpSqgpyYZcO1UWSzJaIURUE6neZXvo4IUi6HZDqLkz6Q1yUkinEYmoFWqxUdoi3YsLwRItu/onwPc+ywxLpE/wLTkzLklgJ9rPGVUVWVjWKEZDLJZ3itDqm6VMjDMWxg7kJpHEEbj/8ApA7XrIXNHpL4vs99shFgVsyhLEtsyCvoFtBs1jFmgLTQZAmUAGm5NU3jBC4WC55MPhWk2Hw+DwFpsWnoP46P0W63IUkS3zsCoO7JJhIJTkq32+UkUUf0TaQRYMh+SD9fGwJMpVI8kQpQEgHH43Eey2QyfAT0AGi5CZDe92Aw2HplHJB+2rYNz/O4Und0iOwmRv9/n9O/SPkFCvZQS/MAyGMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;런타임 구성요소&apos; title=&apos;&apos; src=&apos;/static/3fd5d2bfd9dc65f3f688896aa5987257/ca1dc/runtime2.png&apos; srcset=&apos;/static/3fd5d2bfd9dc65f3f688896aa5987257/e7570/runtime2.png 170w,
-/static/3fd5d2bfd9dc65f3f688896aa5987257/f46e7/runtime2.png 340w,
-/static/3fd5d2bfd9dc65f3f688896aa5987257/ca1dc/runtime2.png 680w,
-/static/3fd5d2bfd9dc65f3f688896aa5987257/02d09/runtime2.png 1020w,
-/static/3fd5d2bfd9dc65f3f688896aa5987257/42a19/runtime2.png 1024w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;런타임 구성요소&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;위의 예제를 보면 setTimeout을 0초로 설정했기때문에 console.log(&quot;foo&quot;)가 먼저 출력되고 console.log(&quot;bar&quot;)가 실행된다고 생각한다. 하지만 실제로는 console.log(&quot;bar&quot;)가 먼저 출력된다.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;setTimeout 함수의 실행 컨텍스트가 생성되고 콜스택에 푸시된다. (setTimeout callstack push)&lt;/li&gt;
-&lt;li&gt;setTimeout 함수가 실행되면 콜백 함수를 호출 스케줄링하고 종료되어 콜스택에서 팝(pop)된다. (setTimeout callstack pop)&lt;/li&gt;
-&lt;li&gt;브라우저 또는 Node.js가 타이머를 설정하고 타이머의 만료를 기다린다. (호출 스케줄링)&lt;/li&gt;
-&lt;li&gt;타이머가 만료되면 콜백 함수 foo가 콜백 큐에 푸시되고 대기하게 된다. (최소 4ms 후에 setTimeout callback queue push)&lt;/li&gt;
-&lt;li&gt;bar 함수의 실행 컨텍스트가 생성되고 콜 스택에 푸시되어 현재 실행 실행중인 컨텍스트가 된다. (setTimeout callstack push)&lt;/li&gt;
-&lt;li&gt;bar 함수가 종료되고 콜 스택에서 팝된다. (bar callstack pop)&lt;/li&gt;
-&lt;li&gt;콜 스택의 모든 실행 컨텍스트가 종료되어 &lt;u&gt;비어있다면&lt;/u&gt; 이벤트 루프가 감지한다.&lt;/li&gt;
-&lt;li&gt;태스크 큐에서 대기 중인 foo가 이벤트 루프에 의해 콜 스택에 푸시되고 실행된후 종료되어 팝된다. (foo callstack push/pop)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 style=&quot;line-height: 1.6;&quot;&gt;
-- 콜 스택에 푸시되는 함수가 많아질수록 속도는 느려진다. &lt;br&gt;
-- 콜 스택에 너무 어려운 연산이 실행되면 속도가 느려지며 연산을 처리하는 동안 다른 이벤트의 작동이 멈춘다 (click 이벤트 등이 제대로 작동하지 않을 수 있다.) &lt;br&gt;
-&lt;small&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;→ 처리 시간이 오래 걸리는 연산으로 코딩하면 안된다.&lt;/small&gt;&lt;br&gt;
-- 콜백 큐에 들어가는 이벤트 (onClick 등) 하나에 너무 많은 연산 및 실행 이벤트를 처리하면 안된다. &lt;br&gt;
-&lt;small&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;→ 콜 스택으로 푸시될때의 속도가 저하된다.&lt;/small&gt;
-&lt;/h4&gt;</content:encoded></item><item><title><![CDATA[[javascript] throttling과 debouncing]]></title><description><![CDATA[scroll 이벤트를 사용하면 스크롤을 올리거나 내리는 짧은 시간동안 많은 이벤트가 발생한다. 복잡한 작업의 scroll…]]></description><link>https://phrygia.github.io/2022-04-25-throttle-debounce/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-throttle-debounce/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;scroll 이벤트를 사용하면 스크롤을 올리거나 내리는 짧은 시간동안 많은 이벤트가 발생한다. 복잡한 작업의 scroll 이벤트를 처리한다면 빈번하게 실행되는 이벤트 때문에 성능이 저하되고 렉이 걸릴 확률이 높아진다. &lt;br&gt;
+&lt;/small&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[javascript] throttling과 debouncing]]></title><description><![CDATA[scroll 이벤트를 사용하면 스크롤을 올리거나 내리는 짧은 시간동안 많은 이벤트가 발생한다. 복잡한 작업의 scroll…]]></description><link>https://phrygia.github.io/2022-04-25-throttle-debounce/</link><guid isPermaLink="false">https://phrygia.github.io/2022-04-25-throttle-debounce/</guid><pubDate>Mon, 25 Apr 2022 10:26:00 GMT</pubDate><content:encoded>&lt;p&gt;scroll 이벤트를 사용하면 스크롤을 올리거나 내리는 짧은 시간동안 많은 이벤트가 발생한다. 복잡한 작업의 scroll 이벤트를 처리한다면 빈번하게 실행되는 이벤트 때문에 성능이 저하되고 렉이 걸릴 확률이 높아진다. &lt;br&gt;
 이처럼 짧은 시간 간격으로 연속해서 발생하는 이벤트의 과도한 이벤트 핸들러 호출을 방지하기 위해 스로틀과 디바운스를 사용하면 성능향상에 도움이 된다.&lt;/p&gt;
 &lt;h2&gt;스로틀 (throttle)&lt;/h2&gt;
 &lt;p&gt;짧은 시간 간격으로 이벤트가 연속해서 발생하더라도 &lt;u&gt;&lt;strong&gt;일정 시간 간격&lt;/strong&gt;으로 이벤트 핸들러가 &lt;strong&gt;최대 한 번만 호출&lt;/strong&gt;되도록&lt;/u&gt; 한다.
