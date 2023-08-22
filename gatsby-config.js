@@ -193,5 +193,11 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: ["G-LV3317EKZF"],
+      },
+    },
   ],
 }

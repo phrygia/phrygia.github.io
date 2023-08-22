@@ -45,7 +45,7 @@ const TocWrapper = styled.div`
   }
 
   @media (max-width: 1300px) {
-    display: None;
+    display: none;
   }
 `
 

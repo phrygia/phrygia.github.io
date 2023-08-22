@@ -5,7 +5,6 @@ import useScroll from "hooks/useScroll"
 
 const StyledWrapper = styled.div`
   position: relative;
-  opacity: 0;
   transition: 0.35s all ease;
   ${props =>
     props.visible &&
