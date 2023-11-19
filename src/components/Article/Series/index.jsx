@@ -2,18 +2,17 @@ import React, { useState, useMemo } from "react"
 import _ from "lodash"
 import styled from "styled-components"
 import { Link } from "gatsby"
-
 import { AiOutlineArrowLeft } from "react-icons/ai"
 
 const SeriesWrapper = styled.div`
   margin-bottom: 32px;
-  padding: 16px;
+  padding: 16px 16px 12px;
   background-color: ${props => props.theme.colors.seriesBackground};
 `
 
 const SeriesHeader = styled.h2`
-  margin-bottom: 16px;
-  font-size: 16px;
+  margin-bottom: 12px;
+  font-size: 17px;
   font-weight: bold;
   color: ${props => props.theme.colors.text};
 
@@ -41,7 +40,6 @@ const Post = styled.li`
     props.currentPost
       ? props.theme.colors.text
       : props.theme.colors.tertiaryText};
-
   &:not(:last-child) {
     margin-bottom: 9.6px;
   }
@@ -59,6 +57,12 @@ const Post = styled.li`
   & > svg {
     position: absolute;
     margin-left: 5px;
+  }
+
+  & span {
+    display: inline-block;
+    width: 10px;
+    margin-right: 3px;
   }
 `
 
@@ -99,14 +103,24 @@ const Series = ({ header, series }) => {
     <SeriesWrapper>
       <SeriesHeader>
         <Link to={`/series/${_.replace(header, /\s/g, "-")}`}>
-          SERIES: {header}
+          SERIES: {header} <span>({series.length})</span>
         </Link>{" "}
-        <span>({series.length})</span>
       </SeriesHeader>
       <PostWrapper>
         {filteredPosts.map((post, i) => (
           <Post key={i} currentPost={post.currentPost}>
-            <Link to={post.fields.slug}>{post.frontmatter.title}</Link>{" "}
+            {post.currentPost ? (
+              <>
+                {" "}
+                <span>{i + 1}.</span>
+                {post.frontmatter.title}
+              </>
+            ) : (
+              <Link to={post.fields.slug}>
+                <span>{i + 1}.</span>
+                {post.frontmatter.title}
+              </Link>
+            )}{" "}
             {post.currentPost && <AiOutlineArrowLeft />}{" "}
           </Post>
         ))}

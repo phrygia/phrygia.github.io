@@ -4,7 +4,7 @@ const StyledMarkdown = styled.div`
   & {
     font-size: 16.7px;
     color: ${props => props.theme.colors.text};
-    line-height: 1.73;
+    line-height: 1.9;
     overflow: hidden;
 
     @media (max-width: 767px) {
@@ -166,6 +166,7 @@ const StyledMarkdown = styled.div`
   & ul,
   & ol {
     padding-left: 25px;
+    line-height: 1.3;
   }
 
   & ol {

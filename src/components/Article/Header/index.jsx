@@ -47,7 +47,7 @@ const Author = styled.span`
   color: #495057;
 
   &.dark {
-    color: rgb(175, 185, 195);
+    color: rgb(248, 249, 250);
   }
 `
 
@@ -56,11 +56,11 @@ const Date = styled.span`
   color: #495057;
 
   &.dark {
-    color: rgb(175, 185, 195);
+    color: rgb(248, 249, 250);
   }
 `
 
-const Header = ({ title, date, tags /* minToRead*/ }) => {
+const Header = ({ title, date, tags, minToRead }) => {
   const { theme } = useSelector(state => state.theme)
 
   return (
@@ -69,7 +69,9 @@ const Header = ({ title, date, tags /* minToRead*/ }) => {
       <Information>
         <Author className={theme}> {author} </Author>
         <Date className={theme}>· {dayjs(date).format("YYYY월 M월 D일")} </Date>
-        {/* <Date>· {minToRead} min read </Date> */}
+        <Date className={theme}>
+          <span style={{ opacity: 0 }}>· {minToRead} min read</span>{" "}
+        </Date>
       </Information>
       {tags && <TagList tagList={tags} />}
       <Divider mt="0" />

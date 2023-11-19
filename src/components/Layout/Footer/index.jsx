@@ -14,6 +14,7 @@ const FooterWrapper = styled.footer`
 
   & > a {
     color: ${props => props.theme.colors.text};
+    text-decoration: none;
   }
 `
 

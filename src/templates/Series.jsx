@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-
+import { useSelector } from "react-redux"
 import styled from "styled-components"
-
 import Layout from "components/Layout"
 import SEO from "components/SEO"
 import PostList from "components/PostList"
 import Divider from "components/Divider"
 
 import { description, siteUrl } from "../../blog-config"
+import dayjs from "dayjs"
 
 const Header = styled.div`
   @media (max-width: 768px) {
@@ -19,22 +19,43 @@ const Header = styled.div`
 const Title = styled.h1`
   margin-bottom: 15px;
   line-height: 1.2;
-  font-size: 44.8px;
+  font-size: 40px;
   font-weight: bold;
   color: ${props => props.theme.colors.text};
   word-break: break-all;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `
 
 const Subtitle = styled.h3`
   display: inline-block;
-  padding: 2px 3px;
-  margin-top: 32px;
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: ${props => props.theme.colors.text};
-  color: ${props => props.theme.colors.bodyBackground};
-  letter-spacing: -1px;
+  padding: 9px 11px 7px;
+  margin: 0 8px 8px 0;
+  border-radius: 50px;
+  background-color: ${props => (props.selected ? "#6868ac" : "#f0f0f7")};
+  color: ${props =>
+    props.selected
+      ? props.theme.colors.selectedTagText
+      : props.theme.colors.tagText};
+  text-decoration: none;
+  font-size: 14.4px;
+  transition: all 0.2s;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    padding: 6px 8px 4px;
+  }
+
+  &.dark {
+    color: #fff;
+    background-color: ${props => (props.selected ? "#6868ac" : "#252525")};
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
 `
 
 const SeriesInform = styled.div`
@@ -49,13 +70,18 @@ const SeriesInform = styled.div`
 `
 
 const Date = styled.span`
-  color: ${props => props.theme.colors.tertiaryText};
+  color: rgb(73, 80, 87);
   font-weight: lighter;
+
+  &.dark {
+    color: rgb(248, 249, 250);
+  }
 `
 
 const Series = ({ pageContext, data }) => {
   const seriesName = pageContext.series
   const posts = data.posts.nodes
+  const { theme } = useSelector(state => state.theme)
 
   return (
     <Layout>
@@ -64,22 +90,21 @@ const Series = ({ pageContext, data }) => {
         description={description}
         url={siteUrl}
       />
-
       <Header>
-        <Subtitle> SERIES </Subtitle>
+        <Subtitle className={theme}> SERIES </Subtitle>
         <Title> {seriesName} </Title>
-
         <SeriesInform>
           <span>{posts.length} Posts</span>
           <span>·</span>
-          <Date>
-            Last updated on {posts[posts.length - 1].frontmatter.date}
+          <Date className={theme}>
+            Last updated{" "}
+            {dayjs(posts[posts.length - 1].frontmatter.date).format(
+              "YYYY월 MM월 DD일"
+            )}
           </Date>
         </SeriesInform>
-
         <Divider />
       </Header>
-
       <PostList postList={posts} />
     </Layout>
   )

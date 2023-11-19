@@ -39,7 +39,7 @@ const BlogTitle = styled.span`
   font-weight: 500;
   font-size: 22px;
   margin-top: 6px;
-  color: #6868ac;
+  color: ${props => (props.theme === "light" ? "#6868ac" : "rgb(149 149 219)")};
   font-family: "Baloo Bhaina 2", sans-serif;
 
   & > a {
@@ -160,24 +160,19 @@ const Header = ({ toggleTheme }) => {
   return (
     <HeaderWrapper isHidden={hidden}>
       <Inner>
-        <BlogTitle>
+        <BlogTitle theme={theme.name}>
           <Link to="/">{title}</Link>
         </BlogTitle>
         <Menu>
+          <LinkInner to="/series">series</LinkInner>
+          <LinkInner to="/tags">tags</LinkInner>
+          <LinkInner to="/search">search</LinkInner>
           <ToggleWrapper>
             <IconRail theme={theme.name}>
               <FaSun onClick={toggleTheme} />
               <FaMoon onClick={toggleTheme} />
             </IconRail>
           </ToggleWrapper>
-          <LinkInner to="/tags">tags</LinkInner>
-          {/* <Link to="/series">
-            <FaListUl />
-          </Link>
-          <Link to="/rss.xml">
-            <FaRss />
-          </Link> */}
-          <LinkInner to="/search">search</LinkInner>
         </Menu>
       </Inner>
     </HeaderWrapper>

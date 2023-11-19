@@ -39,17 +39,13 @@ const SeriesPage = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={description} url={siteUrl} />
-
       <TagListWrapper>
         {series.length > 0 && (
           <Title size="sm">There are {series.length} series.</Title>
         )}
       </TagListWrapper>
-
       {series.length === 0 && <NoContent name="series" />}
-
       <VerticleSpace size={32} />
-
       <SeriesList seriesList={series} />
     </Layout>
   )
