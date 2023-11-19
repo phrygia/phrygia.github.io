@@ -269,7 +269,7 @@ data-styled.g42[id="Footer__HiddenWrapper-sc-zqxmks-9"]{content:"yzdKT,ivqWaF,"}
     <figcaption class='gatsby-resp-image-figcaption'>api</figcaption>
   </figure></p>
 <p><strong>*api에서 추출하려는 값</strong></p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// { store_key: quantity } 형식</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// { store_key: quantity } 딕셔너리 형식</span>
 <span class="token punctuation">{</span> 99ngh08<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> 5gxyt1q<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> 3ifu0ie<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span></code></pre></div>
 <p>우선 장바구니 상품들중 선택한 상품을 id로 필터하고 map으로 store_key키만 추출한 다음 reduce안에서 다시 filter해서 해당 상품의 수량을 붙여서 코딩을 했다..<br>
 (진짜 부끄럽고 지저분하고 개발자답지 못한 코드.. 🤪)
@@ -305,6 +305,19 @@ arrayToObject 출력결과
 { 99ngh08: 2, 5gxyt1q: 1, 3ifu0ie: 1 }
 */</span></code></pre></div>
 <p>OMG.. 훨씬 깔끔한 코드가 완성됐다. (개인적으로 reduce가 들어가는 순간 깔끔함이 사라진다고 생각하는 사람..)</p>
+<p><strong>*lodash 사용 (+ 2023.11.19)</strong></p>
+<p>울 회사는 lodash를 사용하고 있다. 최근 lodash로 사용하는 방법도 알게되었다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> _ <span class="token keyword">from</span> <span class="token string">"lodash"</span>
+
+<span class="token keyword">const</span> filteredArray <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">chain</span><span class="token punctuation">(</span>listItems<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token string">"store_key"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">mapValues</span><span class="token punctuation">(</span><span class="token string">"quantity"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">/*
+filteredArray 출력결과
+{ 99ngh08: 2, 5gxyt1q: 1, 3ifu0ie: 1 }
+*/</span></code></pre></div>
 <h2>Obejct.fromEntries ?</h2>
 <div class="blockquote">
     Object.fromEntries(iterable)
@@ -419,4 +432,4 @@ console<span class="token punctuation">.</span><span class="token function">log<
           >
             window.___chunkMapping="{\"app\":[\"/app-322d833a5cdec415da18.js\"],\"component---src-pages-404-jsx\":[\"/component---src-pages-404-jsx-62692552f0249a5ab8db.js\"],\"component---src-pages-about-jsx\":[\"/component---src-pages-about-jsx-72a62b1520ff5157dd68.js\"],\"component---src-pages-index-jsx\":[\"/component---src-pages-index-jsx-dc770ce2a4a84ade3196.js\"],\"component---src-pages-search-jsx\":[\"/component---src-pages-search-jsx-4e80bd03805e3a60bd8e.js\"],\"component---src-pages-series-jsx\":[\"/component---src-pages-series-jsx-9ba774ef1327d6f8da57.js\"],\"component---src-pages-tags-jsx\":[\"/component---src-pages-tags-jsx-0afb22d9a09f38dd6fcc.js\"],\"component---src-templates-post-jsx\":[\"/component---src-templates-post-jsx-f0a1875d21b44c711348.js\"],\"component---src-templates-series-jsx\":[\"/component---src-templates-series-jsx-7f2b402bc553f0ee6cc5.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="b8e835bceefe9ac24af8";</script><script src="/webpack-runtime-7d9985e1486c10adc009.js" async></script><script src="/framework-259d0553ae9f97cccb3e.js" async></script><script src="/app-322d833a5cdec415da18.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="54d40cd435e29ce9e1e0";</script><script src="/webpack-runtime-7d9985e1486c10adc009.js" async></script><script src="/framework-259d0553ae9f97cccb3e.js" async></script><script src="/app-322d833a5cdec415da18.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
