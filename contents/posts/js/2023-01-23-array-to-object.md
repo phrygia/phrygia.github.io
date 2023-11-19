@@ -20,7 +20,7 @@ tags:
 **\*api에서 추출하려는 값**
 
 ```js
-// { store_key: quantity } 형식
+// { store_key: quantity } 딕셔너리 형식
 { 99ngh08: 2, 5gxyt1q: 1, 3ifu0ie: 1 }
 ```
 
@@ -67,6 +67,24 @@ arrayToObject 출력결과
 ```
 
 OMG.. 훨씬 깔끔한 코드가 완성됐다. (개인적으로 reduce가 들어가는 순간 깔끔함이 사라진다고 생각하는 사람..)
+
+**\*lodash 사용 (+ 2023.11.19)**
+
+울 회사는 lodash를 사용하고 있다. 최근 lodash로 사용하는 방법도 알게되었다.
+
+```js
+import _ from "lodash"
+
+const filteredArray = _.chain(listItems)
+  .keyBy("store_key")
+  .mapValues("quantity")
+  .value()
+
+/*
+filteredArray 출력결과
+{ 99ngh08: 2, 5gxyt1q: 1, 3ifu0ie: 1 }
+*/
+```
 
 ## Obejct.fromEntries ?
 

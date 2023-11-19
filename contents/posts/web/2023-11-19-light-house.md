@@ -1,7 +1,7 @@
 ---
 title: "[web] Lighthouse 웹페이지 성능분석 (Performance)"
-date: "2023-11-19 11:24:00"
-update: 2021-04-03
+date: "2023-11-19 15:08:00"
+update: 2023-11-19
 description: ""
 tags:
   - web
